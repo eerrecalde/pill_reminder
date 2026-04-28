@@ -23,15 +23,38 @@
 **Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
 **Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
 **Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Performance Goals**: [domain-specific, e.g., responsive reminder setup, fast startup, low battery impact or NEEDS CLARIFICATION]
+**Constraints**: [domain-specific, e.g., offline-capable, account-free core use, accessible large text, local notifications or NEEDS CLARIFICATION]
 **Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Answer each gate with PASS, FAIL, or N/A. FAIL requires an entry in Complexity
+Tracking before implementation planning may continue.
+
+- **Simplicity and clear flows**: Primary user flow is short, obvious, and avoids
+  unnecessary configuration. Added settings, dependencies, services, screens, or
+  abstractions are justified.
+- **Accessibility for older adults**: Large text, screen reader behavior,
+  contrast, touch targets, non-color-only status, and error recovery are covered
+  for affected flows.
+- **Reliable local-first reminders**: Core reminder behavior works offline,
+  account-free, and with deterministic local notification scheduling.
+- **Privacy and user control**: Medication data stays local/private by default;
+  any sharing, backup, analytics, donation, or remote service is optional,
+  minimal, and documented.
+- **Maintainable architecture**: Domain rules, persistence, notification
+  scheduling, and UI concerns remain testable and appropriately separated.
+- **Testing gate**: Required automated and manual verification are identified,
+  including recurrence, permissions, persistence, accessibility, localization,
+  and privacy behavior where relevant.
+- **Consistent, localizable experience**: User-visible strings, dates, times,
+  dosage labels, notifications, empty states, and errors are ready for English
+  and Latin American Spanish.
+- **Measured performance**: Startup, reminder setup responsiveness, background
+  work, battery impact, and dependency size are considered with measurable goals.
 
 ## Project Structure
 
