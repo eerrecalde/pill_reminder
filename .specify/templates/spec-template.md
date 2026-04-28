@@ -74,15 +74,6 @@
 
 - What happens when [boundary condition]?
 - How does system handle [error scenario]?
-- How does the feature behave with large text, screen readers, reduced dexterity,
-  and plain-language expectations for older adults?
-- How does the feature behave in English and Latin American Spanish, including
-  longer translated text?
-- If reminders or notifications are involved, what happens when notification
-  permission is denied, the app is closed, the device restarts, time zones or
-  daylight saving time change, or the device is offline?
-- If medication data is involved, what data is stored, where is it stored, and
-  how is unnecessary collection avoided?
 
 ## Requirements *(mandatory)*
 
@@ -98,17 +89,6 @@
 - **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
 - **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
 - **FR-005**: System MUST [behavior, e.g., "log all security events"]
-- **FR-ACCESS**: User-facing flows MUST satisfy older-adult accessibility needs:
-  readable scaling, sufficient contrast, clear touch targets, assistive
-  technology semantics, and plain language.
-- **FR-LOCALIZE**: User-facing text MUST be available in English and Latin
-  American Spanish without truncation or layout overlap.
-- **FR-PRIVACY**: Medication data MUST remain on-device unless this specification
-  explicitly defines consent, transfer purpose, retention, and deletion behavior.
-- **FR-NO-ADS**: The feature MUST NOT introduce ads, advertising tracking, or
-  interruption of medication workflows for donation prompts.
-- **FR-SIMPLE**: The feature MUST avoid new dependencies, services, or workflow
-  steps unless the specification states why they are necessary.
 
 *Example of marking unclear requirements:*
 
@@ -133,10 +113,6 @@
 - **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
 - **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
 - **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
-- **SC-ACCESS**: [Accessibility outcome, e.g., "Primary flow remains usable with
-  200% text scaling and screen reader enabled"]
-- **SC-LOCALIZE**: [Localization outcome, e.g., "Primary flow passes review in
-  English and Latin American Spanish with no clipped text"]
 
 ## Assumptions
 
