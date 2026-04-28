@@ -68,6 +68,10 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T007 Create base models/entities that all stories depend on
 - [ ] T008 Configure error handling and logging infrastructure
 - [ ] T009 Setup environment configuration management
+- [ ] TXXX Configure Flutter localization for English and Latin American Spanish
+- [ ] TXXX Configure accessibility review helpers for text scaling, semantics, contrast, and touch targets
+- [ ] TXXX Configure local notification scheduling, permission handling, and platform smoke-test notes
+- [ ] TXXX Document privacy boundaries for on-device medication data and donation surfaces
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -85,6 +89,9 @@ Examples of foundational tasks (adjust based on your project):
 
 - [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
 - [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] TXXX [P] [US1] Accessibility test for text scaling, semantics, and tap targets in test/[name]_accessibility_test.dart
+- [ ] TXXX [P] [US1] Localization test for English and Latin American Spanish strings in test/[name]_localization_test.dart
+- [ ] TXXX [P] [US1] Notification behavior test or documented platform smoke check in test/[name]_notification_test.dart
 
 ### Implementation for User Story 1
 
@@ -155,6 +162,11 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
 - [ ] TXXX Security hardening
+- [ ] TXXX Accessibility pass for older-adult readability, contrast, semantics, and touch targets
+- [ ] TXXX Localization pass for English and Latin American Spanish, including longer Spanish text
+- [ ] TXXX Local notification smoke checks on iOS and Android
+- [ ] TXXX Privacy review for medication data, ads, tracking, and donation prompt placement
+- [ ] TXXX Complexity review for new dependencies, platform channels, services, and abstractions
 - [ ] TXXX Run quickstart.md validation
 
 ---

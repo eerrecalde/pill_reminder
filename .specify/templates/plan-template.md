@@ -31,7 +31,23 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Accessibility for older adults: Plan identifies text scaling, contrast, touch
+  targets, assistive technology semantics, plain-language copy, and forgiving
+  interaction behavior for all user-facing surfaces.
+- Simple reminder setup: Plan preserves a short offline-capable path for creating
+  reminders and documents any extra step added to setup.
+- Reliable local notifications: Plan covers scheduling, cancellation,
+  rescheduling, permission recovery, app-closed behavior, reboot/time-zone/DST
+  behavior, and iOS/Android manual verification.
+- English and Latin American Spanish localization: Plan accounts for all
+  user-facing strings, longer Spanish layouts, and locale-specific acceptance
+  checks.
+- Privacy, no ads, respectful donations: Plan avoids ads, advertising tracking,
+  account requirements for core reminder use, and intrusive donation prompts;
+  any data leaving the device requires explicit consent and review.
+- Low complexity: Plan justifies each new dependency, platform channel,
+  background service, remote service, abstraction, or state-management layer and
+  records the simpler alternative considered.
 
 ## Project Structure
 
