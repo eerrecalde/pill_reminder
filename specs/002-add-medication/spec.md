@@ -10,6 +10,7 @@
 ### Session 2026-04-29
 
 - Q: How should the app handle a new medication name that matches an existing saved medication? → A: Allow duplicate names, but show a gentle confirmation when the name already exists.
+- Q: What maximum lengths should medication entry fields use? → A: Medication name 80 characters, dosage label 80 characters, notes 500 characters.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -77,7 +78,9 @@ An older adult or caregiver receives clear validation feedback when required inf
 
 - Medication name contains leading or trailing spaces; the saved required name should not be blank after spaces are removed.
 - Medication name matches an existing saved medication; the app should show a gentle confirmation and allow saving when the user confirms.
-- Medication name is very long; the flow should prevent unreadable or broken display and explain any length limit in plain language.
+- Medication name is longer than 80 characters; the flow should prevent saving and explain the 80-character limit in plain language.
+- Optional dosage label is longer than 80 characters; the flow should prevent saving and explain the 80-character limit in plain language.
+- Optional notes are longer than 500 characters; the flow should prevent saving and explain the 500-character limit in plain language.
 - Optional dosage label or notes are left blank; the medication should still save successfully.
 - Optional notes are long; the user should be able to review and edit them without layout overlap or clipped text.
 - The user changes active/inactive status multiple times before saving; the final selected status should be saved.
@@ -99,6 +102,7 @@ An older adult or caregiver receives clear validation feedback when required inf
 - **FR-008**: System MUST show validation messages in plain language and communicate them with text and screen-reader announcement, not color alone.
 - **FR-009**: System MUST save valid medication entries privately on the device without requiring internet access.
 - **FR-009a**: System MUST allow duplicate medication names, but when a new medication name matches an existing saved medication name after trimming whitespace, the flow MUST show a gentle non-blocking confirmation before saving.
+- **FR-009b**: System MUST enforce maximum field lengths of 80 characters for medication name, 80 characters for dosage label, and 500 characters for notes, with plain-language validation messages.
 - **FR-010**: System MUST NOT require account creation, sign-in, remote sync, analytics participation, or an internet connection to add a medication.
 - **FR-011**: System MUST clearly communicate within the flow that medication information is stored privately on the device.
 - **FR-012**: System MUST preserve local-first, account-free core reminder use unless this feature explicitly documents a constitution exception.
@@ -114,7 +118,7 @@ An older adult or caregiver receives clear validation feedback when required inf
 ### Key Entities *(include if feature involves data)*
 
 - **Medication**: A locally stored user-created record representing one medication the user or caregiver may later connect to reminders. Key attributes are medication name, optional dosage label, optional notes, active/inactive status, created date, last updated date, and a local record identity that distinguishes medications even when names match.
-- **Medication Entry Draft**: The in-progress information a user enters before saving. Key attributes are draft medication name, dosage label, notes, selected status, validation state, and unsaved/saved outcome.
+- **Medication Entry Draft**: The in-progress information a user enters before saving. Key attributes are draft medication name, dosage label, notes, selected status, validation state, duplicate-name confirmation state, field length validation state, and unsaved/saved outcome.
 
 ## Success Criteria *(mandatory)*
 
@@ -134,5 +138,5 @@ An older adult or caregiver receives clear validation feedback when required inf
 - Medication entry does not include reminder scheduling, refill tracking, medication search, barcode scanning, clinical safety checks, or drug interaction warnings.
 - Active status means the medication is eligible to be selected for future reminder setup; inactive status means it is stored for reference but should not be treated as ready for reminders.
 - Medication data remains on the device unless a future feature explicitly introduces backup, sync, export, or sharing with separate user consent.
-- The app may apply reasonable text length limits to preserve readability, provided the limits are communicated before or during validation in plain language.
+- Medication name is limited to 80 characters, dosage label to 80 characters, and notes to 500 characters to preserve readability with large text.
 - Canceling or leaving the add-medication flow discards the unsaved draft unless a future feature explicitly adds draft recovery.
