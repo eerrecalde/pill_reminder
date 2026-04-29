@@ -39,6 +39,15 @@ Manual verification:
 12. Screen reader announces language options, privacy explanation, permission choices, and reminder status in a logical order.
 13. High contrast mode preserves meaning without relying on color alone.
 
+Platform notification verification:
+
+1. On Android 13 or later, tap "Turn on reminders" and confirm the system notification permission prompt appears.
+2. On Android, deny permission and confirm setup still completes with the non-blocking reminder status visible.
+3. On Android, use "Open settings" from reminder status and confirm app settings opens.
+4. On iOS, tap "Turn on reminders" and confirm the system notification permission prompt appears.
+5. On iOS, deny permission and confirm setup still completes with the non-blocking reminder status visible.
+6. On iOS, use "Open settings" from reminder status and confirm app settings opens.
+
 ## Performance Check
 
 - First setup screen appears within 1 second after app start on a typical phone or tablet.
