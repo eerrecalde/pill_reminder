@@ -30,6 +30,12 @@
 
 **Alternatives considered**: Implementing full local notification scheduling here was rejected as out of scope. Storing only a user-selected "not now" flag was rejected because the app must distinguish granted, skipped, denied, blocked, and unavailable states.
 
+## Decision: Use `permission_handler` for notification permission checks and settings recovery
+
+**Rationale**: The setup flow needs real Android/iOS notification permission status and a recovery path to device settings without adding reminder scheduling. `permission_handler` covers permission request, denied/permanently denied status, and app settings recovery in a small, focused dependency.
+
+**Alternatives considered**: `flutter_local_notifications` was rejected for this feature because scheduling reminders is out of scope. A platform-channel wrapper was rejected because it adds maintenance cost before the app needs custom platform behavior.
+
 ## Decision: Use app localization resources for all setup copy
 
 **Rationale**: The constitution requires English and Latin American Spanish readiness. ARB resources with `en` and `es_419` locale support keep user-visible copy out of business logic and make tests able to verify language switching.

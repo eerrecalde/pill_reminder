@@ -10,7 +10,7 @@ Build a first-run setup flow for the Flutter pill reminder app on phones and tab
 ## Technical Context
 
 **Language/Version**: Dart SDK `^3.11.5`, Flutter Material 3  
-**Primary Dependencies**: Flutter SDK, `cupertino_icons`; planned additions: `shared_preferences` for local setup preferences and a notification-permission capability through the app notification service  
+**Primary Dependencies**: Flutter SDK, `cupertino_icons`; planned additions: `shared_preferences` for local setup preferences, `permission_handler` for Android/iOS notification permission status and settings recovery, and Flutter localization support  
 **Storage**: Local device preferences for setup completion, selected language, privacy acknowledgement, and notification permission status; storage access wrapped behind a repository interface to allow a future Firebase-backed implementation  
 **Testing**: `flutter test`, widget tests for setup flow and accessibility semantics, repository unit tests for local preference persistence, manual notification permission verification on Android and iOS devices/simulators  
 **Target Platform**: iOS and Android phones and tablets  
@@ -71,7 +71,8 @@ lib/
 │           ├── language_selection_screen.dart
 │           ├── privacy_explanation_screen.dart
 │           ├── notification_permission_screen.dart
-│           └── reminder_status_banner.dart
+│           ├── reminder_status_banner.dart
+│           └── setup_preferences_screen.dart
 ├── l10n/
 │   ├── app_en.arb
 │   └── app_es_419.arb
@@ -98,6 +99,7 @@ No constitution violations.
 | Added Design Choice | Why Needed | Simpler Alternative Rejected Because |
 |---------------------|------------|-------------------------------------|
 | Repository abstraction for setup preferences | The feature must use local storage now while preserving a future Firebase upgrade path for user and medication data | Direct `shared_preferences` calls from widgets would be simpler today but would mix UI with persistence and make Firebase migration harder |
+| `permission_handler` for notification permission status | Setup must distinguish granted, skipped, denied, blocked, and unavailable states on phones and tablets without implementing reminder scheduling yet | Adding full local notification scheduling now would exceed this feature's scope; a placeholder service would not support real permission recovery testing |
 
 ## Phase 0: Research Summary
 

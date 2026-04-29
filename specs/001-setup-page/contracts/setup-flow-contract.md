@@ -88,6 +88,23 @@ This contract defines user-visible states and app behavior for the first-run set
 - Meaning is communicated with text and icon/structure, not color alone.
 - Recovery action has a clear accessible name.
 
+## Setup Preferences Recovery
+
+**Visible When**
+
+- The user has completed setup and opens setup-related preferences or settings.
+
+**Behavior**
+
+- The user can review or change the selected language after setup.
+- The user can review notification status and find reminder recovery guidance after setup.
+- Changing language updates setup-related copy without requiring account creation or medication data entry.
+
+**Accessibility**
+
+- Language and notification preference controls have clear labels and focus order.
+- Status messages remain non-blocking and communicate meaning without color alone.
+
 ## Tablet Layout
 
 - Content width is constrained for readability on wide screens.
