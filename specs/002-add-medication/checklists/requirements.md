@@ -33,3 +33,4 @@
 
 - Validation passed on 2026-04-29 after reviewing the written specification against all checklist items.
 - No clarification markers remain. Planning can proceed.
+- Please refer to the [ux-design.md file](../ux-design.md) for the ux design guidelines
