@@ -5,6 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "Add Medication - Create the medication entry flow for older adults and caregivers to add a medication that will later receive reminders. Users should be able to enter a medication name, optional dosage label, optional notes, and an active/inactive status. The flow should avoid medical assumptions, avoid requiring internet access or an account, and make it clear that the information is stored privately on the device. The medication entry experience must be accessible with large text, screen readers, large touch targets, and validation messages that do not rely on color alone. User-facing copy must be ready for English and Latin American Spanish."
 
+## Clarifications
+
+### Session 2026-04-29
+
+- Q: How should the app handle a new medication name that matches an existing saved medication? → A: Allow duplicate names, but show a gentle confirmation when the name already exists.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Add an Active Medication (Priority: P1)
@@ -20,6 +26,7 @@ An older adult or caregiver can add a medication by entering its name, optionall
 1. **Given** the user is on the add-medication screen, **When** they enter a medication name and save, **Then** the medication is saved as active by default and is available for later reminder setup.
 2. **Given** the user enters a medication name, dosage label, and notes, **When** they save, **Then** all entered details are saved exactly as user-provided without the app interpreting or changing the medical meaning.
 3. **Given** the device is offline and no account is signed in, **When** the user saves a valid medication, **Then** the medication is saved locally on the device.
+4. **Given** an existing saved medication has the same name, **When** the user saves a new medication with that name, **Then** the flow shows a gentle confirmation before saving and allows the user to continue.
 
 ---
 
@@ -69,6 +76,7 @@ An older adult or caregiver receives clear validation feedback when required inf
 ### Edge Cases
 
 - Medication name contains leading or trailing spaces; the saved required name should not be blank after spaces are removed.
+- Medication name matches an existing saved medication; the app should show a gentle confirmation and allow saving when the user confirms.
 - Medication name is very long; the flow should prevent unreadable or broken display and explain any length limit in plain language.
 - Optional dosage label or notes are left blank; the medication should still save successfully.
 - Optional notes are long; the user should be able to review and edit them without layout overlap or clipped text.
@@ -90,6 +98,7 @@ An older adult or caregiver receives clear validation feedback when required inf
 - **FR-007**: System MUST prevent saving a medication when the required medication name is blank or only whitespace.
 - **FR-008**: System MUST show validation messages in plain language and communicate them with text and screen-reader announcement, not color alone.
 - **FR-009**: System MUST save valid medication entries privately on the device without requiring internet access.
+- **FR-009a**: System MUST allow duplicate medication names, but when a new medication name matches an existing saved medication name after trimming whitespace, the flow MUST show a gentle non-blocking confirmation before saving.
 - **FR-010**: System MUST NOT require account creation, sign-in, remote sync, analytics participation, or an internet connection to add a medication.
 - **FR-011**: System MUST clearly communicate within the flow that medication information is stored privately on the device.
 - **FR-012**: System MUST preserve local-first, account-free core reminder use unless this feature explicitly documents a constitution exception.
@@ -104,7 +113,7 @@ An older adult or caregiver receives clear validation feedback when required inf
 
 ### Key Entities *(include if feature involves data)*
 
-- **Medication**: A locally stored user-created record representing one medication the user or caregiver may later connect to reminders. Key attributes are medication name, optional dosage label, optional notes, active/inactive status, created date, and last updated date.
+- **Medication**: A locally stored user-created record representing one medication the user or caregiver may later connect to reminders. Key attributes are medication name, optional dosage label, optional notes, active/inactive status, created date, last updated date, and a local record identity that distinguishes medications even when names match.
 - **Medication Entry Draft**: The in-progress information a user enters before saving. Key attributes are draft medication name, dosage label, notes, selected status, validation state, and unsaved/saved outcome.
 
 ## Success Criteria *(mandatory)*
