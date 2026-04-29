@@ -32,3 +32,4 @@
 ## Notes
 
 - Validation iteration 1 passed all checklist items.
+- Please refer to the [ux-design.md file](../ux-design.md) for the ux design guidelines
