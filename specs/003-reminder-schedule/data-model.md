@@ -25,7 +25,8 @@ medication.
 - `reminderTimes` must contain at least one time and at most four times.
 - `reminderTimes` must not contain duplicate time-of-day values.
 - `reminderTimes` are stored and reviewed in the order reminders will happen.
-- `endDate`, when present, must not be earlier than the first possible reminder.
+- `endDate`, when present, must be on or after the local date of the first
+  possible reminder. The end date is inclusive for reminders on that local date.
 - A missing `endDate` means the schedule repeats daily indefinitely until edited
   or removed.
 - Schedule data must not include dosage safety advice, clinical recommendations,

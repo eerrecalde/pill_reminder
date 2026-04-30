@@ -19,7 +19,7 @@ the project constitution.
 
 **Purpose**: Add the scheduling dependency, feature files, test files, and localization placeholders needed by all stories.
 
-- [ ] T001 Add `flutter_local_notifications` dependency to `pubspec.yaml`
+- [ ] T001 Add `flutter_local_notifications` dependency and native notification scheduling setup in `pubspec.yaml`, `android/app/src/main/AndroidManifest.xml`, Android Gradle files, `ios/Runner/AppDelegate.swift`, and `ios/Runner/Info.plist`
 - [ ] T002 Create reminder schedule data files in `lib/features/medications/data/reminder_schedule_repository.dart` and `lib/features/medications/data/local_reminder_schedule_repository.dart`
 - [ ] T003 [P] Create reminder schedule domain files in `lib/features/medications/domain/reminder_schedule.dart`, `lib/features/medications/domain/reminder_schedule_draft.dart`, and `lib/features/medications/domain/reminder_schedule_validation.dart`
 - [ ] T004 [P] Create reminder schedule presentation files in `lib/features/medications/presentation/reminder_schedule_screen.dart`, `lib/features/medications/presentation/reminder_schedule_review.dart`, and `lib/features/medications/presentation/reminder_time_selector.dart`
@@ -67,7 +67,7 @@ the project constitution.
 - [ ] T024 [US1] Add repository unit test for preserving reminder times, optional end date, created date, and updated date after reload in `test/features/medications/reminder_schedule_repository_test.dart`
 - [ ] T025 [P] [US1] Add widget test for opening schedule flow from an active medication in `test/features/medications/reminder_schedule_screen_test.dart`
 - [ ] T026 [US1] Add widget test for selecting one daily time, reviewing indefinite summary, saving, and showing saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T027 [US1] Add widget test for selecting four daily times with optional end date and sorted review summary in `test/features/medications/reminder_schedule_screen_test.dart`
+- [ ] T027 [US1] Add widget tests for selecting four daily times with optional end date, sorted review summary, and canceling/leaving without creating or changing a saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
 
 ### Implementation for User Story 1
 

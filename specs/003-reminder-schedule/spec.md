@@ -115,8 +115,9 @@ usable and understandable.
   and sorted in the order reminders will occur.
 - The user tries to add a fifth daily time; the flow should explain the four-time
   daily limit and keep the existing selected times unchanged.
-- The user changes, removes, or reorders reminder times before saving; the final
-  reviewed schedule should match what is saved.
+- The user changes or removes reminder times before saving; the final reviewed
+  schedule should match what is saved, with times automatically shown in the
+  order reminders will happen.
 - The user does not select an end date; the schedule should repeat indefinitely
   by default until edited or removed.
 - The user selects an optional end date; the review summary should explain the
@@ -155,7 +156,7 @@ usable and understandable.
 - **FR-009**: System MUST describe saved schedules in plain language so users can understand when reminders will happen and when they will stop if an end date is selected.
 - **FR-010**: System MUST prevent saving a schedule with no reminder times selected.
 - **FR-011**: System MUST prevent duplicate reminder times for the same medication schedule.
-- **FR-012**: System MUST prevent saving a schedule when the optional end date is earlier than the first possible reminder.
+- **FR-012**: System MUST prevent saving a schedule when the optional end date is before the local date of the first possible reminder; an end date on the same local date as a reminder is valid and includes reminders scheduled for that date.
 - **FR-013**: System MUST preserve valid selected times when the user corrects invalid or incomplete schedule choices.
 - **FR-014**: System MUST save valid reminder schedules locally on the device without requiring internet access.
 - **FR-015**: System MUST NOT require account creation, sign-in, remote sync, analytics participation, or an internet connection to create or save a reminder schedule.
