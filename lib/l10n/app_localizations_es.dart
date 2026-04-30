@@ -208,6 +208,100 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get medicationValidationGenericError => 'Revisa el campo marcado.';
+
+  @override
+  String get scheduleReminderTitle => 'Programar recordatorios';
+
+  @override
+  String get reminderTimesTitle => 'Horarios de recordatorio';
+
+  @override
+  String get reminderTimesHelp => 'Elige hasta cuatro horarios diarios.';
+
+  @override
+  String get reminderTimesSemantics => 'Horarios de recordatorio';
+
+  @override
+  String get addReminderTime => 'Agregar horario';
+
+  @override
+  String get editReminderTime => 'Editar horario';
+
+  @override
+  String get removeReminderTime => 'Quitar horario';
+
+  @override
+  String reminderTimeSemantics(Object time) {
+    return 'Horario de recordatorio $time';
+  }
+
+  @override
+  String get addOptionalEndDate => 'Agregar fecha final opcional';
+
+  @override
+  String get clearEndDate => 'Quitar fecha final';
+
+  @override
+  String get reviewScheduleTitle => 'Revisar horario';
+
+  @override
+  String scheduleMedicationSummary(Object name) {
+    return 'Medicamento: $name';
+  }
+
+  @override
+  String scheduleTimesSummary(Object times) {
+    return 'Horarios: $times';
+  }
+
+  @override
+  String get scheduleRepeatsIndefinitely =>
+      'Se repite todos los días hasta que lo edites o elimines.';
+
+  @override
+  String scheduleStopsOn(Object date) {
+    return 'Termina el $date';
+  }
+
+  @override
+  String get saveSchedule => 'Guardar horario';
+
+  @override
+  String get scheduleSavedSemantics => 'Horario de recordatorios guardado';
+
+  @override
+  String get scheduleNotificationsDeliverable =>
+      'Los avisos de recordatorio se pueden entregar.';
+
+  @override
+  String get scheduleNotificationsNeedPermission =>
+      'Horario guardado. Debes activar las notificaciones para recibir avisos.';
+
+  @override
+  String get scheduleNotificationsBlocked =>
+      'Horario guardado. Activa las notificaciones en la configuración del dispositivo para recibir avisos.';
+
+  @override
+  String get scheduleNotificationsUnavailable =>
+      'Horario guardado. Los avisos no están disponibles en este dispositivo.';
+
+  @override
+  String get scheduleInactiveMedicationError =>
+      'Activa este medicamento antes de programar recordatorios.';
+
+  @override
+  String get scheduleMissingTimeError =>
+      'Elige al menos un horario de recordatorio.';
+
+  @override
+  String get scheduleDuplicateTimeError => 'Este horario ya está seleccionado.';
+
+  @override
+  String get scheduleTooManyTimesError => 'Usa cuatro horarios o menos.';
+
+  @override
+  String get scheduleInvalidEndDateError =>
+      'Elige una fecha final en o después de la primera fecha de recordatorio.';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -414,4 +508,98 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get medicationValidationGenericError => 'Revisa el campo marcado.';
+
+  @override
+  String get scheduleReminderTitle => 'Programar recordatorios';
+
+  @override
+  String get reminderTimesTitle => 'Horarios de recordatorio';
+
+  @override
+  String get reminderTimesHelp => 'Elige hasta cuatro horarios diarios.';
+
+  @override
+  String get reminderTimesSemantics => 'Horarios de recordatorio';
+
+  @override
+  String get addReminderTime => 'Agregar horario';
+
+  @override
+  String get editReminderTime => 'Editar horario';
+
+  @override
+  String get removeReminderTime => 'Quitar horario';
+
+  @override
+  String reminderTimeSemantics(Object time) {
+    return 'Horario de recordatorio $time';
+  }
+
+  @override
+  String get addOptionalEndDate => 'Agregar fecha final opcional';
+
+  @override
+  String get clearEndDate => 'Quitar fecha final';
+
+  @override
+  String get reviewScheduleTitle => 'Revisar horario';
+
+  @override
+  String scheduleMedicationSummary(Object name) {
+    return 'Medicamento: $name';
+  }
+
+  @override
+  String scheduleTimesSummary(Object times) {
+    return 'Horarios: $times';
+  }
+
+  @override
+  String get scheduleRepeatsIndefinitely =>
+      'Se repite todos los días hasta que lo edites o elimines.';
+
+  @override
+  String scheduleStopsOn(Object date) {
+    return 'Termina el $date';
+  }
+
+  @override
+  String get saveSchedule => 'Guardar horario';
+
+  @override
+  String get scheduleSavedSemantics => 'Horario de recordatorios guardado';
+
+  @override
+  String get scheduleNotificationsDeliverable =>
+      'Los avisos de recordatorio se pueden entregar.';
+
+  @override
+  String get scheduleNotificationsNeedPermission =>
+      'Horario guardado. Debes activar las notificaciones para recibir avisos.';
+
+  @override
+  String get scheduleNotificationsBlocked =>
+      'Horario guardado. Activa las notificaciones en la configuración del dispositivo para recibir avisos.';
+
+  @override
+  String get scheduleNotificationsUnavailable =>
+      'Horario guardado. Los avisos no están disponibles en este dispositivo.';
+
+  @override
+  String get scheduleInactiveMedicationError =>
+      'Activa este medicamento antes de programar recordatorios.';
+
+  @override
+  String get scheduleMissingTimeError =>
+      'Elige al menos un horario de recordatorio.';
+
+  @override
+  String get scheduleDuplicateTimeError => 'Este horario ya está seleccionado.';
+
+  @override
+  String get scheduleTooManyTimesError => 'Usa cuatro horarios o menos.';
+
+  @override
+  String get scheduleInvalidEndDateError =>
+      'Elige una fecha final en o después de la primera fecha de recordatorio.';
 }

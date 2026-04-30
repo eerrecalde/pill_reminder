@@ -75,3 +75,16 @@ Expected focused coverage:
 - No account lookup, analytics call, backup, sync, or remote request runs during
   schedule creation.
 - Notification scheduling avoids polling and unnecessary background work.
+
+## UX And Privacy Notes
+
+- The implemented schedule flow follows `docs/ux-design.md`: calm language,
+  one primary action per step, visible validation text, large touch targets,
+  locale-aware date/time formatting, screen-reader labels, and large-text
+  widget coverage. No deviations are currently documented.
+- Schedule records are stored locally with the medication reminder schedule
+  repository and retained until the user edits or deletes the medication's
+  schedule.
+- Deleting a schedule removes the local schedule record for that medication.
+- The schedule flow does not add account creation, sharing, donation prompts,
+  analytics, cloud backup, sync, or remote-service behavior.

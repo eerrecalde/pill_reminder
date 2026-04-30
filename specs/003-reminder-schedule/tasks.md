@@ -19,14 +19,14 @@ the project constitution.
 
 **Purpose**: Add the scheduling dependency, feature files, test files, and localization placeholders needed by all stories.
 
-- [ ] T001 Add `flutter_local_notifications` dependency and native notification scheduling setup in `pubspec.yaml`, `android/app/src/main/AndroidManifest.xml`, Android Gradle files, `ios/Runner/AppDelegate.swift`, and `ios/Runner/Info.plist`
-- [ ] T002 Create reminder schedule data files in `lib/features/medications/data/reminder_schedule_repository.dart` and `lib/features/medications/data/local_reminder_schedule_repository.dart`
-- [ ] T003 [P] Create reminder schedule domain files in `lib/features/medications/domain/reminder_schedule.dart`, `lib/features/medications/domain/reminder_schedule_draft.dart`, and `lib/features/medications/domain/reminder_schedule_validation.dart`
-- [ ] T004 [P] Create reminder schedule presentation files in `lib/features/medications/presentation/reminder_schedule_screen.dart`, `lib/features/medications/presentation/reminder_schedule_review.dart`, and `lib/features/medications/presentation/reminder_time_selector.dart`
-- [ ] T005 [P] Create notification scheduler service file in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T006 [P] Create reminder schedule test files in `test/features/medications/reminder_schedule_validation_test.dart`, `test/features/medications/reminder_schedule_repository_test.dart`, `test/features/medications/reminder_schedule_screen_test.dart`, and `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T007 [P] Create reminder schedule fakes in `test/features/medications/fakes/fake_reminder_schedule_repository.dart` and `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
-- [ ] T008 [P] Add reminder schedule localization placeholder keys in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T001 Add `flutter_local_notifications` dependency and native notification scheduling setup in `pubspec.yaml`, `android/app/src/main/AndroidManifest.xml`, Android Gradle files, `ios/Runner/AppDelegate.swift`, and `ios/Runner/Info.plist`
+- [X] T002 Create reminder schedule data files in `lib/features/medications/data/reminder_schedule_repository.dart` and `lib/features/medications/data/local_reminder_schedule_repository.dart`
+- [X] T003 [P] Create reminder schedule domain files in `lib/features/medications/domain/reminder_schedule.dart`, `lib/features/medications/domain/reminder_schedule_draft.dart`, and `lib/features/medications/domain/reminder_schedule_validation.dart`
+- [X] T004 [P] Create reminder schedule presentation files in `lib/features/medications/presentation/reminder_schedule_screen.dart`, `lib/features/medications/presentation/reminder_schedule_review.dart`, and `lib/features/medications/presentation/reminder_time_selector.dart`
+- [X] T005 [P] Create notification scheduler service file in `lib/services/reminder_notification_scheduler.dart`
+- [X] T006 [P] Create reminder schedule test files in `test/features/medications/reminder_schedule_validation_test.dart`, `test/features/medications/reminder_schedule_repository_test.dart`, `test/features/medications/reminder_schedule_screen_test.dart`, and `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T007 [P] Create reminder schedule fakes in `test/features/medications/fakes/fake_reminder_schedule_repository.dart` and `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
+- [X] T008 [P] Add reminder schedule localization placeholder keys in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 ---
 
@@ -36,18 +36,18 @@ the project constitution.
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T009 [P] Define `ReminderNotificationDeliveryState` values in `lib/features/medications/domain/reminder_schedule.dart`
-- [ ] T010 Define `ReminderTime` and `ReminderSchedule` entities with JSON serialization in `lib/features/medications/domain/reminder_schedule.dart`
-- [ ] T011 [P] Define `ReminderScheduleDraft` with selected medication, selected times, optional end date, permission status, validation state, and outcome in `lib/features/medications/domain/reminder_schedule_draft.dart`
-- [ ] T012 [P] Implement validation result types for inactive medication, missing times, duplicate times, daily limit, and invalid end date in `lib/features/medications/domain/reminder_schedule_validation.dart`
-- [ ] T013 Define `ReminderScheduleRepository` load/save/delete contract by medication id in `lib/features/medications/data/reminder_schedule_repository.dart`
-- [ ] T014 Implement local JSON schedule repository skeleton using `shared_preferences` in `lib/features/medications/data/local_reminder_schedule_repository.dart`
-- [ ] T015 Define `ReminderNotificationScheduler` interface and scheduling result states in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T016 Implement no-op/deferred scheduler behavior for unavailable permission states in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T017 [P] Add fake reminder schedule repository behavior for widget tests in `test/features/medications/fakes/fake_reminder_schedule_repository.dart`
-- [ ] T018 [P] Add fake reminder notification scheduler for widget tests in `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
-- [ ] T019 [P] Add schedule fixture builders for active medications, inactive medications, times, and schedules in `test/features/medications/reminder_schedule_test_fixtures.dart`
-- [ ] T020 Wire generated localization after adding schedule keys by running `flutter gen-l10n` for `lib/l10n/app_localizations*.dart`
+- [X] T009 [P] Define `ReminderNotificationDeliveryState` values in `lib/features/medications/domain/reminder_schedule.dart`
+- [X] T010 Define `ReminderTime` and `ReminderSchedule` entities with JSON serialization in `lib/features/medications/domain/reminder_schedule.dart`
+- [X] T011 [P] Define `ReminderScheduleDraft` with selected medication, selected times, optional end date, permission status, validation state, and outcome in `lib/features/medications/domain/reminder_schedule_draft.dart`
+- [X] T012 [P] Implement validation result types for inactive medication, missing times, duplicate times, daily limit, and invalid end date in `lib/features/medications/domain/reminder_schedule_validation.dart`
+- [X] T013 Define `ReminderScheduleRepository` load/save/delete contract by medication id in `lib/features/medications/data/reminder_schedule_repository.dart`
+- [X] T014 Implement local JSON schedule repository skeleton using `shared_preferences` in `lib/features/medications/data/local_reminder_schedule_repository.dart`
+- [X] T015 Define `ReminderNotificationScheduler` interface and scheduling result states in `lib/services/reminder_notification_scheduler.dart`
+- [X] T016 Implement no-op/deferred scheduler behavior for unavailable permission states in `lib/services/reminder_notification_scheduler.dart`
+- [X] T017 [P] Add fake reminder schedule repository behavior for widget tests in `test/features/medications/fakes/fake_reminder_schedule_repository.dart`
+- [X] T018 [P] Add fake reminder notification scheduler for widget tests in `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
+- [X] T019 [P] Add schedule fixture builders for active medications, inactive medications, times, and schedules in `test/features/medications/reminder_schedule_test_fixtures.dart`
+- [X] T020 Wire generated localization after adding schedule keys by running `flutter gen-l10n` for `lib/l10n/app_localizations*.dart`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -61,24 +61,24 @@ the project constitution.
 
 ### Tests for User Story 1
 
-- [ ] T021 [P] [US1] Add validation unit tests for one to four unique daily times and sorted review order in `test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T022 [P] [US1] Add validation unit tests for indefinite default and valid optional end date in `test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T023 [P] [US1] Add repository unit test for saving, loading, editing, and deleting a schedule by medication id in `test/features/medications/reminder_schedule_repository_test.dart`
-- [ ] T024 [US1] Add repository unit test for preserving reminder times, optional end date, created date, and updated date after reload in `test/features/medications/reminder_schedule_repository_test.dart`
-- [ ] T025 [P] [US1] Add widget test for opening schedule flow from an active medication in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T026 [US1] Add widget test for selecting one daily time, reviewing indefinite summary, saving, and showing saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T027 [US1] Add widget tests for selecting four daily times with optional end date, sorted review summary, and canceling/leaving without creating or changing a saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T021 [P] [US1] Add validation unit tests for one to four unique daily times and sorted review order in `test/features/medications/reminder_schedule_validation_test.dart`
+- [X] T022 [P] [US1] Add validation unit tests for indefinite default and valid optional end date in `test/features/medications/reminder_schedule_validation_test.dart`
+- [X] T023 [P] [US1] Add repository unit test for saving, loading, editing, and deleting a schedule by medication id in `test/features/medications/reminder_schedule_repository_test.dart`
+- [X] T024 [US1] Add repository unit test for preserving reminder times, optional end date, created date, and updated date after reload in `test/features/medications/reminder_schedule_repository_test.dart`
+- [X] T025 [P] [US1] Add widget test for opening schedule flow from an active medication in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T026 [US1] Add widget test for selecting one daily time, reviewing indefinite summary, saving, and showing saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T027 [US1] Add widget tests for selecting four daily times with optional end date, sorted review summary, and canceling/leaving without creating or changing a saved schedule in `test/features/medications/reminder_schedule_screen_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T028 [US1] Implement schedule validation for active medication, one to four times, sorted times, indefinite default, and optional end date in `lib/features/medications/domain/reminder_schedule_validation.dart`
-- [ ] T029 [US1] Implement local schedule save/load/edit/delete behavior in `lib/features/medications/data/local_reminder_schedule_repository.dart`
-- [ ] T030 [US1] Implement reminder time selector UI with add/edit/remove controls and 56px preferred touch targets in `lib/features/medications/presentation/reminder_time_selector.dart`
-- [ ] T031 [US1] Implement schedule review UI for medication name, ordered times, indefinite text, optional end date, and save/cancel actions in `lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T032 [US1] Implement reminder schedule screen state flow for time selection, optional end date, review, save, edit existing schedule, and cancel in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T033 [US1] Wire active medication schedule entry from medication list in `lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T034 [US1] Register reminder schedule repository and scheduler dependencies in `lib/main.dart`
-- [ ] T035 [US1] Add English, Spanish, and Latin American Spanish strings for schedule entry, time selection, optional end date, review, save, edit, delete, and cancel in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T028 [US1] Implement schedule validation for active medication, one to four times, sorted times, indefinite default, and optional end date in `lib/features/medications/domain/reminder_schedule_validation.dart`
+- [X] T029 [US1] Implement local schedule save/load/edit/delete behavior in `lib/features/medications/data/local_reminder_schedule_repository.dart`
+- [X] T030 [US1] Implement reminder time selector UI with add/edit/remove controls and 56px preferred touch targets in `lib/features/medications/presentation/reminder_time_selector.dart`
+- [X] T031 [US1] Implement schedule review UI for medication name, ordered times, indefinite text, optional end date, and save/cancel actions in `lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T032 [US1] Implement reminder schedule screen state flow for time selection, optional end date, review, save, edit existing schedule, and cancel in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T033 [US1] Wire active medication schedule entry from medication list in `lib/features/medications/presentation/medication_list_section.dart`
+- [X] T034 [US1] Register reminder schedule repository and scheduler dependencies in `lib/main.dart`
+- [X] T035 [US1] Add English, Spanish, and Latin American Spanish strings for schedule entry, time selection, optional end date, review, save, edit, delete, and cancel in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 1 is functional and testable as the MVP.
 
@@ -92,20 +92,20 @@ the project constitution.
 
 ### Tests for User Story 2
 
-- [ ] T036 [P] [US2] Add scheduler unit tests for granted, permission-needed, blocked, and unavailable delivery states in `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T037 [P] [US2] Add widget test for granted notification review message in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T038 [US2] Add widget test for skipped/denied/blocked/unavailable notification guidance while still allowing save in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T039 [US2] Add widget test for saved schedule becoming deliverable automatically after permission is enabled in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T040 [US2] Add privacy regression test proving no account, sync, backup, analytics, donation, sharing, or remote-service prompts appear in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T036 [P] [US2] Add scheduler unit tests for granted, permission-needed, blocked, and unavailable delivery states in `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T037 [P] [US2] Add widget test for granted notification review message in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T038 [US2] Add widget test for skipped/denied/blocked/unavailable notification guidance while still allowing save in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T039 [US2] Add widget test for saved schedule becoming deliverable automatically after permission is enabled in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T040 [US2] Add privacy regression test proving no account, sync, backup, analytics, donation, sharing, or remote-service prompts appear in `test/features/medications/reminder_schedule_screen_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T041 [US2] Implement `flutter_local_notifications` initialization and local scheduling adapter behind `ReminderNotificationScheduler` in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T042 [US2] Connect `NotificationPermissionService` status checks to schedule review and save behavior in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T043 [US2] Show calm notification deliverability, permission-needed, blocked, and unavailable guidance in `lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T044 [US2] Trigger scheduler re-evaluation for saved schedules after notification permission becomes granted in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T045 [US2] Persist notification delivery state updates with saved schedules in `lib/features/medications/data/local_reminder_schedule_repository.dart`
-- [ ] T046 [US2] Add localized notification delivery and recovery strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T041 [US2] Implement `flutter_local_notifications` initialization and local scheduling adapter behind `ReminderNotificationScheduler` in `lib/services/reminder_notification_scheduler.dart`
+- [X] T042 [US2] Connect `NotificationPermissionService` status checks to schedule review and save behavior in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T043 [US2] Show calm notification deliverability, permission-needed, blocked, and unavailable guidance in `lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T044 [US2] Trigger scheduler re-evaluation for saved schedules after notification permission becomes granted in `lib/services/reminder_notification_scheduler.dart`
+- [X] T045 [US2] Persist notification delivery state updates with saved schedules in `lib/features/medications/data/local_reminder_schedule_repository.dart`
+- [X] T046 [US2] Add localized notification delivery and recovery strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 2 works independently and preserves User Story 1.
 
@@ -119,22 +119,22 @@ the project constitution.
 
 ### Tests for User Story 3
 
-- [ ] T047 [P] [US3] Add validation unit tests for missing reminder time and preserving valid selections in `test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T048 [P] [US3] Add validation unit tests for duplicate reminder times and fifth reminder time in `test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T049 [P] [US3] Add validation unit tests for inactive medication and invalid optional end date in `test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T050 [US3] Add widget test for no-time validation preserving optional end date and selected medication in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T051 [US3] Add widget test for duplicate/fifth-time validation using text and semantics, not color alone in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T052 [US3] Add widget test for inactive medication guidance blocking schedule save in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T053 [US3] Add widget test for invalid end-date validation and correction in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T047 [P] [US3] Add validation unit tests for missing reminder time and preserving valid selections in `test/features/medications/reminder_schedule_validation_test.dart`
+- [X] T048 [P] [US3] Add validation unit tests for duplicate reminder times and fifth reminder time in `test/features/medications/reminder_schedule_validation_test.dart`
+- [X] T049 [P] [US3] Add validation unit tests for inactive medication and invalid optional end date in `test/features/medications/reminder_schedule_validation_test.dart`
+- [X] T050 [US3] Add widget test for no-time validation preserving optional end date and selected medication in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T051 [US3] Add widget test for duplicate/fifth-time validation using text and semantics, not color alone in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T052 [US3] Add widget test for inactive medication guidance blocking schedule save in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T053 [US3] Add widget test for invalid end-date validation and correction in `test/features/medications/reminder_schedule_screen_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T054 [US3] Wire blocking validation into save and review transitions in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T055 [US3] Implement validation message display with semantic announcements in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T056 [US3] Implement duplicate and daily-limit feedback in `lib/features/medications/presentation/reminder_time_selector.dart`
-- [ ] T057 [US3] Implement inactive medication guidance and route back to medication editing/list context in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T058 [US3] Implement invalid optional end-date feedback in `lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T059 [US3] Add localized validation strings for missing time, duplicate time, fifth time, inactive medication, and invalid end date in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T054 [US3] Wire blocking validation into save and review transitions in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T055 [US3] Implement validation message display with semantic announcements in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T056 [US3] Implement duplicate and daily-limit feedback in `lib/features/medications/presentation/reminder_time_selector.dart`
+- [X] T057 [US3] Implement inactive medication guidance and route back to medication editing/list context in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T058 [US3] Implement invalid optional end-date feedback in `lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T059 [US3] Add localized validation strings for missing time, duplicate time, fifth time, inactive medication, and invalid end date in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 3 works independently and preserves previous stories.
 
@@ -148,18 +148,18 @@ the project constitution.
 
 ### Tests for User Story 4
 
-- [ ] T060 [P] [US4] Add widget test for large text schedule flow with no clipped review controls in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T061 [P] [US4] Add widget test for screen-reader labels and logical order on time selector, review, validation, save, and cancel controls in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T062 [US4] Add widget test for non-color-only selection, validation, delivery state, and inactive medication messages in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T063 [US4] Add localization widget test for English and Latin American Spanish schedule summaries and date/time formatting in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T060 [P] [US4] Add widget test for large text schedule flow with no clipped review controls in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T061 [P] [US4] Add widget test for screen-reader labels and logical order on time selector, review, validation, save, and cancel controls in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T062 [US4] Add widget test for non-color-only selection, validation, delivery state, and inactive medication messages in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T063 [US4] Add localization widget test for English and Latin American Spanish schedule summaries and date/time formatting in `test/features/medications/reminder_schedule_screen_test.dart`
 
 ### Implementation for User Story 4
 
-- [ ] T064 [US4] Apply `docs/ux-design.md` layout, calm tone, spacing, and 56px preferred primary actions in `lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T065 [US4] Add semantic labels, focus behavior, and logical reading order to time controls in `lib/features/medications/presentation/reminder_time_selector.dart`
-- [ ] T066 [US4] Add semantic labels, focus behavior, and logical reading order to review content and actions in `lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T067 [US4] Ensure locale-aware time and date formatting for schedule summaries in `lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T068 [US4] Finalize English, Spanish, and Latin American Spanish schedule strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T064 [US4] Apply `docs/ux-design.md` layout, calm tone, spacing, and 56px preferred primary actions in `lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T065 [US4] Add semantic labels, focus behavior, and logical reading order to time controls in `lib/features/medications/presentation/reminder_time_selector.dart`
+- [X] T066 [US4] Add semantic labels, focus behavior, and logical reading order to review content and actions in `lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T067 [US4] Ensure locale-aware time and date formatting for schedule summaries in `lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T068 [US4] Finalize English, Spanish, and Latin American Spanish schedule strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 4 works independently and all user stories are functional.
 
@@ -169,18 +169,18 @@ the project constitution.
 
 **Purpose**: Verify notification scheduling, accessibility, localization, privacy, local-first behavior, performance, and documentation across the full reminder schedule experience.
 
-- [ ] T069 [P] Review reminder schedule UI against `docs/ux-design.md` and document any deviations in `specs/003-reminder-schedule/quickstart.md`
-- [ ] T070 [P] Review all reminder schedule English, Spanish, and Latin American Spanish strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
-- [ ] T071 [P] Add or update accessibility regression coverage for large text, focus labels, validation announcements, and non-color-only status in `test/features/medications/reminder_schedule_screen_test.dart`
-- [ ] T072 Add manual Android notification verification notes for granted and denied/reenabled paths in `specs/003-reminder-schedule/quickstart.md`
-- [ ] T073 Add manual iOS notification verification notes for granted and denied/reenabled paths in `specs/003-reminder-schedule/quickstart.md`
-- [ ] T074 Verify offline schedule save, app restart recovery, and four-time schedule review manually using `specs/003-reminder-schedule/quickstart.md`
-- [ ] T075 Verify schedule flow opens within 1 second and save completes without perceptible delay using `specs/003-reminder-schedule/quickstart.md`
-- [ ] T076 Document local schedule storage, retention, deletion, sharing, backup, analytics, donation, and remote-service behavior in `specs/003-reminder-schedule/quickstart.md`
-- [ ] T077 Run `flutter gen-l10n` from repository root for schedule localization files in `lib/l10n/`
-- [ ] T078 Run `dart format lib test` from repository root for `lib/` and `test/`
-- [ ] T079 Run `flutter analyze` from repository root for `lib/`, `test/`, and generated localization coverage
-- [ ] T080 Run full `flutter test` from repository root for all reminder schedule, medication, setup, and widget tests
+- [X] T069 [P] Review reminder schedule UI against `docs/ux-design.md` and document any deviations in `specs/003-reminder-schedule/quickstart.md`
+- [X] T070 [P] Review all reminder schedule English, Spanish, and Latin American Spanish strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T071 [P] Add or update accessibility regression coverage for large text, focus labels, validation announcements, and non-color-only status in `test/features/medications/reminder_schedule_screen_test.dart`
+- [X] T072 Add manual Android notification verification notes for granted and denied/reenabled paths in `specs/003-reminder-schedule/quickstart.md`
+- [X] T073 Add manual iOS notification verification notes for granted and denied/reenabled paths in `specs/003-reminder-schedule/quickstart.md`
+- [X] T074 Verify offline schedule save, app restart recovery, and four-time schedule review manually using `specs/003-reminder-schedule/quickstart.md`
+- [X] T075 Verify schedule flow opens within 1 second and save completes without perceptible delay using `specs/003-reminder-schedule/quickstart.md`
+- [X] T076 Document local schedule storage, retention, deletion, sharing, backup, analytics, donation, and remote-service behavior in `specs/003-reminder-schedule/quickstart.md`
+- [X] T077 Run `flutter gen-l10n` from repository root for schedule localization files in `lib/l10n/`
+- [X] T078 Run `dart format lib test` from repository root for `lib/` and `test/`
+- [X] T079 Run `flutter analyze` from repository root for `lib/`, `test/`, and generated localization coverage
+- [X] T080 Run full `flutter test` from repository root for all reminder schedule, medication, setup, and widget tests
 
 ---
 
