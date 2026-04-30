@@ -60,5 +60,51 @@
   "medicationNameTooLongError": "Use 80 characters or fewer for the medication name.",
   "medicationDosageTooLongError": "Use 80 characters or fewer for the dosage label.",
   "medicationNotesTooLongError": "Use 500 characters or fewer for notes.",
-  "medicationValidationGenericError": "Check the highlighted field."
+  "medicationValidationGenericError": "Check the highlighted field.",
+  "scheduleReminderTitle": "Schedule reminders",
+  "reminderTimesTitle": "Reminder times",
+  "reminderTimesHelp": "Choose up to four daily times.",
+  "reminderTimesSemantics": "Reminder times",
+  "addReminderTime": "Add reminder time",
+  "editReminderTime": "Edit reminder time",
+  "removeReminderTime": "Remove reminder time",
+  "reminderTimeSemantics": "Reminder time {time}",
+  "@reminderTimeSemantics": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "addOptionalEndDate": "Add optional end date",
+  "clearEndDate": "Clear end date",
+  "reviewScheduleTitle": "Review schedule",
+  "scheduleMedicationSummary": "Medication: {name}",
+  "@scheduleMedicationSummary": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "scheduleTimesSummary": "Times: {times}",
+  "@scheduleTimesSummary": {
+    "placeholders": {
+      "times": {}
+    }
+  },
+  "scheduleRepeatsIndefinitely": "Repeats every day until you edit or remove it.",
+  "scheduleStopsOn": "Stops on {date}",
+  "@scheduleStopsOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "saveSchedule": "Save schedule",
+  "scheduleSavedSemantics": "Reminder schedule saved",
+  "scheduleNotificationsDeliverable": "Reminder alerts can be delivered.",
+  "scheduleNotificationsNeedPermission": "Schedule saved. Reminder alerts need notifications to be enabled.",
+  "scheduleNotificationsBlocked": "Schedule saved. Enable notifications in device settings for alerts.",
+  "scheduleNotificationsUnavailable": "Schedule saved. Reminder alerts are not available on this device.",
+  "scheduleInactiveMedicationError": "Make this medication active before scheduling reminders.",
+  "scheduleMissingTimeError": "Choose at least one reminder time.",
+  "scheduleDuplicateTimeError": "This reminder time is already selected.",
+  "scheduleTooManyTimesError": "Use four reminder times or fewer.",
+  "scheduleInvalidEndDateError": "Choose an end date on or after the first reminder date."
 }

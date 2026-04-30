@@ -60,5 +60,51 @@
   "medicationNameTooLongError": "Usa 80 caracteres o menos para el nombre del medicamento.",
   "medicationDosageTooLongError": "Usa 80 caracteres o menos para la etiqueta de dosis.",
   "medicationNotesTooLongError": "Usa 500 caracteres o menos para las notas.",
-  "medicationValidationGenericError": "Revisa el campo marcado."
+  "medicationValidationGenericError": "Revisa el campo marcado.",
+  "scheduleReminderTitle": "Programar recordatorios",
+  "reminderTimesTitle": "Horarios de recordatorio",
+  "reminderTimesHelp": "Elige hasta cuatro horarios diarios.",
+  "reminderTimesSemantics": "Horarios de recordatorio",
+  "addReminderTime": "Agregar horario",
+  "editReminderTime": "Editar horario",
+  "removeReminderTime": "Quitar horario",
+  "reminderTimeSemantics": "Horario de recordatorio {time}",
+  "@reminderTimeSemantics": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "addOptionalEndDate": "Agregar fecha final opcional",
+  "clearEndDate": "Quitar fecha final",
+  "reviewScheduleTitle": "Revisar horario",
+  "scheduleMedicationSummary": "Medicamento: {name}",
+  "@scheduleMedicationSummary": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "scheduleTimesSummary": "Horarios: {times}",
+  "@scheduleTimesSummary": {
+    "placeholders": {
+      "times": {}
+    }
+  },
+  "scheduleRepeatsIndefinitely": "Se repite todos los días hasta que lo edites o elimines.",
+  "scheduleStopsOn": "Termina el {date}",
+  "@scheduleStopsOn": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "saveSchedule": "Guardar horario",
+  "scheduleSavedSemantics": "Horario de recordatorios guardado",
+  "scheduleNotificationsDeliverable": "Los avisos de recordatorio se pueden entregar.",
+  "scheduleNotificationsNeedPermission": "Horario guardado. Debes activar las notificaciones para recibir avisos.",
+  "scheduleNotificationsBlocked": "Horario guardado. Activa las notificaciones en la configuración del dispositivo para recibir avisos.",
+  "scheduleNotificationsUnavailable": "Horario guardado. Los avisos no están disponibles en este dispositivo.",
+  "scheduleInactiveMedicationError": "Activa este medicamento antes de programar recordatorios.",
+  "scheduleMissingTimeError": "Elige al menos un horario de recordatorio.",
+  "scheduleDuplicateTimeError": "Este horario ya está seleccionado.",
+  "scheduleTooManyTimesError": "Usa cuatro horarios o menos.",
+  "scheduleInvalidEndDateError": "Elige una fecha final en o después de la primera fecha de recordatorio."
 }

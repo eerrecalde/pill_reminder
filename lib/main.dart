@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/medications/data/local_medication_repository.dart';
+import 'features/medications/data/local_reminder_schedule_repository.dart';
 import 'features/medications/data/medication_repository.dart';
+import 'features/medications/data/reminder_schedule_repository.dart';
 import 'features/medications/domain/medication.dart';
+import 'features/medications/domain/reminder_schedule.dart';
 import 'features/medications/presentation/add_medication_screen.dart';
 import 'features/medications/presentation/medication_list_section.dart';
+import 'features/medications/presentation/reminder_schedule_screen.dart';
 import 'features/setup/data/local_setup_preferences_repository.dart';
 import 'features/setup/data/setup_preferences_repository.dart';
 import 'features/setup/domain/notification_permission_status.dart';
@@ -15,6 +19,7 @@ import 'features/setup/presentation/setup_flow.dart';
 import 'features/setup/presentation/setup_preferences_screen.dart';
 import 'l10n/app_localizations.dart';
 import 'services/notification_permission_service.dart';
+import 'services/reminder_notification_scheduler.dart';
 import 'theme/app_theme.dart';
 
 Future<void> main() async {
@@ -24,6 +29,8 @@ Future<void> main() async {
     PillReminderApp(
       setupPreferencesRepository: LocalSetupPreferencesRepository(preferences),
       medicationRepository: LocalMedicationRepository(preferences),
+      reminderScheduleRepository: LocalReminderScheduleRepository(preferences),
+      reminderNotificationScheduler: LocalReminderNotificationScheduler(),
       notificationPermissionService:
           PermissionHandlerNotificationPermissionService(),
     ),
@@ -34,6 +41,8 @@ class PillReminderApp extends StatefulWidget {
   const PillReminderApp({
     required this.setupPreferencesRepository,
     required this.notificationPermissionService,
+    this.reminderScheduleRepository,
+    this.reminderNotificationScheduler,
     this.medicationRepository,
     super.key,
   });
@@ -41,6 +50,8 @@ class PillReminderApp extends StatefulWidget {
   final SetupPreferencesRepository setupPreferencesRepository;
   final NotificationPermissionService notificationPermissionService;
   final MedicationRepository? medicationRepository;
+  final ReminderScheduleRepository? reminderScheduleRepository;
+  final ReminderNotificationScheduler? reminderNotificationScheduler;
 
   @override
   State<PillReminderApp> createState() => _PillReminderAppState();
@@ -52,6 +63,10 @@ class _PillReminderAppState extends State<PillReminderApp> {
   bool _loading = true;
   late final MedicationRepository _fallbackMedicationRepository =
       _InMemoryMedicationRepository();
+  late final ReminderScheduleRepository _fallbackReminderScheduleRepository =
+      _InMemoryReminderScheduleRepository();
+  late final ReminderNotificationScheduler _fallbackReminderScheduler =
+      _InMemoryReminderNotificationScheduler();
 
   @override
   void initState() {
@@ -122,6 +137,11 @@ class _PillReminderAppState extends State<PillReminderApp> {
       medicationRepository:
           widget.medicationRepository ?? _fallbackMedicationRepository,
       notificationPermissionService: widget.notificationPermissionService,
+      reminderScheduleRepository:
+          widget.reminderScheduleRepository ??
+          _fallbackReminderScheduleRepository,
+      reminderNotificationScheduler:
+          widget.reminderNotificationScheduler ?? _fallbackReminderScheduler,
       onLocaleChanged: _setLocale,
       onSetupStateChanged: _setSetupState,
       onNotificationStatusChanged: _updateNotificationStatus,
@@ -135,6 +155,8 @@ class _MainAppHome extends StatefulWidget {
     required this.repository,
     required this.medicationRepository,
     required this.notificationPermissionService,
+    required this.reminderScheduleRepository,
+    required this.reminderNotificationScheduler,
     required this.onLocaleChanged,
     required this.onSetupStateChanged,
     required this.onNotificationStatusChanged,
@@ -144,6 +166,8 @@ class _MainAppHome extends StatefulWidget {
   final SetupPreferencesRepository repository;
   final MedicationRepository medicationRepository;
   final NotificationPermissionService notificationPermissionService;
+  final ReminderScheduleRepository reminderScheduleRepository;
+  final ReminderNotificationScheduler reminderNotificationScheduler;
   final ValueChanged<Locale> onLocaleChanged;
   final ValueChanged<SetupState> onSetupStateChanged;
   final ValueChanged<SetupNotificationPermissionStatus>
@@ -182,6 +206,22 @@ class _MainAppHomeState extends State<_MainAppHome> {
     if (medication != null) {
       await _loadMedications();
     }
+  }
+
+  Future<void> _openReminderSchedule(
+    BuildContext context,
+    Medication medication,
+  ) async {
+    await Navigator.of(context).push<ReminderSchedule>(
+      MaterialPageRoute(
+        builder: (_) => ReminderScheduleScreen(
+          medication: medication,
+          repository: widget.reminderScheduleRepository,
+          notificationPermissionService: widget.notificationPermissionService,
+          notificationScheduler: widget.reminderNotificationScheduler,
+        ),
+      ),
+    );
   }
 
   @override
@@ -235,13 +275,97 @@ class _MainAppHomeState extends State<_MainAppHome> {
                 if (_loadingMedications)
                   const Center(child: CircularProgressIndicator())
                 else
-                  MedicationListSection(medications: _medications),
+                  MedicationListSection(
+                    medications: _medications,
+                    onScheduleMedication: (medication) =>
+                        _openReminderSchedule(context, medication),
+                  ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+class _InMemoryReminderScheduleRepository
+    implements ReminderScheduleRepository {
+  final List<ReminderSchedule> _schedules = [];
+
+  @override
+  Future<List<ReminderSchedule>> loadSchedules() async {
+    return List.unmodifiable(_schedules);
+  }
+
+  @override
+  Future<ReminderSchedule?> loadScheduleForMedication(
+    String medicationId,
+  ) async {
+    for (final schedule in _schedules) {
+      if (schedule.medicationId == medicationId) return schedule;
+    }
+    return null;
+  }
+
+  @override
+  Future<ReminderSchedule> saveSchedule({
+    required String medicationId,
+    required List<ReminderTime> reminderTimes,
+    DateTime? endDate,
+    ReminderNotificationDeliveryState notificationDeliveryState =
+        ReminderNotificationDeliveryState.permissionNeeded,
+  }) async {
+    final now = DateTime.now();
+    final existing = await loadScheduleForMedication(medicationId);
+    final schedule = ReminderSchedule(
+      id: existing?.id ?? 'memory-schedule-${now.microsecondsSinceEpoch}',
+      medicationId: medicationId,
+      reminderTimes: [...reminderTimes]..sort(),
+      endDate: endDate,
+      notificationDeliveryState: notificationDeliveryState,
+      createdAt: existing?.createdAt ?? now,
+      updatedAt: now,
+    );
+    _schedules.removeWhere((item) => item.medicationId == medicationId);
+    _schedules.add(schedule);
+    return schedule;
+  }
+
+  @override
+  Future<void> deleteSchedule(String medicationId) async {
+    _schedules.removeWhere((item) => item.medicationId == medicationId);
+  }
+}
+
+class _InMemoryReminderNotificationScheduler
+    implements ReminderNotificationScheduler {
+  @override
+  Future<void> initialize() async {}
+
+  @override
+  Future<void> cancelForSchedule(ReminderSchedule schedule) async {}
+
+  @override
+  Future<ReminderNotificationScheduleResult> schedule(
+    ReminderSchedule schedule, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  }) async {
+    final status = switch (permissionStatus) {
+      SetupNotificationPermissionStatus.granted =>
+        ReminderNotificationScheduleStatus.scheduled,
+      SetupNotificationPermissionStatus.unknown ||
+      SetupNotificationPermissionStatus.skipped ||
+      SetupNotificationPermissionStatus.denied =>
+        ReminderNotificationScheduleStatus.deferredForPermission,
+      SetupNotificationPermissionStatus.blocked =>
+        ReminderNotificationScheduleStatus.blocked,
+      SetupNotificationPermissionStatus.unavailable =>
+        ReminderNotificationScheduleStatus.unavailable,
+    };
+    return ReminderNotificationScheduleResult(status);
   }
 }
 

@@ -5,9 +5,14 @@ import '../domain/medication.dart';
 import 'medication_status_label.dart';
 
 class MedicationListSection extends StatelessWidget {
-  const MedicationListSection({required this.medications, super.key});
+  const MedicationListSection({
+    required this.medications,
+    this.onScheduleMedication,
+    super.key,
+  });
 
   final List<Medication> medications;
+  final ValueChanged<Medication>? onScheduleMedication;
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +55,22 @@ class MedicationListSection extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 12),
-        ...medications.map((medication) => _MedicationTile(medication)),
+        ...medications.map(
+          (medication) => _MedicationTile(
+            medication,
+            onScheduleMedication: onScheduleMedication,
+          ),
+        ),
       ],
     );
   }
 }
 
 class _MedicationTile extends StatelessWidget {
-  const _MedicationTile(this.medication);
+  const _MedicationTile(this.medication, {this.onScheduleMedication});
 
   final Medication medication;
+  final ValueChanged<Medication>? onScheduleMedication;
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +111,17 @@ class _MedicationTile extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
+              if (onScheduleMedication != null) ...[
+                const SizedBox(height: 8),
+                OutlinedButton.icon(
+                  key: Key('schedule-medication-${medication.id}'),
+                  onPressed: medication.isActive
+                      ? () => onScheduleMedication!(medication)
+                      : null,
+                  icon: const Icon(Icons.schedule),
+                  label: Text(l10n.scheduleReminderTitle),
+                ),
+              ],
             ],
           ),
         ),

@@ -207,4 +207,98 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get medicationValidationGenericError => 'Check the highlighted field.';
+
+  @override
+  String get scheduleReminderTitle => 'Schedule reminders';
+
+  @override
+  String get reminderTimesTitle => 'Reminder times';
+
+  @override
+  String get reminderTimesHelp => 'Choose up to four daily times.';
+
+  @override
+  String get reminderTimesSemantics => 'Reminder times';
+
+  @override
+  String get addReminderTime => 'Add reminder time';
+
+  @override
+  String get editReminderTime => 'Edit reminder time';
+
+  @override
+  String get removeReminderTime => 'Remove reminder time';
+
+  @override
+  String reminderTimeSemantics(Object time) {
+    return 'Reminder time $time';
+  }
+
+  @override
+  String get addOptionalEndDate => 'Add optional end date';
+
+  @override
+  String get clearEndDate => 'Clear end date';
+
+  @override
+  String get reviewScheduleTitle => 'Review schedule';
+
+  @override
+  String scheduleMedicationSummary(Object name) {
+    return 'Medication: $name';
+  }
+
+  @override
+  String scheduleTimesSummary(Object times) {
+    return 'Times: $times';
+  }
+
+  @override
+  String get scheduleRepeatsIndefinitely =>
+      'Repeats every day until you edit or remove it.';
+
+  @override
+  String scheduleStopsOn(Object date) {
+    return 'Stops on $date';
+  }
+
+  @override
+  String get saveSchedule => 'Save schedule';
+
+  @override
+  String get scheduleSavedSemantics => 'Reminder schedule saved';
+
+  @override
+  String get scheduleNotificationsDeliverable =>
+      'Reminder alerts can be delivered.';
+
+  @override
+  String get scheduleNotificationsNeedPermission =>
+      'Schedule saved. Reminder alerts need notifications to be enabled.';
+
+  @override
+  String get scheduleNotificationsBlocked =>
+      'Schedule saved. Enable notifications in device settings for alerts.';
+
+  @override
+  String get scheduleNotificationsUnavailable =>
+      'Schedule saved. Reminder alerts are not available on this device.';
+
+  @override
+  String get scheduleInactiveMedicationError =>
+      'Make this medication active before scheduling reminders.';
+
+  @override
+  String get scheduleMissingTimeError => 'Choose at least one reminder time.';
+
+  @override
+  String get scheduleDuplicateTimeError =>
+      'This reminder time is already selected.';
+
+  @override
+  String get scheduleTooManyTimesError => 'Use four reminder times or fewer.';
+
+  @override
+  String get scheduleInvalidEndDateError =>
+      'Choose an end date on or after the first reminder date.';
 }

@@ -464,6 +464,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check the highlighted field.'**
   String get medicationValidationGenericError;
+
+  /// No description provided for @scheduleReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule reminders'**
+  String get scheduleReminderTitle;
+
+  /// No description provided for @reminderTimesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder times'**
+  String get reminderTimesTitle;
+
+  /// No description provided for @reminderTimesHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose up to four daily times.'**
+  String get reminderTimesHelp;
+
+  /// No description provided for @reminderTimesSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder times'**
+  String get reminderTimesSemantics;
+
+  /// No description provided for @addReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Add reminder time'**
+  String get addReminderTime;
+
+  /// No description provided for @editReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit reminder time'**
+  String get editReminderTime;
+
+  /// No description provided for @removeReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove reminder time'**
+  String get removeReminderTime;
+
+  /// No description provided for @reminderTimeSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder time {time}'**
+  String reminderTimeSemantics(Object time);
+
+  /// No description provided for @addOptionalEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Add optional end date'**
+  String get addOptionalEndDate;
+
+  /// No description provided for @clearEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear end date'**
+  String get clearEndDate;
+
+  /// No description provided for @reviewScheduleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review schedule'**
+  String get reviewScheduleTitle;
+
+  /// No description provided for @scheduleMedicationSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication: {name}'**
+  String scheduleMedicationSummary(Object name);
+
+  /// No description provided for @scheduleTimesSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Times: {times}'**
+  String scheduleTimesSummary(Object times);
+
+  /// No description provided for @scheduleRepeatsIndefinitely.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeats every day until you edit or remove it.'**
+  String get scheduleRepeatsIndefinitely;
+
+  /// No description provided for @scheduleStopsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Stops on {date}'**
+  String scheduleStopsOn(Object date);
+
+  /// No description provided for @saveSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Save schedule'**
+  String get saveSchedule;
+
+  /// No description provided for @scheduleSavedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder schedule saved'**
+  String get scheduleSavedSemantics;
+
+  /// No description provided for @scheduleNotificationsDeliverable.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts can be delivered.'**
+  String get scheduleNotificationsDeliverable;
+
+  /// No description provided for @scheduleNotificationsNeedPermission.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule saved. Reminder alerts need notifications to be enabled.'**
+  String get scheduleNotificationsNeedPermission;
+
+  /// No description provided for @scheduleNotificationsBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule saved. Enable notifications in device settings for alerts.'**
+  String get scheduleNotificationsBlocked;
+
+  /// No description provided for @scheduleNotificationsUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule saved. Reminder alerts are not available on this device.'**
+  String get scheduleNotificationsUnavailable;
+
+  /// No description provided for @scheduleInactiveMedicationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Make this medication active before scheduling reminders.'**
+  String get scheduleInactiveMedicationError;
+
+  /// No description provided for @scheduleMissingTimeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one reminder time.'**
+  String get scheduleMissingTimeError;
+
+  /// No description provided for @scheduleDuplicateTimeError.
+  ///
+  /// In en, this message translates to:
+  /// **'This reminder time is already selected.'**
+  String get scheduleDuplicateTimeError;
+
+  /// No description provided for @scheduleTooManyTimesError.
+  ///
+  /// In en, this message translates to:
+  /// **'Use four reminder times or fewer.'**
+  String get scheduleTooManyTimesError;
+
+  /// No description provided for @scheduleInvalidEndDateError.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose an end date on or after the first reminder date.'**
+  String get scheduleInvalidEndDateError;
 }
 
 class _AppLocalizationsDelegate
