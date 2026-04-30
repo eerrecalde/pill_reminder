@@ -17,10 +17,10 @@
 
 **Purpose**: Create the medication feature module, test structure, and app entry integration points.
 
-- [ ] T001 Create medication feature directory structure in `lib/features/medications/`
-- [ ] T002 [P] Create medication test directory structure in `test/features/medications/`
-- [ ] T003 [P] Add medication localization placeholders for English, Spanish, and Latin American Spanish in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
-- [ ] T004 [P] Add add-medication navigation entry placeholder from the main app in `lib/main.dart`
+- [X] T001 Create medication feature directory structure in `lib/features/medications/`
+- [X] T002 [P] Create medication test directory structure in `test/features/medications/`
+- [X] T003 [P] Add medication localization placeholders for English, Spanish, and Latin American Spanish in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T004 [P] Add add-medication navigation entry placeholder from the main app in `lib/main.dart`
 
 ---
 
@@ -30,14 +30,14 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T005 [P] Define medication status enum and display metadata in `lib/features/medications/domain/medication.dart`
-- [ ] T006 Define medication entity with local id, name, dosage label, notes, status, created date, and updated date in `lib/features/medications/domain/medication.dart`
-- [ ] T007 [P] Define medication entry draft and duplicate confirmation state in `lib/features/medications/domain/medication_entry_draft.dart`
-- [ ] T008 [P] Implement medication validation result types and 80/80/500 field length rules in `lib/features/medications/domain/medication_validation.dart`
-- [ ] T009 Define `MedicationRepository` interface for load/save operations in `lib/features/medications/data/medication_repository.dart`
-- [ ] T010 Create local JSON medication repository skeleton using existing local storage dependency in `lib/features/medications/data/local_medication_repository.dart`
-- [ ] T011 [P] Add fake medication repository for widget tests in `test/features/medications/fakes/fake_medication_repository.dart`
-- [ ] T012 [P] Add medication fixture builders for tests in `test/features/medications/medication_test_fixtures.dart`
+- [X] T005 [P] Define medication status enum and display metadata in `lib/features/medications/domain/medication.dart`
+- [X] T006 Define medication entity with local id, name, dosage label, notes, status, created date, and updated date in `lib/features/medications/domain/medication.dart`
+- [X] T007 [P] Define medication entry draft and duplicate confirmation state in `lib/features/medications/domain/medication_entry_draft.dart`
+- [X] T008 [P] Implement medication validation result types and 80/80/500 field length rules in `lib/features/medications/domain/medication_validation.dart`
+- [X] T009 Define `MedicationRepository` interface for load/save operations in `lib/features/medications/data/medication_repository.dart`
+- [X] T010 Create local JSON medication repository skeleton using existing local storage dependency in `lib/features/medications/data/local_medication_repository.dart`
+- [X] T011 [P] Add fake medication repository for widget tests in `test/features/medications/fakes/fake_medication_repository.dart`
+- [X] T012 [P] Add medication fixture builders for tests in `test/features/medications/medication_test_fixtures.dart`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -51,21 +51,21 @@
 
 ### Tests for User Story 1
 
-- [ ] T013 [P] [US1] Add validation unit test for active default and valid draft creation in `test/features/medications/medication_validation_test.dart`
-- [ ] T014 [P] [US1] Add repository unit test for saving and reloading name-only active medication in `test/features/medications/medication_repository_test.dart`
-- [ ] T015 [US1] Add repository unit test for preserving name, dosage label, notes, status, and timestamps in `test/features/medications/medication_repository_test.dart`
-- [ ] T016 [P] [US1] Add widget test for adding an active medication from the main app in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T017 [US1] Add widget test for duplicate-name gentle confirmation and save-after-confirm behavior in `test/features/medications/add_medication_screen_test.dart`
+- [X] T013 [P] [US1] Add validation unit test for active default and valid draft creation in `test/features/medications/medication_validation_test.dart`
+- [X] T014 [P] [US1] Add repository unit test for saving and reloading name-only active medication in `test/features/medications/medication_repository_test.dart`
+- [X] T015 [US1] Add repository unit test for preserving name, dosage label, notes, status, and timestamps in `test/features/medications/medication_repository_test.dart`
+- [X] T016 [P] [US1] Add widget test for adding an active medication from the main app in `test/features/medications/add_medication_screen_test.dart`
+- [X] T017 [US1] Add widget test for duplicate-name gentle confirmation and save-after-confirm behavior in `test/features/medications/add_medication_screen_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T018 [US1] Implement medication JSON serialization and deserialization in `lib/features/medications/domain/medication.dart`
-- [ ] T019 [US1] Implement save/load behavior in `lib/features/medications/data/local_medication_repository.dart`
-- [ ] T020 [US1] Implement add-medication form scaffold with name, dosage label, notes, active default, save, and cancel controls in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T021 [US1] Implement duplicate-name confirmation dialog with non-blocking plain-language copy in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T022 [US1] Implement medication list display using user-entered wording in `lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T023 [US1] Wire medication repository and add-medication navigation into the main app in `lib/main.dart`
-- [ ] T024 [US1] Add English, Spanish, and Latin American Spanish strings for active add/save/list/duplicate flows in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T018 [US1] Implement medication JSON serialization and deserialization in `lib/features/medications/domain/medication.dart`
+- [X] T019 [US1] Implement save/load behavior in `lib/features/medications/data/local_medication_repository.dart`
+- [X] T020 [US1] Implement add-medication form scaffold with name, dosage label, notes, active default, save, and cancel controls in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T021 [US1] Implement duplicate-name confirmation dialog with non-blocking plain-language copy in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T022 [US1] Implement medication list display using user-entered wording in `lib/features/medications/presentation/medication_list_section.dart`
+- [X] T023 [US1] Wire medication repository and add-medication navigation into the main app in `lib/main.dart`
+- [X] T024 [US1] Add English, Spanish, and Latin American Spanish strings for active add/save/list/duplicate flows in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 1 is functional and testable as the MVP.
 
@@ -79,15 +79,15 @@
 
 ### Tests for User Story 2
 
-- [ ] T025 [P] [US2] Add widget test for visible on-device privacy copy in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T026 [US2] Add widget test proving no account, sync, analytics, donation, or remote-service prompts appear in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T027 [US2] Add localization widget test for English and Latin American Spanish privacy copy in `test/features/medications/add_medication_screen_test.dart`
+- [X] T025 [P] [US2] Add widget test for visible on-device privacy copy in `test/features/medications/add_medication_screen_test.dart`
+- [X] T026 [US2] Add widget test proving no account, sync, analytics, donation, or remote-service prompts appear in `test/features/medications/add_medication_screen_test.dart`
+- [X] T027 [US2] Add localization widget test for English and Latin American Spanish privacy copy in `test/features/medications/add_medication_screen_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T028 [US2] Add privacy reassurance block to add-medication form in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T029 [US2] Add localized privacy and no-account copy in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
-- [ ] T030 [US2] Ensure local repository is the only medication persistence dependency used by add-medication flow in `lib/features/medications/data/local_medication_repository.dart`
+- [X] T028 [US2] Add privacy reassurance block to add-medication form in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T029 [US2] Add localized privacy and no-account copy in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T030 [US2] Ensure local repository is the only medication persistence dependency used by add-medication flow in `lib/features/medications/data/local_medication_repository.dart`
 
 **Checkpoint**: User Story 2 works independently and preserves User Story 1.
 
@@ -101,17 +101,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T031 [P] [US3] Add validation unit test for selected inactive status in `test/features/medications/medication_validation_test.dart`
-- [ ] T032 [P] [US3] Add repository unit test for persisting inactive status in `test/features/medications/medication_repository_test.dart`
-- [ ] T033 [P] [US3] Add widget test for selecting inactive before save in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T034 [US3] Add widget test for visible and semantic inactive status display in `test/features/medications/add_medication_screen_test.dart`
+- [X] T031 [P] [US3] Add validation unit test for selected inactive status in `test/features/medications/medication_validation_test.dart`
+- [X] T032 [P] [US3] Add repository unit test for persisting inactive status in `test/features/medications/medication_repository_test.dart`
+- [X] T033 [P] [US3] Add widget test for selecting inactive before save in `test/features/medications/add_medication_screen_test.dart`
+- [X] T034 [US3] Add widget test for visible and semantic inactive status display in `test/features/medications/add_medication_screen_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T035 [US3] Implement active/inactive segmented control with active default in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T036 [US3] Implement medication status label with non-color-only text and semantics in `lib/features/medications/presentation/medication_status_label.dart`
-- [ ] T037 [US3] Display inactive status in saved medication list in `lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T038 [US3] Add localized active and inactive status labels in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T035 [US3] Implement active/inactive segmented control with active default in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T036 [US3] Implement medication status label with non-color-only text and semantics in `lib/features/medications/presentation/medication_status_label.dart`
+- [X] T037 [US3] Display inactive status in saved medication list in `lib/features/medications/presentation/medication_list_section.dart`
+- [X] T038 [US3] Add localized active and inactive status labels in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 3 works independently and preserves previous stories.
 
@@ -125,19 +125,19 @@
 
 ### Tests for User Story 4
 
-- [ ] T039 [P] [US4] Add unit tests for blank and whitespace-only medication name validation in `test/features/medications/medication_validation_test.dart`
-- [ ] T040 [US4] Add unit tests for medication name 80, dosage label 80, and notes 500 character limits in `test/features/medications/medication_validation_test.dart`
-- [ ] T041 [US4] Add widget test for missing-name validation preserving dosage and notes in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T042 [US4] Add widget test for max-length validation messages using text and screen-reader semantics in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T043 [US4] Add widget test for canceling add-medication without saving a record in `test/features/medications/add_medication_screen_test.dart`
+- [X] T039 [P] [US4] Add unit tests for blank and whitespace-only medication name validation in `test/features/medications/medication_validation_test.dart`
+- [X] T040 [US4] Add unit tests for medication name 80, dosage label 80, and notes 500 character limits in `test/features/medications/medication_validation_test.dart`
+- [X] T041 [US4] Add widget test for missing-name validation preserving dosage and notes in `test/features/medications/add_medication_screen_test.dart`
+- [X] T042 [US4] Add widget test for max-length validation messages using text and screen-reader semantics in `test/features/medications/add_medication_screen_test.dart`
+- [X] T043 [US4] Add widget test for canceling add-medication without saving a record in `test/features/medications/add_medication_screen_test.dart`
 
 ### Implementation for User Story 4
 
-- [ ] T044 [US4] Wire medication validation into add-medication save flow in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T045 [US4] Implement plain-language validation message presentation with semantics in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T046 [US4] Preserve dosage label and notes after validation failure in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T047 [US4] Implement cancel behavior that exits without repository save in `lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T048 [US4] Add localized validation and cancel strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T044 [US4] Wire medication validation into add-medication save flow in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T045 [US4] Implement plain-language validation message presentation with semantics in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T046 [US4] Preserve dosage label and notes after validation failure in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T047 [US4] Implement cancel behavior that exits without repository save in `lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T048 [US4] Add localized validation and cancel strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 4 works independently and all user stories are functional.
 
@@ -147,16 +147,16 @@
 
 **Purpose**: Verify accessibility, localization, privacy, local-first behavior, performance, and documentation across the full add-medication experience.
 
-- [ ] T049 [P] Review add-medication UI against `specs/002-add-medication/ux-design.md`
-- [ ] T050 [P] Review all add-medication English, Spanish, and Latin American Spanish strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
-- [ ] T051 [P] Add accessibility regression coverage for large text, focus labels, validation announcements, and non-color-only status in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T052 Add privacy regression coverage proving no Firebase, account, sync, backup, analytics, donation, sharing, or remote-service behavior in `test/features/medications/add_medication_screen_test.dart`
-- [ ] T053 Add manual usability verification notes for first-attempt save time, privacy understanding, and save/cancel screen-reader outcomes in `specs/002-add-medication/quickstart.md`
+- [X] T049 [P] Review add-medication UI against `specs/002-add-medication/ux-design.md`
+- [X] T050 [P] Review all add-medication English, Spanish, and Latin American Spanish strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T051 [P] Add accessibility regression coverage for large text, focus labels, validation announcements, and non-color-only status in `test/features/medications/add_medication_screen_test.dart`
+- [X] T052 Add privacy regression coverage proving no Firebase, account, sync, backup, analytics, donation, sharing, or remote-service behavior in `test/features/medications/add_medication_screen_test.dart`
+- [X] T053 Add manual usability verification notes for first-attempt save time, privacy understanding, and save/cancel screen-reader outcomes in `specs/002-add-medication/quickstart.md`
 - [ ] T054 Verify offline save and phone/tablet layout manually using `specs/002-add-medication/quickstart.md`
 - [ ] T055 Verify add-medication screen opens within 1 second from the main app and local save completes without perceptible delay using `specs/002-add-medication/quickstart.md`
-- [ ] T056 Run full `flutter test` and `flutter analyze` from the repository root for `test/`, `lib/`, generated localization, and app integration coverage
-- [ ] T057 Document local medication storage, retention, deletion, sharing, backup, analytics, donation, and remote-service behavior in `specs/002-add-medication/quickstart.md`
-- [ ] T058 Update manual verification notes in `specs/002-add-medication/quickstart.md`
+- [X] T056 Run full `flutter test` and `flutter analyze` from the repository root for `test/`, `lib/`, generated localization, and app integration coverage
+- [X] T057 Document local medication storage, retention, deletion, sharing, backup, analytics, donation, and remote-service behavior in `specs/002-add-medication/quickstart.md`
+- [X] T058 Update manual verification notes in `specs/002-add-medication/quickstart.md`
 
 ---
 

@@ -14,6 +14,14 @@
 5. Make add-medication reachable from the main app.
 6. Keep reminder scheduling out of scope; saved active medications only need to be available as future reminder choices.
 
+## Local Medication Data Behavior
+
+- Storage: Medication records are stored as local JSON through `LocalMedicationRepository`.
+- Retention: Saved medication records stay on the device until a future edit/delete feature removes them or app data is cleared by the operating system/user.
+- Deletion: This feature does not introduce medication deletion; user-controlled deletion is reserved for a later feature.
+- Sharing, backup, analytics, donation, sync, and remote services: None are introduced by this feature.
+- Account behavior: Adding medication remains available without account creation, sign-in, or internet access.
+
 ## Automated Verification
 
 Run:
@@ -44,3 +52,8 @@ Required automated scenarios:
 4. Confirm phone and tablet layouts remain readable with large text.
 5. Confirm high contrast mode preserves validation and active/inactive status meaning without color alone.
 6. Confirm saved medication records appear as choices for future reminder setup when that flow is introduced.
+7. Confirm the add-medication screen opens from the main app within 1 second on a typical phone/tablet.
+8. Confirm local save completes without perceptible delay for a normal local medication list.
+9. Ask a representative older adult or caregiver to save a medication with name and active status, and record whether they complete it in under 2 minutes on the first attempt.
+10. Ask the same participant what happens to their medication information, and record whether they understand that it stays privately on the device and no account is required.
+11. With a screen reader enabled, confirm validation, successful save, and cancel outcomes are announced or otherwise clear through accessible feedback.
