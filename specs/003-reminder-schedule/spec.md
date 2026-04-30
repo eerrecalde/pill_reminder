@@ -105,8 +105,8 @@ usable and understandable.
 ### Edge Cases
 
 - The user opens scheduling for a medication that is inactive; the flow should
-  explain that inactive medications are not ready for reminders and avoid saving
-  an active reminder schedule without a deliberate status change.
+  explain that inactive medications are not ready for reminders and direct the
+  user to make the medication active before scheduling.
 - The user tries to save without selecting any reminder time; saving should be
   blocked with plain-language guidance.
 - The user selects the same time more than once; the flow should prevent duplicate
@@ -148,28 +148,29 @@ usable and understandable.
 - **FR-002**: System MUST allow users to select one to four reminder times per day for a medication.
 - **FR-003**: System MUST limit v1 scheduling to simple daily reminder times and MUST NOT require users to configure complex recurrence rules.
 - **FR-004**: System MUST allow users to add, edit, and remove selected reminder times before saving, up to the daily limit.
-- **FR-005**: System MUST make schedules repeat indefinitely by default until the user edits or removes them.
-- **FR-006**: System MUST allow users to choose an optional end date without requiring one.
-- **FR-007**: System MUST present a review step that summarizes the medication, all selected reminder times, and whether the schedule continues indefinitely or stops on an end date before saving.
-- **FR-008**: System MUST describe saved schedules in plain language so users can understand when reminders will happen and when they will stop if an end date is selected.
-- **FR-009**: System MUST prevent saving a schedule with no reminder times selected.
-- **FR-010**: System MUST prevent duplicate reminder times for the same medication schedule.
-- **FR-011**: System MUST prevent saving a schedule when the optional end date is earlier than the first possible reminder.
-- **FR-012**: System MUST preserve valid selected times when the user corrects invalid or incomplete schedule choices.
-- **FR-013**: System MUST save valid reminder schedules locally on the device without requiring internet access.
-- **FR-014**: System MUST NOT require account creation, sign-in, remote sync, analytics participation, or an internet connection to create or save a reminder schedule.
-- **FR-015**: System MUST keep medication and schedule data private by default and document any storage, retention, deletion, sharing, backup, analytics, donation, or remote-service behavior introduced by this feature.
-- **FR-016**: System MUST preserve saved reminder schedules after app restart.
-- **FR-017**: System MUST communicate notification permission state during scheduling and review when it affects whether reminder alerts can be delivered.
-- **FR-018**: System MUST allow users to save a schedule even when notification permission is skipped, denied, blocked, or unavailable, while clearly explaining that reminder alerts cannot be delivered until notifications are enabled.
-- **FR-019**: System MUST provide a calm recovery path for skipped, denied, blocked, or unavailable notification permission states.
-- **FR-020**: System MUST make saved schedules become deliverable automatically when notification permission is enabled later, without requiring users to recreate the schedule.
-- **FR-021**: System MUST provide validation messages in plain language and communicate them with text and screen-reader announcement, not color alone.
-- **FR-022**: System MUST provide user-visible copy, reminder time text, schedule summaries, notification guidance, dates, times, and error states in a localization-ready form for English and Latin American Spanish.
-- **FR-023**: System MUST support older-adult accessibility needs throughout the schedule flow, including large text, screen readers, high contrast, large touch targets, visible focus, clear navigation, and non-color-only status communication.
-- **FR-024**: System MUST follow `docs/ux-design.md` as the UX and accessibility baseline for the user-facing schedule flow, including calm tone, one decision per screen where practical, 48px minimum touch targets with 56px preferred primary actions, descriptive labels, logical reading order, and pressure-free choices.
-- **FR-025**: System MUST allow users to cancel or leave the schedule flow before saving without creating or changing a saved reminder schedule.
-- **FR-026**: System MUST keep the schedule scope bounded to daily medication reminders with an optional end date and MUST NOT introduce dosage safety advice, clinical recommendations, medication interaction warnings, refill tracking, custom recurrence rules, accounts, backup, or sync as part of this feature.
+- **FR-005**: System MUST block schedule creation for inactive medications and explain that the medication must be made active before reminders can be scheduled.
+- **FR-006**: System MUST make schedules repeat indefinitely by default until the user edits or removes them.
+- **FR-007**: System MUST allow users to choose an optional end date without requiring one.
+- **FR-008**: System MUST present a review step that summarizes the medication, all selected reminder times, and whether the schedule continues indefinitely or stops on an end date before saving.
+- **FR-009**: System MUST describe saved schedules in plain language so users can understand when reminders will happen and when they will stop if an end date is selected.
+- **FR-010**: System MUST prevent saving a schedule with no reminder times selected.
+- **FR-011**: System MUST prevent duplicate reminder times for the same medication schedule.
+- **FR-012**: System MUST prevent saving a schedule when the optional end date is earlier than the first possible reminder.
+- **FR-013**: System MUST preserve valid selected times when the user corrects invalid or incomplete schedule choices.
+- **FR-014**: System MUST save valid reminder schedules locally on the device without requiring internet access.
+- **FR-015**: System MUST NOT require account creation, sign-in, remote sync, analytics participation, or an internet connection to create or save a reminder schedule.
+- **FR-016**: System MUST keep medication and schedule data private by default and document any storage, retention, deletion, sharing, backup, analytics, donation, or remote-service behavior introduced by this feature.
+- **FR-017**: System MUST preserve saved reminder schedules after app restart.
+- **FR-018**: System MUST communicate notification permission state during scheduling and review when it affects whether reminder alerts can be delivered.
+- **FR-019**: System MUST allow users to save a schedule even when notification permission is skipped, denied, blocked, or unavailable, while clearly explaining that reminder alerts cannot be delivered until notifications are enabled.
+- **FR-020**: System MUST provide a calm recovery path for skipped, denied, blocked, or unavailable notification permission states.
+- **FR-021**: System MUST make saved schedules become deliverable automatically when notification permission is enabled later, without requiring users to recreate the schedule.
+- **FR-022**: System MUST provide validation messages in plain language and communicate them with text and screen-reader announcement, not color alone.
+- **FR-023**: System MUST provide user-visible copy, reminder time text, schedule summaries, notification guidance, dates, times, and error states in a localization-ready form for English and Latin American Spanish.
+- **FR-024**: System MUST support older-adult accessibility needs throughout the schedule flow, including large text, screen readers, high contrast, large touch targets, visible focus, clear navigation, and non-color-only status communication.
+- **FR-025**: System MUST follow `docs/ux-design.md` as the UX and accessibility baseline for the user-facing schedule flow, including calm tone, one decision per screen where practical, 48px minimum touch targets with 56px preferred primary actions, descriptive labels, logical reading order, and pressure-free choices.
+- **FR-026**: System MUST allow users to cancel or leave the schedule flow before saving without creating or changing a saved reminder schedule.
+- **FR-027**: System MUST keep the schedule scope bounded to daily medication reminders with an optional end date and MUST NOT introduce dosage safety advice, clinical recommendations, medication interaction warnings, refill tracking, custom recurrence rules, accounts, backup, or sync as part of this feature.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -197,6 +198,8 @@ usable and understandable.
 ## Assumptions
 
 - Users schedule reminders for medications that already exist in the local medication list.
+- Inactive medications must be made active outside this schedule flow before a
+  reminder schedule can be created.
 - V1 reminder schedules repeat every day at the selected times, continue
   indefinitely by default, and may include a simple optional end date; weekly,
   monthly, interval-based, as-needed, tapering, and start-date schedules are out
