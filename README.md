@@ -1,6 +1,6 @@
 # Pill Reminder
 
-A Flutter pill reminder app for older adults.
+A simple pill reminder app with a focus in simplicity.
 
 ## Product Principles
 
