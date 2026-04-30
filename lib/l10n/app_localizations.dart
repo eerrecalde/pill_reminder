@@ -272,6 +272,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose the language for setup and reminder guidance.'**
   String get changeLanguageHelp;
+
+  /// No description provided for @addMedicationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add medication'**
+  String get addMedicationTitle;
+
+  /// No description provided for @medicationsSectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medications'**
+  String get medicationsSectionTitle;
+
+  /// No description provided for @medicationsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No medications saved yet'**
+  String get medicationsEmptyTitle;
+
+  /// No description provided for @medicationsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a medication now so it can be chosen for reminders later.'**
+  String get medicationsEmptyBody;
+
+  /// No description provided for @medicationNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication name (required)'**
+  String get medicationNameLabel;
+
+  /// No description provided for @medicationNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For example, morning pill'**
+  String get medicationNameHint;
+
+  /// No description provided for @medicationDosageLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Dosage label (optional)'**
+  String get medicationDosageLabel;
+
+  /// No description provided for @medicationDosageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'For example, 1 tablet'**
+  String get medicationDosageHint;
+
+  /// No description provided for @medicationNotesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes (optional)'**
+  String get medicationNotesLabel;
+
+  /// No description provided for @medicationNotesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Anything you want to remember'**
+  String get medicationNotesHint;
+
+  /// No description provided for @medicationStatusSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication status'**
+  String get medicationStatusSemantics;
+
+  /// No description provided for @medicationStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get medicationStatusActive;
+
+  /// No description provided for @medicationStatusInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get medicationStatusInactive;
+
+  /// No description provided for @medicationStatusActiveSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Status, active'**
+  String get medicationStatusActiveSemantics;
+
+  /// No description provided for @medicationStatusInactiveSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Status, inactive'**
+  String get medicationStatusInactiveSemantics;
+
+  /// No description provided for @medicationAvailableForReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'Available for future reminder setup.'**
+  String get medicationAvailableForReminders;
+
+  /// No description provided for @medicationStoredInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Stored as inactive. It will not be treated as ready for reminders.'**
+  String get medicationStoredInactive;
+
+  /// No description provided for @addMedicationPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your medication stays on this device'**
+  String get addMedicationPrivacyTitle;
+
+  /// No description provided for @addMedicationPrivacyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No account or internet is needed to add it.'**
+  String get addMedicationPrivacyBody;
+
+  /// No description provided for @saveMedication.
+  ///
+  /// In en, this message translates to:
+  /// **'Save medication'**
+  String get saveMedication;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @duplicateMedicationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This name is already saved'**
+  String get duplicateMedicationTitle;
+
+  /// No description provided for @duplicateMedicationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Another medication has this name. You can save this one too if it is correct.'**
+  String get duplicateMedicationMessage;
+
+  /// No description provided for @saveAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Save anyway'**
+  String get saveAnyway;
+
+  /// No description provided for @goBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Go back'**
+  String get goBack;
+
+  /// No description provided for @medicationSavedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication saved'**
+  String get medicationSavedSemantics;
+
+  /// No description provided for @medicationNotSavedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication was not saved'**
+  String get medicationNotSavedSemantics;
+
+  /// No description provided for @medicationNameRequiredError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a medication name.'**
+  String get medicationNameRequiredError;
+
+  /// No description provided for @medicationNameTooLongError.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 80 characters or fewer for the medication name.'**
+  String get medicationNameTooLongError;
+
+  /// No description provided for @medicationDosageTooLongError.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 80 characters or fewer for the dosage label.'**
+  String get medicationDosageTooLongError;
+
+  /// No description provided for @medicationNotesTooLongError.
+  ///
+  /// In en, this message translates to:
+  /// **'Use 500 characters or fewer for notes.'**
+  String get medicationNotesTooLongError;
+
+  /// No description provided for @medicationValidationGenericError.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the highlighted field.'**
+  String get medicationValidationGenericError;
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'features/medications/data/local_medication_repository.dart';
+import 'features/medications/data/medication_repository.dart';
+import 'features/medications/domain/medication.dart';
+import 'features/medications/presentation/add_medication_screen.dart';
+import 'features/medications/presentation/medication_list_section.dart';
 import 'features/setup/data/local_setup_preferences_repository.dart';
 import 'features/setup/data/setup_preferences_repository.dart';
 import 'features/setup/domain/notification_permission_status.dart';
@@ -18,6 +23,7 @@ Future<void> main() async {
   runApp(
     PillReminderApp(
       setupPreferencesRepository: LocalSetupPreferencesRepository(preferences),
+      medicationRepository: LocalMedicationRepository(preferences),
       notificationPermissionService:
           PermissionHandlerNotificationPermissionService(),
     ),
@@ -28,11 +34,13 @@ class PillReminderApp extends StatefulWidget {
   const PillReminderApp({
     required this.setupPreferencesRepository,
     required this.notificationPermissionService,
+    this.medicationRepository,
     super.key,
   });
 
   final SetupPreferencesRepository setupPreferencesRepository;
   final NotificationPermissionService notificationPermissionService;
+  final MedicationRepository? medicationRepository;
 
   @override
   State<PillReminderApp> createState() => _PillReminderAppState();
@@ -42,6 +50,8 @@ class _PillReminderAppState extends State<PillReminderApp> {
   Locale _locale = const Locale('en');
   SetupState? _setupState;
   bool _loading = true;
+  late final MedicationRepository _fallbackMedicationRepository =
+      _InMemoryMedicationRepository();
 
   @override
   void initState() {
@@ -109,6 +119,8 @@ class _PillReminderAppState extends State<PillReminderApp> {
     return _MainAppHome(
       setupState: state,
       repository: widget.setupPreferencesRepository,
+      medicationRepository:
+          widget.medicationRepository ?? _fallbackMedicationRepository,
       notificationPermissionService: widget.notificationPermissionService,
       onLocaleChanged: _setLocale,
       onSetupStateChanged: _setSetupState,
@@ -117,10 +129,11 @@ class _PillReminderAppState extends State<PillReminderApp> {
   }
 }
 
-class _MainAppHome extends StatelessWidget {
+class _MainAppHome extends StatefulWidget {
   const _MainAppHome({
     required this.setupState,
     required this.repository,
+    required this.medicationRepository,
     required this.notificationPermissionService,
     required this.onLocaleChanged,
     required this.onSetupStateChanged,
@@ -129,11 +142,47 @@ class _MainAppHome extends StatelessWidget {
 
   final SetupState setupState;
   final SetupPreferencesRepository repository;
+  final MedicationRepository medicationRepository;
   final NotificationPermissionService notificationPermissionService;
   final ValueChanged<Locale> onLocaleChanged;
   final ValueChanged<SetupState> onSetupStateChanged;
   final ValueChanged<SetupNotificationPermissionStatus>
   onNotificationStatusChanged;
+
+  @override
+  State<_MainAppHome> createState() => _MainAppHomeState();
+}
+
+class _MainAppHomeState extends State<_MainAppHome> {
+  List<Medication> _medications = const [];
+  bool _loadingMedications = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMedications();
+  }
+
+  Future<void> _loadMedications() async {
+    final medications = await widget.medicationRepository.loadMedications();
+    if (!mounted) return;
+    setState(() {
+      _medications = medications;
+      _loadingMedications = false;
+    });
+  }
+
+  Future<void> _openAddMedication(BuildContext context) async {
+    final medication = await Navigator.of(context).push<Medication>(
+      MaterialPageRoute(
+        builder: (_) =>
+            AddMedicationScreen(repository: widget.medicationRepository),
+      ),
+    );
+    if (medication != null) {
+      await _loadMedications();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,12 +198,12 @@ class _MainAppHome extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => SetupPreferencesScreen(
-                    repository: repository,
+                    repository: widget.repository,
                     notificationPermissionService:
-                        notificationPermissionService,
-                    initialState: setupState,
-                    onLocaleChanged: onLocaleChanged,
-                    onStateChanged: onSetupStateChanged,
+                        widget.notificationPermissionService,
+                    initialState: widget.setupState,
+                    onLocaleChanged: widget.onLocaleChanged,
+                    onStateChanged: widget.onSetupStateChanged,
                   ),
                 ),
               );
@@ -170,20 +219,58 @@ class _MainAppHome extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               children: [
                 ReminderStatusBanner(
-                  status: setupState.notificationStatus,
-                  notificationPermissionService: notificationPermissionService,
-                  onStatusChanged: onNotificationStatusChanged,
+                  status: widget.setupState.notificationStatus,
+                  notificationPermissionService:
+                      widget.notificationPermissionService,
+                  onStatusChanged: widget.onNotificationStatusChanged,
                 ),
                 const SizedBox(height: 24),
-                Text(
-                  l10n.mainPlaceholder,
-                  style: Theme.of(context).textTheme.bodyLarge,
+                FilledButton.icon(
+                  key: const Key('open-add-medication-button'),
+                  onPressed: () => _openAddMedication(context),
+                  icon: const Icon(Icons.add),
+                  label: Text(l10n.addMedicationTitle),
                 ),
+                const SizedBox(height: 24),
+                if (_loadingMedications)
+                  const Center(child: CircularProgressIndicator())
+                else
+                  MedicationListSection(medications: _medications),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+class _InMemoryMedicationRepository implements MedicationRepository {
+  final List<Medication> _medications = [];
+
+  @override
+  Future<List<Medication>> loadMedications() async {
+    return List.unmodifiable(_medications);
+  }
+
+  @override
+  Future<Medication> addMedication({
+    required String name,
+    String dosageLabel = '',
+    String notes = '',
+    MedicationStatus status = MedicationStatus.active,
+  }) async {
+    final now = DateTime.now();
+    final medication = Medication(
+      id: 'memory-${now.microsecondsSinceEpoch}',
+      name: name.trim(),
+      dosageLabel: dosageLabel.trim(),
+      notes: notes.trim(),
+      status: status,
+      createdAt: now,
+      updatedAt: now,
+    );
+    _medications.add(medication);
+    return medication;
   }
 }

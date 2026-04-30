@@ -103,6 +103,111 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get changeLanguageHelp =>
       'Elige el idioma para la guía de inicio y recordatorios.';
+
+  @override
+  String get addMedicationTitle => 'Agregar medicamento';
+
+  @override
+  String get medicationsSectionTitle => 'Medicamentos';
+
+  @override
+  String get medicationsEmptyTitle => 'Todavía no hay medicamentos guardados';
+
+  @override
+  String get medicationsEmptyBody =>
+      'Agrega un medicamento ahora para poder elegirlo en recordatorios más adelante.';
+
+  @override
+  String get medicationNameLabel => 'Nombre del medicamento (obligatorio)';
+
+  @override
+  String get medicationNameHint => 'Por ejemplo, pastilla de la mañana';
+
+  @override
+  String get medicationDosageLabel => 'Etiqueta de dosis (opcional)';
+
+  @override
+  String get medicationDosageHint => 'Por ejemplo, 1 tableta';
+
+  @override
+  String get medicationNotesLabel => 'Notas (opcional)';
+
+  @override
+  String get medicationNotesHint => 'Algo que quieras recordar';
+
+  @override
+  String get medicationStatusSemantics => 'Estado del medicamento';
+
+  @override
+  String get medicationStatusActive => 'Activo';
+
+  @override
+  String get medicationStatusInactive => 'Inactivo';
+
+  @override
+  String get medicationStatusActiveSemantics => 'Estado, activo';
+
+  @override
+  String get medicationStatusInactiveSemantics => 'Estado, inactivo';
+
+  @override
+  String get medicationAvailableForReminders =>
+      'Disponible para configurar recordatorios más adelante.';
+
+  @override
+  String get medicationStoredInactive =>
+      'Guardado como inactivo. No se tratará como listo para recordatorios.';
+
+  @override
+  String get addMedicationPrivacyTitle =>
+      'Tu medicamento se queda en este dispositivo';
+
+  @override
+  String get addMedicationPrivacyBody =>
+      'No necesitas cuenta ni internet para agregarlo.';
+
+  @override
+  String get saveMedication => 'Guardar medicamento';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get duplicateMedicationTitle => 'Este nombre ya está guardado';
+
+  @override
+  String get duplicateMedicationMessage =>
+      'Otro medicamento tiene este nombre. Puedes guardar este también si es correcto.';
+
+  @override
+  String get saveAnyway => 'Guardar de todos modos';
+
+  @override
+  String get goBack => 'Volver';
+
+  @override
+  String get medicationSavedSemantics => 'Medicamento guardado';
+
+  @override
+  String get medicationNotSavedSemantics => 'El medicamento no se guardó';
+
+  @override
+  String get medicationNameRequiredError => 'Ingresa un nombre de medicamento.';
+
+  @override
+  String get medicationNameTooLongError =>
+      'Usa 80 caracteres o menos para el nombre del medicamento.';
+
+  @override
+  String get medicationDosageTooLongError =>
+      'Usa 80 caracteres o menos para la etiqueta de dosis.';
+
+  @override
+  String get medicationNotesTooLongError =>
+      'Usa 500 caracteres o menos para las notas.';
+
+  @override
+  String get medicationValidationGenericError => 'Revisa el campo marcado.';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -204,4 +309,109 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get changeLanguageHelp =>
       'Elige el idioma para la guía de inicio y recordatorios.';
+
+  @override
+  String get addMedicationTitle => 'Agregar medicamento';
+
+  @override
+  String get medicationsSectionTitle => 'Medicamentos';
+
+  @override
+  String get medicationsEmptyTitle => 'Todavía no hay medicamentos guardados';
+
+  @override
+  String get medicationsEmptyBody =>
+      'Agrega un medicamento ahora para poder elegirlo en recordatorios más adelante.';
+
+  @override
+  String get medicationNameLabel => 'Nombre del medicamento (obligatorio)';
+
+  @override
+  String get medicationNameHint => 'Por ejemplo, pastilla de la mañana';
+
+  @override
+  String get medicationDosageLabel => 'Etiqueta de dosis (opcional)';
+
+  @override
+  String get medicationDosageHint => 'Por ejemplo, 1 tableta';
+
+  @override
+  String get medicationNotesLabel => 'Notas (opcional)';
+
+  @override
+  String get medicationNotesHint => 'Algo que quieras recordar';
+
+  @override
+  String get medicationStatusSemantics => 'Estado del medicamento';
+
+  @override
+  String get medicationStatusActive => 'Activo';
+
+  @override
+  String get medicationStatusInactive => 'Inactivo';
+
+  @override
+  String get medicationStatusActiveSemantics => 'Estado, activo';
+
+  @override
+  String get medicationStatusInactiveSemantics => 'Estado, inactivo';
+
+  @override
+  String get medicationAvailableForReminders =>
+      'Disponible para configurar recordatorios más adelante.';
+
+  @override
+  String get medicationStoredInactive =>
+      'Guardado como inactivo. No se tratará como listo para recordatorios.';
+
+  @override
+  String get addMedicationPrivacyTitle =>
+      'Tu medicamento se queda en este dispositivo';
+
+  @override
+  String get addMedicationPrivacyBody =>
+      'No necesitas cuenta ni internet para agregarlo.';
+
+  @override
+  String get saveMedication => 'Guardar medicamento';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get duplicateMedicationTitle => 'Este nombre ya está guardado';
+
+  @override
+  String get duplicateMedicationMessage =>
+      'Otro medicamento tiene este nombre. Puedes guardar este también si es correcto.';
+
+  @override
+  String get saveAnyway => 'Guardar de todos modos';
+
+  @override
+  String get goBack => 'Volver';
+
+  @override
+  String get medicationSavedSemantics => 'Medicamento guardado';
+
+  @override
+  String get medicationNotSavedSemantics => 'El medicamento no se guardó';
+
+  @override
+  String get medicationNameRequiredError => 'Ingresa un nombre de medicamento.';
+
+  @override
+  String get medicationNameTooLongError =>
+      'Usa 80 caracteres o menos para el nombre del medicamento.';
+
+  @override
+  String get medicationDosageTooLongError =>
+      'Usa 80 caracteres o menos para la etiqueta de dosis.';
+
+  @override
+  String get medicationNotesTooLongError =>
+      'Usa 500 caracteres o menos para las notas.';
+
+  @override
+  String get medicationValidationGenericError => 'Revisa el campo marcado.';
 }
