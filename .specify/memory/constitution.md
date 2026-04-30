@@ -1,26 +1,21 @@
 <!--
 Sync Impact Report
-Version change: unratified template -> 1.0.0
+Version change: 1.0.0 -> 1.1.0
 Modified principles:
-- Template placeholders -> I. Simplicity and Clear Flows
-- Template placeholders -> II. Accessibility for Older Adults
-- Template placeholders -> III. Reliable Local-First Reminders
-- Template placeholders -> IV. Privacy and User Control
-- Template placeholders -> V. Maintainable Architecture
-- Template placeholders -> VI. Testing as a Release Gate
-- Template placeholders -> VII. Consistent, Localizable Experience
-- Template placeholders -> VIII. Measured Performance
+- I. Simplicity and Clear Flows
+- II. Accessibility for Older Adults
 Added sections:
-- Product and Technical Constraints
-- Delivery and Review Standards
+- None
 Removed sections:
-- Placeholder Section 2
-- Placeholder Section 3
+- None
 Templates requiring updates:
 - ✅ .specify/templates/plan-template.md
 - ✅ .specify/templates/spec-template.md
 - ✅ .specify/templates/tasks-template.md
+- ✅ .specify/templates/checklist-template.md
 - ⚠ .specify/templates/commands/*.md not present in this project
+Runtime guidance requiring updates:
+- ✅ README.md
 Follow-up TODOs: None
 -->
 # Pill Reminder Constitution
@@ -32,7 +27,9 @@ The app MUST make reminder setup, editing, pausing, and confirmation obvious wit
 requiring accounts, complex configuration, or technical vocabulary. New features
 MUST preserve a short primary path for older adults and caregivers. Added
 settings, dependencies, services, abstractions, or screens MUST include an
-explicit complexity justification in the feature plan.
+explicit complexity justification in the feature plan. User-facing setup and
+onboarding flows MUST follow `docs/ux-design.md` as the UX baseline for flow
+shape, tone, layout, interaction, and calm progression.
 
 Rationale: medication reminders lose value when the setup flow is confusing or
 too configurable to complete with confidence.
@@ -42,7 +39,11 @@ Accessibility is a release requirement. User-facing experiences MUST support
 large text, screen readers, sufficient contrast, large touch targets, clear error
 recovery, and non-color-only status communication. Feature specs MUST define
 accessibility acceptance criteria for each affected flow, and reviews MUST verify
-them before release.
+them before release. User-facing setup and onboarding flows MUST follow
+`docs/ux-design.md` as the accessibility baseline, including one decision per
+screen, WCAG AA contrast, 48px minimum touch targets with 56px preferred actions,
+descriptive labels, visible focus, logical reading order, and no hidden gestures
+or time-based actions.
 
 Rationale: the primary audience includes older adults who may have low vision,
 reduced dexterity, cognitive load sensitivity, or assistive technology needs.
@@ -118,14 +119,18 @@ lower-cost devices.
   deletion without exposing medication data to unnecessary services.
 - Feature plans MUST choose the simplest design that satisfies the user story and
   document rejected simpler alternatives when complexity is added.
+- User-facing setup and onboarding flows MUST use `docs/ux-design.md` as their
+  UX and accessibility baseline unless a constitution amendment replaces that
+  baseline.
 
 ## Delivery and Review Standards
 
 - Specifications MUST include prioritized, independently testable user journeys
   and measurable success criteria.
 - Plans MUST complete the Constitution Check before design work and repeat it
-  after design, covering simplicity, accessibility, reliability, privacy,
-  architecture, testing, localization, and performance.
+  after design, covering simplicity, accessibility, setup/onboarding UX baseline
+  alignment, reliability, privacy, architecture, testing, localization, and
+  performance.
 - Task lists MUST include concrete tasks for required tests, accessibility review,
   localization readiness, privacy/data handling, and performance checks whenever
   the feature touches those areas.
@@ -153,4 +158,4 @@ MUST consider this constitution. Any exception MUST be documented in the
 Complexity Tracking section of the plan with the user value, risk, and simpler
 alternative that was rejected.
 
-**Version**: 1.0.0 | **Ratified**: 2026-04-28 | **Last Amended**: 2026-04-28
+**Version**: 1.1.0 | **Ratified**: 2026-04-28 | **Last Amended**: 2026-04-30

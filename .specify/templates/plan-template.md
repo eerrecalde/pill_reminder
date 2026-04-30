@@ -37,6 +37,9 @@ Tracking before implementation planning may continue.
 - **Simplicity and clear flows**: Primary user flow is short, obvious, and avoids
   unnecessary configuration. Added settings, dependencies, services, screens, or
   abstractions are justified.
+- **Setup/onboarding UX baseline**: User-facing setup or onboarding flows follow
+  `docs/ux-design.md` for flow shape, tone, layout, interaction, accessibility,
+  and calm progression.
 - **Accessibility for older adults**: Large text, screen reader behavior,
   contrast, touch targets, non-color-only status, and error recovery are covered
   for affected flows.

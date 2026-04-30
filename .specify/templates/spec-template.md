@@ -104,11 +104,13 @@
 - **FR-009**: System MUST define accessibility behavior for older adults,
   including large text, screen readers, touch targets, contrast, and
   non-color-only status communication.
+- **FR-010**: User-facing setup or onboarding flows MUST follow
+  `docs/ux-design.md` as the UX and accessibility baseline.
 
 *Example of marking unclear requirements:*
 
-- **FR-010**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-011**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+- **FR-011**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
+- **FR-012**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
 
 ### Key Entities *(include if feature involves data)*
 

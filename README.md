@@ -5,6 +5,8 @@ A Flutter pill reminder app for older adults.
 ## Product Principles
 
 - Accessibility for older adults is a release requirement.
+- User-facing setup and onboarding flows must follow `docs/ux-design.md` as the
+  UX and accessibility baseline.
 - Reminder setup must stay simple, offline-capable, and account-free for core use.
 - Medication reminders must rely on reliable local notifications.
 - English and Latin American Spanish are first-class locales.

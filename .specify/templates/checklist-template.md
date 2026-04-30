@@ -15,6 +15,7 @@
   - Feature requirements from spec.md
   - Technical context from plan.md
   - Implementation details from tasks.md
+  - docs/ux-design.md when the feature changes user-facing setup or onboarding
   
   DO NOT keep these sample items in the generated checklist file.
   ============================================================================
@@ -31,6 +32,7 @@
 - [ ] CHK004 Another category item
 - [ ] CHK005 Item with specific criteria
 - [ ] CHK006 Final item in this category
+- [ ] CHK007 Setup/onboarding UX and accessibility baseline checked against docs/ux-design.md when applicable
 
 ## Notes
 

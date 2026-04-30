@@ -45,7 +45,8 @@ automation cannot prove it.
   - Tested independently
   - Delivered as an MVP increment
   - Reviewed against constitution gates for simplicity, accessibility,
-    reliability, privacy, localization readiness, and performance
+    setup/onboarding UX baseline alignment, reliability, privacy, localization
+    readiness, and performance
   
   DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
@@ -77,7 +78,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T009 Setup environment configuration management
 - [ ] T010 Establish localization resource structure for English and Latin American Spanish user-visible copy
 - [ ] T011 Establish accessibility test helpers or manual review checklist for large text, screen readers, contrast, touch targets, and non-color-only status
-- [ ] T012 Establish privacy/data-handling baseline for local storage, deletion, and optional remote or donation behavior
+- [ ] T012 Establish privacy/data-handling baseline for local storage, deletion, optional remote or donation behavior, and setup/onboarding review against `docs/ux-design.md` when applicable
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -168,6 +169,7 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit, widget, or integration tests in test/
 - [ ] TXXX Accessibility review for large text, screen readers, contrast, touch targets, and non-color-only status
+- [ ] TXXX Setup/onboarding UX review against `docs/ux-design.md` for affected user-facing setup or onboarding flows
 - [ ] TXXX Localization review for English and Latin American Spanish copy, dates, times, dosage labels, and notifications
 - [ ] TXXX Privacy review for local data handling, deletion, optional sharing, analytics, donations, backup, or sync
 - [ ] TXXX Performance review for startup, reminder setup responsiveness, background work, battery impact, and dependency size
