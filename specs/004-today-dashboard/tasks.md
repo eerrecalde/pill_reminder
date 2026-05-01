@@ -38,7 +38,7 @@ implementation and testing of each story.
 - [ ] T007 Create today dashboard domain types for item status, reminder item, section, action, and snapshot in `lib/features/medications/domain/today_dashboard.dart`
 - [ ] T008 Create daily handling repository interface in `lib/features/medications/data/daily_reminder_handling_repository.dart`
 - [ ] T009 Implement shared_preferences-backed daily handling repository in `lib/features/medications/data/local_daily_reminder_handling_repository.dart`
-- [ ] T010 Add current-day alert suppression contract to reminder notification scheduler interface and fake implementations in `lib/services/reminder_notification_scheduler.dart`
+- [ ] T010 Add current-day alert suppression contract to the production reminder notification scheduler interface in `lib/services/reminder_notification_scheduler.dart`
 - [ ] T011 Wire local and in-memory daily handling repositories into app construction dependencies in `lib/main.dart`
 - [ ] T012 [P] Add daily handling repository persistence and idempotency tests in `test/features/medications/daily_reminder_handling_repository_test.dart`
 - [ ] T013 [P] Add fake notification scheduler suppression tracking in `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
@@ -118,15 +118,15 @@ status text/icons, labels, focus, order, and touch targets.
 ### Tests for User Story 3
 
 - [ ] T035 [P] [US3] Add widget tests for non-color-only status text/icons and semantic labels containing medication name, time, and status in `test/features/medications/today_dashboard_screen_test.dart`
-- [ ] T036 [P] [US3] Add widget tests for large text layout, visible actions, and minimum touch target sizing in `test/features/medications/today_dashboard_screen_test.dart`
-- [ ] T037 [P] [US3] Add localization tests for English and Latin American Spanish dashboard dates, times, statuses, empty states, and actions in `test/features/medications/today_dashboard_screen_test.dart`
+- [ ] T036 [US3] Add widget tests for large text layout, visible actions, and minimum touch target sizing in `test/features/medications/today_dashboard_screen_test.dart`
+- [ ] T037 [US3] Add localization tests for English and Latin American Spanish dashboard dates, times, statuses, empty states, and actions in `test/features/medications/today_dashboard_screen_test.dart`
 
 ### Implementation for User Story 3
 
 - [ ] T038 [US3] Harden reminder card semantics, focus order, status icons, and large-text layout in `lib/features/medications/presentation/today_reminder_card.dart`
 - [ ] T039 [US3] Harden section headings, empty states, and dashboard reading order for screen readers and large text in `lib/features/medications/presentation/today_dashboard_screen.dart`
 - [ ] T040 [US3] Harden empty-state semantics, action labels, and 56px preferred touch targets in `lib/features/medications/presentation/today_empty_state.dart`
-- [ ] T041 [US3] Verify generated localization accessors compile after dashboard ARB additions in `lib/l10n/app_localizations.dart`
+- [ ] T041 [US3] Confirm dashboard ARB key usage is wired through localized widget calls in `lib/features/medications/presentation/today_dashboard_screen.dart`
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -142,8 +142,9 @@ status text/icons, labels, focus, order, and touch targets.
 - [ ] T045 Run `flutter analyze` and fix dashboard-related diagnostics in `lib/features/medications/presentation/today_dashboard_screen.dart`
 - [ ] T046 Run `flutter test` and fix dashboard-related failures in `test/features/medications/today_dashboard_screen_test.dart`
 - [ ] T047 Perform manual quickstart verification for restart, offline use, notification denied/blocked states, upcoming reminder suppression, day-change refresh, large text, screen reader, high contrast, and localization using `specs/004-today-dashboard/quickstart.md`
-- [ ] T048 Review dashboard privacy scope to confirm no account, sync, backup, analytics, donation, sharing, or remote-service prompt was added in `lib/features/medications/presentation/today_dashboard_screen.dart`
-- [ ] T049 Review performance behavior for local render time, mark-handled responsiveness, and boundary-based refresh in `lib/features/medications/domain/today_dashboard_service.dart`
+- [ ] T048 Review Today Dashboard UI against `docs/ux-design.md` for calm tone, readable spacing, large touch targets, pressure-free choices, privacy-preserving language, and large-text layout in `lib/features/medications/presentation/today_dashboard_screen.dart`
+- [ ] T049 Review dashboard privacy scope to confirm no account, sync, backup, analytics, donation, sharing, or remote-service prompt was added in `lib/features/medications/presentation/today_dashboard_screen.dart`
+- [ ] T050 Review performance behavior for local render time, mark-handled responsiveness, and boundary-based refresh in `lib/features/medications/domain/today_dashboard_service.dart`
 
 ---
 

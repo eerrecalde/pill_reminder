@@ -27,7 +27,7 @@ As a user with saved medications and reminder schedules, I want the main view to
 
 **Acceptance Scenarios**:
 
-1. **Given** the user has active medications with reminder times today, **When** the user opens the app, **Then** the today view lists today's reminder items in chronological order with clear labels for due now, upcoming, missed, and handled reminders.
+1. **Given** the user has active medications with reminder times today, **When** the user opens the app, **Then** the today view groups today's reminder items by status priority, with due-now items first, followed by upcoming, missed, and handled reminders, while preserving time order within each group.
 2. **Given** at least one reminder is due now, **When** the user views the dashboard, **Then** the due-now reminder is visually and textually emphasized before lower-priority upcoming or handled content.
 3. **Given** the user has handled a reminder earlier today, **When** the dashboard is shown, **Then** that reminder remains visible as handled and does not appear as still due.
 4. **Given** a reminder is due or upcoming today, **When** the user marks it as handled from the dashboard, **Then** the reminder moves to the handled state without requiring another screen.
