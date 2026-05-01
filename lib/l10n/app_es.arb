@@ -127,6 +127,13 @@
       "time": {}
     }
   },
+  "dueReminderTitle": "Recordatorio de medicamento",
+  "dueReminderScheduledTime": "Programado para {time}",
+  "@dueReminderScheduledTime": {
+    "placeholders": {
+      "time": {}
+    }
+  },
   "todayReminderStatusDueNow": "Toca ahora",
   "todayReminderStatusUpcoming": "Próximo",
   "todayReminderStatusMissed": "Pendiente",
@@ -155,5 +162,32 @@
       "time": {}
     }
   },
-  "todayNotificationGuidance": "Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí."
+  "todayNotificationGuidance": "Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí.",
+  "dueReminderStateUnresolved": "Este recordatorio está pendiente.",
+  "dueReminderStateTaken": "Marcado como tomado.",
+  "dueReminderStateSkipped": "Omitido.",
+  "dueReminderStateLater": "Te recordaremos de nuevo más tarde.",
+  "dueReminderTakenAction": "Tomado",
+  "dueReminderSkipAction": "Omitir",
+  "dueReminderLaterAction": "Recordar después",
+  "dueReminderPermissionNeeded": "Debes activar las notificaciones para recibir avisos. Puedes atender este recordatorio aquí.",
+  "dueReminderPermissionBlocked": "Activa las notificaciones en la configuración del dispositivo. Puedes atender este recordatorio aquí.",
+  "dueReminderPermissionUnavailable": "Los avisos no están disponibles en este dispositivo. Puedes atender este recordatorio aquí.",
+  "dueReminderBannerTitle": "Recordatorios pendientes",
+  "dueReminderBannerItem": "{name} está pendiente",
+  "@dueReminderBannerItem": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "dueReminderBannerSemantics": "{count, plural, =1{1 recordatorio pendiente} other{{count} recordatorios pendientes}}",
+  "@dueReminderBannerSemantics": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderHandlingSettingsTitle": "Manejo de recordatorios",
+  "reminderHandlingIntervalLabel": "Recordar después de"
 }
