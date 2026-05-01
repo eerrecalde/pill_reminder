@@ -36,6 +36,8 @@ scheduled time.
   display copy.
 - Due reminder data must remain local and must not include clinical advice,
   adherence scoring, caregiver sharing, account identifiers, or remote sync data.
+- Due reminders associated with a deleted medication or removed reminder schedule
+  must be deleted with their outcomes and pending remind-again-later requests.
 
 **State Transitions**
 
@@ -87,6 +89,8 @@ Represents a pending request to remind the user again for the same due reminder.
   request rather than creating overlapping later reminders.
 - A final taken or skipped outcome cancels any pending remind-again-later request
   for the same due reminder.
+- Pending remind-again-later requests are deleted when their associated due
+  reminder is deleted.
 
 ## ReminderHandlingPreferences
 
@@ -127,7 +131,7 @@ Represents whether local reminder notifications can currently be delivered.
 
 **Fields**
 
-- `status`: `allowed`, `denied`, `blocked`, `revoked`, or `unavailable`.
+- `status`: `granted`, `skipped`, `denied`, `blocked`, or `unavailable`.
 - `checkedAt`: Local timestamp when the status was last evaluated.
 
 **Validation Rules**
@@ -136,6 +140,9 @@ Represents whether local reminder notifications can currently be delivered.
   reminder state creation or in-app handling.
 - When permission becomes available, future reminder delivery resumes without
   duplicating existing due reminder states.
+- Operating-system permission revocation must be mapped to `denied` or `blocked`
+  based on the platform-reported state; no separate stored `revoked` state is
+  introduced.
 
 ## Relationships
 
@@ -143,6 +150,8 @@ Represents whether local reminder notifications can currently be delivered.
   `ReminderSchedule`.
 - A `DueReminder` has zero or one final `ReminderOutcome`.
 - A `DueReminder` has zero or one pending `RemindAgainLaterRequest`.
+- Deleting a `Medication` or removing a `ReminderSchedule` deletes associated
+  due reminders, outcomes, and pending remind-again-later requests.
 - `ReminderHandlingPreferences` are app-wide and apply to all medications.
 - `NotificationActionRequest` updates a `DueReminder` through the same action
   rules used by in-app actions.

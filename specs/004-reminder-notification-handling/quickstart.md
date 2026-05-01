@@ -45,12 +45,19 @@ flutter analyze
     minutes when unchanged.
 11. Choose remind again later multiple times and confirm there is only one
     pending later reminder for that due medication occurrence.
-12. Disable or revoke notification permission, let a reminder time pass, then
-    open the app and confirm the due reminder can still be handled in-app.
+12. Disable notification permission, or revoke it in system settings so the app
+    reports denied or blocked, let a reminder time pass, then open the app and
+    confirm the due reminder can still be handled in-app.
 13. Restart the app or device around a due time and confirm there is one
     consistent reminder state for the medication and scheduled time.
 14. Enable notifications again and confirm future reminders resume without
     duplicating old due reminders.
+15. On Android and iOS, confirm notification action buttons/categories appear
+    where supported for taken, skip, and remind again later, and that each action
+    updates the same in-app due reminder state.
+16. Time the taken, skip, and remind-again-later actions from both notification
+    and in-app paths; each primary action should be completed in under 30
+    seconds by representative older adult or caregiver testers.
 
 ## Accessibility and Localization Checks
 
@@ -67,5 +74,8 @@ flutter analyze
 
 - Confirm due reminder state, outcomes, and remind-again-later preferences are
   stored locally.
+- Delete a medication or remove a reminder schedule and confirm associated due
+  reminder states, outcomes, and pending remind-again-later requests are removed
+  locally.
 - Confirm no account, sync, analytics, backup, sharing, or remote service is
   required to receive or handle due reminders.
