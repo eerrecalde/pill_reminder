@@ -9,8 +9,10 @@ a UI/state contract for the Flutter app, not a network API.
 - The app has saved medications and saved active daily reminder schedules.
 - The experience works offline and without an account.
 - A due reminder can be reached from a local notification or from inside the app.
-- If notification permission is denied, blocked, revoked, or unavailable, the
-  app still creates and shows local due reminder state when opened.
+- If notification permission is skipped, denied, blocked, or unavailable, the app
+  still creates and shows local due reminder state when opened. Operating-system
+  permission revocation is treated as denied or blocked according to the
+  platform-reported state.
 
 ## Notification Content
 
@@ -88,6 +90,9 @@ a UI/state contract for the Flutter app, not a network API.
   due reminder records.
 - Repository operations must support lookup by medication id and scheduled
   occurrence time.
+- Repository operations must support deletion by medication id and by schedule id
+  so due reminders, outcomes, and pending remind-again-later requests are removed
+  with deleted medications or removed schedules.
 - Repository implementation stores due reminder data locally as JSON.
 - Repository interface must not expose UI widget types, account concepts,
   analytics concepts, or remote-service identifiers.
@@ -104,6 +109,8 @@ a UI/state contract for the Flutter app, not a network API.
 
 - The notification scheduler can schedule the original due notification and a
   later reminder notification for a pending remind-again-later request.
+- The notification scheduler registers platform notification actions/categories
+  for taken, skip, and remind-again-later on Android and iOS where supported.
 - Notification payload/action data must contain enough local identity to resolve
   the target due reminder without remote lookup.
 - Notification action handling must route through the shared reminder action

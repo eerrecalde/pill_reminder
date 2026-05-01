@@ -104,9 +104,10 @@ contexts, confirming text remains readable and actions are announced clearly.
 
 - The dosage label is missing; the notification and in-app reminder should omit
   dosage gracefully while still showing medication name and scheduled time.
-- Notification permission is denied, blocked, revoked, or unavailable before a
-  reminder is due; the app should still create and show the due reminder state
-  locally when opened.
+- Notification permission is denied, blocked, or unavailable before a reminder
+  is due, including when the operating system revokes permission and reports it
+  as denied or blocked; the app should still create and show the due reminder
+  state locally when opened.
 - Notification permission changes after reminders were scheduled; future
   reminders should reflect the latest permission state without duplicating
   already due reminders.
@@ -149,11 +150,12 @@ contexts, confirming text remains readable and actions are announced clearly.
 - **FR-013**: System MUST keep reminder states reliable when the device is offline.
 - **FR-014**: System MUST preserve due reminder states and outcomes after app restart or device restart.
 - **FR-015**: System MUST reconcile notification action results with the in-app reminder view so the user sees the same current state in both places.
-- **FR-016**: System MUST show due reminders in the app when notification permission is denied, blocked, revoked, unavailable, or changed after scheduling.
+- **FR-016**: System MUST show due reminders in the app when notification permission is skipped, denied, blocked, unavailable, or changed after scheduling, including permission revocation reported by the operating system as denied or blocked.
 - **FR-017**: System MUST resume future local reminder delivery when notification permission becomes available, without recreating duplicate reminder states.
 - **FR-018**: System MUST provide clear, calm notification-permission guidance when reminders cannot currently be delivered as notifications.
 - **FR-019**: System MUST save reminder handling data locally on the device without requiring internet access, account creation, sign-in, remote sync, analytics participation, backup, or sharing.
 - **FR-020**: System MUST keep medication names, dosage labels, schedules, reminder states, and outcomes private on the device unless a future feature explicitly adds user-approved export, backup, or sync.
+- **FR-020a**: System MUST delete due reminder states, outcomes, and pending remind-again-later requests associated with a medication when that medication is deleted, and associated with a schedule when that schedule is removed.
 - **FR-021**: System MUST provide user-visible notification text, reminder details, action labels, status messages, dates, and times in a localization-ready form for English and Latin American Spanish.
 - **FR-022**: System MUST support older-adult accessibility needs throughout reminder handling, including large text, screen readers, high contrast, large touch targets, visible focus, logical reading order, and non-color-only status communication.
 - **FR-023**: System MUST follow `docs/ux-design.md` as the UX and accessibility baseline for the user-facing reminder handling experience, including calm tone, readable text, generous spacing, pressure-free choices, and clear primary actions.
@@ -165,7 +167,7 @@ contexts, confirming text remains readable and actions are announced clearly.
 - **Due Reminder**: A locally tracked reminder occurrence for one medication at one scheduled time. Key attributes are medication reference, medication name at display time, optional dosage label, scheduled time, current state, created time, and last updated time.
 - **Reminder Outcome**: The user's final response to a due reminder. Key attributes are outcome type, action time, associated medication, scheduled time, and whether the outcome came from notification or in-app handling.
 - **Remind Again Later Request**: A pending user choice to be reminded again for the same due reminder. Key attributes are associated due reminder, app-wide configured interval used, next reminder time, and pending or resolved state.
-- **Notification Permission Status**: Represents whether local reminder notifications can currently be delivered, including allowed, denied, blocked, revoked, or unavailable states.
+- **Notification Permission Status**: Represents whether local reminder notifications can currently be delivered, including granted, skipped, denied, blocked, or unavailable states; operating-system permission revocation is treated as denied or blocked based on the reported platform state.
 
 ## Success Criteria *(mandatory)*
 

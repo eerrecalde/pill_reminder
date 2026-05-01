@@ -28,7 +28,7 @@ Firebase dependency in v1
 **Testing**: `flutter test`, unit tests for due-reminder state transitions,
 repositories, idempotency, permission recovery, and remind-again interval rules;
 widget tests for due-reminder handling, accessibility, localization, and disabled
-notification states; manual iOS/Android notification action verification  
+notification states; manual iOS/Android notification action/category verification  
 **Target Platform**: iOS and Android phones and tablets  
 **Project Type**: Mobile app  
 **Performance Goals**: In-app due-reminder view opens within 1 second from a
@@ -143,6 +143,7 @@ test/
         ├── reminder_notification_scheduler_test.dart
         └── fakes/
             ├── fake_due_reminder_repository.dart
+            ├── fake_reminder_action_handler.dart
             └── fake_reminder_notification_scheduler.dart
 ```
 
@@ -160,7 +161,7 @@ No constitution violations.
 
 | Added Design Choice | Why Needed | Simpler Alternative Rejected Because |
 |---------------------|------------|-------------------------------------|
-| Due reminder repository | Due states and outcomes must survive offline use, notification actions, and app/device restart | Keeping due state only in memory would lose outcomes and make duplicate prevention unreliable |
+| Due reminder repository | Due states and outcomes must survive offline use, notification actions, app/device restart, and user-controlled deletion of medication data | Keeping due state only in memory would lose outcomes and make duplicate prevention unreliable |
 | Reminder action handler service | Notification actions and in-app actions must update the same state idempotently | Handling notification and in-app actions separately risks contradictory taken/skipped states |
 | Due reminder reconciler | Missed notification delivery and restarts must create due states when schedules have elapsed | Depending only on delivered notification callbacks would miss due states when permission is disabled or the app restarts |
 | App-wide reminder handling preferences | User requested configurable remind-again later behavior with a 10-minute default | Per-medication or per-action intervals add more choices and harder testing for v1 |
@@ -195,7 +196,8 @@ scheduler, and UX/accessibility patterns already present in the project.
   idempotency, restart recovery, offline outcomes, permission changes, and
   remind-again-later overlap prevention.
 - **Privacy and user control**: PASS - Data remains on device and no remote
-  dependency, analytics, backup, account, sync, or sharing behavior is added.
+  dependency, analytics, backup, account, sync, or sharing behavior is added;
+  due reminder state is deleted with the associated medication or schedule.
 - **Maintainable architecture**: PASS - Design separates domain state,
   repositories, preferences, notification scheduler, action handler,
   reconciliation, and presentation.
