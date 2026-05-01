@@ -4,6 +4,7 @@
 *.pyc
 *.swp
 *.tmp
+.env*
 .DS_Store
 Thumbs.db
 .atom/

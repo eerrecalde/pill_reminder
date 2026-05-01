@@ -357,6 +357,14 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get dueReminderTitle => 'Recordatorio de medicamento';
+
+  @override
+  String dueReminderScheduledTime(Object time) {
+    return 'Programado para $time';
+  }
+
+  @override
   String get todayReminderStatusDueNow => 'Toca ahora';
 
   @override
@@ -391,6 +399,64 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get todayNotificationGuidance =>
       'Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí.';
+
+  @override
+  String get dueReminderStateUnresolved => 'Este recordatorio está pendiente.';
+
+  @override
+  String get dueReminderStateTaken => 'Marcado como tomado.';
+
+  @override
+  String get dueReminderStateSkipped => 'Omitido.';
+
+  @override
+  String get dueReminderStateLater => 'Te recordaremos de nuevo más tarde.';
+
+  @override
+  String get dueReminderTakenAction => 'Tomado';
+
+  @override
+  String get dueReminderSkipAction => 'Omitir';
+
+  @override
+  String get dueReminderLaterAction => 'Recordar después';
+
+  @override
+  String get dueReminderPermissionNeeded =>
+      'Debes activar las notificaciones para recibir avisos. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderPermissionBlocked =>
+      'Activa las notificaciones en la configuración del dispositivo. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderPermissionUnavailable =>
+      'Los avisos no están disponibles en este dispositivo. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderBannerTitle => 'Recordatorios pendientes';
+
+  @override
+  String dueReminderBannerItem(Object name) {
+    return '$name está pendiente';
+  }
+
+  @override
+  String dueReminderBannerSemantics(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count recordatorios pendientes',
+      one: '1 recordatorio pendiente',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reminderHandlingSettingsTitle => 'Manejo de recordatorios';
+
+  @override
+  String get reminderHandlingIntervalLabel => 'Recordar después de';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -746,6 +812,14 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   }
 
   @override
+  String get dueReminderTitle => 'Recordatorio de medicamento';
+
+  @override
+  String dueReminderScheduledTime(Object time) {
+    return 'Programado para $time';
+  }
+
+  @override
   String get todayReminderStatusDueNow => 'Toca ahora';
 
   @override
@@ -780,4 +854,62 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get todayNotificationGuidance =>
       'Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí.';
+
+  @override
+  String get dueReminderStateUnresolved => 'Este recordatorio está pendiente.';
+
+  @override
+  String get dueReminderStateTaken => 'Marcado como tomado.';
+
+  @override
+  String get dueReminderStateSkipped => 'Omitido.';
+
+  @override
+  String get dueReminderStateLater => 'Te recordaremos de nuevo más tarde.';
+
+  @override
+  String get dueReminderTakenAction => 'Tomado';
+
+  @override
+  String get dueReminderSkipAction => 'Omitir';
+
+  @override
+  String get dueReminderLaterAction => 'Recordar después';
+
+  @override
+  String get dueReminderPermissionNeeded =>
+      'Debes activar las notificaciones para recibir avisos. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderPermissionBlocked =>
+      'Activa las notificaciones en la configuración del dispositivo. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderPermissionUnavailable =>
+      'Los avisos no están disponibles en este dispositivo. Puedes atender este recordatorio aquí.';
+
+  @override
+  String get dueReminderBannerTitle => 'Recordatorios pendientes';
+
+  @override
+  String dueReminderBannerItem(Object name) {
+    return '$name está pendiente';
+  }
+
+  @override
+  String dueReminderBannerSemantics(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count recordatorios pendientes',
+      one: '1 recordatorio pendiente',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reminderHandlingSettingsTitle => 'Manejo de recordatorios';
+
+  @override
+  String get reminderHandlingIntervalLabel => 'Recordar después de';
 }
