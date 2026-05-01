@@ -11,9 +11,9 @@
 
 **Purpose**: Prepare feature files and test fixtures without changing behavior.
 
-- [ ] T001 Create medication history source and test file placeholders matching the plan in lib/features/medications/domain/medication_history.dart, lib/features/medications/domain/medication_history_service.dart, lib/features/medications/data/medication_history_repository.dart, lib/features/medications/data/local_medication_history_repository.dart, lib/features/medications/presentation/medication_history_screen.dart, lib/features/medications/presentation/medication_history_day_section.dart, lib/features/medications/presentation/medication_history_status_label.dart, test/features/medications/medication_history_service_test.dart, test/features/medications/medication_history_repository_test.dart, test/features/medications/medication_history_screen_test.dart, and test/features/medications/fakes/fake_medication_history_repository.dart
-- [ ] T002 [P] Review existing reminder action and due reconciliation integration points in lib/services/reminder_action_handler.dart, lib/services/reminder_due_reconciler.dart, lib/features/medications/presentation/today_dashboard_screen.dart, and lib/main.dart
-- [ ] T003 [P] Review existing localization and accessibility patterns in lib/l10n/app_en.arb, lib/l10n/app_es.arb, lib/l10n/app_es_419.arb, lib/features/medications/presentation/today_reminder_card.dart, and docs/ux-design.md
+- [X] T001 Create medication history source and test file placeholders matching the plan in lib/features/medications/domain/medication_history.dart, lib/features/medications/domain/medication_history_service.dart, lib/features/medications/data/medication_history_repository.dart, lib/features/medications/data/local_medication_history_repository.dart, lib/features/medications/presentation/medication_history_screen.dart, lib/features/medications/presentation/medication_history_day_section.dart, lib/features/medications/presentation/medication_history_status_label.dart, test/features/medications/medication_history_service_test.dart, test/features/medications/medication_history_repository_test.dart, test/features/medications/medication_history_screen_test.dart, and test/features/medications/fakes/fake_medication_history_repository.dart
+- [X] T002 [P] Review existing reminder action and due reconciliation integration points in lib/services/reminder_action_handler.dart, lib/services/reminder_due_reconciler.dart, lib/features/medications/presentation/today_dashboard_screen.dart, and lib/main.dart
+- [X] T003 [P] Review existing localization and accessibility patterns in lib/l10n/app_en.arb, lib/l10n/app_es.arb, lib/l10n/app_es_419.arb, lib/features/medications/presentation/today_reminder_card.dart, and docs/ux-design.md
 
 ---
 
@@ -23,12 +23,12 @@
 
 **Critical**: No user story work can begin until this phase is complete.
 
-- [ ] T004 [P] Implement MedicationHistoryStatus, MedicationHistorySource, MedicationHistoryEntry, MedicationHistoryDayGroup, stable occurrence id creation, JSON serialization, and status precedence helpers in lib/features/medications/domain/medication_history.dart
-- [ ] T005 [P] Define MedicationHistoryRepository with loadEntries, upsertEntry, and pruneBefore operations in lib/features/medications/data/medication_history_repository.dart
-- [ ] T006 [P] Add FakeMedicationHistoryRepository with in-memory load, upsert, and prune behavior for widget and service tests in test/features/medications/fakes/fake_medication_history_repository.dart
-- [ ] T007 Write repository persistence tests for valid JSON loading, invalid record ignoring, upsert-by-stable-id, and pruneBefore retention in test/features/medications/medication_history_repository_test.dart
-- [ ] T008 Implement SharedPreferences-backed LocalMedicationHistoryRepository using key medications.history.v1, raw enum names, ISO timestamps, invalid-record recovery, and deterministic ordering in lib/features/medications/data/local_medication_history_repository.dart
-- [ ] T009 Wire MedicationHistoryRepository dependency through PillReminderApp constructor, fallback in-memory repository, _MainAppHome, and MedicationHistoryScreen navigation support in lib/main.dart
+- [X] T004 [P] Implement MedicationHistoryStatus, MedicationHistorySource, MedicationHistoryEntry, MedicationHistoryDayGroup, stable occurrence id creation, JSON serialization, and status precedence helpers in lib/features/medications/domain/medication_history.dart
+- [X] T005 [P] Define MedicationHistoryRepository with loadEntries, upsertEntry, and pruneBefore operations in lib/features/medications/data/medication_history_repository.dart
+- [X] T006 [P] Add FakeMedicationHistoryRepository with in-memory load, upsert, and prune behavior for widget and service tests in test/features/medications/fakes/fake_medication_history_repository.dart
+- [X] T007 Write repository persistence tests for valid JSON loading, invalid record ignoring, upsert-by-stable-id, and pruneBefore retention in test/features/medications/medication_history_repository_test.dart
+- [X] T008 Implement SharedPreferences-backed LocalMedicationHistoryRepository using key medications.history.v1, raw enum names, ISO timestamps, invalid-record recovery, and deterministic ordering in lib/features/medications/data/local_medication_history_repository.dart
+- [X] T009 Wire MedicationHistoryRepository dependency through PillReminderApp constructor, fallback in-memory repository, _MainAppHome, and MedicationHistoryScreen navigation support in lib/main.dart
 
 **Checkpoint**: Shared history data and persistence contracts are ready.
 
@@ -42,18 +42,18 @@
 
 ### Tests for User Story 1
 
-- [ ] T010 [P] [US1] Add MedicationHistoryService tests for rolling 90-day loading, newest-first day grouping, scheduled-time then medication-name ordering, and empty results in test/features/medications/medication_history_service_test.dart
-- [ ] T011 [P] [US1] Add MedicationHistoryScreen widget tests for loading, empty state, populated day sections, medication name, dosage label, scheduled time, and status visibility in test/features/medications/medication_history_screen_test.dart
-- [ ] T012 [P] [US1] Add navigation widget test confirming the main reminder experience exposes and opens medication history from lib/main.dart or TodayDashboardScreen in test/features/medications/today_dashboard_screen_test.dart
+- [X] T010 [P] [US1] Add MedicationHistoryService tests for rolling 90-day loading, newest-first day grouping, scheduled-time then medication-name ordering, and empty results in test/features/medications/medication_history_service_test.dart
+- [X] T011 [P] [US1] Add MedicationHistoryScreen widget tests for loading, empty state, populated day sections, medication name, dosage label, scheduled time, and status visibility in test/features/medications/medication_history_screen_test.dart
+- [X] T012 [P] [US1] Add navigation widget test confirming the main reminder experience exposes and opens medication history from lib/main.dart or TodayDashboardScreen in test/features/medications/today_dashboard_screen_test.dart
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Implement MedicationHistoryService loadDayGroups with 90-day window, repository pruning, day grouping, status precedence, and injectable clock in lib/features/medications/domain/medication_history_service.dart
-- [ ] T014 [P] [US1] Implement MedicationHistoryStatusLabel with text plus distinct Material icons or shapes for taken, skipped, missed, and snoozed in lib/features/medications/presentation/medication_history_status_label.dart
-- [ ] T015 [P] [US1] Implement MedicationHistoryDaySection with responsive day heading and ordered informational rows in lib/features/medications/presentation/medication_history_day_section.dart
-- [ ] T016 [US1] Implement MedicationHistoryScreen loading, empty, populated, and invalid-data recovery states using MedicationHistoryService in lib/features/medications/presentation/medication_history_screen.dart
-- [ ] T017 [US1] Add a localized history navigation action from the main reminder app bar or TodayDashboardScreen and push MedicationHistoryScreen with repositories in lib/main.dart and lib/features/medications/presentation/today_dashboard_screen.dart
-- [ ] T018 [US1] Add English and Spanish l10n keys for history title, navigation tooltip/label, empty state, day heading accessibility text, and status labels in lib/l10n/app_en.arb, lib/l10n/app_es.arb, and lib/l10n/app_es_419.arb
+- [X] T013 [US1] Implement MedicationHistoryService loadDayGroups with 90-day window, repository pruning, day grouping, status precedence, and injectable clock in lib/features/medications/domain/medication_history_service.dart
+- [X] T014 [P] [US1] Implement MedicationHistoryStatusLabel with text plus distinct Material icons or shapes for taken, skipped, missed, and snoozed in lib/features/medications/presentation/medication_history_status_label.dart
+- [X] T015 [P] [US1] Implement MedicationHistoryDaySection with responsive day heading and ordered informational rows in lib/features/medications/presentation/medication_history_day_section.dart
+- [X] T016 [US1] Implement MedicationHistoryScreen loading, empty, populated, and invalid-data recovery states using MedicationHistoryService in lib/features/medications/presentation/medication_history_screen.dart
+- [X] T017 [US1] Add a localized history navigation action from the main reminder app bar or TodayDashboardScreen and push MedicationHistoryScreen with repositories in lib/main.dart and lib/features/medications/presentation/today_dashboard_screen.dart
+- [X] T018 [US1] Add English and Spanish l10n keys for history title, navigation tooltip/label, empty state, day heading accessibility text, and status labels in lib/l10n/app_en.arb, lib/l10n/app_es.arb, and lib/l10n/app_es_419.arb
 
 **Checkpoint**: User Story 1 is fully functional and independently testable.
 
@@ -67,17 +67,17 @@
 
 ### Tests for User Story 2
 
-- [ ] T019 [P] [US2] Add status label widget tests for all four statuses, icons/shapes, localized text, and large-text wrapping in test/features/medications/medication_history_screen_test.dart
-- [ ] T020 [P] [US2] Add semantic label widget tests confirming each history row announces day, medication, optional dosage, scheduled time, and status in order in test/features/medications/medication_history_screen_test.dart
-- [ ] T021 [P] [US2] Add reminder action history tests for taken, skipped, snoozed, and snoozed-then-final status precedence in test/features/medications/reminder_action_handler_test.dart
+- [X] T019 [P] [US2] Add status label widget tests for all four statuses, icons/shapes, localized text, and large-text wrapping in test/features/medications/medication_history_screen_test.dart
+- [X] T020 [P] [US2] Add semantic label widget tests confirming each history row announces day, medication, optional dosage, scheduled time, and status in order in test/features/medications/medication_history_screen_test.dart
+- [X] T021 [P] [US2] Add reminder action history tests for taken, skipped, snoozed, and snoozed-then-final status precedence in test/features/medications/reminder_action_handler_test.dart
 
 ### Implementation for User Story 2
 
-- [ ] T022 [US2] Extend ReminderActionHandler to accept MedicationHistoryRepository and upsert taken, skipped, and snoozed entries with captured medication name, dosage label, scheduled time, snooze count, and source in lib/services/reminder_action_handler.dart
-- [ ] T023 [US2] Update DueReminder domain conversion helpers if needed to expose scheduleId, medication snapshot, snooze metadata, and final status timestamps for history recording in lib/features/medications/domain/due_reminder.dart
-- [ ] T024 [US2] Update MedicationHistoryService status precedence so final taken, skipped, or missed outcomes replace snoozed display for the same occurrence in lib/features/medications/domain/medication_history_service.dart
-- [ ] T025 [US2] Refine MedicationHistoryStatusLabel colors, icons, shapes, contrast, and calm localized labels without clinical advice or alarming language in lib/features/medications/presentation/medication_history_status_label.dart and lib/l10n/app_en.arb
-- [ ] T026 [US2] Add row Semantics wrapping in MedicationHistoryDaySection with a single logical label and informational-only behavior in lib/features/medications/presentation/medication_history_day_section.dart
+- [X] T022 [US2] Extend ReminderActionHandler to accept MedicationHistoryRepository and upsert taken, skipped, and snoozed entries with captured medication name, dosage label, scheduled time, snooze count, and source in lib/services/reminder_action_handler.dart
+- [X] T023 [US2] Update DueReminder domain conversion helpers if needed to expose scheduleId, medication snapshot, snooze metadata, and final status timestamps for history recording in lib/features/medications/domain/due_reminder.dart
+- [X] T024 [US2] Update MedicationHistoryService status precedence so final taken, skipped, or missed outcomes replace snoozed display for the same occurrence in lib/features/medications/domain/medication_history_service.dart
+- [X] T025 [US2] Refine MedicationHistoryStatusLabel colors, icons, shapes, contrast, and calm localized labels without clinical advice or alarming language in lib/features/medications/presentation/medication_history_status_label.dart and lib/l10n/app_en.arb
+- [X] T026 [US2] Add row Semantics wrapping in MedicationHistoryDaySection with a single logical label and informational-only behavior in lib/features/medications/presentation/medication_history_day_section.dart
 
 **Checkpoint**: User Stories 1 and 2 work independently with all status meanings accessible.
 
@@ -91,17 +91,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T027 [P] [US3] Add persistence restart test proving LocalMedicationHistoryRepository reloads saved history after a new SharedPreferences-backed instance in test/features/medications/medication_history_repository_test.dart
-- [ ] T028 [P] [US3] Add privacy/offline widget test confirming history screen has no sign-in, sync, sharing, export, analytics, backup, caregiver invite, or internet prompt copy in test/features/medications/medication_history_screen_test.dart
-- [ ] T029 [P] [US3] Add missed reconciliation tests for unhandled reminders older than 60 minutes and no duplicate confusing rows for existing occurrences in test/features/medications/reminder_due_reconciler_test.dart
+- [X] T027 [P] [US3] Add persistence restart test proving LocalMedicationHistoryRepository reloads saved history after a new SharedPreferences-backed instance in test/features/medications/medication_history_repository_test.dart
+- [X] T028 [P] [US3] Add privacy/offline widget test confirming history screen has no sign-in, sync, sharing, export, analytics, backup, caregiver invite, or internet prompt copy in test/features/medications/medication_history_screen_test.dart
+- [X] T029 [P] [US3] Add missed reconciliation tests for unhandled reminders older than 60 minutes and no duplicate confusing rows for existing occurrences in test/features/medications/reminder_due_reconciler_test.dart
 
 ### Implementation for User Story 3
 
-- [ ] T030 [US3] Extend ReminderDueReconciler to accept MedicationHistoryRepository and upsert missed entries for unhandled scheduled reminders more than 60 minutes past scheduledAt in lib/services/reminder_due_reconciler.dart
-- [ ] T031 [US3] Ensure today dashboard mark-handled path records a taken history entry with captured medication name and dosage when users mark current-day scheduled reminders handled in lib/features/medications/presentation/today_dashboard_screen.dart
-- [ ] T032 [US3] Ensure history recording preserves captured medication name and dosage after edit, pause, resume, or delete without adding history row edit controls in lib/services/reminder_action_handler.dart, lib/services/reminder_due_reconciler.dart, and lib/features/medications/presentation/medication_history_day_section.dart
-- [ ] T033 [US3] Remove or avoid any account, network, analytics, export, backup, sharing, sync, or caregiver invitation surfaces from the history screen in lib/features/medications/presentation/medication_history_screen.dart
-- [ ] T034 [US3] Prune history older than the rolling 90-day window during repository upsert and service load paths in lib/features/medications/data/local_medication_history_repository.dart and lib/features/medications/domain/medication_history_service.dart
+- [X] T030 [US3] Extend ReminderDueReconciler to accept MedicationHistoryRepository and upsert missed entries for unhandled scheduled reminders more than 60 minutes past scheduledAt in lib/services/reminder_due_reconciler.dart
+- [X] T031 [US3] Ensure today dashboard mark-handled path records a taken history entry with captured medication name and dosage when users mark current-day scheduled reminders handled in lib/features/medications/presentation/today_dashboard_screen.dart
+- [X] T032 [US3] Ensure history recording preserves captured medication name and dosage after edit, pause, resume, or delete without adding history row edit controls in lib/services/reminder_action_handler.dart, lib/services/reminder_due_reconciler.dart, and lib/features/medications/presentation/medication_history_day_section.dart
+- [X] T033 [US3] Remove or avoid any account, network, analytics, export, backup, sharing, sync, or caregiver invitation surfaces from the history screen in lib/features/medications/presentation/medication_history_screen.dart
+- [X] T034 [US3] Prune history older than the rolling 90-day window during repository upsert and service load paths in lib/features/medications/data/local_medication_history_repository.dart and lib/features/medications/domain/medication_history_service.dart
 
 **Checkpoint**: User Story 3 is independently testable offline and private on device.
 
@@ -115,16 +115,16 @@
 
 ### Tests for User Story 4
 
-- [ ] T035 [P] [US4] Add localization widget tests for English, Spanish, and es_419 history title, empty state, status labels, day headings, and scheduled times in test/features/medications/medication_history_screen_test.dart
-- [ ] T036 [P] [US4] Add large text widget tests for long medication names and dosage labels without clipped status, overlapping rows, or blocked navigation in test/features/medications/medication_history_screen_test.dart
-- [ ] T037 [P] [US4] Add l10n generation regression check expectations for new history keys in lib/l10n/app_localizations_en.dart, lib/l10n/app_localizations_es.dart, and lib/l10n/app_localizations.dart
+- [X] T035 [P] [US4] Add localization widget tests for English, Spanish, and es_419 history title, empty state, status labels, day headings, and scheduled times in test/features/medications/medication_history_screen_test.dart
+- [X] T036 [P] [US4] Add large text widget tests for long medication names and dosage labels without clipped status, overlapping rows, or blocked navigation in test/features/medications/medication_history_screen_test.dart
+- [X] T037 [P] [US4] Add l10n generation regression check expectations for new history keys in lib/l10n/app_localizations_en.dart, lib/l10n/app_localizations_es.dart, and lib/l10n/app_localizations.dart
 
 ### Implementation for User Story 4
 
-- [ ] T038 [US4] Format day headings and scheduled reminder times with intl using the active locale in lib/features/medications/presentation/medication_history_day_section.dart and lib/features/medications/presentation/medication_history_screen.dart
-- [ ] T039 [US4] Update medication history layouts for large text, generous spacing, focus order, 48px minimum navigation targets, and wrapping content per docs/ux-design.md in lib/features/medications/presentation/medication_history_screen.dart, lib/features/medications/presentation/medication_history_day_section.dart, and lib/features/medications/presentation/medication_history_status_label.dart
-- [ ] T040 [US4] Complete English, Spanish, and Latin American Spanish translations for all medication history strings in lib/l10n/app_en.arb, lib/l10n/app_es.arb, and lib/l10n/app_es_419.arb
-- [ ] T041 [US4] Run flutter gen-l10n and update generated localization files in lib/l10n/app_localizations.dart, lib/l10n/app_localizations_en.dart, and lib/l10n/app_localizations_es.dart
+- [X] T038 [US4] Format day headings and scheduled reminder times with intl using the active locale in lib/features/medications/presentation/medication_history_day_section.dart and lib/features/medications/presentation/medication_history_screen.dart
+- [X] T039 [US4] Update medication history layouts for large text, generous spacing, focus order, 48px minimum navigation targets, and wrapping content per docs/ux-design.md in lib/features/medications/presentation/medication_history_screen.dart, lib/features/medications/presentation/medication_history_day_section.dart, and lib/features/medications/presentation/medication_history_status_label.dart
+- [X] T040 [US4] Complete English, Spanish, and Latin American Spanish translations for all medication history strings in lib/l10n/app_en.arb, lib/l10n/app_es.arb, and lib/l10n/app_es_419.arb
+- [X] T041 [US4] Run flutter gen-l10n and update generated localization files in lib/l10n/app_localizations.dart, lib/l10n/app_localizations_en.dart, and lib/l10n/app_localizations_es.dart
 
 **Checkpoint**: User Story 4 is independently testable with localization and accessibility settings.
 
@@ -134,14 +134,14 @@
 
 **Purpose**: Final validation across behavior, accessibility, privacy, localization, performance, and documentation.
 
-- [ ] T042 [P] Update manual verification notes for medication history in specs/006-medication-history/quickstart.md
-- [ ] T043 [P] Add or update test fixtures for 90 days of typical reminders, same-time medications, long names, edited/deleted medication snapshots, and all statuses in test/features/medications/medication_history_test_fixtures.dart
-- [ ] T044 Run dart format on changed Dart files under lib/ and test/
-- [ ] T045 Run flutter gen-l10n, flutter test, and flutter analyze using pubspec.yaml from repository root
+- [X] T042 [P] Update manual verification notes for medication history in specs/006-medication-history/quickstart.md
+- [X] T043 [P] Add or update test fixtures for 90 days of typical reminders, same-time medications, long names, edited/deleted medication snapshots, and all statuses in test/features/medications/medication_history_test_fixtures.dart
+- [X] T044 Run dart format on changed Dart files under lib/ and test/
+- [X] T045 Run flutter gen-l10n, flutter test, and flutter analyze using pubspec.yaml from repository root
 - [ ] T046 Perform manual quickstart verification for grouping, all statuses, snooze-final precedence, edited/deleted medication snapshots, offline availability, localization, screen reader order, large text, and no overlap using specs/006-medication-history/quickstart.md
-- [ ] T047 Review medication history implementation against docs/ux-design.md for calm tone, readable text, pressure-free choices, non-clinical language, and no account friction
-- [ ] T048 Verify performance with at least 90 days of typical reminder entries and keep history screen load under 500 ms in test/features/medications/medication_history_service_test.dart or test/features/medications/medication_history_screen_test.dart
-- [ ] T049 Create a lightweight usability review script for SC-001, SC-006, and SC-009 covering open-history timing, status wording feedback, and scanning a day with 8 entries in specs/006-medication-history/quickstart.md
+- [X] T047 Review medication history implementation against docs/ux-design.md for calm tone, readable text, pressure-free choices, non-clinical language, and no account friction
+- [X] T048 Verify performance with at least 90 days of typical reminder entries and keep history screen load under 500 ms in test/features/medications/medication_history_service_test.dart or test/features/medications/medication_history_screen_test.dart
+- [X] T049 Create a lightweight usability review script for SC-001, SC-006, and SC-009 covering open-history timing, status wording feedback, and scanning a day with 8 entries in specs/006-medication-history/quickstart.md
 
 ---
 

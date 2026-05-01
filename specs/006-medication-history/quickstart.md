@@ -35,3 +35,19 @@ Manual checks:
 
 - Seed at least 90 days of typical reminder entries and confirm the history screen opens and renders responsively.
 - Verify no new polling, background cleanup loop, remote call, analytics call, or startup-heavy history work was added.
+
+## Manual Verification Notes
+
+- Open the app after setup and use the history icon in the Today app bar. Confirm the screen opens with normal back navigation and no account, sign-in, sync, export, backup, sharing, or analytics prompt.
+- With no recorded activity, confirm the empty state says recent activity will appear after reminders are recorded and does not scold or provide medical advice.
+- Record one taken item from Today, one skipped due reminder, one snoozed due reminder, and one missed reminder after the 60-minute boundary. Confirm each scheduled occurrence appears once.
+- Snooze a reminder, then mark the same occurrence taken or skipped. Confirm the visible row shows the final status while preserving a single row for the occurrence.
+- Edit, pause, resume, and delete a medication after recording history. Confirm existing history still shows the captured medication name and dosage label and exposes no row edit controls.
+- Switch English and Latin American Spanish locales and reopen history. Confirm title, empty copy, status labels, day headings, and scheduled times are localized.
+- Enable large text and screen reader. Confirm history rows wrap without overlap, status labels include both icon and text, and the row announcement order is day, medication, optional dose, time, status.
+
+## Lightweight Usability Review Script
+
+1. SC-001 open-history timing: Ask the participant to find recent reminder activity from the Today screen. Note whether they discover the history action and reach the screen without help.
+2. SC-006 status wording feedback: Show taken, skipped, missed, and snoozed rows. Ask what each means and whether any wording feels blaming or alarming.
+3. SC-009 scan a busy day: Show one day with eight entries across similar times. Ask which medications were recorded in the morning and whether the order and spacing are easy to scan.

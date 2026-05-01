@@ -218,6 +218,40 @@
       }
     }
   },
+  "medicationHistoryOpen": "Historial de medicamentos",
+  "medicationHistoryTitle": "Historial de medicamentos",
+  "medicationHistoryIntro": "La actividad reciente de recordatorios se queda en este dispositivo.",
+  "medicationHistoryEmptyTitle": "Todavía no hay historial",
+  "medicationHistoryEmptyBody": "Los recordatorios tomados, omitidos, pendientes y pospuestos aparecerán aquí después de registrarse actividad.",
+  "medicationHistoryStatusTaken": "Tomado",
+  "medicationHistoryStatusSkipped": "Omitido",
+  "medicationHistoryStatusMissed": "Pendiente",
+  "medicationHistoryStatusSnoozed": "Pospuesto",
+  "medicationHistoryDaySemantics": "Historial de medicamentos del {date}",
+  "@medicationHistoryDaySemantics": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "medicationHistoryRowSemantics": "{date}, {medication}, {time}, {status}",
+  "@medicationHistoryRowSemantics": {
+    "placeholders": {
+      "date": {},
+      "medication": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "medicationHistoryRowSemanticsWithDose": "{date}, {medication}, {dose}, {time}, {status}",
+  "@medicationHistoryRowSemanticsWithDose": {
+    "placeholders": {
+      "date": {},
+      "medication": {},
+      "dose": {},
+      "time": {},
+      "status": {}
+    }
+  },
   "reminderHandlingSettingsTitle": "Manejo de recordatorios",
   "reminderHandlingIntervalLabel": "Recordar después de"
 }

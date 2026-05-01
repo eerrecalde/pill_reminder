@@ -1,10 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pill_reminder/features/medications/domain/due_reminder.dart';
+import 'package:pill_reminder/features/medications/domain/medication_history.dart';
 import 'package:pill_reminder/features/medications/domain/reminder_handling_preferences.dart';
 import 'package:pill_reminder/services/reminder_action_handler.dart';
 
 import 'due_reminder_test_fixtures.dart';
 import 'fakes/fake_due_reminder_repository.dart';
+import 'fakes/fake_medication_history_repository.dart';
 import 'fakes/fake_reminder_notification_scheduler.dart';
 
 void main() {
@@ -86,4 +88,38 @@ void main() {
     final saved = await repository.loadDueReminder(reminder.id);
     expect(saved?.remindAgainLaterRequest?.requestedAt.minute, 5);
   });
+
+  test(
+    'records taken, skipped, snoozed, and final status precedence',
+    () async {
+      final reminder = dueReminderFixture();
+      final repository = FakeDueReminderRepository([reminder]);
+      final historyRepository = FakeMedicationHistoryRepository();
+      final handler = ReminderActionHandler(
+        repository: repository,
+        notificationScheduler: FakeReminderNotificationScheduler(),
+        medicationHistoryRepository: historyRepository,
+      );
+
+      await handler.handle(
+        dueReminderId: reminder.id,
+        actionType: ReminderActionType.remindAgainLater,
+        source: ReminderActionSource.inApp,
+        now: DateTime(2026, 5, 1, 8, 1),
+      );
+      await handler.handle(
+        dueReminderId: reminder.id,
+        actionType: ReminderActionType.taken,
+        source: ReminderActionSource.inApp,
+        now: DateTime(2026, 5, 1, 8, 5),
+      );
+
+      expect(historyRepository.entries, hasLength(1));
+      expect(
+        historyRepository.entries.single.status,
+        MedicationHistoryStatus.taken,
+      );
+      expect(historyRepository.entries.single.snoozeCount, 1);
+    },
+  );
 }

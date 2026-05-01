@@ -9,8 +9,10 @@ import '../../setup/domain/notification_permission_status.dart';
 import '../../setup/presentation/reminder_status_banner.dart';
 import '../data/daily_reminder_handling_repository.dart';
 import '../data/due_reminder_repository.dart';
+import '../data/medication_history_repository.dart';
 import '../data/medication_repository.dart';
 import '../data/reminder_schedule_repository.dart';
+import '../domain/medication_history.dart';
 import '../domain/medication_reminder_operations.dart';
 import '../domain/medication.dart';
 import '../domain/today_dashboard.dart';
@@ -27,6 +29,7 @@ class TodayDashboardScreen extends StatefulWidget {
     required this.reminderScheduleRepository,
     required this.dailyReminderHandlingRepository,
     required this.dueReminderRepository,
+    required this.medicationHistoryRepository,
     required this.reminderNotificationScheduler,
     required this.notificationPermissionService,
     required this.notificationStatus,
@@ -42,6 +45,7 @@ class TodayDashboardScreen extends StatefulWidget {
   final ReminderScheduleRepository reminderScheduleRepository;
   final DailyReminderHandlingRepository dailyReminderHandlingRepository;
   final DueReminderRepository dueReminderRepository;
+  final MedicationHistoryRepository medicationHistoryRepository;
   final ReminderNotificationScheduler reminderNotificationScheduler;
   final NotificationPermissionService notificationPermissionService;
   final SetupNotificationPermissionStatus notificationStatus;
@@ -143,6 +147,27 @@ class _TodayDashboardScreenState extends State<TodayDashboardScreen>
       medicationId: item.medicationId,
       reminderTime: item.reminderTime,
       handledAt: now,
+    );
+    await widget.medicationHistoryRepository.upsertEntry(
+      MedicationHistoryEntry(
+        id: MedicationHistoryEntry.buildOccurrenceId(
+          localDate: item.localDate,
+          scheduleId: item.scheduleId,
+          medicationId: item.medicationId,
+          reminderTime: item.reminderTime,
+        ),
+        localDate: item.localDate,
+        scheduledAt: item.scheduledDateTime,
+        scheduleId: item.scheduleId,
+        medicationId: item.medicationId,
+        medicationName: item.medicationName,
+        dosageLabel: item.dosageLabel,
+        status: MedicationHistoryStatus.taken,
+        statusUpdatedAt: now,
+        source: MedicationHistorySource.todayDashboard,
+        createdAt: now,
+        updatedAt: now,
+      ),
     );
 
     if (item.isUpcoming) {
