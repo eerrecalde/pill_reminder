@@ -46,6 +46,14 @@ abstract class ReminderNotificationScheduler {
   });
 
   Future<void> cancelForSchedule(ReminderSchedule schedule);
+
+  Future<void> suppressTodayForTime(
+    ReminderSchedule schedule,
+    ReminderTime reminderTime, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  });
 }
 
 class LocalReminderNotificationScheduler
@@ -128,6 +136,42 @@ class LocalReminderNotificationScheduler
     for (final time in schedule.reminderTimes) {
       await _notificationsPlugin.cancel(id: _notificationId(schedule, time));
     }
+  }
+
+  @override
+  Future<void> suppressTodayForTime(
+    ReminderSchedule schedule,
+    ReminderTime reminderTime, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  }) async {
+    await initialize();
+    if (_resultForPermission(permissionStatus) != null) return;
+
+    await _notificationsPlugin.cancel(
+      id: _notificationId(schedule, reminderTime),
+    );
+    await _notificationsPlugin.zonedSchedule(
+      id: _notificationId(schedule, reminderTime),
+      title: title,
+      body: body,
+      scheduledDate: _nextDailyReminder(
+        reminderTime,
+      ).add(const Duration(days: 1)),
+      notificationDetails: const NotificationDetails(
+        android: AndroidNotificationDetails(
+          'daily_medication_reminders',
+          'Daily medication reminders',
+          channelDescription: 'Daily medication reminder alerts',
+          importance: Importance.high,
+          priority: Priority.high,
+        ),
+        iOS: DarwinNotificationDetails(),
+      ),
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+      matchDateTimeComponents: DateTimeComponents.time,
+    );
   }
 
   ReminderNotificationScheduleResult? _resultForPermission(

@@ -620,6 +620,149 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose an end date on or after the first reminder date.'**
   String get scheduleInvalidEndDateError;
+
+  /// No description provided for @todayDueNowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Due now'**
+  String get todayDueNowTitle;
+
+  /// No description provided for @todayUpcomingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming up'**
+  String get todayUpcomingTitle;
+
+  /// No description provided for @todayMissedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get todayMissedTitle;
+
+  /// No description provided for @todayHandledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Handled today'**
+  String get todayHandledTitle;
+
+  /// No description provided for @todayClearTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The rest of today is clear'**
+  String get todayClearTitle;
+
+  /// No description provided for @todayClearBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No more medication reminders need attention today.'**
+  String get todayClearBody;
+
+  /// No description provided for @todayNoMedicationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No medications saved yet'**
+  String get todayNoMedicationsTitle;
+
+  /// No description provided for @todayNoMedicationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first medication so reminders can be set up when you are ready.'**
+  String get todayNoMedicationsBody;
+
+  /// No description provided for @todayNoActiveMedicationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No active medications right now'**
+  String get todayNoActiveMedicationsTitle;
+
+  /// No description provided for @todayNoActiveMedicationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your saved medications are inactive, so they will not appear as due today.'**
+  String get todayNoActiveMedicationsBody;
+
+  /// No description provided for @todayNoSchedulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No reminders scheduled yet'**
+  String get todayNoSchedulesTitle;
+
+  /// No description provided for @todayNoSchedulesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a reminder for an active medication to see it here today.'**
+  String get todayNoSchedulesBody;
+
+  /// No description provided for @todayManageMedications.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage medications'**
+  String get todayManageMedications;
+
+  /// No description provided for @todayMarkHandled.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark handled'**
+  String get todayMarkHandled;
+
+  /// No description provided for @todayReminderTime.
+  ///
+  /// In en, this message translates to:
+  /// **'{time}'**
+  String todayReminderTime(Object time);
+
+  /// No description provided for @todayReminderStatusDueNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Due now'**
+  String get todayReminderStatusDueNow;
+
+  /// No description provided for @todayReminderStatusUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming'**
+  String get todayReminderStatusUpcoming;
+
+  /// No description provided for @todayReminderStatusMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get todayReminderStatusMissed;
+
+  /// No description provided for @todayReminderStatusHandled.
+  ///
+  /// In en, this message translates to:
+  /// **'Handled'**
+  String get todayReminderStatusHandled;
+
+  /// No description provided for @todayReminderSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{medication}, {time}, {status}'**
+  String todayReminderSemantics(Object medication, Object time, Object status);
+
+  /// No description provided for @todayReminderSemanticsWithDose.
+  ///
+  /// In en, this message translates to:
+  /// **'{medication}, {dose}, {time}, {status}'**
+  String todayReminderSemanticsWithDose(
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  );
+
+  /// No description provided for @todayMarkHandledSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark {medication} at {time} as handled'**
+  String todayMarkHandledSemantics(Object medication, Object time);
+
+  /// No description provided for @todayNotificationGuidance.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts may need notification permission, but today\'s schedule is still shown here.'**
+  String get todayNotificationGuidance;
 }
 
 class _AppLocalizationsDelegate

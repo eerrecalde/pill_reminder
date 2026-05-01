@@ -29,4 +29,23 @@ void main() {
       isNotNull,
     );
   });
+
+  test(
+    'tracks current-day suppression for an upcoming handled reminder',
+    () async {
+      final scheduler = FakeReminderNotificationScheduler();
+      final schedule = reminderScheduleFixture();
+      final time = reminderTimeFixture(hour: 20);
+
+      await scheduler.suppressTodayForTime(
+        schedule,
+        time,
+        title: 'Title',
+        body: 'Body',
+        permissionStatus: SetupNotificationPermissionStatus.granted,
+      );
+
+      expect(scheduler.suppressedTimes, [time]);
+    },
+  );
 }

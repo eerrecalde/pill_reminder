@@ -301,4 +301,91 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scheduleInvalidEndDateError =>
       'Choose an end date on or after the first reminder date.';
+
+  @override
+  String get todayDueNowTitle => 'Due now';
+
+  @override
+  String get todayUpcomingTitle => 'Coming up';
+
+  @override
+  String get todayMissedTitle => 'Missed';
+
+  @override
+  String get todayHandledTitle => 'Handled today';
+
+  @override
+  String get todayClearTitle => 'The rest of today is clear';
+
+  @override
+  String get todayClearBody =>
+      'No more medication reminders need attention today.';
+
+  @override
+  String get todayNoMedicationsTitle => 'No medications saved yet';
+
+  @override
+  String get todayNoMedicationsBody =>
+      'Add your first medication so reminders can be set up when you are ready.';
+
+  @override
+  String get todayNoActiveMedicationsTitle => 'No active medications right now';
+
+  @override
+  String get todayNoActiveMedicationsBody =>
+      'Your saved medications are inactive, so they will not appear as due today.';
+
+  @override
+  String get todayNoSchedulesTitle => 'No reminders scheduled yet';
+
+  @override
+  String get todayNoSchedulesBody =>
+      'Schedule a reminder for an active medication to see it here today.';
+
+  @override
+  String get todayManageMedications => 'Manage medications';
+
+  @override
+  String get todayMarkHandled => 'Mark handled';
+
+  @override
+  String todayReminderTime(Object time) {
+    return '$time';
+  }
+
+  @override
+  String get todayReminderStatusDueNow => 'Due now';
+
+  @override
+  String get todayReminderStatusUpcoming => 'Upcoming';
+
+  @override
+  String get todayReminderStatusMissed => 'Missed';
+
+  @override
+  String get todayReminderStatusHandled => 'Handled';
+
+  @override
+  String todayReminderSemantics(Object medication, Object time, Object status) {
+    return '$medication, $time, $status';
+  }
+
+  @override
+  String todayReminderSemanticsWithDose(
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$medication, $dose, $time, $status';
+  }
+
+  @override
+  String todayMarkHandledSemantics(Object medication, Object time) {
+    return 'Mark $medication at $time as handled';
+  }
+
+  @override
+  String get todayNotificationGuidance =>
+      'Reminder alerts may need notification permission, but today\'s schedule is still shown here.';
 }

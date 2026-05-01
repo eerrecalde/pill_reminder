@@ -6,6 +6,7 @@ class FakeReminderNotificationScheduler
     implements ReminderNotificationScheduler {
   final List<ReminderSchedule> scheduled = [];
   final List<ReminderSchedule> cancelled = [];
+  final List<ReminderTime> suppressedTimes = [];
 
   @override
   Future<void> initialize() async {}
@@ -36,5 +37,16 @@ class FakeReminderNotificationScheduler
         ReminderNotificationScheduleStatus.unavailable,
     };
     return ReminderNotificationScheduleResult(status);
+  }
+
+  @override
+  Future<void> suppressTodayForTime(
+    ReminderSchedule schedule,
+    ReminderTime reminderTime, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  }) async {
+    suppressedTimes.add(reminderTime);
   }
 }
