@@ -8,11 +8,19 @@ class MedicationListSection extends StatelessWidget {
   const MedicationListSection({
     required this.medications,
     this.onScheduleMedication,
+    this.onEditMedication,
+    this.onPauseMedication,
+    this.onResumeMedication,
+    this.onDeleteMedication,
     super.key,
   });
 
   final List<Medication> medications;
   final ValueChanged<Medication>? onScheduleMedication;
+  final ValueChanged<Medication>? onEditMedication;
+  final ValueChanged<Medication>? onPauseMedication;
+  final ValueChanged<Medication>? onResumeMedication;
+  final ValueChanged<Medication>? onDeleteMedication;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +67,10 @@ class MedicationListSection extends StatelessWidget {
           (medication) => _MedicationTile(
             medication,
             onScheduleMedication: onScheduleMedication,
+            onEditMedication: onEditMedication,
+            onPauseMedication: onPauseMedication,
+            onResumeMedication: onResumeMedication,
+            onDeleteMedication: onDeleteMedication,
           ),
         ),
       ],
@@ -67,10 +79,21 @@ class MedicationListSection extends StatelessWidget {
 }
 
 class _MedicationTile extends StatelessWidget {
-  const _MedicationTile(this.medication, {this.onScheduleMedication});
+  const _MedicationTile(
+    this.medication, {
+    this.onScheduleMedication,
+    this.onEditMedication,
+    this.onPauseMedication,
+    this.onResumeMedication,
+    this.onDeleteMedication,
+  });
 
   final Medication medication;
   final ValueChanged<Medication>? onScheduleMedication;
+  final ValueChanged<Medication>? onEditMedication;
+  final ValueChanged<Medication>? onPauseMedication;
+  final ValueChanged<Medication>? onResumeMedication;
+  final ValueChanged<Medication>? onDeleteMedication;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +101,10 @@ class _MedicationTile extends StatelessWidget {
     final details = [
       if (medication.dosageLabel.isNotEmpty) medication.dosageLabel,
       if (medication.notes.isNotEmpty) medication.notes,
-      medication.isActive
-          ? l10n.medicationAvailableForReminders
-          : l10n.medicationStoredInactive,
+      if (medication.isActive) l10n.medicationAvailableForReminders,
+      if (medication.isPaused) l10n.medicationPausedExplanation,
+      if (medication.status == MedicationStatus.inactive)
+        l10n.medicationStoredInactive,
     ];
 
     return Padding(
@@ -111,15 +135,50 @@ class _MedicationTile extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ),
-              if (onScheduleMedication != null) ...[
+              if (_hasActions) ...[
                 const SizedBox(height: 8),
-                OutlinedButton.icon(
-                  key: Key('schedule-medication-${medication.id}'),
-                  onPressed: medication.isActive
-                      ? () => onScheduleMedication!(medication)
-                      : null,
-                  icon: const Icon(Icons.schedule),
-                  label: Text(l10n.scheduleReminderTitle),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    if (onEditMedication != null)
+                      OutlinedButton.icon(
+                        key: Key('edit-medication-${medication.id}'),
+                        onPressed: () => onEditMedication!(medication),
+                        icon: const Icon(Icons.edit_outlined),
+                        label: Text(l10n.editMedicationAction),
+                      ),
+                    if (onScheduleMedication != null)
+                      OutlinedButton.icon(
+                        key: Key('schedule-medication-${medication.id}'),
+                        onPressed: medication.isActive || medication.isPaused
+                            ? () => onScheduleMedication!(medication)
+                            : null,
+                        icon: const Icon(Icons.schedule),
+                        label: Text(l10n.scheduleReminderTitle),
+                      ),
+                    if (medication.isPaused && onResumeMedication != null)
+                      FilledButton.icon(
+                        key: Key('resume-medication-${medication.id}'),
+                        onPressed: () => onResumeMedication!(medication),
+                        icon: const Icon(Icons.play_arrow_outlined),
+                        label: Text(l10n.resumeRemindersAction),
+                      )
+                    else if (medication.isActive && onPauseMedication != null)
+                      OutlinedButton.icon(
+                        key: Key('pause-medication-${medication.id}'),
+                        onPressed: () => onPauseMedication!(medication),
+                        icon: const Icon(Icons.notifications_paused_outlined),
+                        label: Text(l10n.pauseRemindersAction),
+                      ),
+                    if (onDeleteMedication != null)
+                      TextButton.icon(
+                        key: Key('delete-medication-${medication.id}'),
+                        onPressed: () => onDeleteMedication!(medication),
+                        icon: const Icon(Icons.delete_outline),
+                        label: Text(l10n.deleteMedicationAction),
+                      ),
+                  ],
                 ),
               ],
             ],
@@ -128,4 +187,11 @@ class _MedicationTile extends StatelessWidget {
       ),
     );
   }
+
+  bool get _hasActions =>
+      onScheduleMedication != null ||
+      onEditMedication != null ||
+      onPauseMedication != null ||
+      onResumeMedication != null ||
+      onDeleteMedication != null;
 }

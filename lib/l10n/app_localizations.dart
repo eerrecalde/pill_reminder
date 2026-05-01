@@ -279,6 +279,12 @@ abstract class AppLocalizations {
   /// **'Add medication'**
   String get addMedicationTitle;
 
+  /// No description provided for @editMedicationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit medication'**
+  String get editMedicationTitle;
+
   /// No description provided for @medicationsSectionTitle.
   ///
   /// In en, this message translates to:
@@ -345,6 +351,12 @@ abstract class AppLocalizations {
   /// **'Active'**
   String get medicationStatusActive;
 
+  /// No description provided for @medicationStatusPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Paused'**
+  String get medicationStatusPaused;
+
   /// No description provided for @medicationStatusInactive.
   ///
   /// In en, this message translates to:
@@ -357,6 +369,12 @@ abstract class AppLocalizations {
   /// **'Status, active'**
   String get medicationStatusActiveSemantics;
 
+  /// No description provided for @medicationStatusPausedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Status, paused. Reminders are stopped until you resume them.'**
+  String get medicationStatusPausedSemantics;
+
   /// No description provided for @medicationStatusInactiveSemantics.
   ///
   /// In en, this message translates to:
@@ -368,6 +386,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Available for future reminder setup.'**
   String get medicationAvailableForReminders;
+
+  /// No description provided for @medicationPausedExplanation.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders are paused until you resume them.'**
+  String get medicationPausedExplanation;
 
   /// No description provided for @medicationStoredInactive.
   ///
@@ -392,6 +416,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save medication'**
   String get saveMedication;
+
+  /// No description provided for @saveMedicationChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get saveMedicationChanges;
+
+  /// No description provided for @editMedicationAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get editMedicationAction;
+
+  /// No description provided for @pauseRemindersAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause reminders'**
+  String get pauseRemindersAction;
+
+  /// No description provided for @resumeRemindersAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume reminders'**
+  String get resumeRemindersAction;
+
+  /// No description provided for @deleteMedicationAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete medication'**
+  String get deleteMedicationAction;
 
   /// No description provided for @cancel.
   ///
@@ -429,11 +483,35 @@ abstract class AppLocalizations {
   /// **'Medication saved'**
   String get medicationSavedSemantics;
 
+  /// No description provided for @medicationUpdatedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication updated'**
+  String get medicationUpdatedSemantics;
+
   /// No description provided for @medicationNotSavedSemantics.
   ///
   /// In en, this message translates to:
   /// **'Medication was not saved'**
   String get medicationNotSavedSemantics;
+
+  /// No description provided for @remindersPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders paused.'**
+  String get remindersPaused;
+
+  /// No description provided for @remindersResumed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders resumed.'**
+  String get remindersResumed;
+
+  /// No description provided for @medicationDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication deleted.'**
+  String get medicationDeleted;
 
   /// No description provided for @medicationNameRequiredError.
   ///
@@ -561,6 +639,18 @@ abstract class AppLocalizations {
   /// **'Save schedule'**
   String get saveSchedule;
 
+  /// No description provided for @deleteScheduleAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete schedule'**
+  String get deleteScheduleAction;
+
+  /// No description provided for @scheduleDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder schedule deleted.'**
+  String get scheduleDeleted;
+
   /// No description provided for @scheduleSavedSemantics.
   ///
   /// In en, this message translates to:
@@ -620,6 +710,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose an end date on or after the first reminder date.'**
   String get scheduleInvalidEndDateError;
+
+  /// No description provided for @deleteFinalWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'This cannot be undone.'**
+  String get deleteFinalWarning;
+
+  /// No description provided for @deleteScheduleConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete reminder schedule?'**
+  String get deleteScheduleConfirmationTitle;
+
+  /// No description provided for @deleteScheduleConfirmationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The reminder times for {name} will be removed. The medication will stay saved.'**
+  String deleteScheduleConfirmationMessage(Object name);
+
+  /// No description provided for @deleteMedicationConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete medication?'**
+  String get deleteMedicationConfirmationTitle;
+
+  /// No description provided for @deleteMedicationConfirmationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} and its reminders will be removed from this device.'**
+  String deleteMedicationConfirmationMessage(Object name);
 
   /// No description provided for @todayDueNowTitle.
   ///

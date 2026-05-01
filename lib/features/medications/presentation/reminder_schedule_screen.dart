@@ -5,6 +5,7 @@ import '../../../l10n/app_localizations.dart';
 import '../../../services/notification_permission_service.dart';
 import '../../../services/reminder_notification_scheduler.dart';
 import '../../setup/domain/notification_permission_status.dart';
+import '../data/due_reminder_repository.dart';
 import '../data/reminder_schedule_repository.dart';
 import '../domain/medication.dart';
 import '../domain/reminder_schedule.dart';
@@ -12,6 +13,7 @@ import '../domain/reminder_schedule_draft.dart';
 import '../domain/reminder_schedule_validation.dart';
 import 'reminder_schedule_review.dart';
 import 'reminder_time_selector.dart';
+import 'medication_delete_confirmation_dialog.dart';
 
 class ReminderScheduleScreen extends StatefulWidget {
   const ReminderScheduleScreen({
@@ -19,11 +21,13 @@ class ReminderScheduleScreen extends StatefulWidget {
     required this.repository,
     required this.notificationPermissionService,
     required this.notificationScheduler,
+    this.dueReminderRepository,
     super.key,
   });
 
   final Medication medication;
   final ReminderScheduleRepository repository;
+  final DueReminderRepository? dueReminderRepository;
   final NotificationPermissionService notificationPermissionService;
   final ReminderNotificationScheduler notificationScheduler;
 
@@ -40,6 +44,7 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
       const ReminderScheduleValidationResult.valid();
   bool _loading = true;
   bool _saving = false;
+  ReminderSchedule? _existingSchedule;
 
   @override
   void initState() {
@@ -56,6 +61,7 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
     setState(() {
       _times = existing?.sortedReminderTimes ?? const [];
       _endDate = existing?.endDate;
+      _existingSchedule = existing;
       _permissionStatus = permission;
       _loading = false;
     });
@@ -142,7 +148,14 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
     final view = View.of(context);
     final textDirection = Directionality.of(context);
     setState(() => _saving = true);
-    final initialSchedule = await widget.repository.saveSchedule(
+    final previous = _existingSchedule;
+    if (previous != null) {
+      await widget.notificationScheduler.cancelForSchedule(previous);
+      await widget.dueReminderRepository?.deleteDueRemindersForSchedule(
+        previous.id,
+      );
+    }
+    final initialSchedule = await widget.repository.replaceSchedule(
       medicationId: widget.medication.id,
       reminderTimes: _times,
       endDate: _endDate,
@@ -154,7 +167,7 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
       body: l10n.notificationBody,
       permissionStatus: _permissionStatus,
     );
-    final saved = await widget.repository.saveSchedule(
+    final saved = await widget.repository.replaceSchedule(
       medicationId: widget.medication.id,
       reminderTimes: initialSchedule.reminderTimes,
       endDate: initialSchedule.endDate,
@@ -172,6 +185,29 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
     } else {
       setState(() => _saving = false);
     }
+  }
+
+  Future<void> _deleteSchedule() async {
+    final schedule = _existingSchedule;
+    if (schedule == null) return;
+    final confirmed = await showMedicationDeleteConfirmationDialog(
+      context: context,
+      medication: widget.medication,
+      target: MedicationDeleteConfirmationTarget.schedule,
+    );
+    if (!confirmed) return;
+    await widget.notificationScheduler.cancelForSchedule(schedule);
+    await widget.dueReminderRepository?.deleteDueRemindersForSchedule(
+      schedule.id,
+    );
+    await widget.repository.deleteSchedule(widget.medication.id);
+    if (!mounted) return;
+    SemanticsService.sendAnnouncement(
+      View.of(context),
+      AppLocalizations.of(context).scheduleDeleted,
+      Directionality.of(context),
+    );
+    Navigator.of(context).pop();
   }
 
   void _setValidation(ReminderScheduleValidationResult validation) {
@@ -289,6 +325,15 @@ class _ReminderScheduleScreenState extends State<ReminderScheduleScreen> {
                   icon: const Icon(Icons.close),
                   label: Text(l10n.cancel),
                 ),
+                if (_existingSchedule != null) ...[
+                  const SizedBox(height: 12),
+                  TextButton.icon(
+                    key: const Key('delete-reminder-schedule-button'),
+                    onPressed: _saving ? null : _deleteSchedule,
+                    icon: const Icon(Icons.delete_outline),
+                    label: Text(l10n.deleteScheduleAction),
+                  ),
+                ],
               ],
             ),
           ),

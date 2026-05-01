@@ -47,7 +47,7 @@ class LocalReminderScheduleRepository implements ReminderScheduleRepository {
         .where((schedule) => schedule.medicationId == medicationId)
         .firstOrNull;
     final now = DateTime.now();
-    final sortedTimes = [...reminderTimes]..sort();
+    final sortedTimes = _sortedUniqueTimes(reminderTimes);
     final saved = ReminderSchedule(
       id: existing?.id ?? 'schedule-${now.microsecondsSinceEpoch}',
       medicationId: medicationId,
@@ -68,6 +68,22 @@ class LocalReminderScheduleRepository implements ReminderScheduleRepository {
   }
 
   @override
+  Future<ReminderSchedule> replaceSchedule({
+    required String medicationId,
+    required List<ReminderTime> reminderTimes,
+    DateTime? endDate,
+    ReminderNotificationDeliveryState notificationDeliveryState =
+        ReminderNotificationDeliveryState.permissionNeeded,
+  }) {
+    return saveSchedule(
+      medicationId: medicationId,
+      reminderTimes: reminderTimes,
+      endDate: endDate,
+      notificationDeliveryState: notificationDeliveryState,
+    );
+  }
+
+  @override
   Future<void> deleteSchedule(String medicationId) async {
     final schedules = await loadSchedules();
     await _saveAll(
@@ -84,5 +100,9 @@ class LocalReminderScheduleRepository implements ReminderScheduleRepository {
           .map((schedule) => jsonEncode(schedule.toJson()))
           .toList(growable: false),
     );
+  }
+
+  List<ReminderTime> _sortedUniqueTimes(List<ReminderTime> times) {
+    return {...times}.toList()..sort();
   }
 }

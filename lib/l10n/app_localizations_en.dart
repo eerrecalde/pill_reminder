@@ -107,6 +107,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addMedicationTitle => 'Add medication';
 
   @override
+  String get editMedicationTitle => 'Edit medication';
+
+  @override
   String get medicationsSectionTitle => 'Medications';
 
   @override
@@ -141,10 +144,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get medicationStatusActive => 'Active';
 
   @override
+  String get medicationStatusPaused => 'Paused';
+
+  @override
   String get medicationStatusInactive => 'Inactive';
 
   @override
   String get medicationStatusActiveSemantics => 'Status, active';
+
+  @override
+  String get medicationStatusPausedSemantics =>
+      'Status, paused. Reminders are stopped until you resume them.';
 
   @override
   String get medicationStatusInactiveSemantics => 'Status, inactive';
@@ -152,6 +162,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get medicationAvailableForReminders =>
       'Available for future reminder setup.';
+
+  @override
+  String get medicationPausedExplanation =>
+      'Reminders are paused until you resume them.';
 
   @override
   String get medicationStoredInactive =>
@@ -167,6 +181,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get saveMedication => 'Save medication';
+
+  @override
+  String get saveMedicationChanges => 'Save changes';
+
+  @override
+  String get editMedicationAction => 'Edit';
+
+  @override
+  String get pauseRemindersAction => 'Pause reminders';
+
+  @override
+  String get resumeRemindersAction => 'Resume reminders';
+
+  @override
+  String get deleteMedicationAction => 'Delete medication';
 
   @override
   String get cancel => 'Cancel';
@@ -188,7 +217,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get medicationSavedSemantics => 'Medication saved';
 
   @override
+  String get medicationUpdatedSemantics => 'Medication updated';
+
+  @override
   String get medicationNotSavedSemantics => 'Medication was not saved';
+
+  @override
+  String get remindersPaused => 'Reminders paused.';
+
+  @override
+  String get remindersResumed => 'Reminders resumed.';
+
+  @override
+  String get medicationDeleted => 'Medication deleted.';
 
   @override
   String get medicationNameRequiredError => 'Enter a medication name.';
@@ -266,6 +307,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saveSchedule => 'Save schedule';
 
   @override
+  String get deleteScheduleAction => 'Delete schedule';
+
+  @override
+  String get scheduleDeleted => 'Reminder schedule deleted.';
+
+  @override
   String get scheduleSavedSemantics => 'Reminder schedule saved';
 
   @override
@@ -301,6 +348,25 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scheduleInvalidEndDateError =>
       'Choose an end date on or after the first reminder date.';
+
+  @override
+  String get deleteFinalWarning => 'This cannot be undone.';
+
+  @override
+  String get deleteScheduleConfirmationTitle => 'Delete reminder schedule?';
+
+  @override
+  String deleteScheduleConfirmationMessage(Object name) {
+    return 'The reminder times for $name will be removed. The medication will stay saved.';
+  }
+
+  @override
+  String get deleteMedicationConfirmationTitle => 'Delete medication?';
+
+  @override
+  String deleteMedicationConfirmationMessage(Object name) {
+    return '$name and its reminders will be removed from this device.';
+  }
 
   @override
   String get todayDueNowTitle => 'Due now';

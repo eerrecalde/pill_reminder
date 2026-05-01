@@ -7,6 +7,8 @@ class FakeReminderScheduleRepository implements ReminderScheduleRepository {
 
   final List<ReminderSchedule> _schedules;
   int saveCount = 0;
+  int replaceCount = 0;
+  int deleteCount = 0;
 
   @override
   Future<List<ReminderSchedule>> loadSchedules() async {
@@ -37,7 +39,7 @@ class FakeReminderScheduleRepository implements ReminderScheduleRepository {
     final schedule = ReminderSchedule(
       id: existing?.id ?? 'schedule-$saveCount',
       medicationId: medicationId,
-      reminderTimes: [...reminderTimes]..sort(),
+      reminderTimes: ({...reminderTimes}.toList()..sort()),
       endDate: endDate,
       notificationDeliveryState: notificationDeliveryState,
       createdAt: existing?.createdAt ?? now,
@@ -49,7 +51,25 @@ class FakeReminderScheduleRepository implements ReminderScheduleRepository {
   }
 
   @override
+  Future<ReminderSchedule> replaceSchedule({
+    required String medicationId,
+    required List<ReminderTime> reminderTimes,
+    DateTime? endDate,
+    ReminderNotificationDeliveryState notificationDeliveryState =
+        ReminderNotificationDeliveryState.permissionNeeded,
+  }) {
+    replaceCount += 1;
+    return saveSchedule(
+      medicationId: medicationId,
+      reminderTimes: reminderTimes,
+      endDate: endDate,
+      notificationDeliveryState: notificationDeliveryState,
+    );
+  }
+
+  @override
   Future<void> deleteSchedule(String medicationId) async {
+    deleteCount += 1;
     _schedules.removeWhere((item) => item.medicationId == medicationId);
   }
 }

@@ -17,10 +17,10 @@
 
 **Purpose**: Establish the feature workspace and confirm the existing Flutter baseline before implementation.
 
-- [ ] T001 Verify current Flutter and Dart versions match the implementation plan in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/pubspec.yaml`
-- [ ] T002 [P] Review edit, pause, resume UX requirements from `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/docs/ux-design.md`
-- [ ] T003 [P] Review generated localization files and ARB workflow for English and Latin American Spanish in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T004 [P] Review existing medication and reminder test fixtures before adding feature coverage in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_test_fixtures.dart`
+- [X] T001 Verify current Flutter and Dart versions match the implementation plan in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/pubspec.yaml`
+- [X] T002 [P] Review edit, pause, resume UX requirements from `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/docs/ux-design.md`
+- [X] T003 [P] Review generated localization files and ARB workflow for English and Latin American Spanish in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T004 [P] Review existing medication and reminder test fixtures before adding feature coverage in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_test_fixtures.dart`
 
 ---
 
@@ -30,20 +30,20 @@
 
 **Critical**: No user story work should begin until this phase is complete.
 
-- [ ] T005 Add paused medication state, pausedAt, resumedAt, copyWith, JSON migration defaults, and isPaused helpers in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication.dart`
-- [ ] T006 Extend MedicationRepository with update, pause, resume, and delete method contracts in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/medication_repository.dart`
-- [ ] T007 Implement update, pause, resume, and delete persistence while preserving stable ids and createdAt in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_medication_repository.dart`
-- [ ] T008 Extend ReminderScheduleRepository with replaceSchedule and delete-by-schedule cleanup semantics in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/reminder_schedule_repository.dart`
-- [ ] T009 Implement id-preserving schedule replacement and deterministic deletion behavior in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_reminder_schedule_repository.dart`
-- [ ] T010 Extend ReminderNotificationScheduler with refreshForMedication, cancelForMedication, and cancelDueAndLaterForMedication contracts in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/services/reminder_notification_scheduler.dart`
-- [ ] T011 Extend fake medication repository with update, pause, resume, and delete call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_medication_repository.dart`
-- [ ] T012 Extend fake reminder schedule repository with replaceSchedule and delete call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_reminder_schedule_repository.dart`
-- [ ] T013 Extend fake notification scheduler with refresh, medication-wide cancellation, due cancellation, later cancellation, and ordering call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
-- [ ] T014 Extend fake due reminder repository with medication and schedule cleanup assertions for pending due and remind-again-later records in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_due_reminder_repository.dart`
+- [X] T005 Add paused medication state, pausedAt, resumedAt, copyWith, JSON migration defaults, and isPaused helpers in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication.dart`
+- [X] T006 Extend MedicationRepository with update, pause, resume, and delete method contracts in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/medication_repository.dart`
+- [X] T007 Implement update, pause, resume, and delete persistence while preserving stable ids and createdAt in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_medication_repository.dart`
+- [X] T008 Extend ReminderScheduleRepository with replaceSchedule and delete-by-schedule cleanup semantics in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/reminder_schedule_repository.dart`
+- [X] T009 Implement id-preserving schedule replacement and deterministic deletion behavior in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_reminder_schedule_repository.dart`
+- [X] T010 Extend ReminderNotificationScheduler with refreshForMedication, cancelForMedication, and cancelDueAndLaterForMedication contracts in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/services/reminder_notification_scheduler.dart`
+- [X] T011 Extend fake medication repository with update, pause, resume, and delete call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_medication_repository.dart`
+- [X] T012 Extend fake reminder schedule repository with replaceSchedule and delete call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_reminder_schedule_repository.dart`
+- [X] T013 Extend fake notification scheduler with refresh, medication-wide cancellation, due cancellation, later cancellation, and ordering call tracking in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
+- [X] T014 Extend fake due reminder repository with medication and schedule cleanup assertions for pending due and remind-again-later records in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/fakes/fake_due_reminder_repository.dart`
 - [ ] T015 [P] Add medication paused-state repository tests for JSON migration, update preservation, pause/resume timestamps, and delete persistence in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_repository_test.dart`
 - [ ] T016 [P] Add schedule replacement repository tests for sorted unique times, id preservation, delivery state persistence, and deletion in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_schedule_repository_test.dart`
 - [ ] T017 [P] Add notification scheduler idempotency and cancellation tests for medication-wide and schedule replacement operations in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T018 Add shared operation coordinator for edit, schedule replace, pause, resume, delete schedule, and delete medication side effects in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T018 Add shared operation coordinator for edit, schedule replace, pause, resume, delete schedule, and delete medication side effects in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
 
 **Checkpoint**: Domain state, repository operations, notification hooks, fakes, and shared operation orchestration are ready for user stories.
 
@@ -58,18 +58,18 @@
 ### Tests for User Story 1
 
 - [ ] T019 [P] [US1] Add widget tests for prefilled medication edit form, save, cancel, and validation recovery in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_medication_screen_test.dart`
-- [ ] T020 [P] [US1] Add operation tests proving medication detail edit preserves schedule and refreshes future reminder notification text without duplicate schedule calls in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
+- [X] T020 [P] [US1] Add operation tests proving medication detail edit preserves schedule and refreshes future reminder notification text without duplicate schedule calls in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 - [ ] T021 [P] [US1] Add medication validation regression tests for edited name, dosage label, notes, and preserved valid field values in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_validation_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T022 [US1] Add edit-mode initialization and save/cancel callbacks to the medication form in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/add_medication_screen.dart`
-- [ ] T023 [US1] Add edit medication action, accessible labels, and stable widget keys to medication cards in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T024 [US1] Wire medication edit navigation and state refresh from the dashboard screen in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/today_dashboard_screen.dart`
-- [ ] T025 [US1] Use MedicationReminderOperations to update medication details, preserve schedule data, refresh scheduled notification copy, and announce success in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
-- [ ] T026 [US1] Add English medication edit labels, validation messages, cancel text, and success copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T027 [US1] Add Latin American Spanish medication edit labels, validation messages, cancel text, and success copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
-- [ ] T028 [US1] Regenerate localization accessors for medication edit copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
+- [X] T022 [US1] Add edit-mode initialization and save/cancel callbacks to the medication form in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/add_medication_screen.dart`
+- [X] T023 [US1] Add edit medication action, accessible labels, and stable widget keys to medication cards in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
+- [X] T024 [US1] Wire medication edit navigation and state refresh from the dashboard screen in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/today_dashboard_screen.dart`
+- [X] T025 [US1] Use MedicationReminderOperations to update medication details, preserve schedule data, refresh scheduled notification copy, and announce success in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T026 [US1] Add English medication edit labels, validation messages, cancel text, and success copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T027 [US1] Add Latin American Spanish medication edit labels, validation messages, cancel text, and success copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
+- [X] T028 [US1] Regenerate localization accessors for medication edit copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
 
 **Checkpoint**: User Story 1 is independently functional and testable as the MVP.
 
@@ -85,17 +85,17 @@
 
 - [ ] T029 [P] [US2] Add widget tests for schedule edit preselection, time add/change/remove, review summary, save, and cancel in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_schedule_screen_test.dart`
 - [ ] T030 [P] [US2] Add validation tests for no times, duplicate times, too many times, invalid end date, and preserved valid selections in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_schedule_validation_test.dart`
-- [ ] T031 [P] [US2] Add operation tests proving schedule edit cancels old notifications before scheduling new times and stores permission-limited delivery state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
+- [X] T031 [P] [US2] Add operation tests proving schedule edit cancels old notifications before scheduling new times and stores permission-limited delivery state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T032 [US2] Refactor schedule save flow to use replaceSchedule operation, cancel obsolete notifications, and persist final delivery state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T033 [US2] Update schedule review copy and accessible summary for edited reminder times and end date behavior in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_review.dart`
-- [ ] T034 [US2] Add edit schedule action and non-destructive cancel path for medications with existing schedules in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T035 [US2] Implement schedule replacement side effects and duplicate-prevention ordering in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
-- [ ] T036 [US2] Add permission-limited schedule edit messages and review strings in English in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T037 [US2] Add permission-limited schedule edit messages and review strings in Latin American Spanish in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
-- [ ] T038 [US2] Regenerate localization accessors for schedule edit copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
+- [X] T032 [US2] Refactor schedule save flow to use replaceSchedule operation, cancel obsolete notifications, and persist final delivery state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T033 [US2] Update schedule review copy and accessible summary for edited reminder times and end date behavior in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_review.dart`
+- [X] T034 [US2] Add edit schedule action and non-destructive cancel path for medications with existing schedules in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
+- [X] T035 [US2] Implement schedule replacement side effects and duplicate-prevention ordering in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T036 [US2] Add permission-limited schedule edit messages and review strings in English in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T037 [US2] Add permission-limited schedule edit messages and review strings in Latin American Spanish in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
+- [X] T038 [US2] Regenerate localization accessors for schedule edit copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
 
 **Checkpoint**: User Stories 1 and 2 both work independently and meet the P1 edit requirements.
 
@@ -109,19 +109,19 @@
 
 ### Tests for User Story 3
 
-- [ ] T039 [P] [US3] Add operation tests for pause canceling schedule notifications, due reminders, and remind-again-later requests in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
+- [X] T039 [P] [US3] Add operation tests for pause canceling schedule notifications, due reminders, and remind-again-later requests in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 - [ ] T040 [P] [US3] Add operation tests for resume scheduling only next future occurrences without backfilling missed times in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_notification_scheduler_test.dart`
 - [ ] T041 [P] [US3] Add widget tests for visible paused state, resume action, disabled scheduling where appropriate, and screen reader semantics in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/today_dashboard_screen_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T042 [US3] Update medication status label to show active and paused states with text and icon semantics in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_status_label.dart`
-- [ ] T043 [US3] Add pause and resume actions with large accessible touch targets to medication cards in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T044 [US3] Implement pause and resume operation ordering for medication status, schedule notifications, due reminders, and later reminders in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
-- [ ] T045 [US3] Prevent due-reminder creation for paused medications during reconciliation in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/services/reminder_due_reconciler.dart`
-- [ ] T046 [US3] Add English pause/resume labels, status copy, permission-limited resume messages, and success announcements in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T047 [US3] Add Latin American Spanish pause/resume labels, status copy, permission-limited resume messages, and success announcements in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
-- [ ] T048 [US3] Regenerate localization accessors for pause and resume copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
+- [X] T042 [US3] Update medication status label to show active and paused states with text and icon semantics in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_status_label.dart`
+- [X] T043 [US3] Add pause and resume actions with large accessible touch targets to medication cards in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
+- [X] T044 [US3] Implement pause and resume operation ordering for medication status, schedule notifications, due reminders, and later reminders in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T045 [US3] Prevent due-reminder creation for paused medications during reconciliation in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/services/reminder_due_reconciler.dart`
+- [X] T046 [US3] Add English pause/resume labels, status copy, permission-limited resume messages, and success announcements in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T047 [US3] Add Latin American Spanish pause/resume labels, status copy, permission-limited resume messages, and success announcements in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
+- [X] T048 [US3] Regenerate localization accessors for pause and resume copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
 
 **Checkpoint**: Pause and resume are independently testable without requiring deletion flows.
 
@@ -137,18 +137,18 @@
 
 - [ ] T049 [P] [US4] Add widget tests for schedule delete confirmation copy, cancel outcome, confirm outcome, and focus order in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 - [ ] T050 [P] [US4] Add widget tests for medication delete confirmation copy, cancel outcome, confirm outcome, and final deletion messaging in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_medication_screen_test.dart`
-- [ ] T051 [P] [US4] Add repository and operation tests for delete schedule keeping medication and delete medication removing schedule plus due/later state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_repository_test.dart`
+- [X] T051 [P] [US4] Add repository and operation tests for delete schedule keeping medication and delete medication removing schedule plus due/later state in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/medication_repository_test.dart`
 
 ### Implementation for User Story 4
 
-- [ ] T052 [US4] Create reusable accessible destructive confirmation dialog for medication and schedule deletion in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_delete_confirmation_dialog.dart`
-- [ ] T053 [US4] Add delete schedule action and confirmation wiring to the reminder schedule screen in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T054 [US4] Add delete medication action and confirmation wiring to medication edit or medication card controls in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
-- [ ] T055 [US4] Implement delete schedule and delete medication operation ordering for repository deletion, scheduler cancellation, and due/later cleanup in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
-- [ ] T056 [US4] Ensure due reminder repository cleanup supports schedule deletion and medication deletion without removing unrelated records in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T057 [US4] Add English deletion confirmation, cancel, destructive action, success, and final-after-confirmation strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T058 [US4] Add Latin American Spanish deletion confirmation, cancel, destructive action, success, and final-after-confirmation strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
-- [ ] T059 [US4] Regenerate localization accessors for deletion copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
+- [X] T052 [US4] Create reusable accessible destructive confirmation dialog for medication and schedule deletion in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_delete_confirmation_dialog.dart`
+- [X] T053 [US4] Add delete schedule action and confirmation wiring to the reminder schedule screen in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T054 [US4] Add delete medication action and confirmation wiring to medication edit or medication card controls in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
+- [X] T055 [US4] Implement delete schedule and delete medication operation ordering for repository deletion, scheduler cancellation, and due/later cleanup in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T056 [US4] Ensure due reminder repository cleanup supports schedule deletion and medication deletion without removing unrelated records in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T057 [US4] Add English deletion confirmation, cancel, destructive action, success, and final-after-confirmation strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T058 [US4] Add Latin American Spanish deletion confirmation, cancel, destructive action, success, and final-after-confirmation strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es_419.arb`
+- [X] T059 [US4] Regenerate localization accessors for deletion copy in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_localizations.dart`
 
 **Checkpoint**: Deletion flows are independently testable and do not depend on accessibility polish beyond required confirmation semantics.
 
@@ -168,11 +168,11 @@
 
 ### Implementation for User Story 5
 
-- [ ] T063 [US5] Audit and adjust edit, pause, resume, delete, confirmation, and error layouts for large text, 48px touch targets, visible focus, and logical reading order in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
+- [X] T063 [US5] Audit and adjust edit, pause, resume, delete, confirmation, and error layouts for large text, 48px touch targets, visible focus, and logical reading order in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/medication_list_section.dart`
 - [ ] T064 [US5] Replace any hard-coded user-visible notification action or reminder body text with localization-ready values in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/services/reminder_notification_scheduler.dart`
-- [ ] T065 [US5] Ensure generated Spanish fallback and base Spanish localization remain consistent with Latin American Spanish strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es.arb`
-- [ ] T066 [US5] Add accessible announcements for validation errors, save success, pause, resume, delete cancellation, and delete confirmation outcomes in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
-- [ ] T067 [US5] Update status and permission messaging on the today dashboard for paused, deleted, and permission-limited medications in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/today_dashboard_screen.dart`
+- [X] T065 [US5] Ensure generated Spanish fallback and base Spanish localization remain consistent with Latin American Spanish strings in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_es.arb`
+- [X] T066 [US5] Add accessible announcements for validation errors, save success, pause, resume, delete cancellation, and delete confirmation outcomes in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/reminder_schedule_screen.dart`
+- [X] T067 [US5] Update status and permission messaging on the today dashboard for paused, deleted, and permission-limited medications in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/presentation/today_dashboard_screen.dart`
 
 **Checkpoint**: Accessibility and localization requirements are covered across all user-facing flows.
 
@@ -182,14 +182,14 @@
 
 **Purpose**: Final verification and quality checks across all stories.
 
-- [ ] T068 [P] Run and fix full static analysis for this feature in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/analysis_options.yaml`
-- [ ] T069 [P] Run and fix full Flutter test suite for this feature in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
+- [X] T068 [P] Run and fix full static analysis for this feature in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/analysis_options.yaml`
+- [X] T069 [P] Run and fix full Flutter test suite for this feature in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 - [ ] T070 [P] Document manual iOS and Android notification replacement, cancellation, permission, offline, restart, screen reader, and large text results in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/specs/005-edit-pause-resume/quickstart.md`
 - [ ] T071 [P] Verify edit, pause, resume, and delete operations persist locally and update in-app state within 1 second for typical v1 data volumes in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/edit_pause_resume_flow_test.dart`
 - [ ] T072 [P] Verify notification replacement and cancellation complete without duplicate pending notifications for up to 4 daily reminder times in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_notification_scheduler_test.dart`
 - [ ] T073 Verify startup reconciliation adds no more than 300ms for typical local reminder records and does not add polling or continuous background work in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/test/features/medications/reminder_due_reconciler_test.dart`
-- [ ] T074 Review all user-facing edit, pause, resume, delete, confirmation, error, status, date, time, and notification strings for localization readiness in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
-- [ ] T075 Review local-only privacy behavior to confirm no account, sync, backup, analytics, sharing, undo, archive, trash, restore, or clinical advice was introduced in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
+- [X] T074 Review all user-facing edit, pause, resume, delete, confirmation, error, status, date, time, and notification strings for localization readiness in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/l10n/app_en.arb`
+- [X] T075 Review local-only privacy behavior to confirm no account, sync, backup, analytics, sharing, undo, archive, trash, restore, or clinical advice was introduced in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/lib/features/medications/domain/medication_reminder_operations.dart`
 - [ ] T076 Verify quickstart automated commands and focused manual scenarios still match the implemented feature in `/Users/emis/Documents/emi-projects/pill-reminder/pill_reminder/specs/005-edit-pause-resume/quickstart.md`
 
 ---

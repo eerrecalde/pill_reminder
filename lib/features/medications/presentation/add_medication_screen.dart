@@ -8,9 +8,14 @@ import '../domain/medication_entry_draft.dart';
 import '../domain/medication_validation.dart';
 
 class AddMedicationScreen extends StatefulWidget {
-  const AddMedicationScreen({required this.repository, super.key});
+  const AddMedicationScreen({
+    required this.repository,
+    this.initialMedication,
+    super.key,
+  });
 
   final MedicationRepository repository;
+  final Medication? initialMedication;
 
   @override
   State<AddMedicationScreen> createState() => _AddMedicationScreenState();
@@ -27,10 +32,18 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
       const MedicationValidationResult.valid();
   List<Medication> _existingMedications = const [];
   bool _saving = false;
+  bool get _isEditing => widget.initialMedication != null;
 
   @override
   void initState() {
     super.initState();
+    final medication = widget.initialMedication;
+    if (medication != null) {
+      _nameController.text = medication.name;
+      _dosageController.text = medication.dosageLabel;
+      _notesController.text = medication.notes;
+      _status = medication.status;
+    }
     _loadExistingMedications();
   }
 
@@ -88,7 +101,12 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
     }
 
     if (duplicateConfirmationState != DuplicateConfirmationState.confirmed &&
-        MedicationValidation.hasDuplicateName(draft, _existingMedications)) {
+        MedicationValidation.hasDuplicateName(
+          draft,
+          _existingMedications.where(
+            (medication) => medication.id != widget.initialMedication?.id,
+          ),
+        )) {
       final confirmed = await _confirmDuplicate(l10n);
       if (!mounted || !confirmed) return;
       await _save(
@@ -98,16 +116,28 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
     }
 
     setState(() => _saving = true);
-    final medication = await widget.repository.addMedication(
-      name: draft.trimmedName,
-      dosageLabel: draft.trimmedDosageLabel,
-      notes: draft.trimmedNotes,
-      status: draft.selectedStatus,
-    );
+    final initialMedication = widget.initialMedication;
+    final medication = initialMedication == null
+        ? await widget.repository.addMedication(
+            name: draft.trimmedName,
+            dosageLabel: draft.trimmedDosageLabel,
+            notes: draft.trimmedNotes,
+            status: draft.selectedStatus,
+          )
+        : await widget.repository.updateMedication(
+            initialMedication.copyWith(
+              name: draft.trimmedName,
+              dosageLabel: draft.trimmedDosageLabel,
+              notes: draft.trimmedNotes,
+              status: draft.selectedStatus,
+            ),
+          );
     if (!mounted) return;
     SemanticsService.sendAnnouncement(
       View.of(context),
-      l10n.medicationSavedSemantics,
+      _isEditing
+          ? l10n.medicationUpdatedSemantics
+          : l10n.medicationSavedSemantics,
       Directionality.of(context),
     );
     Navigator.of(context).pop(medication);
@@ -149,7 +179,11 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.addMedicationTitle)),
+      appBar: AppBar(
+        title: Text(
+          _isEditing ? l10n.editMedicationTitle : l10n.addMedicationTitle,
+        ),
+      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -219,6 +253,11 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
                           label: Text(l10n.medicationStatusInactive),
                           icon: const Icon(Icons.pause_circle_outline),
                         ),
+                        ButtonSegment(
+                          value: MedicationStatus.paused,
+                          label: Text(l10n.medicationStatusPaused),
+                          icon: const Icon(Icons.notifications_paused_outlined),
+                        ),
                       ],
                       selected: {_status},
                       onSelectionChanged: (selection) {
@@ -231,7 +270,11 @@ class _AddMedicationScreenState extends State<AddMedicationScreen> {
                     key: const Key('save-medication-button'),
                     onPressed: _saving ? null : _save,
                     icon: const Icon(Icons.save_outlined),
-                    label: Text(l10n.saveMedication),
+                    label: Text(
+                      _isEditing
+                          ? l10n.saveMedicationChanges
+                          : l10n.saveMedication,
+                    ),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton.icon(
