@@ -1,9 +1,9 @@
 # Feature Specification: Edit, Pause, Resume
 
-**Feature Branch**: `006-edit-pause-resume`  
+**Feature Branch**: `005-edit-pause-resume`  
 **Created**: 2026-05-01  
 **Status**: Draft  
-**Input**: User description: "Edit, Pause, Resume - Create editing controls for medications and reminder schedules. Users should be able to change medication details, change reminder times, pause reminders temporarily, resume reminders, and delete a medication or schedule with clear confirmation. Changes must be reflected in future reminders reliably and must not create duplicate notifications. The flow should be simple enough for older adults, provide clear recovery from mistakes, work offline without an account, and include accessible, localization-ready confirmation and error states making sure to always use the UX Design guidelines in [this doc](./docs/ux-design.md)."
+**Input**: User description: "Edit, Pause, Resume - Create editing controls for medications and reminder schedules. Users should be able to change medication details, change reminder times, pause reminders temporarily, resume reminders, and delete a medication or schedule with clear confirmation. Changes must be reflected in future reminders reliably and must not create duplicate notifications. The flow should be simple enough for older adults, provide clear recovery from mistakes, work offline without an account, and include accessible, localization-ready confirmation and error states making sure to always use the UX Design guidelines in [this doc](../../docs/ux-design.md)."
 
 ## Clarifications
 

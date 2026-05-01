@@ -1,6 +1,6 @@
 # Implementation Plan: Edit, Pause, Resume
 
-**Branch**: `006-edit-pause-resume` | **Date**: 2026-05-01 | **Spec**: [spec.md](./spec.md)  
+**Branch**: `005-edit-pause-resume` | **Date**: 2026-05-01 | **Spec**: [spec.md](./spec.md)  
 **Input**: Feature specification from `specs/005-edit-pause-resume/spec.md`
 
 ## Summary
