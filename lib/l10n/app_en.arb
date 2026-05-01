@@ -218,6 +218,40 @@
       }
     }
   },
+  "medicationHistoryOpen": "Medication history",
+  "medicationHistoryTitle": "Medication history",
+  "medicationHistoryIntro": "Recent reminder activity stays on this device.",
+  "medicationHistoryEmptyTitle": "No history yet",
+  "medicationHistoryEmptyBody": "Taken, skipped, missed, and snoozed reminders will appear here after activity is recorded.",
+  "medicationHistoryStatusTaken": "Taken",
+  "medicationHistoryStatusSkipped": "Skipped",
+  "medicationHistoryStatusMissed": "Missed",
+  "medicationHistoryStatusSnoozed": "Snoozed",
+  "medicationHistoryDaySemantics": "Medication history for {date}",
+  "@medicationHistoryDaySemantics": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "medicationHistoryRowSemantics": "{date}, {medication}, {time}, {status}",
+  "@medicationHistoryRowSemantics": {
+    "placeholders": {
+      "date": {},
+      "medication": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "medicationHistoryRowSemanticsWithDose": "{date}, {medication}, {dose}, {time}, {status}",
+  "@medicationHistoryRowSemanticsWithDose": {
+    "placeholders": {
+      "date": {},
+      "medication": {},
+      "dose": {},
+      "time": {},
+      "status": {}
+    }
+  },
   "reminderHandlingSettingsTitle": "Reminder handling",
   "reminderHandlingIntervalLabel": "Remind again later after"
 }

@@ -1,7 +1,9 @@
 import '../features/medications/data/due_reminder_repository.dart';
+import '../features/medications/data/medication_history_repository.dart';
 import '../features/medications/data/medication_repository.dart';
 import '../features/medications/data/reminder_schedule_repository.dart';
 import '../features/medications/domain/due_reminder.dart';
+import '../features/medications/domain/medication_history.dart';
 import '../features/medications/domain/medication.dart';
 import '../features/medications/domain/reminder_schedule.dart';
 
@@ -10,13 +12,16 @@ class ReminderDueReconciler {
     required MedicationRepository medicationRepository,
     required ReminderScheduleRepository scheduleRepository,
     required DueReminderRepository dueReminderRepository,
+    MedicationHistoryRepository? medicationHistoryRepository,
   }) : _medicationRepository = medicationRepository,
        _scheduleRepository = scheduleRepository,
-       _dueReminderRepository = dueReminderRepository;
+       _dueReminderRepository = dueReminderRepository,
+       _medicationHistoryRepository = medicationHistoryRepository;
 
   final MedicationRepository _medicationRepository;
   final ReminderScheduleRepository _scheduleRepository;
   final DueReminderRepository _dueReminderRepository;
+  final MedicationHistoryRepository? _medicationHistoryRepository;
 
   Future<List<DueReminder>> reconcile({DateTime? now}) async {
     final timestamp = now ?? DateTime.now();
@@ -44,6 +49,7 @@ class ReminderDueReconciler {
     }
 
     await _returnDueSnoozes(timestamp);
+    await _recordMissedReminders(timestamp);
     return created;
   }
 
@@ -86,6 +92,41 @@ class ReminderDueReconciler {
       if (request == null || request.nextReminderAt.isAfter(now)) continue;
       await _dueReminderRepository.upsertDueReminder(
         reminder.returnToUnresolved(at: now),
+      );
+    }
+  }
+
+  Future<void> _recordMissedReminders(DateTime now) async {
+    final repository = _medicationHistoryRepository;
+    if (repository == null) return;
+    final reminders = await _dueReminderRepository.loadUnresolvedDueReminders();
+    for (final reminder in reminders) {
+      if (reminder.medicationName.trim().isEmpty) continue;
+      if (!now.isAfter(reminder.scheduledAt.add(const Duration(minutes: 60)))) {
+        continue;
+      }
+      await repository.upsertEntry(
+        MedicationHistoryEntry(
+          id: MedicationHistoryEntry.buildOccurrenceIdFromDateTime(
+            scheduledAt: reminder.scheduledAt,
+            scheduleId: reminder.scheduleId,
+            medicationId: reminder.medicationId,
+          ),
+          localDate: MedicationHistoryEntry.dateOnly(reminder.scheduledAt),
+          scheduledAt: reminder.scheduledAt,
+          scheduleId: reminder.scheduleId,
+          medicationId: reminder.medicationId,
+          medicationName: reminder.medicationName,
+          dosageLabel: reminder.dosageLabel,
+          status: MedicationHistoryStatus.missed,
+          statusUpdatedAt: now,
+          snoozeCount: reminder.remindAgainLaterRequest == null ? null : 1,
+          lastSnoozedAt: reminder.remindAgainLaterRequest?.requestedAt,
+          nextReminderAt: reminder.remindAgainLaterRequest?.nextReminderAt,
+          source: MedicationHistorySource.reconciliation,
+          createdAt: reminder.createdAt,
+          updatedAt: now,
+        ),
       );
     }
   }

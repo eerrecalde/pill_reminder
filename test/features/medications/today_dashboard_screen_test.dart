@@ -10,6 +10,7 @@ import 'package:pill_reminder/theme/app_theme.dart';
 import '../setup/fakes/fake_notification_permission_service.dart';
 import 'fakes/fake_daily_reminder_handling_repository.dart';
 import 'fakes/fake_due_reminder_repository.dart';
+import 'fakes/fake_medication_history_repository.dart';
 import 'fakes/fake_medication_repository.dart';
 import 'fakes/fake_reminder_notification_scheduler.dart';
 import 'fakes/fake_reminder_schedule_repository.dart';
@@ -202,6 +203,7 @@ class _DashboardHarness extends StatelessWidget {
           dailyReminderHandlingRepository:
               handlingRepository ?? FakeDailyReminderHandlingRepository(),
           dueReminderRepository: FakeDueReminderRepository(),
+          medicationHistoryRepository: FakeMedicationHistoryRepository(),
           reminderNotificationScheduler:
               scheduler ?? FakeReminderNotificationScheduler(),
           notificationPermissionService: FakeNotificationPermissionService(),

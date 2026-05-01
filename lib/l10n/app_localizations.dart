@@ -974,6 +974,89 @@ abstract class AppLocalizations {
   /// **'{count, plural, =1{1 due reminder} other{{count} due reminders}}'**
   String dueReminderBannerSemantics(int count);
 
+  /// No description provided for @medicationHistoryOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication history'**
+  String get medicationHistoryOpen;
+
+  /// No description provided for @medicationHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication history'**
+  String get medicationHistoryTitle;
+
+  /// No description provided for @medicationHistoryIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent reminder activity stays on this device.'**
+  String get medicationHistoryIntro;
+
+  /// No description provided for @medicationHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No history yet'**
+  String get medicationHistoryEmptyTitle;
+
+  /// No description provided for @medicationHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken, skipped, missed, and snoozed reminders will appear here after activity is recorded.'**
+  String get medicationHistoryEmptyBody;
+
+  /// No description provided for @medicationHistoryStatusTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get medicationHistoryStatusTaken;
+
+  /// No description provided for @medicationHistoryStatusSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped'**
+  String get medicationHistoryStatusSkipped;
+
+  /// No description provided for @medicationHistoryStatusMissed.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed'**
+  String get medicationHistoryStatusMissed;
+
+  /// No description provided for @medicationHistoryStatusSnoozed.
+  ///
+  /// In en, this message translates to:
+  /// **'Snoozed'**
+  String get medicationHistoryStatusSnoozed;
+
+  /// No description provided for @medicationHistoryDaySemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication history for {date}'**
+  String medicationHistoryDaySemantics(Object date);
+
+  /// No description provided for @medicationHistoryRowSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{date}, {medication}, {time}, {status}'**
+  String medicationHistoryRowSemantics(
+    Object date,
+    Object medication,
+    Object time,
+    Object status,
+  );
+
+  /// No description provided for @medicationHistoryRowSemanticsWithDose.
+  ///
+  /// In en, this message translates to:
+  /// **'{date}, {medication}, {dose}, {time}, {status}'**
+  String medicationHistoryRowSemanticsWithDose(
+    Object date,
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  );
+
   /// No description provided for @reminderHandlingSettingsTitle.
   ///
   /// In en, this message translates to:

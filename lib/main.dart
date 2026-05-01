@@ -5,18 +5,22 @@ import 'features/medications/data/daily_reminder_handling_repository.dart';
 import 'features/medications/data/local_daily_reminder_handling_repository.dart';
 import 'features/medications/data/local_medication_repository.dart';
 import 'features/medications/data/local_due_reminder_repository.dart';
+import 'features/medications/data/local_medication_history_repository.dart';
 import 'features/medications/data/local_reminder_schedule_repository.dart';
 import 'features/medications/data/due_reminder_repository.dart';
+import 'features/medications/data/medication_history_repository.dart';
 import 'features/medications/data/medication_repository.dart';
 import 'features/medications/data/reminder_schedule_repository.dart';
 import 'features/medications/domain/daily_reminder_handling.dart';
 import 'features/medications/domain/due_reminder.dart';
+import 'features/medications/domain/medication_history.dart';
 import 'features/medications/domain/medication.dart';
 import 'features/medications/domain/reminder_handling_preferences.dart';
 import 'features/medications/domain/reminder_schedule.dart';
 import 'features/medications/presentation/add_medication_screen.dart';
 import 'features/medications/presentation/due_reminder_banner.dart';
 import 'features/medications/presentation/due_reminder_screen.dart';
+import 'features/medications/presentation/medication_history_screen.dart';
 import 'features/medications/presentation/reminder_schedule_screen.dart';
 import 'features/medications/presentation/today_dashboard_screen.dart';
 import 'features/setup/data/local_setup_preferences_repository.dart';
@@ -44,6 +48,9 @@ Future<void> main() async {
         preferences,
       ),
       dueReminderRepository: LocalDueReminderRepository(preferences),
+      medicationHistoryRepository: LocalMedicationHistoryRepository(
+        preferences,
+      ),
       reminderNotificationScheduler: LocalReminderNotificationScheduler(),
       notificationPermissionService:
           PermissionHandlerNotificationPermissionService(),
@@ -58,6 +65,7 @@ class PillReminderApp extends StatefulWidget {
     this.dailyReminderHandlingRepository,
     this.reminderScheduleRepository,
     this.dueReminderRepository,
+    this.medicationHistoryRepository,
     this.reminderNotificationScheduler,
     this.medicationRepository,
     super.key,
@@ -69,6 +77,7 @@ class PillReminderApp extends StatefulWidget {
   final DailyReminderHandlingRepository? dailyReminderHandlingRepository;
   final ReminderScheduleRepository? reminderScheduleRepository;
   final DueReminderRepository? dueReminderRepository;
+  final MedicationHistoryRepository? medicationHistoryRepository;
   final ReminderNotificationScheduler? reminderNotificationScheduler;
 
   @override
@@ -89,6 +98,8 @@ class _PillReminderAppState extends State<PillReminderApp> {
       _InMemoryReminderNotificationScheduler();
   late final DueReminderRepository _fallbackDueReminderRepository =
       _InMemoryDueReminderRepository();
+  late final MedicationHistoryRepository _fallbackMedicationHistoryRepository =
+      _InMemoryMedicationHistoryRepository();
 
   @override
   void initState() {
@@ -168,6 +179,9 @@ class _PillReminderAppState extends State<PillReminderApp> {
           widget.reminderNotificationScheduler ?? _fallbackReminderScheduler,
       dueReminderRepository:
           widget.dueReminderRepository ?? _fallbackDueReminderRepository,
+      medicationHistoryRepository:
+          widget.medicationHistoryRepository ??
+          _fallbackMedicationHistoryRepository,
       onLocaleChanged: _setLocale,
       onSetupStateChanged: _setSetupState,
       onNotificationStatusChanged: _updateNotificationStatus,
@@ -185,6 +199,7 @@ class _MainAppHome extends StatefulWidget {
     required this.dailyReminderHandlingRepository,
     required this.reminderNotificationScheduler,
     required this.dueReminderRepository,
+    required this.medicationHistoryRepository,
     required this.onLocaleChanged,
     required this.onSetupStateChanged,
     required this.onNotificationStatusChanged,
@@ -198,6 +213,7 @@ class _MainAppHome extends StatefulWidget {
   final DailyReminderHandlingRepository dailyReminderHandlingRepository;
   final ReminderNotificationScheduler reminderNotificationScheduler;
   final DueReminderRepository dueReminderRepository;
+  final MedicationHistoryRepository medicationHistoryRepository;
   final ValueChanged<Locale> onLocaleChanged;
   final ValueChanged<SetupState> onSetupStateChanged;
   final ValueChanged<SetupNotificationPermissionStatus>
@@ -233,6 +249,7 @@ class _MainAppHomeState extends State<_MainAppHome> {
       medicationRepository: widget.medicationRepository,
       scheduleRepository: widget.reminderScheduleRepository,
       dueReminderRepository: widget.dueReminderRepository,
+      medicationHistoryRepository: widget.medicationHistoryRepository,
     );
     await reconciler.reconcile();
   }
@@ -318,6 +335,7 @@ class _MainAppHomeState extends State<_MainAppHome> {
           actionHandler: ReminderActionHandler(
             repository: widget.dueReminderRepository,
             notificationScheduler: widget.reminderNotificationScheduler,
+            medicationHistoryRepository: widget.medicationHistoryRepository,
           ),
         ),
       ),
@@ -332,6 +350,19 @@ class _MainAppHomeState extends State<_MainAppHome> {
       appBar: AppBar(
         title: Text(l10n.mainTitle),
         actions: [
+          IconButton(
+            tooltip: l10n.medicationHistoryOpen,
+            icon: const Icon(Icons.history_outlined),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => MedicationHistoryScreen(
+                    repository: widget.medicationHistoryRepository,
+                  ),
+                ),
+              );
+            },
+          ),
           IconButton(
             tooltip: l10n.setupPreferences,
             icon: const Icon(Icons.settings_outlined),
@@ -378,6 +409,8 @@ class _MainAppHomeState extends State<_MainAppHome> {
                     dailyReminderHandlingRepository:
                         widget.dailyReminderHandlingRepository,
                     dueReminderRepository: widget.dueReminderRepository,
+                    medicationHistoryRepository:
+                        widget.medicationHistoryRepository,
                     reminderNotificationScheduler:
                         widget.reminderNotificationScheduler,
                     notificationPermissionService:
@@ -581,6 +614,43 @@ class _InMemoryDailyReminderHandlingRepository
 
   bool _isSameDate(DateTime a, DateTime b) {
     return a.year == b.year && a.month == b.month && a.day == b.day;
+  }
+}
+
+class _InMemoryMedicationHistoryRepository
+    implements MedicationHistoryRepository {
+  final List<MedicationHistoryEntry> _entries = [];
+
+  @override
+  Future<List<MedicationHistoryEntry>> loadEntries({
+    required DateTime since,
+    required DateTime until,
+  }) async {
+    final start = MedicationHistoryEntry.dateOnly(since);
+    final end = MedicationHistoryEntry.dateOnly(until);
+    return _entries
+        .where((entry) {
+          return !entry.localDate.isBefore(start) &&
+              !entry.localDate.isAfter(end);
+        })
+        .toList(growable: false);
+  }
+
+  @override
+  Future<void> pruneBefore(DateTime cutoffDate) async {
+    final cutoff = MedicationHistoryEntry.dateOnly(cutoffDate);
+    _entries.removeWhere((entry) => entry.localDate.isBefore(cutoff));
+  }
+
+  @override
+  Future<MedicationHistoryEntry> upsertEntry(
+    MedicationHistoryEntry entry,
+  ) async {
+    final existing = _entries.where((item) => item.id == entry.id).firstOrNull;
+    final saved = existing == null ? entry : existing.mergeWith(entry);
+    _entries.removeWhere((item) => item.id == saved.id);
+    _entries.add(saved);
+    return saved;
   }
 }
 

@@ -516,6 +516,61 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get medicationHistoryOpen => 'Medication history';
+
+  @override
+  String get medicationHistoryTitle => 'Medication history';
+
+  @override
+  String get medicationHistoryIntro =>
+      'Recent reminder activity stays on this device.';
+
+  @override
+  String get medicationHistoryEmptyTitle => 'No history yet';
+
+  @override
+  String get medicationHistoryEmptyBody =>
+      'Taken, skipped, missed, and snoozed reminders will appear here after activity is recorded.';
+
+  @override
+  String get medicationHistoryStatusTaken => 'Taken';
+
+  @override
+  String get medicationHistoryStatusSkipped => 'Skipped';
+
+  @override
+  String get medicationHistoryStatusMissed => 'Missed';
+
+  @override
+  String get medicationHistoryStatusSnoozed => 'Snoozed';
+
+  @override
+  String medicationHistoryDaySemantics(Object date) {
+    return 'Medication history for $date';
+  }
+
+  @override
+  String medicationHistoryRowSemantics(
+    Object date,
+    Object medication,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $time, $status';
+  }
+
+  @override
+  String medicationHistoryRowSemanticsWithDose(
+    Object date,
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $dose, $time, $status';
+  }
+
+  @override
   String get reminderHandlingSettingsTitle => 'Reminder handling';
 
   @override

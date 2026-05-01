@@ -520,6 +520,61 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get medicationHistoryOpen => 'Historial de medicamentos';
+
+  @override
+  String get medicationHistoryTitle => 'Historial de medicamentos';
+
+  @override
+  String get medicationHistoryIntro =>
+      'La actividad reciente de recordatorios se queda en este dispositivo.';
+
+  @override
+  String get medicationHistoryEmptyTitle => 'Todavía no hay historial';
+
+  @override
+  String get medicationHistoryEmptyBody =>
+      'Los recordatorios tomados, omitidos, pendientes y pospuestos aparecerán aquí después de registrarse actividad.';
+
+  @override
+  String get medicationHistoryStatusTaken => 'Tomado';
+
+  @override
+  String get medicationHistoryStatusSkipped => 'Omitido';
+
+  @override
+  String get medicationHistoryStatusMissed => 'Pendiente';
+
+  @override
+  String get medicationHistoryStatusSnoozed => 'Pospuesto';
+
+  @override
+  String medicationHistoryDaySemantics(Object date) {
+    return 'Historial de medicamentos del $date';
+  }
+
+  @override
+  String medicationHistoryRowSemantics(
+    Object date,
+    Object medication,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $time, $status';
+  }
+
+  @override
+  String medicationHistoryRowSemanticsWithDose(
+    Object date,
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $dose, $time, $status';
+  }
+
+  @override
   String get reminderHandlingSettingsTitle => 'Manejo de recordatorios';
 
   @override
@@ -1039,6 +1094,61 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
       one: '1 recordatorio pendiente',
     );
     return '$_temp0';
+  }
+
+  @override
+  String get medicationHistoryOpen => 'Historial de medicamentos';
+
+  @override
+  String get medicationHistoryTitle => 'Historial de medicamentos';
+
+  @override
+  String get medicationHistoryIntro =>
+      'La actividad reciente de recordatorios se queda en este dispositivo.';
+
+  @override
+  String get medicationHistoryEmptyTitle => 'Todavía no hay historial';
+
+  @override
+  String get medicationHistoryEmptyBody =>
+      'Los recordatorios tomados, omitidos, pendientes y pospuestos aparecerán aquí después de registrarse actividad.';
+
+  @override
+  String get medicationHistoryStatusTaken => 'Tomado';
+
+  @override
+  String get medicationHistoryStatusSkipped => 'Omitido';
+
+  @override
+  String get medicationHistoryStatusMissed => 'Pendiente';
+
+  @override
+  String get medicationHistoryStatusSnoozed => 'Pospuesto';
+
+  @override
+  String medicationHistoryDaySemantics(Object date) {
+    return 'Historial de medicamentos del $date';
+  }
+
+  @override
+  String medicationHistoryRowSemantics(
+    Object date,
+    Object medication,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $time, $status';
+  }
+
+  @override
+  String medicationHistoryRowSemanticsWithDose(
+    Object date,
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$date, $medication, $dose, $time, $status';
   }
 
   @override
