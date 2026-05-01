@@ -28,7 +28,7 @@
 - [ ] T006 [P] Add FakeMedicationHistoryRepository with in-memory load, upsert, and prune behavior for widget and service tests in test/features/medications/fakes/fake_medication_history_repository.dart
 - [ ] T007 Write repository persistence tests for valid JSON loading, invalid record ignoring, upsert-by-stable-id, and pruneBefore retention in test/features/medications/medication_history_repository_test.dart
 - [ ] T008 Implement SharedPreferences-backed LocalMedicationHistoryRepository using key medications.history.v1, raw enum names, ISO timestamps, invalid-record recovery, and deterministic ordering in lib/features/medications/data/local_medication_history_repository.dart
-- [ ] T009 Wire MedicationHistoryRepository dependency through PillReminderApp constructor, fallback in-memory repository, _MainAppHome, ReminderActionHandler, ReminderDueReconciler, and TodayDashboardScreen integration points in lib/main.dart
+- [ ] T009 Wire MedicationHistoryRepository dependency through PillReminderApp constructor, fallback in-memory repository, _MainAppHome, and MedicationHistoryScreen navigation support in lib/main.dart
 
 **Checkpoint**: Shared history data and persistence contracts are ready.
 
@@ -141,6 +141,7 @@
 - [ ] T046 Perform manual quickstart verification for grouping, all statuses, snooze-final precedence, edited/deleted medication snapshots, offline availability, localization, screen reader order, large text, and no overlap using specs/006-medication-history/quickstart.md
 - [ ] T047 Review medication history implementation against docs/ux-design.md for calm tone, readable text, pressure-free choices, non-clinical language, and no account friction
 - [ ] T048 Verify performance with at least 90 days of typical reminder entries and keep history screen load under 500 ms in test/features/medications/medication_history_service_test.dart or test/features/medications/medication_history_screen_test.dart
+- [ ] T049 Create a lightweight usability review script for SC-001, SC-006, and SC-009 covering open-history timing, status wording feedback, and scanning a day with 8 entries in specs/006-medication-history/quickstart.md
 
 ---
 
