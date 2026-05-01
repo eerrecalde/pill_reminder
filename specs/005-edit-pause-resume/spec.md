@@ -5,6 +5,14 @@
 **Status**: Draft  
 **Input**: User description: "Edit, Pause, Resume - Create editing controls for medications and reminder schedules. Users should be able to change medication details, change reminder times, pause reminders temporarily, resume reminders, and delete a medication or schedule with clear confirmation. Changes must be reflected in future reminders reliably and must not create duplicate notifications. The flow should be simple enough for older adults, provide clear recovery from mistakes, work offline without an account, and include accessible, localization-ready confirmation and error states making sure to always use the UX Design guidelines in [this doc](./docs/ux-design.md)."
 
+## Clarifications
+
+### Session 2026-05-01
+
+- Q: How should "pause temporarily" behave? → A: Pause remains active until the user manually resumes.
+- Q: What level should pause apply to? → A: Pause the medication; all reminders for that medication stop.
+- Q: What recovery should deletion provide? → A: Deletion is final after confirmation; cancel before confirming is the recovery path.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Edit Medication Details (Priority: P1)
@@ -55,24 +63,24 @@ updated future reminder times are active.
 
 ### User Story 3 - Pause and Resume Reminders (Priority: P2)
 
-An older adult or caregiver can pause reminders for a medication or schedule
-temporarily, see that reminders are paused, and resume them when ready without
-recreating the medication or schedule.
+An older adult or caregiver can pause reminders for a medication temporarily,
+see that all reminders for that medication are paused, and resume them when
+ready without recreating the medication or schedule.
 
 **Why this priority**: People may stop a medication briefly or need a quiet
 period, and pausing should prevent unwanted alerts without deleting useful data.
 
-**Independent Test**: Can be tested by pausing a medication or schedule, passing
-a scheduled reminder time, confirming no notification is delivered for the
-paused item, then resuming and confirming future reminder delivery continues
-from the saved schedule.
+**Independent Test**: Can be tested by pausing a medication, passing a scheduled
+reminder time, confirming no notification is delivered for that medication, then
+resuming and confirming future reminder delivery continues from the saved
+schedule.
 
 **Acceptance Scenarios**:
 
-1. **Given** a medication or schedule has active future reminders, **When** the user pauses reminders, **Then** the item is clearly shown as paused and future reminder notifications for that item stop.
-2. **Given** an item is paused, **When** a scheduled reminder time passes, **Then** the app does not create a new notification for that paused item.
-3. **Given** an item is paused, **When** the user resumes reminders, **Then** future reminder notifications continue using the saved schedule.
-4. **Given** an item is paused, **When** the user opens the medication or schedule details, **Then** the pause state and resume action are understandable without relying on color alone.
+1. **Given** a medication has active future reminders, **When** the user pauses reminders, **Then** the medication is clearly shown as paused and future reminder notifications for that medication stop.
+2. **Given** a medication is paused, **When** a scheduled reminder time passes, **Then** the app does not create a new notification for that medication.
+3. **Given** a medication is paused, **When** the user resumes reminders, **Then** future reminder notifications continue using the saved schedule.
+4. **Given** a medication is paused, **When** the user opens the medication or schedule details, **Then** the pause state and resume action are understandable without relying on color alone.
 
 ---
 
@@ -80,7 +88,7 @@ from the saved schedule.
 
 An older adult or caregiver can delete a medication or reminder schedule only
 after a clear confirmation, with enough information to understand what will be
-removed and how to recover before the action is final.
+removed and that deletion is final after confirmation.
 
 **Why this priority**: Deletion removes important reminder data and must prevent
 accidental loss while still giving users control.
@@ -94,7 +102,7 @@ associated future reminders are removed without duplicates or stale alerts.
 1. **Given** the user chooses to delete a reminder schedule, **When** confirmation appears, **Then** it clearly states that reminder times for that medication will be removed while the medication remains.
 2. **Given** the user chooses to delete a medication, **When** confirmation appears, **Then** it clearly states that the medication and its associated reminders will be removed.
 3. **Given** the user cancels deletion, **When** they return to the previous screen, **Then** the medication or schedule remains unchanged.
-4. **Given** the user confirms deletion, **When** future reminders are checked, **Then** associated pending and future notifications are removed and no stale reminders appear.
+4. **Given** the user confirms deletion, **When** future reminders are checked, **Then** associated pending and future notifications are removed, no stale reminders appear, and the deleted item is not recoverable through this feature.
 
 ---
 
@@ -137,9 +145,9 @@ all confirmations, errors, pause states, and destructive actions remain clear.
 - The user tries to save an edited schedule with no reminder times, duplicate
   reminder times, or more than the supported daily reminder limit; saving should
   be blocked with plain-language guidance and valid choices preserved.
-- The user pauses an item that already has a pending remind-again-later request;
-  the pending later reminder should stop for that paused item.
-- The user resumes a paused item after one or more scheduled times have passed;
+- The user pauses a medication that already has a pending remind-again-later
+  request; the pending later reminder should stop for that medication.
+- The user resumes a paused medication after one or more scheduled times have passed;
   future reminders should continue from the next applicable reminder time
   without creating backfilled duplicate notifications.
 - The user deletes a medication that has a saved schedule, due reminder state, or
@@ -149,6 +157,9 @@ all confirmations, errors, pause states, and destructive actions remain clear.
   and editable without reminder times.
 - The user cancels a confirmation dialog or leaves an edit flow before saving;
   no saved medication, schedule, pause, resume, or delete state should change.
+- The user confirms deletion and later realizes it was a mistake; the app should
+  not restore the deleted medication or schedule in this feature, and the user
+  would need to recreate it manually.
 - Large text, screen readers, high contrast, or non-color-only status needs are
   present; edit controls, pause/resume state, confirmation dialogs, errors, and
   destructive actions should remain understandable and usable.
@@ -170,17 +181,19 @@ all confirmations, errors, pause states, and destructive actions remain clear.
 - **FR-011**: System MUST prevent duplicate future notifications for the same medication and scheduled time after medication edits, schedule edits, pause, resume, or delete actions.
 - **FR-012**: System MUST prevent saving edited schedules with no reminder times, duplicate reminder times, or more than the supported daily reminder limit.
 - **FR-013**: System MUST preserve valid medication and schedule choices when the user corrects invalid edited information.
-- **FR-014**: System MUST allow users to pause reminders for a medication or its saved schedule without deleting the medication or schedule.
-- **FR-015**: System MUST clearly indicate paused state wherever the medication or schedule reminder status is shown.
-- **FR-016**: System MUST stop future reminder notifications and pending remind-again-later reminders for a paused medication or schedule.
-- **FR-017**: System MUST allow users to resume paused reminders without recreating the medication or schedule.
+- **FR-014**: System MUST allow users to pause reminders for a medication without deleting the medication or its saved schedule.
+- **FR-015**: System MUST clearly indicate paused state wherever the medication reminder status is shown.
+- **FR-016**: System MUST stop all future reminder notifications and pending remind-again-later reminders for a paused medication.
+- **FR-017**: System MUST keep pause active until the user manually resumes reminders; automatic resume date or time selection is out of scope for v1.
+- **FR-017a**: System MUST allow users to resume paused reminders without recreating the medication or schedule.
 - **FR-018**: System MUST resume reminders from the next applicable future reminder time and MUST NOT create duplicate notifications for reminder times that passed while paused.
 - **FR-019**: System MUST allow users to delete a reminder schedule while keeping the medication saved.
 - **FR-020**: System MUST allow users to delete a medication and all reminder data associated with that medication.
 - **FR-021**: System MUST require clear confirmation before deleting a medication or reminder schedule.
-- **FR-022**: Deletion confirmation MUST state what will be removed and what will remain, including whether the medication itself or only its reminder schedule will be deleted.
+- **FR-022**: Deletion confirmation MUST state what will be removed, what will remain, and that deletion is final after confirmation, including whether the medication itself or only its reminder schedule will be deleted.
 - **FR-023**: System MUST allow users to cancel deletion confirmation without changing saved data.
 - **FR-024**: System MUST remove associated future reminders, pending due reminders, and pending remind-again-later requests when a medication or schedule is deleted.
+- **FR-024a**: System MUST NOT provide undo, archive, trash, or restore behavior for confirmed medication or schedule deletion in v1.
 - **FR-025**: System MUST save edit, pause, resume, and delete changes locally on the device without requiring internet access, account creation, sign-in, remote sync, analytics participation, backup, or sharing.
 - **FR-026**: System MUST preserve saved edit, pause, resume, and delete outcomes after app restart or device restart.
 - **FR-027**: System MUST communicate notification permission states when they affect whether future reminders can be delivered after an edit, pause, resume, or delete action.
@@ -196,8 +209,8 @@ all confirmations, errors, pause states, and destructive actions remain clear.
 - **Medication**: A locally saved medication record. Key attributes are medication name, optional dosage label, active or paused reminder status, associated reminder schedule, created date, last updated date, and deletion state.
 - **Reminder Schedule**: A locally saved schedule for one medication. Key attributes are associated medication, daily reminder times, optional end date or indefinite continuation, active or paused state, created date, last updated date, and deletion state.
 - **Reminder Time**: A user-selected time of day included in a reminder schedule. Key attributes are hour/minute meaning, localized display text, validation status, and whether it is included in the saved schedule.
-- **Pause State**: The user's temporary stop state for reminders for a medication or schedule. Key attributes are associated medication or schedule, paused status, pause date, resume date when applicable, and user-visible status text.
-- **Deletion Confirmation**: A user-visible confirmation before removing a medication or schedule. Key attributes are item type, item name, consequences, cancel outcome, confirm outcome, and related reminder data affected.
+- **Pause State**: The user's temporary stop state for all reminders for a medication. Key attributes are associated medication, paused status, pause date, manual resume date when the user resumes, and user-visible status text.
+- **Deletion Confirmation**: A user-visible confirmation before removing a medication or schedule. Key attributes are item type, item name, consequences, final-after-confirmation warning, cancel outcome, confirm outcome, and related reminder data affected.
 - **Notification Permission Status**: Represents whether local reminder notifications can currently be delivered, including granted, skipped, denied, blocked, or unavailable states.
 
 ## Success Criteria *(mandatory)*
@@ -208,9 +221,9 @@ all confirmations, errors, pause states, and destructive actions remain clear.
 - **SC-002**: At least 85% of representative test participants can edit reminder times, review the updated schedule, and save the change in under 3 minutes.
 - **SC-003**: 100% of saved medication detail edits appear in medication lists and future reminder messages in verification.
 - **SC-004**: 100% of saved schedule edits affect future reminders only from the updated schedule and do not leave old future notifications active in verification.
-- **SC-005**: 100% of pause actions stop future reminder notifications and pending remind-again-later requests for the paused item in verification.
+- **SC-005**: 100% of pause actions stop future reminder notifications and pending remind-again-later requests for the paused medication in verification.
 - **SC-006**: 100% of resume actions continue reminders from the next applicable future reminder time without backfilled duplicate notifications in verification.
-- **SC-007**: 100% of confirmed medication or schedule deletions remove associated future and pending reminders, while canceled deletions leave data unchanged.
+- **SC-007**: 100% of confirmed medication or schedule deletions remove associated future and pending reminders, while canceled deletions leave data unchanged and confirmed deletions are not restorable through this feature.
 - **SC-008**: 100% of edit, pause, resume, and delete outcomes remain consistent after app restart or device restart in verification.
 - **SC-009**: The edit, pause, resume, and delete flows remain fully usable while the device is offline in 100% of manual verification attempts.
 - **SC-010**: 95% of validation and error attempts show readable, non-color-only guidance and allow correction without losing valid user choices.
@@ -222,9 +235,10 @@ all confirmations, errors, pause states, and destructive actions remain clear.
 
 - Users are editing medications and reminder schedules that already exist from earlier medication and schedule features.
 - V1 reminder schedules remain simple daily schedules with the existing supported daily reminder limit and optional end date behavior.
-- Pausing is a manual user-controlled state that remains in effect until the user resumes or deletes the medication or schedule.
+- Pausing is a medication-level, manual user-controlled state that stops all reminders for that medication until the user resumes or deletes the medication; automatic resume date or time selection is out of scope for v1.
 - Editing a due reminder outcome history is out of scope; this feature changes medication details, future reminder schedules, pause/resume state, and deletion behavior.
 - Deleting a medication removes its associated schedule, future reminders, due reminder states, outcomes, and pending remind-again-later requests from the device.
 - Deleting only a schedule leaves the medication available without reminder times.
+- Confirmed deletion is final in v1; undo, archive, trash, and restore flows are out of scope.
 - Saved medication and reminder data remains on the device unless a future feature explicitly introduces backup, sync, export, or sharing with separate user consent.
 - Notification permission recovery may require the user to change device settings, but edit, pause, resume, and delete flows should still save locally and explain the current delivery state clearly.
