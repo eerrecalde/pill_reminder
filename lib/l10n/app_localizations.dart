@@ -620,6 +620,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose an end date on or after the first reminder date.'**
   String get scheduleInvalidEndDateError;
+
+  /// No description provided for @dueReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication reminder'**
+  String get dueReminderTitle;
+
+  /// No description provided for @dueReminderScheduledTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled for {time}'**
+  String dueReminderScheduledTime(Object time);
+
+  /// No description provided for @dueReminderStateUnresolved.
+  ///
+  /// In en, this message translates to:
+  /// **'This reminder is due.'**
+  String get dueReminderStateUnresolved;
+
+  /// No description provided for @dueReminderStateTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Marked as taken.'**
+  String get dueReminderStateTaken;
+
+  /// No description provided for @dueReminderStateSkipped.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipped.'**
+  String get dueReminderStateSkipped;
+
+  /// No description provided for @dueReminderStateLater.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be reminded again later.'**
+  String get dueReminderStateLater;
+
+  /// No description provided for @dueReminderTakenAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get dueReminderTakenAction;
+
+  /// No description provided for @dueReminderSkipAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get dueReminderSkipAction;
+
+  /// No description provided for @dueReminderLaterAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind later'**
+  String get dueReminderLaterAction;
+
+  /// No description provided for @dueReminderPermissionNeeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts need notifications to be enabled. You can still handle this reminder here.'**
+  String get dueReminderPermissionNeeded;
+
+  /// No description provided for @dueReminderPermissionBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts need to be enabled in device settings. You can still handle this reminder here.'**
+  String get dueReminderPermissionBlocked;
+
+  /// No description provided for @dueReminderPermissionUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts are not available on this device. You can still handle this reminder here.'**
+  String get dueReminderPermissionUnavailable;
+
+  /// No description provided for @dueReminderBannerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Due reminders'**
+  String get dueReminderBannerTitle;
+
+  /// No description provided for @dueReminderBannerItem.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is due'**
+  String dueReminderBannerItem(Object name);
+
+  /// No description provided for @dueReminderBannerSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 due reminder} other{{count} due reminders}}'**
+  String dueReminderBannerSemantics(int count);
+
+  /// No description provided for @reminderHandlingSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder handling'**
+  String get reminderHandlingSettingsTitle;
+
+  /// No description provided for @reminderHandlingIntervalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Remind again later after'**
+  String get reminderHandlingIntervalLabel;
 }
 
 class _AppLocalizationsDelegate

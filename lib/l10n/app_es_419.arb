@@ -106,5 +106,39 @@
   "scheduleMissingTimeError": "Elige al menos un horario de recordatorio.",
   "scheduleDuplicateTimeError": "Este horario ya está seleccionado.",
   "scheduleTooManyTimesError": "Usa cuatro horarios o menos.",
-  "scheduleInvalidEndDateError": "Elige una fecha final en o después de la primera fecha de recordatorio."
+  "scheduleInvalidEndDateError": "Elige una fecha final en o después de la primera fecha de recordatorio.",
+  "dueReminderTitle": "Recordatorio de medicamento",
+  "dueReminderScheduledTime": "Programado para {time}",
+  "@dueReminderScheduledTime": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "dueReminderStateUnresolved": "Este recordatorio está pendiente.",
+  "dueReminderStateTaken": "Marcado como tomado.",
+  "dueReminderStateSkipped": "Omitido.",
+  "dueReminderStateLater": "Te recordaremos de nuevo más tarde.",
+  "dueReminderTakenAction": "Tomado",
+  "dueReminderSkipAction": "Omitir",
+  "dueReminderLaterAction": "Recordar después",
+  "dueReminderPermissionNeeded": "Debes activar las notificaciones para recibir avisos. Puedes atender este recordatorio aquí.",
+  "dueReminderPermissionBlocked": "Activa las notificaciones en la configuración del dispositivo. Puedes atender este recordatorio aquí.",
+  "dueReminderPermissionUnavailable": "Los avisos no están disponibles en este dispositivo. Puedes atender este recordatorio aquí.",
+  "dueReminderBannerTitle": "Recordatorios pendientes",
+  "dueReminderBannerItem": "{name} está pendiente",
+  "@dueReminderBannerItem": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "dueReminderBannerSemantics": "{count, plural, =1{1 recordatorio pendiente} other{{count} recordatorios pendientes}}",
+  "@dueReminderBannerSemantics": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderHandlingSettingsTitle": "Manejo de recordatorios",
+  "reminderHandlingIntervalLabel": "Recordar después de"
 }

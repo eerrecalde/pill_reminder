@@ -19,13 +19,13 @@ regressions per the project constitution.
 
 **Purpose**: Create the reminder handling file structure, fakes, and localization placeholders needed by all stories.
 
-- [ ] T001 Create due reminder data files in `lib/features/medications/data/due_reminder_repository.dart` and `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T002 [P] Create due reminder domain files in `lib/features/medications/domain/due_reminder.dart` and `lib/features/medications/domain/reminder_handling_preferences.dart`
-- [ ] T003 [P] Create reminder handling presentation files in `lib/features/medications/presentation/due_reminder_actions.dart`, `lib/features/medications/presentation/due_reminder_banner.dart`, `lib/features/medications/presentation/due_reminder_screen.dart`, and `lib/features/medications/presentation/reminder_handling_settings.dart`
-- [ ] T004 [P] Create reminder handling service files in `lib/services/reminder_action_handler.dart` and `lib/services/reminder_due_reconciler.dart`
-- [ ] T005 [P] Create reminder handling test files in `test/features/medications/due_reminder_state_test.dart`, `test/features/medications/due_reminder_repository_test.dart`, `test/features/medications/reminder_action_handler_test.dart`, `test/features/medications/reminder_due_reconciler_test.dart`, `test/features/medications/reminder_handling_preferences_test.dart`, and `test/features/medications/due_reminder_screen_test.dart`
-- [ ] T006 [P] Create reminder handling fake files in `test/features/medications/fakes/fake_due_reminder_repository.dart`, `test/features/medications/fakes/fake_reminder_action_handler.dart`, and `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
-- [ ] T007 [P] Add placeholder reminder handling localization keys in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T001 Create due reminder data files in `lib/features/medications/data/due_reminder_repository.dart` and `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T002 [P] Create due reminder domain files in `lib/features/medications/domain/due_reminder.dart` and `lib/features/medications/domain/reminder_handling_preferences.dart`
+- [X] T003 [P] Create reminder handling presentation files in `lib/features/medications/presentation/due_reminder_actions.dart`, `lib/features/medications/presentation/due_reminder_banner.dart`, `lib/features/medications/presentation/due_reminder_screen.dart`, and `lib/features/medications/presentation/reminder_handling_settings.dart`
+- [X] T004 [P] Create reminder handling service files in `lib/services/reminder_action_handler.dart` and `lib/services/reminder_due_reconciler.dart`
+- [X] T005 [P] Create reminder handling test files in `test/features/medications/due_reminder_state_test.dart`, `test/features/medications/due_reminder_repository_test.dart`, `test/features/medications/reminder_action_handler_test.dart`, `test/features/medications/reminder_due_reconciler_test.dart`, `test/features/medications/reminder_handling_preferences_test.dart`, and `test/features/medications/due_reminder_screen_test.dart`
+- [X] T006 [P] Create reminder handling fake files in `test/features/medications/fakes/fake_due_reminder_repository.dart`, `test/features/medications/fakes/fake_reminder_action_handler.dart`, and `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
+- [X] T007 [P] Add placeholder reminder handling localization keys in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 ---
 
@@ -35,16 +35,16 @@ regressions per the project constitution.
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T008 [P] Define `DueReminderState`, `ReminderActionType`, `ReminderActionSource`, and `DueReminder` with JSON serialization in `lib/features/medications/domain/due_reminder.dart`
-- [ ] T009 [P] Define `RemindAgainLaterRequest`, `ReminderOutcome`, and `NotificationActionRequest` value types in `lib/features/medications/domain/due_reminder.dart`
-- [ ] T010 [P] Define `ReminderHandlingPreferences` with a 10-minute default app-wide interval in `lib/features/medications/domain/reminder_handling_preferences.dart`
-- [ ] T011 Define `DueReminderRepository` load/upsert/update/lookup/delete contract by medication id, schedule id, and scheduled occurrence in `lib/features/medications/data/due_reminder_repository.dart`
-- [ ] T012 Implement local JSON due reminder repository skeleton with delete-by-medication and delete-by-schedule support using `shared_preferences` in `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T013 Add fake due reminder repository behavior for unit and widget tests in `test/features/medications/fakes/fake_due_reminder_repository.dart`
-- [ ] T014 [P] Add due reminder, medication, schedule, and notification action fixture builders in `test/features/medications/due_reminder_test_fixtures.dart`
-- [ ] T015 Extend `ReminderNotificationScheduler` with due-reminder notification/action payload concepts, Android/iOS action/category registration for taken/skip/remind-again-later, and later-reminder scheduling methods in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T016 Register local due reminder repository and reminder handling dependencies in `lib/main.dart`
-- [ ] T017 Generate localization classes after adding reminder handling keys by running `flutter gen-l10n` for `lib/l10n/app_localizations*.dart`
+- [X] T008 [P] Define `DueReminderState`, `ReminderActionType`, `ReminderActionSource`, and `DueReminder` with JSON serialization in `lib/features/medications/domain/due_reminder.dart`
+- [X] T009 [P] Define `RemindAgainLaterRequest`, `ReminderOutcome`, and `NotificationActionRequest` value types in `lib/features/medications/domain/due_reminder.dart`
+- [X] T010 [P] Define `ReminderHandlingPreferences` with a 10-minute default app-wide interval in `lib/features/medications/domain/reminder_handling_preferences.dart`
+- [X] T011 Define `DueReminderRepository` load/upsert/update/lookup/delete contract by medication id, schedule id, and scheduled occurrence in `lib/features/medications/data/due_reminder_repository.dart`
+- [X] T012 Implement local JSON due reminder repository skeleton with delete-by-medication and delete-by-schedule support using `shared_preferences` in `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T013 Add fake due reminder repository behavior for unit and widget tests in `test/features/medications/fakes/fake_due_reminder_repository.dart`
+- [X] T014 [P] Add due reminder, medication, schedule, and notification action fixture builders in `test/features/medications/due_reminder_test_fixtures.dart`
+- [X] T015 Extend `ReminderNotificationScheduler` with due-reminder notification/action payload concepts, Android/iOS action/category registration for taken/skip/remind-again-later, and later-reminder scheduling methods in `lib/services/reminder_notification_scheduler.dart`
+- [X] T016 Register local due reminder repository and reminder handling dependencies in `lib/main.dart`
+- [X] T017 Generate localization classes after adding reminder handling keys by running `flutter gen-l10n` for `lib/l10n/app_localizations*.dart`
 
 **Checkpoint**: Foundation ready - user story implementation can now begin.
 
@@ -58,21 +58,21 @@ regressions per the project constitution.
 
 ### Tests for User Story 1
 
-- [ ] T018 [P] [US1] Add unit tests for due reminder id uniqueness by medication id and scheduled occurrence in `test/features/medications/due_reminder_state_test.dart`
-- [ ] T019 [P] [US1] Add repository tests for creating, loading, reloading, and deleting unresolved due reminders by medication id and schedule id in `test/features/medications/due_reminder_repository_test.dart`
-- [ ] T020 [P] [US1] Add scheduler tests for medication name, scheduled time, dosage label, and missing-dosage notification copy in `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T021 [US1] Add reconciler test for creating one due reminder from an active saved schedule while offline in `test/features/medications/reminder_due_reconciler_test.dart`
-- [ ] T022 [US1] Add widget test for opening an in-app due reminder with medication name, scheduled time, and optional dosage label in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T018 [P] [US1] Add unit tests for due reminder id uniqueness by medication id and scheduled occurrence in `test/features/medications/due_reminder_state_test.dart`
+- [X] T019 [P] [US1] Add repository tests for creating, loading, reloading, and deleting unresolved due reminders by medication id and schedule id in `test/features/medications/due_reminder_repository_test.dart`
+- [X] T020 [P] [US1] Add scheduler tests for medication name, scheduled time, dosage label, and missing-dosage notification copy in `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T021 [US1] Add reconciler test for creating one due reminder from an active saved schedule while offline in `test/features/medications/reminder_due_reconciler_test.dart`
+- [X] T022 [US1] Add widget test for opening an in-app due reminder with medication name, scheduled time, and optional dosage label in `test/features/medications/due_reminder_screen_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T023 [US1] Implement due reminder id generation and unresolved state creation rules in `lib/features/medications/domain/due_reminder.dart`
-- [ ] T024 [US1] Implement local due reminder create/load/reload/delete behavior in `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T025 [US1] Implement due reminder reconciliation from active reminder schedules and medications in `lib/services/reminder_due_reconciler.dart`
-- [ ] T026 [US1] Update local notification scheduling to include due reminder identity, medication name, scheduled time, and optional dosage label in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T027 [US1] Implement in-app due reminder screen display for medication name, scheduled time, optional dosage label, and unresolved state in `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T028 [US1] Add due reminder entry/banner for unresolved reminders in `lib/features/medications/presentation/due_reminder_banner.dart`
-- [ ] T029 [US1] Add English, Spanish, and Latin American Spanish strings for notification title/body, due reminder display, scheduled time, and missing dosage behavior in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T023 [US1] Implement due reminder id generation and unresolved state creation rules in `lib/features/medications/domain/due_reminder.dart`
+- [X] T024 [US1] Implement local due reminder create/load/reload/delete behavior in `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T025 [US1] Implement due reminder reconciliation from active reminder schedules and medications in `lib/services/reminder_due_reconciler.dart`
+- [X] T026 [US1] Update local notification scheduling to include due reminder identity, medication name, scheduled time, and optional dosage label in `lib/services/reminder_notification_scheduler.dart`
+- [X] T027 [US1] Implement in-app due reminder screen display for medication name, scheduled time, optional dosage label, and unresolved state in `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T028 [US1] Add due reminder entry/banner for unresolved reminders in `lib/features/medications/presentation/due_reminder_banner.dart`
+- [X] T029 [US1] Add English, Spanish, and Latin American Spanish strings for notification title/body, due reminder display, scheduled time, and missing dosage behavior in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 1 is functional and testable as the MVP.
 
@@ -86,23 +86,23 @@ regressions per the project constitution.
 
 ### Tests for User Story 2
 
-- [ ] T030 [P] [US2] Add state transition tests for taken, skipped, and remind-again-later outcomes in `test/features/medications/due_reminder_state_test.dart`
-- [ ] T031 [P] [US2] Add preference tests for default 10-minute interval and changed app-wide interval in `test/features/medications/reminder_handling_preferences_test.dart`
-- [ ] T032 [P] [US2] Add action handler tests for in-app taken, skipped, and remind-again-later actions in `test/features/medications/reminder_action_handler_test.dart`
-- [ ] T033 [US2] Add notification action handler tests for taken, skipped, remind-again-later, platform action payload routing, and stale final-state actions in `test/features/medications/reminder_action_handler_test.dart`
-- [ ] T034 [US2] Add widget tests for due reminder action buttons and resulting state text in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T030 [P] [US2] Add state transition tests for taken, skipped, and remind-again-later outcomes in `test/features/medications/due_reminder_state_test.dart`
+- [X] T031 [P] [US2] Add preference tests for default 10-minute interval and changed app-wide interval in `test/features/medications/reminder_handling_preferences_test.dart`
+- [X] T032 [P] [US2] Add action handler tests for in-app taken, skipped, and remind-again-later actions in `test/features/medications/reminder_action_handler_test.dart`
+- [X] T033 [US2] Add notification action handler tests for taken, skipped, remind-again-later, platform action payload routing, and stale final-state actions in `test/features/medications/reminder_action_handler_test.dart`
+- [X] T034 [US2] Add widget tests for due reminder action buttons and resulting state text in `test/features/medications/due_reminder_screen_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T035 [US2] Implement final outcome and pending remind-again-later transition methods in `lib/features/medications/domain/due_reminder.dart`
-- [ ] T036 [US2] Implement local persistence for taken, skipped, and remind-again-later updates in `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T037 [US2] Implement app-wide reminder handling preference load/save behavior in `lib/features/medications/domain/reminder_handling_preferences.dart` and `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T038 [US2] Implement shared reminder action handler for notification and in-app actions in `lib/services/reminder_action_handler.dart`
-- [ ] T039 [US2] Implement Android/iOS notification action/category registration, payload routing hooks, and later-reminder scheduling/cancellation for remind-again-later requests in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T040 [US2] Implement taken, skip, and remind-again-later controls in `lib/features/medications/presentation/due_reminder_actions.dart`
-- [ ] T041 [US2] Wire action controls and state refresh into `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T042 [US2] Add app-wide remind-again-later interval setting UI in `lib/features/medications/presentation/reminder_handling_settings.dart`
-- [ ] T043 [US2] Add English, Spanish, and Latin American Spanish strings for taken, skipped, remind again later, action timestamps, and interval settings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T035 [US2] Implement final outcome and pending remind-again-later transition methods in `lib/features/medications/domain/due_reminder.dart`
+- [X] T036 [US2] Implement local persistence for taken, skipped, and remind-again-later updates in `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T037 [US2] Implement app-wide reminder handling preference load/save behavior in `lib/features/medications/domain/reminder_handling_preferences.dart` and `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T038 [US2] Implement shared reminder action handler for notification and in-app actions in `lib/services/reminder_action_handler.dart`
+- [X] T039 [US2] Implement Android/iOS notification action/category registration, payload routing hooks, and later-reminder scheduling/cancellation for remind-again-later requests in `lib/services/reminder_notification_scheduler.dart`
+- [X] T040 [US2] Implement taken, skip, and remind-again-later controls in `lib/features/medications/presentation/due_reminder_actions.dart`
+- [X] T041 [US2] Wire action controls and state refresh into `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T042 [US2] Add app-wide remind-again-later interval setting UI in `lib/features/medications/presentation/reminder_handling_settings.dart`
+- [X] T043 [US2] Add English, Spanish, and Latin American Spanish strings for taken, skipped, remind again later, action timestamps, and interval settings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 2 works independently and preserves User Story 1.
 
@@ -116,23 +116,23 @@ regressions per the project constitution.
 
 ### Tests for User Story 3
 
-- [ ] T044 [P] [US3] Add repository idempotency tests for duplicate due reminder creation attempts in `test/features/medications/due_reminder_repository_test.dart`
-- [ ] T045 [P] [US3] Add action handler tests for contradictory taken/skipped actions and stale notification actions in `test/features/medications/reminder_action_handler_test.dart`
-- [ ] T046 [P] [US3] Add remind-again-later overlap prevention tests in `test/features/medications/reminder_action_handler_test.dart`
-- [ ] T047 [US3] Add reconciler tests for app restart recovery and elapsed reminders when notifications were disabled in `test/features/medications/reminder_due_reconciler_test.dart`
-- [ ] T048 [US3] Add scheduler tests for permission skipped, denied, blocked, unavailable, operating-system revocation mapped to denied/blocked, and re-enabled future delivery states in `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T049 [US3] Add widget test for disabled notification guidance while preserving in-app taken/skip/remind-again-later actions in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T044 [P] [US3] Add repository idempotency tests for duplicate due reminder creation attempts in `test/features/medications/due_reminder_repository_test.dart`
+- [X] T045 [P] [US3] Add action handler tests for contradictory taken/skipped actions and stale notification actions in `test/features/medications/reminder_action_handler_test.dart`
+- [X] T046 [P] [US3] Add remind-again-later overlap prevention tests in `test/features/medications/reminder_action_handler_test.dart`
+- [X] T047 [US3] Add reconciler tests for app restart recovery and elapsed reminders when notifications were disabled in `test/features/medications/reminder_due_reconciler_test.dart`
+- [X] T048 [US3] Add scheduler tests for permission skipped, denied, blocked, unavailable, operating-system revocation mapped to denied/blocked, and re-enabled future delivery states in `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T049 [US3] Add widget test for disabled notification guidance while preserving in-app taken/skip/remind-again-later actions in `test/features/medications/due_reminder_screen_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T050 [US3] Enforce idempotent upsert by medication id and scheduled occurrence in `lib/features/medications/data/local_due_reminder_repository.dart`
-- [ ] T051 [US3] Enforce final-state conflict rules and stale action no-op behavior in `lib/services/reminder_action_handler.dart`
-- [ ] T052 [US3] Enforce single pending remind-again-later request per due reminder in `lib/services/reminder_action_handler.dart`
-- [ ] T053 [US3] Implement startup and foreground due reminder reconciliation in `lib/services/reminder_due_reconciler.dart`
-- [ ] T054 [US3] Integrate due reminder reconciliation with app startup in `lib/main.dart`
-- [ ] T055 [US3] Handle notification permission skipped, denied, blocked, unavailable, operating-system revocation mapped to denied/blocked, and re-enabled delivery states in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T056 [US3] Show calm permission guidance for due reminders that cannot currently appear as notifications in `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T057 [US3] Add English, Spanish, and Latin American Spanish strings for permission-disabled guidance, stale action fallback, and restart recovery states in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T050 [US3] Enforce idempotent upsert by medication id and scheduled occurrence in `lib/features/medications/data/local_due_reminder_repository.dart`
+- [X] T051 [US3] Enforce final-state conflict rules and stale action no-op behavior in `lib/services/reminder_action_handler.dart`
+- [X] T052 [US3] Enforce single pending remind-again-later request per due reminder in `lib/services/reminder_action_handler.dart`
+- [X] T053 [US3] Implement startup and foreground due reminder reconciliation in `lib/services/reminder_due_reconciler.dart`
+- [X] T054 [US3] Integrate due reminder reconciliation with app startup in `lib/main.dart`
+- [X] T055 [US3] Handle notification permission skipped, denied, blocked, unavailable, operating-system revocation mapped to denied/blocked, and re-enabled delivery states in `lib/services/reminder_notification_scheduler.dart`
+- [X] T056 [US3] Show calm permission guidance for due reminders that cannot currently appear as notifications in `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T057 [US3] Add English, Spanish, and Latin American Spanish strings for permission-disabled guidance, stale action fallback, and restart recovery states in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 3 works independently and preserves previous stories.
 
@@ -146,19 +146,19 @@ regressions per the project constitution.
 
 ### Tests for User Story 4
 
-- [ ] T058 [P] [US4] Add large-text widget tests for due reminder details and actions in `test/features/medications/due_reminder_screen_test.dart`
-- [ ] T059 [P] [US4] Add screen-reader semantics tests for medication name, dosage label, scheduled time, state, and actions in `test/features/medications/due_reminder_screen_test.dart`
-- [ ] T060 [US4] Add non-color-only state and permission guidance tests in `test/features/medications/due_reminder_screen_test.dart`
-- [ ] T061 [US4] Add localization widget tests for English and Latin American Spanish notification/in-app copy and time formatting in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T058 [P] [US4] Add large-text widget tests for due reminder details and actions in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T059 [P] [US4] Add screen-reader semantics tests for medication name, dosage label, scheduled time, state, and actions in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T060 [US4] Add non-color-only state and permission guidance tests in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T061 [US4] Add localization widget tests for English and Latin American Spanish notification/in-app copy and time formatting in `test/features/medications/due_reminder_screen_test.dart`
 
 ### Implementation for User Story 4
 
-- [ ] T062 [US4] Apply `docs/ux-design.md` layout, calm tone, spacing, and 56px preferred primary actions in `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T063 [US4] Add semantic labels, focus behavior, and logical reading order to action controls in `lib/features/medications/presentation/due_reminder_actions.dart`
-- [ ] T064 [US4] Ensure large text does not clip reminder details, state text, permission guidance, or actions in `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T065 [US4] Ensure due reminder state and permission status are communicated by text and semantics, not color alone, in `lib/features/medications/presentation/due_reminder_banner.dart` and `lib/features/medications/presentation/due_reminder_screen.dart`
-- [ ] T066 [US4] Ensure locale-aware scheduled time and action time formatting in `lib/features/medications/presentation/due_reminder_screen.dart` and `lib/services/reminder_notification_scheduler.dart`
-- [ ] T067 [US4] Finalize English, Spanish, and Latin American Spanish reminder handling strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T062 [US4] Apply `docs/ux-design.md` layout, calm tone, spacing, and 56px preferred primary actions in `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T063 [US4] Add semantic labels, focus behavior, and logical reading order to action controls in `lib/features/medications/presentation/due_reminder_actions.dart`
+- [X] T064 [US4] Ensure large text does not clip reminder details, state text, permission guidance, or actions in `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T065 [US4] Ensure due reminder state and permission status are communicated by text and semantics, not color alone, in `lib/features/medications/presentation/due_reminder_banner.dart` and `lib/features/medications/presentation/due_reminder_screen.dart`
+- [X] T066 [US4] Ensure locale-aware scheduled time and action time formatting in `lib/features/medications/presentation/due_reminder_screen.dart` and `lib/services/reminder_notification_scheduler.dart`
+- [X] T067 [US4] Finalize English, Spanish, and Latin American Spanish reminder handling strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Story 4 works independently and all user stories are functional.
 
@@ -170,7 +170,7 @@ regressions per the project constitution.
 
 - [ ] T068 [P] Review reminder handling UI against `docs/ux-design.md` and document manual findings in `specs/004-reminder-notification-handling/quickstart.md`
 - [ ] T069 [P] Review English, Spanish, and Latin American Spanish reminder handling strings in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
-- [ ] T070 [P] Add or update accessibility regression coverage for large text, semantics, focus, touch targets, and non-color-only status in `test/features/medications/due_reminder_screen_test.dart`
+- [X] T070 [P] Add or update accessibility regression coverage for large text, semantics, focus, touch targets, and non-color-only status in `test/features/medications/due_reminder_screen_test.dart`
 - [ ] T071 Add manual Android notification delivery and action verification notes for taken, skipped, remind-again-later, permission disabled, and permission re-enabled paths in `specs/004-reminder-notification-handling/quickstart.md`
 - [ ] T072 Add manual iOS notification delivery and action verification notes for taken, skipped, remind-again-later, permission disabled, and permission re-enabled paths in `specs/004-reminder-notification-handling/quickstart.md`
 - [ ] T073 Verify offline due reminder handling, app restart recovery, stale notification actions, and repeated remind-again-later behavior manually using `specs/004-reminder-notification-handling/quickstart.md`
@@ -178,10 +178,10 @@ regressions per the project constitution.
 - [ ] T075 Document local due reminder storage, retention, deletion, sharing, backup, analytics, donation, and remote-service behavior in `specs/004-reminder-notification-handling/quickstart.md`
 - [ ] T076 Verify medication deletion and schedule removal clear associated due reminders, outcomes, and pending remind-again-later requests using `specs/004-reminder-notification-handling/quickstart.md`
 - [ ] T077 Verify representative users can mark taken, skip, or remind again later in under 30 seconds using `specs/004-reminder-notification-handling/quickstart.md`
-- [ ] T078 Run `flutter gen-l10n` from repository root for reminder handling localization files in `lib/l10n/`
-- [ ] T079 Run `dart format lib test` from repository root for `lib/` and `test/`
-- [ ] T080 Run `flutter analyze` from repository root for `lib/`, `test/`, and generated localization coverage
-- [ ] T081 Run full `flutter test` from repository root for all reminder handling, reminder schedule, medication, setup, and widget tests
+- [X] T078 Run `flutter gen-l10n` from repository root for reminder handling localization files in `lib/l10n/`
+- [X] T079 Run `dart format lib test` from repository root for `lib/` and `test/`
+- [X] T080 Run `flutter analyze` from repository root for `lib/`, `test/`, and generated localization coverage
+- [X] T081 Run full `flutter test` from repository root for all reminder handling, reminder schedule, medication, setup, and widget tests
 
 ---
 

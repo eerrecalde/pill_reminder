@@ -106,5 +106,39 @@
   "scheduleMissingTimeError": "Choose at least one reminder time.",
   "scheduleDuplicateTimeError": "This reminder time is already selected.",
   "scheduleTooManyTimesError": "Use four reminder times or fewer.",
-  "scheduleInvalidEndDateError": "Choose an end date on or after the first reminder date."
+  "scheduleInvalidEndDateError": "Choose an end date on or after the first reminder date.",
+  "dueReminderTitle": "Medication reminder",
+  "dueReminderScheduledTime": "Scheduled for {time}",
+  "@dueReminderScheduledTime": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "dueReminderStateUnresolved": "This reminder is due.",
+  "dueReminderStateTaken": "Marked as taken.",
+  "dueReminderStateSkipped": "Skipped.",
+  "dueReminderStateLater": "You will be reminded again later.",
+  "dueReminderTakenAction": "Taken",
+  "dueReminderSkipAction": "Skip",
+  "dueReminderLaterAction": "Remind later",
+  "dueReminderPermissionNeeded": "Reminder alerts need notifications to be enabled. You can still handle this reminder here.",
+  "dueReminderPermissionBlocked": "Reminder alerts need to be enabled in device settings. You can still handle this reminder here.",
+  "dueReminderPermissionUnavailable": "Reminder alerts are not available on this device. You can still handle this reminder here.",
+  "dueReminderBannerTitle": "Due reminders",
+  "dueReminderBannerItem": "{name} is due",
+  "@dueReminderBannerItem": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "dueReminderBannerSemantics": "{count, plural, =1{1 due reminder} other{{count} due reminders}}",
+  "@dueReminderBannerSemantics": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reminderHandlingSettingsTitle": "Reminder handling",
+  "reminderHandlingIntervalLabel": "Remind again later after"
 }

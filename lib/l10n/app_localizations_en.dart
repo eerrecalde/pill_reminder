@@ -301,4 +301,70 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get scheduleInvalidEndDateError =>
       'Choose an end date on or after the first reminder date.';
+
+  @override
+  String get dueReminderTitle => 'Medication reminder';
+
+  @override
+  String dueReminderScheduledTime(Object time) {
+    return 'Scheduled for $time';
+  }
+
+  @override
+  String get dueReminderStateUnresolved => 'This reminder is due.';
+
+  @override
+  String get dueReminderStateTaken => 'Marked as taken.';
+
+  @override
+  String get dueReminderStateSkipped => 'Skipped.';
+
+  @override
+  String get dueReminderStateLater => 'You will be reminded again later.';
+
+  @override
+  String get dueReminderTakenAction => 'Taken';
+
+  @override
+  String get dueReminderSkipAction => 'Skip';
+
+  @override
+  String get dueReminderLaterAction => 'Remind later';
+
+  @override
+  String get dueReminderPermissionNeeded =>
+      'Reminder alerts need notifications to be enabled. You can still handle this reminder here.';
+
+  @override
+  String get dueReminderPermissionBlocked =>
+      'Reminder alerts need to be enabled in device settings. You can still handle this reminder here.';
+
+  @override
+  String get dueReminderPermissionUnavailable =>
+      'Reminder alerts are not available on this device. You can still handle this reminder here.';
+
+  @override
+  String get dueReminderBannerTitle => 'Due reminders';
+
+  @override
+  String dueReminderBannerItem(Object name) {
+    return '$name is due';
+  }
+
+  @override
+  String dueReminderBannerSemantics(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count due reminders',
+      one: '1 due reminder',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get reminderHandlingSettingsTitle => 'Reminder handling';
+
+  @override
+  String get reminderHandlingIntervalLabel => 'Remind again later after';
 }
