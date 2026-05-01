@@ -49,4 +49,87 @@ class LocalMedicationRepository implements MedicationRepository {
     await _preferences.setStringList(_medicationsKey, updatedRecords);
     return medication;
   }
+
+  @override
+  Future<Medication> updateMedication(Medication medication) async {
+    final medications = await loadMedications();
+    final existing = medications
+        .where((item) => item.id == medication.id)
+        .firstOrNull;
+    if (existing == null) {
+      throw StateError('Medication ${medication.id} was not found.');
+    }
+
+    final updated = medication.copyWith(
+      name: medication.name.trim(),
+      dosageLabel: medication.dosageLabel.trim(),
+      notes: medication.notes.trim(),
+      createdAt: existing.createdAt,
+      updatedAt: DateTime.now(),
+    );
+    await _saveAll([
+      for (final item in medications)
+        if (item.id == updated.id) updated else item,
+    ]);
+    return updated;
+  }
+
+  @override
+  Future<Medication> pauseMedication(String id, {DateTime? pausedAt}) async {
+    final medications = await loadMedications();
+    final existing = medications.where((item) => item.id == id).firstOrNull;
+    if (existing == null) {
+      throw StateError('Medication $id was not found.');
+    }
+    final now = pausedAt ?? DateTime.now();
+    final updated = existing.copyWith(
+      status: MedicationStatus.paused,
+      pausedAt: now,
+      clearResumedAt: true,
+      updatedAt: now,
+    );
+    await _saveAll([
+      for (final item in medications)
+        if (item.id == id) updated else item,
+    ]);
+    return updated;
+  }
+
+  @override
+  Future<Medication> resumeMedication(String id, {DateTime? resumedAt}) async {
+    final medications = await loadMedications();
+    final existing = medications.where((item) => item.id == id).firstOrNull;
+    if (existing == null) {
+      throw StateError('Medication $id was not found.');
+    }
+    final now = resumedAt ?? DateTime.now();
+    final updated = existing.copyWith(
+      status: MedicationStatus.active,
+      clearPausedAt: true,
+      resumedAt: now,
+      updatedAt: now,
+    );
+    await _saveAll([
+      for (final item in medications)
+        if (item.id == id) updated else item,
+    ]);
+    return updated;
+  }
+
+  @override
+  Future<void> deleteMedication(String id) async {
+    final medications = await loadMedications();
+    await _saveAll(
+      medications.where((item) => item.id != id).toList(growable: false),
+    );
+  }
+
+  Future<void> _saveAll(List<Medication> medications) async {
+    await _preferences.setStringList(
+      _medicationsKey,
+      medications
+          .map((record) => jsonEncode(record.toJson()))
+          .toList(growable: false),
+    );
+  }
 }

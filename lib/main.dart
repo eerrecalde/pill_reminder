@@ -258,6 +258,7 @@ class _MainAppHomeState extends State<_MainAppHome> {
           repository: widget.reminderScheduleRepository,
           notificationPermissionService: widget.notificationPermissionService,
           notificationScheduler: widget.reminderNotificationScheduler,
+          dueReminderRepository: widget.dueReminderRepository,
         ),
       ),
     );
@@ -376,6 +377,7 @@ class _MainAppHomeState extends State<_MainAppHome> {
                         widget.reminderScheduleRepository,
                     dailyReminderHandlingRepository:
                         widget.dailyReminderHandlingRepository,
+                    dueReminderRepository: widget.dueReminderRepository,
                     reminderNotificationScheduler:
                         widget.reminderNotificationScheduler,
                     notificationPermissionService:
@@ -430,7 +432,7 @@ class _InMemoryReminderScheduleRepository
     final schedule = ReminderSchedule(
       id: existing?.id ?? 'memory-schedule-${now.microsecondsSinceEpoch}',
       medicationId: medicationId,
-      reminderTimes: [...reminderTimes]..sort(),
+      reminderTimes: ({...reminderTimes}.toList()..sort()),
       endDate: endDate,
       notificationDeliveryState: notificationDeliveryState,
       createdAt: existing?.createdAt ?? now,
@@ -439,6 +441,22 @@ class _InMemoryReminderScheduleRepository
     _schedules.removeWhere((item) => item.medicationId == medicationId);
     _schedules.add(schedule);
     return schedule;
+  }
+
+  @override
+  Future<ReminderSchedule> replaceSchedule({
+    required String medicationId,
+    required List<ReminderTime> reminderTimes,
+    DateTime? endDate,
+    ReminderNotificationDeliveryState notificationDeliveryState =
+        ReminderNotificationDeliveryState.permissionNeeded,
+  }) {
+    return saveSchedule(
+      medicationId: medicationId,
+      reminderTimes: reminderTimes,
+      endDate: endDate,
+      notificationDeliveryState: notificationDeliveryState,
+    );
   }
 
   @override
@@ -454,6 +472,14 @@ class _InMemoryReminderNotificationScheduler
 
   @override
   Future<void> cancelForSchedule(ReminderSchedule schedule) async {}
+
+  @override
+  Future<void> cancelForMedication(ReminderSchedule schedule) async {}
+
+  @override
+  Future<void> cancelDueAndLaterForMedication(
+    List<DueReminder> reminders,
+  ) async {}
 
   @override
   Future<void> cancelDueReminder(DueReminder reminder) async {}
@@ -478,6 +504,21 @@ class _InMemoryReminderNotificationScheduler
         ReminderNotificationScheduleStatus.unavailable,
     };
     return ReminderNotificationScheduleResult(status);
+  }
+
+  @override
+  Future<ReminderNotificationScheduleResult> refreshForMedication(
+    ReminderSchedule schedule, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  }) {
+    return this.schedule(
+      schedule,
+      title: title,
+      body: body,
+      permissionStatus: permissionStatus,
+    );
   }
 
   @override
@@ -570,6 +611,61 @@ class _InMemoryMedicationRepository implements MedicationRepository {
     );
     _medications.add(medication);
     return medication;
+  }
+
+  @override
+  Future<Medication> updateMedication(Medication medication) async {
+    final existing = _medications
+        .where((item) => item.id == medication.id)
+        .firstOrNull;
+    if (existing == null) throw StateError('Missing medication');
+    final updated = medication.copyWith(
+      name: medication.name.trim(),
+      dosageLabel: medication.dosageLabel.trim(),
+      notes: medication.notes.trim(),
+      createdAt: existing.createdAt,
+      updatedAt: DateTime.now(),
+    );
+    _medications.removeWhere((item) => item.id == updated.id);
+    _medications.add(updated);
+    return updated;
+  }
+
+  @override
+  Future<Medication> pauseMedication(String id, {DateTime? pausedAt}) async {
+    final existing = _medications.where((item) => item.id == id).firstOrNull;
+    if (existing == null) throw StateError('Missing medication');
+    final now = pausedAt ?? DateTime.now();
+    final updated = existing.copyWith(
+      status: MedicationStatus.paused,
+      pausedAt: now,
+      clearResumedAt: true,
+      updatedAt: now,
+    );
+    _medications.removeWhere((item) => item.id == id);
+    _medications.add(updated);
+    return updated;
+  }
+
+  @override
+  Future<Medication> resumeMedication(String id, {DateTime? resumedAt}) async {
+    final existing = _medications.where((item) => item.id == id).firstOrNull;
+    if (existing == null) throw StateError('Missing medication');
+    final now = resumedAt ?? DateTime.now();
+    final updated = existing.copyWith(
+      status: MedicationStatus.active,
+      clearPausedAt: true,
+      resumedAt: now,
+      updatedAt: now,
+    );
+    _medications.removeWhere((item) => item.id == id);
+    _medications.add(updated);
+    return updated;
+  }
+
+  @override
+  Future<void> deleteMedication(String id) async {
+    _medications.removeWhere((item) => item.id == id);
   }
 }
 

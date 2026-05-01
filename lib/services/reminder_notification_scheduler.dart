@@ -53,6 +53,17 @@ abstract class ReminderNotificationScheduler {
 
   Future<void> cancelForSchedule(ReminderSchedule schedule);
 
+  Future<ReminderNotificationScheduleResult> refreshForMedication(
+    ReminderSchedule schedule, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  });
+
+  Future<void> cancelForMedication(ReminderSchedule schedule);
+
+  Future<void> cancelDueAndLaterForMedication(List<DueReminder> reminders);
+
   Future<void> suppressTodayForTime(
     ReminderSchedule schedule,
     ReminderTime reminderTime, {
@@ -172,6 +183,36 @@ class LocalReminderNotificationScheduler
     await initialize();
     for (final time in schedule.reminderTimes) {
       await _notificationsPlugin.cancel(id: _notificationId(schedule, time));
+    }
+  }
+
+  @override
+  Future<ReminderNotificationScheduleResult> refreshForMedication(
+    ReminderSchedule schedule, {
+    required String title,
+    required String body,
+    required SetupNotificationPermissionStatus permissionStatus,
+  }) async {
+    await cancelForSchedule(schedule);
+    return this.schedule(
+      schedule,
+      title: title,
+      body: body,
+      permissionStatus: permissionStatus,
+    );
+  }
+
+  @override
+  Future<void> cancelForMedication(ReminderSchedule schedule) {
+    return cancelForSchedule(schedule);
+  }
+
+  @override
+  Future<void> cancelDueAndLaterForMedication(
+    List<DueReminder> reminders,
+  ) async {
+    for (final reminder in reminders) {
+      await cancelDueReminder(reminder);
     }
   }
 

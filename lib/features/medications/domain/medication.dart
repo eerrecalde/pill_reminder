@@ -1,9 +1,11 @@
 enum MedicationStatus {
   active,
+  paused,
   inactive;
 
   static MedicationStatus fromStorage(String? value) {
     return switch (value) {
+      'paused' => MedicationStatus.paused,
       'inactive' => MedicationStatus.inactive,
       _ => MedicationStatus.active,
     };
@@ -19,6 +21,8 @@ class Medication {
     required this.status,
     required this.createdAt,
     required this.updatedAt,
+    this.pausedAt,
+    this.resumedAt,
   });
 
   final String id;
@@ -28,8 +32,37 @@ class Medication {
   final MedicationStatus status;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final DateTime? pausedAt;
+  final DateTime? resumedAt;
 
   bool get isActive => status == MedicationStatus.active;
+  bool get isPaused => status == MedicationStatus.paused;
+
+  Medication copyWith({
+    String? id,
+    String? name,
+    String? dosageLabel,
+    String? notes,
+    MedicationStatus? status,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    DateTime? pausedAt,
+    bool clearPausedAt = false,
+    DateTime? resumedAt,
+    bool clearResumedAt = false,
+  }) {
+    return Medication(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      dosageLabel: dosageLabel ?? this.dosageLabel,
+      notes: notes ?? this.notes,
+      status: status ?? this.status,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      pausedAt: clearPausedAt ? null : pausedAt ?? this.pausedAt,
+      resumedAt: clearResumedAt ? null : resumedAt ?? this.resumedAt,
+    );
+  }
 
   Map<String, Object?> toJson() {
     return {
@@ -40,6 +73,8 @@ class Medication {
       'status': status.name,
       'createdAt': createdAt.toIso8601String(),
       'updatedAt': updatedAt.toIso8601String(),
+      'pausedAt': pausedAt?.toIso8601String(),
+      'resumedAt': resumedAt?.toIso8601String(),
     };
   }
 
@@ -56,6 +91,8 @@ class Medication {
       updatedAt:
           DateTime.tryParse(json['updatedAt'] as String? ?? '') ??
           DateTime.fromMillisecondsSinceEpoch(0),
+      pausedAt: DateTime.tryParse(json['pausedAt'] as String? ?? ''),
+      resumedAt: DateTime.tryParse(json['resumedAt'] as String? ?? ''),
     );
   }
 }

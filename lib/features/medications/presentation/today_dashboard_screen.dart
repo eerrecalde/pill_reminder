@@ -8,11 +8,15 @@ import '../../../services/reminder_notification_scheduler.dart';
 import '../../setup/domain/notification_permission_status.dart';
 import '../../setup/presentation/reminder_status_banner.dart';
 import '../data/daily_reminder_handling_repository.dart';
+import '../data/due_reminder_repository.dart';
 import '../data/medication_repository.dart';
 import '../data/reminder_schedule_repository.dart';
+import '../domain/medication_reminder_operations.dart';
 import '../domain/medication.dart';
 import '../domain/today_dashboard.dart';
 import '../domain/today_dashboard_service.dart';
+import 'add_medication_screen.dart';
+import 'medication_delete_confirmation_dialog.dart';
 import 'medication_list_section.dart';
 import 'today_empty_state.dart';
 import 'today_section.dart';
@@ -22,6 +26,7 @@ class TodayDashboardScreen extends StatefulWidget {
     required this.medicationRepository,
     required this.reminderScheduleRepository,
     required this.dailyReminderHandlingRepository,
+    required this.dueReminderRepository,
     required this.reminderNotificationScheduler,
     required this.notificationPermissionService,
     required this.notificationStatus,
@@ -36,6 +41,7 @@ class TodayDashboardScreen extends StatefulWidget {
   final MedicationRepository medicationRepository;
   final ReminderScheduleRepository reminderScheduleRepository;
   final DailyReminderHandlingRepository dailyReminderHandlingRepository;
+  final DueReminderRepository dueReminderRepository;
   final ReminderNotificationScheduler reminderNotificationScheduler;
   final NotificationPermissionService notificationPermissionService;
   final SetupNotificationPermissionStatus notificationStatus;
@@ -173,6 +179,77 @@ class _TodayDashboardScreenState extends State<TodayDashboardScreen>
     await _loadSnapshot();
   }
 
+  MedicationReminderOperations _operations() {
+    return MedicationReminderOperations(
+      medicationRepository: widget.medicationRepository,
+      scheduleRepository: widget.reminderScheduleRepository,
+      dueReminderRepository: widget.dueReminderRepository,
+      notificationScheduler: widget.reminderNotificationScheduler,
+    );
+  }
+
+  Future<void> _editMedication(Medication medication) async {
+    final updated = await Navigator.of(context).push<Medication>(
+      MaterialPageRoute(
+        builder: (_) => AddMedicationScreen(
+          repository: widget.medicationRepository,
+          initialMedication: medication,
+        ),
+      ),
+    );
+    if (updated == null) {
+      await _loadSnapshot();
+      return;
+    }
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context);
+    await _operations().updateMedicationDetails(
+      medication: updated,
+      title: l10n.appTitle,
+      body: l10n.notificationBody,
+      permissionStatus: widget.notificationStatus,
+    );
+    await _loadSnapshot();
+  }
+
+  Future<void> _pauseMedication(Medication medication) async {
+    await _operations().pauseMedication(medication);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context).remindersPaused)),
+    );
+    await _loadSnapshot();
+  }
+
+  Future<void> _resumeMedication(Medication medication) async {
+    await _operations().resumeMedication(
+      medication: medication,
+      title: AppLocalizations.of(context).appTitle,
+      body: AppLocalizations.of(context).notificationBody,
+      permissionStatus: widget.notificationStatus,
+    );
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context).remindersResumed)),
+    );
+    await _loadSnapshot();
+  }
+
+  Future<void> _deleteMedication(Medication medication) async {
+    final confirmed = await showMedicationDeleteConfirmationDialog(
+      context: context,
+      medication: medication,
+      target: MedicationDeleteConfirmationTarget.medication,
+    );
+    if (!confirmed) return;
+    await _operations().deleteMedication(medication);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(AppLocalizations.of(context).medicationDeleted)),
+    );
+    await _loadSnapshot();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -221,6 +298,10 @@ class _TodayDashboardScreenState extends State<TodayDashboardScreen>
               medications: _medications,
               onScheduleMedication: (medication) =>
                   _handleScheduleReminder(medication.id),
+              onEditMedication: _editMedication,
+              onPauseMedication: _pauseMedication,
+              onResumeMedication: _resumeMedication,
+              onDeleteMedication: _deleteMedication,
             ),
           ],
         ],

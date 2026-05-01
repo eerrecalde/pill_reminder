@@ -12,5 +12,12 @@ abstract class ReminderScheduleRepository {
     ReminderNotificationDeliveryState notificationDeliveryState,
   });
 
+  Future<ReminderSchedule> replaceSchedule({
+    required String medicationId,
+    required List<ReminderTime> reminderTimes,
+    DateTime? endDate,
+    ReminderNotificationDeliveryState notificationDeliveryState,
+  });
+
   Future<void> deleteSchedule(String medicationId);
 }

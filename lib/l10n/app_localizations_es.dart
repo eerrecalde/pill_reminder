@@ -108,6 +108,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get addMedicationTitle => 'Agregar medicamento';
 
   @override
+  String get editMedicationTitle => 'Editar medicamento';
+
+  @override
   String get medicationsSectionTitle => 'Medicamentos';
 
   @override
@@ -142,10 +145,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get medicationStatusActive => 'Activo';
 
   @override
+  String get medicationStatusPaused => 'Pausado';
+
+  @override
   String get medicationStatusInactive => 'Inactivo';
 
   @override
   String get medicationStatusActiveSemantics => 'Estado, activo';
+
+  @override
+  String get medicationStatusPausedSemantics =>
+      'Estado, pausado. Los recordatorios están detenidos hasta que los reanudes.';
 
   @override
   String get medicationStatusInactiveSemantics => 'Estado, inactivo';
@@ -153,6 +163,10 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get medicationAvailableForReminders =>
       'Disponible para configurar recordatorios más adelante.';
+
+  @override
+  String get medicationPausedExplanation =>
+      'Los recordatorios están pausados hasta que los reanudes.';
 
   @override
   String get medicationStoredInactive =>
@@ -168,6 +182,21 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get saveMedication => 'Guardar medicamento';
+
+  @override
+  String get saveMedicationChanges => 'Guardar cambios';
+
+  @override
+  String get editMedicationAction => 'Editar';
+
+  @override
+  String get pauseRemindersAction => 'Pausar recordatorios';
+
+  @override
+  String get resumeRemindersAction => 'Reanudar recordatorios';
+
+  @override
+  String get deleteMedicationAction => 'Eliminar medicamento';
 
   @override
   String get cancel => 'Cancelar';
@@ -189,7 +218,19 @@ class AppLocalizationsEs extends AppLocalizations {
   String get medicationSavedSemantics => 'Medicamento guardado';
 
   @override
+  String get medicationUpdatedSemantics => 'Medicamento actualizado';
+
+  @override
   String get medicationNotSavedSemantics => 'El medicamento no se guardó';
+
+  @override
+  String get remindersPaused => 'Recordatorios pausados.';
+
+  @override
+  String get remindersResumed => 'Recordatorios reanudados.';
+
+  @override
+  String get medicationDeleted => 'Medicamento eliminado.';
 
   @override
   String get medicationNameRequiredError => 'Ingresa un nombre de medicamento.';
@@ -267,6 +308,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get saveSchedule => 'Guardar horario';
 
   @override
+  String get deleteScheduleAction => 'Eliminar horario';
+
+  @override
+  String get scheduleDeleted => 'Horario de recordatorios eliminado.';
+
+  @override
   String get scheduleSavedSemantics => 'Horario de recordatorios guardado';
 
   @override
@@ -302,6 +349,26 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get scheduleInvalidEndDateError =>
       'Elige una fecha final en o después de la primera fecha de recordatorio.';
+
+  @override
+  String get deleteFinalWarning => 'Esto no se puede deshacer.';
+
+  @override
+  String get deleteScheduleConfirmationTitle =>
+      '¿Eliminar horario de recordatorios?';
+
+  @override
+  String deleteScheduleConfirmationMessage(Object name) {
+    return 'Se eliminarán los horarios de recordatorio de $name. El medicamento quedará guardado.';
+  }
+
+  @override
+  String get deleteMedicationConfirmationTitle => '¿Eliminar medicamento?';
+
+  @override
+  String deleteMedicationConfirmationMessage(Object name) {
+    return 'Se eliminarán $name y sus recordatorios de este dispositivo.';
+  }
 
   @override
   String get todayDueNowTitle => 'Toca ahora';
@@ -563,6 +630,9 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get addMedicationTitle => 'Agregar medicamento';
 
   @override
+  String get editMedicationTitle => 'Editar medicamento';
+
+  @override
   String get medicationsSectionTitle => 'Medicamentos';
 
   @override
@@ -597,10 +667,17 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get medicationStatusActive => 'Activo';
 
   @override
+  String get medicationStatusPaused => 'Pausado';
+
+  @override
   String get medicationStatusInactive => 'Inactivo';
 
   @override
   String get medicationStatusActiveSemantics => 'Estado, activo';
+
+  @override
+  String get medicationStatusPausedSemantics =>
+      'Estado, pausado. Los recordatorios están detenidos hasta que los reanudes.';
 
   @override
   String get medicationStatusInactiveSemantics => 'Estado, inactivo';
@@ -608,6 +685,10 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get medicationAvailableForReminders =>
       'Disponible para configurar recordatorios más adelante.';
+
+  @override
+  String get medicationPausedExplanation =>
+      'Los recordatorios están pausados hasta que los reanudes.';
 
   @override
   String get medicationStoredInactive =>
@@ -623,6 +704,21 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get saveMedication => 'Guardar medicamento';
+
+  @override
+  String get saveMedicationChanges => 'Guardar cambios';
+
+  @override
+  String get editMedicationAction => 'Editar';
+
+  @override
+  String get pauseRemindersAction => 'Pausar recordatorios';
+
+  @override
+  String get resumeRemindersAction => 'Reanudar recordatorios';
+
+  @override
+  String get deleteMedicationAction => 'Eliminar medicamento';
 
   @override
   String get cancel => 'Cancelar';
@@ -644,7 +740,19 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get medicationSavedSemantics => 'Medicamento guardado';
 
   @override
+  String get medicationUpdatedSemantics => 'Medicamento actualizado';
+
+  @override
   String get medicationNotSavedSemantics => 'El medicamento no se guardó';
+
+  @override
+  String get remindersPaused => 'Recordatorios pausados.';
+
+  @override
+  String get remindersResumed => 'Recordatorios reanudados.';
+
+  @override
+  String get medicationDeleted => 'Medicamento eliminado.';
 
   @override
   String get medicationNameRequiredError => 'Ingresa un nombre de medicamento.';
@@ -722,6 +830,12 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   String get saveSchedule => 'Guardar horario';
 
   @override
+  String get deleteScheduleAction => 'Eliminar horario';
+
+  @override
+  String get scheduleDeleted => 'Horario de recordatorios eliminado.';
+
+  @override
   String get scheduleSavedSemantics => 'Horario de recordatorios guardado';
 
   @override
@@ -757,6 +871,26 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get scheduleInvalidEndDateError =>
       'Elige una fecha final en o después de la primera fecha de recordatorio.';
+
+  @override
+  String get deleteFinalWarning => 'Esto no se puede deshacer.';
+
+  @override
+  String get deleteScheduleConfirmationTitle =>
+      '¿Eliminar horario de recordatorios?';
+
+  @override
+  String deleteScheduleConfirmationMessage(Object name) {
+    return 'Se eliminarán los horarios de recordatorio de $name. El medicamento quedará guardado.';
+  }
+
+  @override
+  String get deleteMedicationConfirmationTitle => '¿Eliminar medicamento?';
+
+  @override
+  String deleteMedicationConfirmationMessage(Object name) {
+    return 'Se eliminarán $name y sus recordatorios de este dispositivo.';
+  }
 
   @override
   String get todayDueNowTitle => 'Toca ahora';

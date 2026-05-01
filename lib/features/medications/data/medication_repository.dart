@@ -9,4 +9,12 @@ abstract class MedicationRepository {
     String notes = '',
     MedicationStatus status = MedicationStatus.active,
   });
+
+  Future<Medication> updateMedication(Medication medication);
+
+  Future<Medication> pauseMedication(String id, {DateTime? pausedAt});
+
+  Future<Medication> resumeMedication(String id, {DateTime? resumedAt});
+
+  Future<void> deleteMedication(String id);
 }
