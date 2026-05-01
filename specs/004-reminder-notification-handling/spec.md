@@ -5,6 +5,13 @@
 **Status**: Draft  
 **Input**: User description: "Reminder Notification Handling - Create the reminder handling experience for when a medication reminder becomes due. The user should receive a clear local reminder notification with medication name, dosage label if available, and the scheduled time. From the reminder or app, the user should be able to mark the medication as taken, skip it, or be reminded again later. The app must avoid duplicate or missed reminder states when the device is offline, restarted, or notification permission changes. The experience must be understandable for older adults, accessible with screen readers and large text, and must keep medication data private on the device making sure to always use the UX Design guidelines in [this doc](./docs/ux-design.md)."
 
+## Clarifications
+
+### Session 2026-05-01
+
+- Q: What fixed interval should "remind again later" use? → A: Configurable, default 10 minutes.
+- Q: Where is the remind-again-later interval configured? → A: One app-wide setting.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Receive a Due Reminder (Priority: P1)
@@ -47,7 +54,7 @@ reminder shows one clear final state or one active remind-again-later state.
 
 1. **Given** a medication reminder is due, **When** the user marks it as taken, **Then** the reminder is recorded as taken with the action time and no longer appears as unresolved.
 2. **Given** a medication reminder is due, **When** the user skips it, **Then** the reminder is recorded as skipped with the action time and no longer appears as unresolved.
-3. **Given** a medication reminder is due, **When** the user chooses to be reminded again later, **Then** the reminder stays pending and a later reminder is scheduled or shown according to the app's remind-again-later rule.
+3. **Given** a medication reminder is due, **When** the user chooses to be reminded again later, **Then** the reminder stays pending and a later reminder is scheduled or shown using the app-wide configured remind-again-later interval, defaulting to 10 minutes.
 4. **Given** the user opens the app while a reminder is due, **When** the reminder appears in the app, **Then** the same taken, skipped, and remind-again-later choices are available in clear language.
 
 ---
@@ -112,7 +119,8 @@ contexts, confirming text remains readable and actions are announced clearly.
 - The user taps skip and then receives a stale notification action; the final
   state should remain clear and should not become contradictory.
 - The user chooses remind again later multiple times; the app should avoid
-  overlapping later reminders for the same due medication instance.
+  overlapping later reminders for the same due medication instance and should
+  use the current app-wide configured interval, defaulting to 10 minutes.
 - Multiple medications are due at nearby times; each reminder should identify the
   correct medication and scheduled time without merging unrelated states.
 - The user changes device language or time format; the scheduled time should keep
@@ -135,6 +143,7 @@ contexts, confirming text remains readable and actions are announced clearly.
 - **FR-008**: Users MUST be able to mark as taken, skip, or choose remind again later for a due reminder from inside the app.
 - **FR-009**: System MUST record taken and skipped reminder outcomes with the associated medication, scheduled time, outcome type, and action time.
 - **FR-010**: System MUST keep a remind-again-later reminder pending until the user marks it taken, skips it, or it becomes due again later.
+- **FR-010a**: System MUST use one app-wide configurable remind-again-later interval with a default of 10 minutes.
 - **FR-011**: System MUST prevent duplicate unresolved due reminder states for the same medication and scheduled time.
 - **FR-012**: System MUST prevent contradictory final states for the same due reminder, so a reminder cannot be both taken and skipped.
 - **FR-013**: System MUST keep reminder states reliable when the device is offline.
@@ -155,7 +164,7 @@ contexts, confirming text remains readable and actions are announced clearly.
 
 - **Due Reminder**: A locally tracked reminder occurrence for one medication at one scheduled time. Key attributes are medication reference, medication name at display time, optional dosage label, scheduled time, current state, created time, and last updated time.
 - **Reminder Outcome**: The user's final response to a due reminder. Key attributes are outcome type, action time, associated medication, scheduled time, and whether the outcome came from notification or in-app handling.
-- **Remind Again Later Request**: A pending user choice to be reminded again for the same due reminder. Key attributes are associated due reminder, requested time window, next reminder time, and pending or resolved state.
+- **Remind Again Later Request**: A pending user choice to be reminded again for the same due reminder. Key attributes are associated due reminder, app-wide configured interval used, next reminder time, and pending or resolved state.
 - **Notification Permission Status**: Represents whether local reminder notifications can currently be delivered, including allowed, denied, blocked, revoked, or unavailable states.
 
 ## Success Criteria *(mandatory)*
@@ -166,7 +175,7 @@ contexts, confirming text remains readable and actions are announced clearly.
 - **SC-002**: 100% of reminder notifications include the dosage label when one exists and remain clear when no dosage label exists.
 - **SC-003**: At least 90% of representative older adult or caregiver test participants can mark a due reminder as taken, skip it, or choose remind again later in under 30 seconds.
 - **SC-004**: 100% of taken and skipped reminder actions produce one clear final reminder state in verification.
-- **SC-005**: 100% of remind-again-later actions avoid overlapping later reminders for the same medication and scheduled time in verification.
+- **SC-005**: 100% of remind-again-later actions use the app-wide configured interval, default to 10 minutes when the user has not changed it, and avoid overlapping later reminders for the same medication and scheduled time in verification.
 - **SC-006**: 100% of due reminders remain available with one consistent state after app restart or device restart in verification.
 - **SC-007**: 100% of reminder handling actions work while the device is offline in manual verification.
 - **SC-008**: 100% of reminders due while notification permission is unavailable are visible for handling inside the app when the user opens it.
@@ -179,7 +188,7 @@ contexts, confirming text remains readable and actions are announced clearly.
 - Reminder schedules and active medications already exist from earlier features.
 - Reminder handling applies to saved active medications with simple daily reminder schedules.
 - A due reminder is uniquely identified by medication and scheduled reminder time, so repeated handling attempts update the same local reminder state rather than creating duplicates.
-- Remind again later uses one simple, app-defined later interval suitable for older adults; choosing custom snooze durations is out of scope for this feature.
+- Remind again later uses one simple app-wide configurable interval suitable for older adults, with a default of 10 minutes.
 - Notification action availability may vary by device settings, but the app must always provide the same taken, skipped, and remind-again-later choices inside the app.
 - Reminder outcome history remains local on the device and is not used for clinical advice or adherence scoring in this feature.
 - Future schedules continue after a due reminder is taken, skipped, or reminded again later unless the schedule itself is edited or removed elsewhere.
