@@ -5,6 +5,14 @@
 **Status**: Draft  
 **Input**: User description: "Medication History - Create a simple medication history view that helps users review whether scheduled medications were marked taken, skipped, missed, or snoozed. The history should be easy to scan by day and medication, avoid judgmental language, and remain private on the device. Users should be able to understand recent reminder activity without needing an account or internet connection. The history must support large text, screen readers, non-color-only status indicators, and localization-ready dates, times, and labels for English and Latin American Spanish making sure to always use the UX Design guidelines in [this doc](./docs/ux-design.md)."
 
+## Clarifications
+
+### Session 2026-05-01
+
+- Q: How much recent medication history should the app show? → A: Rolling 90-day history.
+- Q: When should an unhandled scheduled reminder appear as missed in history? → A: More than 60 minutes after scheduled time.
+- Q: Which medication details should older history entries show after edits or deletion? → A: Medication name and dosage label captured at reminder time.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Review Recent Medication Activity (Priority: P1)
@@ -75,9 +83,10 @@ An older adult or caregiver can review medication history with large text, scree
 - The device is offline, has no account, or has no internet connection; medication history should still show locally recorded recent activity.
 - The app or device restarts after reminder outcomes are recorded; recent history should remain available and consistent.
 - No medication history exists yet; the view should show a calm, useful empty state without implying the user did anything wrong.
-- A medication is deleted after history was recorded; history should remain understandable without exposing confusing controls for a medication that no longer exists.
+- A medication is edited or deleted after history was recorded; history should keep showing the medication name and dosage label captured when the reminder occurred without exposing confusing controls for a medication that no longer exists.
 - A scheduled reminder has been snoozed more than once; history should communicate the most recent understandable snooze activity without overwhelming the user.
 - A reminder outcome changes from snoozed to taken, skipped, or missed; history should show a clear final status for the scheduled reminder and avoid duplicate confusing entries.
+- A scheduled reminder remains unhandled more than 60 minutes after its scheduled time; history should show it as missed using the same 60-minute boundary as the current-day reminder experience.
 - Multiple medications share the same scheduled time; entries should remain distinguishable by medication name and status.
 - Medication names or dosage labels are long; history should preserve readability with wrapping or truncation that does not hide the status.
 - Large text, screen readers, high contrast, or color vision differences are present; day grouping, status meaning, and entry order should remain usable without relying on color alone.
@@ -87,8 +96,8 @@ An older adult or caregiver can review medication history with large text, scree
 ### Functional Requirements
 
 - **FR-001**: System MUST provide a medication history view reachable from the medication reminder experience.
-- **FR-002**: System MUST show recent scheduled medication activity grouped by day, with the most recent day shown first.
-- **FR-003**: Each history entry MUST show the medication name, scheduled reminder time, and outcome status when that information is available.
+- **FR-002**: System MUST show scheduled medication activity from the most recent 90 days grouped by day, with the most recent day shown first.
+- **FR-003**: Each history entry MUST show the medication name, dosage label when captured, scheduled reminder time, and outcome status when that information is available.
 - **FR-004**: System MUST support the history statuses taken, skipped, missed, and snoozed.
 - **FR-005**: Status labels and supporting copy MUST use calm, non-judgmental language and MUST NOT shame, scold, or imply medical advice.
 - **FR-006**: Status meaning MUST be communicated with text plus a non-color-only indicator such as an icon, shape, or label treatment.
@@ -99,19 +108,21 @@ An older adult or caregiver can review medication history with large text, scree
 - **FR-011**: System MUST preserve recent medication history after app restart or device restart.
 - **FR-012**: System MUST display history correctly when the device is offline.
 - **FR-013**: System MUST avoid duplicate confusing entries for the same scheduled reminder when a snoozed reminder later becomes taken, skipped, or missed.
-- **FR-014**: System MUST keep history understandable when a medication referenced by a history entry has later been edited, paused, resumed, or deleted.
+- **FR-014**: System MUST keep history understandable when a medication referenced by a history entry has later been edited, paused, resumed, or deleted by showing the medication name and dosage label captured when the reminder occurred.
 - **FR-015**: System MUST provide user-visible history labels, status labels, empty states, dates, and times in a localization-ready form for English and Latin American Spanish.
 - **FR-016**: System MUST use localization-ready date and time formatting for day headings and scheduled reminder times.
 - **FR-017**: System MUST support older-adult accessibility needs throughout medication history, including large text, screen readers, high contrast, large touch targets for navigation, visible focus, logical reading order, and non-color-only status communication.
 - **FR-018**: System MUST follow `docs/ux-design.md` as the UX and accessibility baseline for the history view, including calm tone, readable text, generous spacing, pressure-free choices, and avoiding clinical or technical language.
-- **FR-019**: System MUST keep feature scope bounded to reviewing recent reminder activity and MUST NOT add clinical recommendations, adherence scoring, account creation, remote sync, caregiver sharing, analytics, export, backup, or editing past outcomes in v1.
+- **FR-019**: System MUST limit the default history view and retained reviewable history to a rolling 90-day window.
+- **FR-020**: System MUST show an unhandled scheduled reminder as missed in history once it is more than 60 minutes past its scheduled time.
+- **FR-021**: System MUST keep feature scope bounded to reviewing recent reminder activity and MUST NOT add clinical recommendations, adherence scoring, account creation, remote sync, caregiver sharing, analytics, export, backup, or editing past outcomes in v1.
 
 ### Key Entities *(include if feature involves data)*
 
-- **Medication History Entry**: A local record of one scheduled medication reminder occurrence. Key attributes are medication reference or display name, scheduled date, scheduled time, outcome status, outcome time when known, and any snooze-related summary needed for user understanding.
+- **Medication History Entry**: A local record of one scheduled medication reminder occurrence. Key attributes are medication reference when still available, captured medication display name, captured dosage label when present, scheduled date, scheduled time, outcome status, outcome time when known, and any snooze-related summary needed for user understanding.
 - **Medication History Day Group**: A user-facing grouping of history entries for one local calendar day. Key attributes are localized day heading, entries for that day, and relative order compared with other days.
 - **Reminder Outcome Status**: The user-visible result associated with a scheduled reminder. Supported values are taken, skipped, missed, and snoozed, each with a localized label and non-color-only indicator.
-- **Medication Reference Snapshot**: The medication information needed to keep older history understandable if a medication is later edited or deleted. Key attributes are medication display name and optional dosage label at the time the history entry is recorded.
+- **Medication Reference Snapshot**: The medication information needed to keep older history understandable if a medication is later edited or deleted. Key attributes are medication display name and optional dosage label captured at the time the reminder occurred.
 
 ## Success Criteria *(mandatory)*
 
@@ -121,7 +132,7 @@ An older adult or caregiver can review medication history with large text, scree
 - **SC-002**: At least 90% of representative test participants can correctly distinguish taken, skipped, missed, and snoozed entries without relying on color.
 - **SC-003**: 100% of recorded reminder outcomes for the supported statuses appear in the correct day group and medication entry during verification.
 - **SC-004**: 100% of medication history checks remain available while the device is offline and without account sign-in in verification.
-- **SC-005**: 100% of recent medication history remains consistent after app restart or device restart in verification.
+- **SC-005**: 100% of medication history from the rolling 90-day window remains consistent after app restart or device restart in verification.
 - **SC-006**: 95% of users describe the status wording as clear and non-judgmental in usability review.
 - **SC-007**: 100% of user-facing history dates, times, labels, statuses, and empty states are available for English and Latin American Spanish localization review.
 - **SC-008**: The history view can be completed with screen reader and large text enabled without clipped text, overlapping content, inaccessible entries, or blocked navigation in verification.
@@ -130,8 +141,9 @@ An older adult or caregiver can review medication history with large text, scree
 ## Assumptions
 
 - Medication history is for reviewing recent reminder activity only; changing past outcomes is out of scope for v1.
-- "Recent" means the locally retained reminder activity needed for practical review, with exact retention limits to be finalized during planning based on local storage and privacy constraints.
+- "Recent" means a rolling 90-day history window.
 - History entries are created from existing scheduled reminder outcome flows, including taken, skipped, missed, and snoozed outcomes.
+- Missed history status follows the existing current-day reminder rule: an unhandled scheduled reminder becomes missed more than 60 minutes after its scheduled time.
 - If a snoozed reminder later receives a final outcome, the history should favor one understandable entry for the scheduled reminder rather than showing multiple duplicate rows.
-- Deleted or edited medications may still need enough snapshot information for recent history to remain understandable.
+- Deleted or edited medications use the medication name and dosage label captured at the time the reminder occurred so recent history remains understandable.
 - Medication history remains local to the device unless a future feature introduces explicit user-approved sharing, export, backup, or sync.
