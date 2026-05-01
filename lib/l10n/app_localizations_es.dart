@@ -302,6 +302,95 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get scheduleInvalidEndDateError =>
       'Elige una fecha final en o después de la primera fecha de recordatorio.';
+
+  @override
+  String get todayDueNowTitle => 'Toca ahora';
+
+  @override
+  String get todayUpcomingTitle => 'Más tarde';
+
+  @override
+  String get todayMissedTitle => 'Pendientes';
+
+  @override
+  String get todayHandledTitle => 'Hechos hoy';
+
+  @override
+  String get todayClearTitle => 'El resto del día está libre';
+
+  @override
+  String get todayClearBody =>
+      'No hay más recordatorios de medicamentos que necesiten atención hoy.';
+
+  @override
+  String get todayNoMedicationsTitle => 'Todavía no hay medicamentos guardados';
+
+  @override
+  String get todayNoMedicationsBody =>
+      'Agrega tu primer medicamento para poder configurar recordatorios cuando quieras.';
+
+  @override
+  String get todayNoActiveMedicationsTitle =>
+      'No hay medicamentos activos ahora';
+
+  @override
+  String get todayNoActiveMedicationsBody =>
+      'Tus medicamentos guardados están inactivos, así que no aparecerán como pendientes hoy.';
+
+  @override
+  String get todayNoSchedulesTitle =>
+      'Todavía no hay recordatorios programados';
+
+  @override
+  String get todayNoSchedulesBody =>
+      'Programa un recordatorio para un medicamento activo y lo verás aquí hoy.';
+
+  @override
+  String get todayManageMedications => 'Administrar medicamentos';
+
+  @override
+  String get todayMarkHandled => 'Marcar hecho';
+
+  @override
+  String todayReminderTime(Object time) {
+    return '$time';
+  }
+
+  @override
+  String get todayReminderStatusDueNow => 'Toca ahora';
+
+  @override
+  String get todayReminderStatusUpcoming => 'Próximo';
+
+  @override
+  String get todayReminderStatusMissed => 'Pendiente';
+
+  @override
+  String get todayReminderStatusHandled => 'Hecho';
+
+  @override
+  String todayReminderSemantics(Object medication, Object time, Object status) {
+    return '$medication, $time, $status';
+  }
+
+  @override
+  String todayReminderSemanticsWithDose(
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$medication, $dose, $time, $status';
+  }
+
+  @override
+  String todayMarkHandledSemantics(Object medication, Object time) {
+    return 'Marcar $medication de las $time como hecho';
+  }
+
+  @override
+  String get todayNotificationGuidance =>
+      'Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí.';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -602,4 +691,93 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get scheduleInvalidEndDateError =>
       'Elige una fecha final en o después de la primera fecha de recordatorio.';
+
+  @override
+  String get todayDueNowTitle => 'Toca ahora';
+
+  @override
+  String get todayUpcomingTitle => 'Más tarde';
+
+  @override
+  String get todayMissedTitle => 'Pendientes';
+
+  @override
+  String get todayHandledTitle => 'Hechos hoy';
+
+  @override
+  String get todayClearTitle => 'El resto del día está libre';
+
+  @override
+  String get todayClearBody =>
+      'No hay más recordatorios de medicamentos que necesiten atención hoy.';
+
+  @override
+  String get todayNoMedicationsTitle => 'Todavía no hay medicamentos guardados';
+
+  @override
+  String get todayNoMedicationsBody =>
+      'Agrega tu primer medicamento para poder configurar recordatorios cuando quieras.';
+
+  @override
+  String get todayNoActiveMedicationsTitle =>
+      'No hay medicamentos activos ahora';
+
+  @override
+  String get todayNoActiveMedicationsBody =>
+      'Tus medicamentos guardados están inactivos, así que no aparecerán como pendientes hoy.';
+
+  @override
+  String get todayNoSchedulesTitle =>
+      'Todavía no hay recordatorios programados';
+
+  @override
+  String get todayNoSchedulesBody =>
+      'Programa un recordatorio para un medicamento activo y lo verás aquí hoy.';
+
+  @override
+  String get todayManageMedications => 'Administrar medicamentos';
+
+  @override
+  String get todayMarkHandled => 'Marcar hecho';
+
+  @override
+  String todayReminderTime(Object time) {
+    return '$time';
+  }
+
+  @override
+  String get todayReminderStatusDueNow => 'Toca ahora';
+
+  @override
+  String get todayReminderStatusUpcoming => 'Próximo';
+
+  @override
+  String get todayReminderStatusMissed => 'Pendiente';
+
+  @override
+  String get todayReminderStatusHandled => 'Hecho';
+
+  @override
+  String todayReminderSemantics(Object medication, Object time, Object status) {
+    return '$medication, $time, $status';
+  }
+
+  @override
+  String todayReminderSemanticsWithDose(
+    Object medication,
+    Object dose,
+    Object time,
+    Object status,
+  ) {
+    return '$medication, $dose, $time, $status';
+  }
+
+  @override
+  String todayMarkHandledSemantics(Object medication, Object time) {
+    return 'Marcar $medication de las $time como hecho';
+  }
+
+  @override
+  String get todayNotificationGuidance =>
+      'Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí.';
 }

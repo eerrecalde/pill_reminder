@@ -106,5 +106,54 @@
   "scheduleMissingTimeError": "Elige al menos un horario de recordatorio.",
   "scheduleDuplicateTimeError": "Este horario ya está seleccionado.",
   "scheduleTooManyTimesError": "Usa cuatro horarios o menos.",
-  "scheduleInvalidEndDateError": "Elige una fecha final en o después de la primera fecha de recordatorio."
+  "scheduleInvalidEndDateError": "Elige una fecha final en o después de la primera fecha de recordatorio.",
+  "todayDueNowTitle": "Toca ahora",
+  "todayUpcomingTitle": "Más tarde",
+  "todayMissedTitle": "Pendientes",
+  "todayHandledTitle": "Hechos hoy",
+  "todayClearTitle": "El resto del día está libre",
+  "todayClearBody": "No hay más recordatorios de medicamentos que necesiten atención hoy.",
+  "todayNoMedicationsTitle": "Todavía no hay medicamentos guardados",
+  "todayNoMedicationsBody": "Agrega tu primer medicamento para poder configurar recordatorios cuando quieras.",
+  "todayNoActiveMedicationsTitle": "No hay medicamentos activos ahora",
+  "todayNoActiveMedicationsBody": "Tus medicamentos guardados están inactivos, así que no aparecerán como pendientes hoy.",
+  "todayNoSchedulesTitle": "Todavía no hay recordatorios programados",
+  "todayNoSchedulesBody": "Programa un recordatorio para un medicamento activo y lo verás aquí hoy.",
+  "todayManageMedications": "Administrar medicamentos",
+  "todayMarkHandled": "Marcar hecho",
+  "todayReminderTime": "{time}",
+  "@todayReminderTime": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "todayReminderStatusDueNow": "Toca ahora",
+  "todayReminderStatusUpcoming": "Próximo",
+  "todayReminderStatusMissed": "Pendiente",
+  "todayReminderStatusHandled": "Hecho",
+  "todayReminderSemantics": "{medication}, {time}, {status}",
+  "@todayReminderSemantics": {
+    "placeholders": {
+      "medication": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "todayReminderSemanticsWithDose": "{medication}, {dose}, {time}, {status}",
+  "@todayReminderSemanticsWithDose": {
+    "placeholders": {
+      "medication": {},
+      "dose": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "todayMarkHandledSemantics": "Marcar {medication} de las {time} como hecho",
+  "@todayMarkHandledSemantics": {
+    "placeholders": {
+      "medication": {},
+      "time": {}
+    }
+  },
+  "todayNotificationGuidance": "Los avisos pueden necesitar permiso de notificaciones, pero el horario de hoy igual se muestra aquí."
 }

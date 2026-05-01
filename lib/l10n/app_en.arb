@@ -106,5 +106,54 @@
   "scheduleMissingTimeError": "Choose at least one reminder time.",
   "scheduleDuplicateTimeError": "This reminder time is already selected.",
   "scheduleTooManyTimesError": "Use four reminder times or fewer.",
-  "scheduleInvalidEndDateError": "Choose an end date on or after the first reminder date."
+  "scheduleInvalidEndDateError": "Choose an end date on or after the first reminder date.",
+  "todayDueNowTitle": "Due now",
+  "todayUpcomingTitle": "Coming up",
+  "todayMissedTitle": "Missed",
+  "todayHandledTitle": "Handled today",
+  "todayClearTitle": "The rest of today is clear",
+  "todayClearBody": "No more medication reminders need attention today.",
+  "todayNoMedicationsTitle": "No medications saved yet",
+  "todayNoMedicationsBody": "Add your first medication so reminders can be set up when you are ready.",
+  "todayNoActiveMedicationsTitle": "No active medications right now",
+  "todayNoActiveMedicationsBody": "Your saved medications are inactive, so they will not appear as due today.",
+  "todayNoSchedulesTitle": "No reminders scheduled yet",
+  "todayNoSchedulesBody": "Schedule a reminder for an active medication to see it here today.",
+  "todayManageMedications": "Manage medications",
+  "todayMarkHandled": "Mark handled",
+  "todayReminderTime": "{time}",
+  "@todayReminderTime": {
+    "placeholders": {
+      "time": {}
+    }
+  },
+  "todayReminderStatusDueNow": "Due now",
+  "todayReminderStatusUpcoming": "Upcoming",
+  "todayReminderStatusMissed": "Missed",
+  "todayReminderStatusHandled": "Handled",
+  "todayReminderSemantics": "{medication}, {time}, {status}",
+  "@todayReminderSemantics": {
+    "placeholders": {
+      "medication": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "todayReminderSemanticsWithDose": "{medication}, {dose}, {time}, {status}",
+  "@todayReminderSemanticsWithDose": {
+    "placeholders": {
+      "medication": {},
+      "dose": {},
+      "time": {},
+      "status": {}
+    }
+  },
+  "todayMarkHandledSemantics": "Mark {medication} at {time} as handled",
+  "@todayMarkHandledSemantics": {
+    "placeholders": {
+      "medication": {},
+      "time": {}
+    }
+  },
+  "todayNotificationGuidance": "Reminder alerts may need notification permission, but today's schedule is still shown here."
 }
