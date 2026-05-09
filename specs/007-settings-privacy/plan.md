@@ -1,6 +1,6 @@
 # Implementation Plan: Settings and Privacy
 
-**Branch**: `008-settings-privacy` | **Date**: 2026-05-09 | **Spec**: [spec.md](./spec.md)
+**Branch**: `007-settings-privacy` | **Date**: 2026-05-09 | **Spec**: [spec.md](./spec.md)
 **Input**: Feature specification from `/specs/007-settings-privacy/spec.md`
 
 **Note**: This template is filled in by the `/speckit-plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
@@ -17,7 +17,7 @@ Create a calm, accessible settings area for language, device-based accessibility
 **Testing**: flutter_test widget/unit tests; manual notification permission verification on device/emulator  
 **Target Platform**: Flutter mobile app for Android/iOS-class devices, using platform notification permissions and local notifications  
 **Project Type**: Mobile app  
-**Performance Goals**: Settings opens without noticeable delay on stored local data; notification status refresh completes within 1 second when the platform responds; delete/restore local data completes within 2 seconds for typical single-user reminder data; no new background polling or startup-heavy work  
+**Performance Goals**: Settings opens within 500ms for typical stored local data on a supported device; notification status refresh completes within 1 second when the platform responds; delete/restore local data completes within 2 seconds for typical single-user reminder data; no new background polling or startup-heavy work  
 **Constraints**: Offline-capable, account-free, no ads/tracking/remote services, large text and screen reader support, 48px minimum touch targets with 56px preferred destructive/primary actions, one primary decision per destructive confirmation step, localization-ready English and Latin American Spanish copy  
 **Scale/Scope**: Single-user local app settings surface covering the existing setup preferences plus local medication/reminder repositories and medication history
 

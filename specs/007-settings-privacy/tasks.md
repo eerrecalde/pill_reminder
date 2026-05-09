@@ -133,7 +133,7 @@
 ### Tests for User Story 4
 
 - [ ] T038 [P] [US4] Add unit tests for snapshot, hasLocalReminderData, delete, cancel-not-delete, restore, expire, and failure behavior in test/features/settings/data_control_service_test.dart
-- [ ] T039 [P] [US4] Add widget tests for privacy explanation, no-data state, confirmation cancel, confirmed delete, recovery action, expired recovery, and failure messages in test/features/settings/settings_data_control_test.dart
+- [ ] T039 [P] [US4] Add widget tests for privacy explanation, no-data state, confirmation cancel, confirmed delete, recovery action, expired recovery, restart-during-recovery unavailable state, and failure messages in test/features/settings/settings_data_control_test.dart
 - [ ] T040 [P] [US4] Add widget test proving destructive confirmation describes medications, schedules, due reminders, handling state, and history in test/features/settings/settings_data_control_test.dart
 
 ### Implementation for User Story 4

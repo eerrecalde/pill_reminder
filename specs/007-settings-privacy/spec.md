@@ -1,9 +1,9 @@
 # Feature Specification: Settings and Privacy
 
-**Feature Branch**: `008-settings-privacy`  
+**Feature Branch**: `007-settings-privacy`  
 **Created**: 2026-05-09  
 **Status**: Draft  
-**Input**: User description: "Settings and Privacy - Create the settings area for language, accessibility, notification status, privacy, and local data control. Users should be able to change language between English and Latin American Spanish, review notification permission status, see a plain-language explanation of local private storage, and delete local medication/reminder data with confirmation. The settings area must not include ads, tracking, or required accounts. It should be accessible for older adults, use clear non-technical language, and provide safe recovery from destructive actions making sure to always use the UX Design guidelines in [this doc](./docs/ux-design.md)."
+**Input**: User description: "Settings and Privacy - Create the settings area for language, accessibility, notification status, privacy, and local data control. Users should be able to change language between English and Latin American Spanish, review notification permission status, see a plain-language explanation of local private storage, and delete local medication/reminder data with confirmation. The settings area must not include ads, tracking, or required accounts. It should be accessible for older adults, use clear non-technical language, and provide safe recovery from destructive actions making sure to always use the UX Design guidelines in [this doc](../../docs/ux-design.md)."
 
 ## Clarifications
 
@@ -84,6 +84,7 @@ As a privacy-conscious user, I want to understand what medication and reminder i
 - If the device is offline, settings remains usable because language, privacy explanations, notification status review, and local data control do not require an internet connection.
 - If the app is restarted after a language change, the selected language is still used.
 - If the app is restarted after confirmed deletion and the 30-second recovery window has ended, deleted local medication and reminder data remains deleted.
+- If the app is restarted after confirmed deletion before the 30-second recovery window ends, the in-app recovery option is no longer available and settings explains that local-only deleted data cannot be restored after restart.
 - If text size is increased, screen content scrolls or reflows without clipping important labels, destructive-action warnings, or confirmation buttons.
 - If colors are difficult to distinguish, selected language, notification status, and destructive-action states are also communicated with text and accessible labels.
 - If the user looks for accessibility controls, settings explains that the app respects device-level text size, screen reader, focus, and contrast preferences rather than providing separate in-app accessibility toggles.
