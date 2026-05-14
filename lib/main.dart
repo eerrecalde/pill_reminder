@@ -28,7 +28,8 @@ import 'features/setup/data/setup_preferences_repository.dart';
 import 'features/setup/domain/notification_permission_status.dart';
 import 'features/setup/domain/setup_state.dart';
 import 'features/setup/presentation/setup_flow.dart';
-import 'features/setup/presentation/setup_preferences_screen.dart';
+import 'features/settings/data/local_reminder_data_control_service.dart';
+import 'features/settings/presentation/settings_screen.dart';
 import 'l10n/app_localizations.dart';
 import 'services/notification_permission_service.dart';
 import 'services/reminder_action_handler.dart';
@@ -369,10 +370,22 @@ class _MainAppHomeState extends State<_MainAppHome> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => SetupPreferencesScreen(
+                  builder: (_) => SettingsScreen(
                     repository: widget.repository,
                     notificationPermissionService:
                         widget.notificationPermissionService,
+                    dataControlService: LocalReminderDataControlService(
+                      medicationRepository: widget.medicationRepository,
+                      reminderScheduleRepository:
+                          widget.reminderScheduleRepository,
+                      dueReminderRepository: widget.dueReminderRepository,
+                      dailyReminderHandlingRepository:
+                          widget.dailyReminderHandlingRepository,
+                      medicationHistoryRepository:
+                          widget.medicationHistoryRepository,
+                      notificationScheduler:
+                          widget.reminderNotificationScheduler,
+                    ),
                     initialState: widget.setupState,
                     onLocaleChanged: widget.onLocaleChanged,
                     onStateChanged: widget.onSetupStateChanged,
@@ -443,6 +456,23 @@ class _InMemoryReminderScheduleRepository
   }
 
   @override
+  Future<List<ReminderSchedule>> loadAll() {
+    return loadSchedules();
+  }
+
+  @override
+  Future<void> saveAll(List<ReminderSchedule> schedules) async {
+    _schedules
+      ..clear()
+      ..addAll(schedules);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _schedules.clear();
+  }
+
+  @override
   Future<ReminderSchedule?> loadScheduleForMedication(
     String medicationId,
   ) async {
@@ -505,6 +535,9 @@ class _InMemoryReminderNotificationScheduler
 
   @override
   Future<void> cancelForSchedule(ReminderSchedule schedule) async {}
+
+  @override
+  Future<void> cancelAllForSchedules(List<ReminderSchedule> schedules) async {}
 
   @override
   Future<void> cancelForMedication(ReminderSchedule schedule) async {}
@@ -587,6 +620,23 @@ class _InMemoryDailyReminderHandlingRepository
   }
 
   @override
+  Future<List<DailyReminderHandling>> loadAll() async {
+    return List.unmodifiable(_records);
+  }
+
+  @override
+  Future<void> saveAll(List<DailyReminderHandling> records) async {
+    _records
+      ..clear()
+      ..addAll(records);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _records.clear();
+  }
+
+  @override
   Future<DailyReminderHandling> markHandled({
     required DateTime localDate,
     required String scheduleId,
@@ -637,6 +687,23 @@ class _InMemoryMedicationHistoryRepository
   }
 
   @override
+  Future<List<MedicationHistoryEntry>> loadAll() async {
+    return List.unmodifiable(_entries);
+  }
+
+  @override
+  Future<void> saveAll(List<MedicationHistoryEntry> entries) async {
+    _entries
+      ..clear()
+      ..addAll(entries);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _entries.clear();
+  }
+
+  @override
   Future<void> pruneBefore(DateTime cutoffDate) async {
     final cutoff = MedicationHistoryEntry.dateOnly(cutoffDate);
     _entries.removeWhere((entry) => entry.localDate.isBefore(cutoff));
@@ -660,6 +727,23 @@ class _InMemoryMedicationRepository implements MedicationRepository {
   @override
   Future<List<Medication>> loadMedications() async {
     return List.unmodifiable(_medications);
+  }
+
+  @override
+  Future<List<Medication>> loadAll() {
+    return loadMedications();
+  }
+
+  @override
+  Future<void> saveAll(List<Medication> medications) async {
+    _medications
+      ..clear()
+      ..addAll(medications);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _medications.clear();
   }
 
   @override
@@ -783,6 +867,23 @@ class _InMemoryDueReminderRepository implements DueReminderRepository {
   @override
   Future<List<DueReminder>> loadDueReminders() async {
     return List.unmodifiable(_reminders);
+  }
+
+  @override
+  Future<List<DueReminder>> loadAll() {
+    return loadDueReminders();
+  }
+
+  @override
+  Future<void> saveAll(List<DueReminder> reminders) async {
+    _reminders
+      ..clear()
+      ..addAll(reminders);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _reminders.clear();
   }
 
   @override

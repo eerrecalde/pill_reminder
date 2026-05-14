@@ -579,6 +579,134 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reminderHandlingIntervalLabel => 'Recordar después de';
+
+  @override
+  String get settingsTitle => 'Configuración';
+
+  @override
+  String get settingsLanguageTitle => 'Idioma';
+
+  @override
+  String get settingsLanguageDescription =>
+      'Elige el idioma para la configuración, el inicio y la guía de recordatorios.';
+
+  @override
+  String get settingsLanguageSemantics => 'Idioma preferido';
+
+  @override
+  String get settingsLanguageSaved => 'Idioma actualizado.';
+
+  @override
+  String get settingsAccessibilityTitle => 'Accesibilidad';
+
+  @override
+  String get settingsAccessibilityDescription =>
+      'La app sigue la configuración del dispositivo para tamaño de texto, lector de pantalla, foco y contraste.';
+
+  @override
+  String get settingsAccessibilityDeviceSupport =>
+      'Usa la configuración de accesibilidad del dispositivo para ajustar cómo se ve y se escucha la app. El contenido se desplaza y se acomoda sin ocultar controles.';
+
+  @override
+  String get settingsNotificationsTitle => 'Alertas de recordatorio';
+
+  @override
+  String get settingsNotificationsDescription =>
+      'Revisa si este dispositivo puede mostrar notificaciones de recordatorio.';
+
+  @override
+  String get settingsNotificationAllowed =>
+      'Las alertas de recordatorio están activadas.';
+
+  @override
+  String get settingsNotificationDenied =>
+      'Es posible que las alertas no aparezcan hasta permitir las notificaciones.';
+
+  @override
+  String get settingsNotificationBlocked =>
+      'Las alertas están bloqueadas o restringidas. Puedes ajustarlo en la configuración del dispositivo si quieres.';
+
+  @override
+  String get settingsNotificationUnavailable =>
+      'La app no puede confirmar las alertas en este dispositivo ahora. Inténtalo más tarde.';
+
+  @override
+  String get settingsNotificationRefresh => 'Actualizar estado';
+
+  @override
+  String get settingsNotificationOpenDeviceSettings =>
+      'Abrir configuración del dispositivo';
+
+  @override
+  String get settingsPrivacyTitle => 'Privacidad';
+
+  @override
+  String get settingsPrivacyDescription =>
+      'La información de medicamentos y recordatorios permanece local en este dispositivo.';
+
+  @override
+  String get settingsPrivacyLocalOnly =>
+      'Los nombres de medicamentos, horarios, recordatorios pendientes, manejo diario e historial se guardan solo en este dispositivo.';
+
+  @override
+  String get settingsPrivacyNoAccounts =>
+      'No hay cuentas, anuncios, seguimiento, respaldo, sincronización, compartir datos, analíticas, pedidos de donación ni servicios remotos en esta configuración.';
+
+  @override
+  String get settingsLocalDataTitle => 'Datos locales de recordatorios';
+
+  @override
+  String get settingsLocalDataDescription =>
+      'Revisa y controla los datos de medicamentos y recordatorios guardados en este dispositivo.';
+
+  @override
+  String get settingsLocalDataFound =>
+      'Hay datos locales de medicamentos o recordatorios en este dispositivo.';
+
+  @override
+  String get settingsNoLocalData =>
+      'No hay datos locales de medicamentos o recordatorios para borrar ahora.';
+
+  @override
+  String get settingsDeleteLocalDataAction =>
+      'Borrar datos locales de recordatorios';
+
+  @override
+  String get settingsDeleteConfirmationTitle =>
+      '¿Borrar datos locales de recordatorios?';
+
+  @override
+  String get settingsDeleteConfirmationBody =>
+      'Esto borra del dispositivo los medicamentos, horarios de recordatorio, recordatorios pendientes, manejo diario e historial.';
+
+  @override
+  String get settingsDeleteConfirmAction => 'Borrar datos';
+
+  @override
+  String get settingsDataDeleted => 'Datos locales de recordatorios borrados.';
+
+  @override
+  String get settingsUndoDeleteAction => 'Restaurar';
+
+  @override
+  String get settingsRecoveryAvailable =>
+      'Puedes restaurar los datos borrados durante 30 segundos.';
+
+  @override
+  String get settingsRecoveryExpired =>
+      'Terminó la ventana de 30 segundos para restaurar.';
+
+  @override
+  String get settingsDataRestored =>
+      'Datos locales de recordatorios restaurados.';
+
+  @override
+  String get settingsDeleteFailed =>
+      'Los datos locales de recordatorios no se borraron. Tus datos siguen disponibles.';
+
+  @override
+  String get settingsRestoreFailed =>
+      'No se pudieron restaurar los datos locales de recordatorios.';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -1156,4 +1284,132 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get reminderHandlingIntervalLabel => 'Recordar después de';
+
+  @override
+  String get settingsTitle => 'Configuración';
+
+  @override
+  String get settingsLanguageTitle => 'Idioma';
+
+  @override
+  String get settingsLanguageDescription =>
+      'Elige el idioma para la configuración, el inicio y la guía de recordatorios.';
+
+  @override
+  String get settingsLanguageSemantics => 'Idioma preferido';
+
+  @override
+  String get settingsLanguageSaved => 'Idioma actualizado.';
+
+  @override
+  String get settingsAccessibilityTitle => 'Accesibilidad';
+
+  @override
+  String get settingsAccessibilityDescription =>
+      'La app sigue la configuración del dispositivo para tamaño de texto, lector de pantalla, foco y contraste.';
+
+  @override
+  String get settingsAccessibilityDeviceSupport =>
+      'Usa la configuración de accesibilidad del dispositivo para ajustar cómo se ve y se escucha la app. El contenido se desplaza y se acomoda sin ocultar controles.';
+
+  @override
+  String get settingsNotificationsTitle => 'Alertas de recordatorio';
+
+  @override
+  String get settingsNotificationsDescription =>
+      'Revisa si este dispositivo puede mostrar notificaciones de recordatorio.';
+
+  @override
+  String get settingsNotificationAllowed =>
+      'Las alertas de recordatorio están activadas.';
+
+  @override
+  String get settingsNotificationDenied =>
+      'Es posible que las alertas no aparezcan hasta permitir las notificaciones.';
+
+  @override
+  String get settingsNotificationBlocked =>
+      'Las alertas están bloqueadas o restringidas. Puedes ajustarlo en la configuración del dispositivo si quieres.';
+
+  @override
+  String get settingsNotificationUnavailable =>
+      'La app no puede confirmar las alertas en este dispositivo ahora. Inténtalo más tarde.';
+
+  @override
+  String get settingsNotificationRefresh => 'Actualizar estado';
+
+  @override
+  String get settingsNotificationOpenDeviceSettings =>
+      'Abrir configuración del dispositivo';
+
+  @override
+  String get settingsPrivacyTitle => 'Privacidad';
+
+  @override
+  String get settingsPrivacyDescription =>
+      'La información de medicamentos y recordatorios permanece local en este dispositivo.';
+
+  @override
+  String get settingsPrivacyLocalOnly =>
+      'Los nombres de medicamentos, horarios, recordatorios pendientes, manejo diario e historial se guardan solo en este dispositivo.';
+
+  @override
+  String get settingsPrivacyNoAccounts =>
+      'No hay cuentas, anuncios, seguimiento, respaldo, sincronización, compartir datos, analíticas, pedidos de donación ni servicios remotos en esta configuración.';
+
+  @override
+  String get settingsLocalDataTitle => 'Datos locales de recordatorios';
+
+  @override
+  String get settingsLocalDataDescription =>
+      'Revisa y controla los datos de medicamentos y recordatorios guardados en este dispositivo.';
+
+  @override
+  String get settingsLocalDataFound =>
+      'Hay datos locales de medicamentos o recordatorios en este dispositivo.';
+
+  @override
+  String get settingsNoLocalData =>
+      'No hay datos locales de medicamentos o recordatorios para borrar ahora.';
+
+  @override
+  String get settingsDeleteLocalDataAction =>
+      'Borrar datos locales de recordatorios';
+
+  @override
+  String get settingsDeleteConfirmationTitle =>
+      '¿Borrar datos locales de recordatorios?';
+
+  @override
+  String get settingsDeleteConfirmationBody =>
+      'Esto borra del dispositivo los medicamentos, horarios de recordatorio, recordatorios pendientes, manejo diario e historial.';
+
+  @override
+  String get settingsDeleteConfirmAction => 'Borrar datos';
+
+  @override
+  String get settingsDataDeleted => 'Datos locales de recordatorios borrados.';
+
+  @override
+  String get settingsUndoDeleteAction => 'Restaurar';
+
+  @override
+  String get settingsRecoveryAvailable =>
+      'Puedes restaurar los datos borrados durante 30 segundos.';
+
+  @override
+  String get settingsRecoveryExpired =>
+      'Terminó la ventana de 30 segundos para restaurar.';
+
+  @override
+  String get settingsDataRestored =>
+      'Datos locales de recordatorios restaurados.';
+
+  @override
+  String get settingsDeleteFailed =>
+      'Los datos locales de recordatorios no se borraron. Tus datos siguen disponibles.';
+
+  @override
+  String get settingsRestoreFailed =>
+      'No se pudieron restaurar los datos locales de recordatorios.';
 }

@@ -15,6 +15,21 @@ class LocalDailyReminderHandlingRepository
   final SharedPreferences _preferences;
 
   @override
+  Future<List<DailyReminderHandling>> loadAll() {
+    return _loadAll();
+  }
+
+  @override
+  Future<void> saveAll(List<DailyReminderHandling> records) {
+    return _saveAll(records);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _saveAll(const []);
+  }
+
+  @override
   Future<List<DailyReminderHandling>> loadForDate(DateTime localDate) async {
     final targetDate = _dateOnly(localDate);
     final records = await _loadAll();

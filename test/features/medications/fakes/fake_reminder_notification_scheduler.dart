@@ -24,6 +24,12 @@ class FakeReminderNotificationScheduler
   }
 
   @override
+  Future<void> cancelAllForSchedules(List<ReminderSchedule> schedules) async {
+    calls.add('cancelAllForSchedules');
+    cancelled.addAll(schedules);
+  }
+
+  @override
   Future<void> cancelForMedication(ReminderSchedule schedule) async {
     calls.add('cancelForMedication');
     cancelledForMedication.add(schedule);

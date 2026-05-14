@@ -4,6 +4,12 @@ import '../domain/reminder_handling_preferences.dart';
 abstract class DueReminderRepository {
   Future<List<DueReminder>> loadDueReminders();
 
+  Future<List<DueReminder>> loadAll();
+
+  Future<void> saveAll(List<DueReminder> reminders);
+
+  Future<void> deleteAll();
+
   Future<List<DueReminder>> loadUnresolvedDueReminders();
 
   Future<DueReminder?> loadDueReminder(String id);

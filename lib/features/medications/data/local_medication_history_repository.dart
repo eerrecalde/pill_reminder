@@ -14,6 +14,21 @@ class LocalMedicationHistoryRepository implements MedicationHistoryRepository {
   final SharedPreferences _preferences;
 
   @override
+  Future<List<MedicationHistoryEntry>> loadAll() {
+    return _loadAll();
+  }
+
+  @override
+  Future<void> saveAll(List<MedicationHistoryEntry> entries) {
+    return _saveAll(entries);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _saveAll(const []);
+  }
+
+  @override
   Future<List<MedicationHistoryEntry>> loadEntries({
     required DateTime since,
     required DateTime until,

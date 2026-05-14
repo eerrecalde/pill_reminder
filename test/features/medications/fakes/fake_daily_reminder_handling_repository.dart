@@ -12,6 +12,23 @@ class FakeDailyReminderHandlingRepository
   int markHandledCount = 0;
 
   @override
+  Future<List<DailyReminderHandling>> loadAll() async {
+    return List.unmodifiable(_records);
+  }
+
+  @override
+  Future<void> saveAll(List<DailyReminderHandling> records) async {
+    _records
+      ..clear()
+      ..addAll(records);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _records.clear();
+  }
+
+  @override
   Future<List<DailyReminderHandling>> loadForDate(DateTime localDate) async {
     return _records
         .where((record) => _isSameDate(record.localDate, localDate))

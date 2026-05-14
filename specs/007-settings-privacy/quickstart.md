@@ -9,6 +9,20 @@
 5. Add all new user-visible strings and semantics labels to `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`, then run localization generation.
 6. Follow `docs/ux-design.md`: calm tone, large readable text, generous spacing, no pressure, and one primary decision per destructive confirmation step.
 
+## UX Baseline Review Notes
+
+- Settings keeps the onboarding baseline: single-column layout, 24px horizontal padding, section spacing, readable Material text styles, icons paired with text, and 56px preferred primary/destructive actions.
+- Copy avoids account, ad, tracking, backup, sync, sharing, analytics, donation, and remote-service prompts. The privacy section states local-only storage in plain language.
+- Destructive local-data control uses one confirmation with a clear cancel path, then a short restore action. Remaining manual review should verify large text and screen-reader order on a device or simulator.
+
+## Manual Notification Permission Checklist
+
+- Android allowed: confirm settings reports reminder alerts are on.
+- Android denied or blocked: confirm settings reports reminders may not alert and the device-settings action opens app settings.
+- iOS allowed: confirm settings reports reminder alerts are on.
+- iOS denied or restricted: confirm settings reports reminders may not alert and the device-settings action opens app settings.
+- Unavailable/platform failure: confirm the unavailable copy appears and refresh remains available.
+
 ## Automated Verification
 
 Run before handoff:
@@ -55,3 +69,9 @@ Use at least one Android or iOS simulator/device:
 - Notification status refresh should complete within 1 second when the platform responds.
 - Delete and restore should complete within 2 seconds for typical single-user local data.
 - The feature should add no background polling, remote requests, or startup-only work unrelated to settings state loading.
+
+## Automated Performance Notes
+
+- `flutter analyze` and `flutter test` pass with the settings service using only local repository calls.
+- Settings does not add background polling or remote requests. Notification status checks run on screen entry and user refresh.
+- Delete and restore are synchronous local repository operations in the app layer; final device timing still needs manual measurement with realistic local data.

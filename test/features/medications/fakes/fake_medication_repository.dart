@@ -19,6 +19,23 @@ class FakeMedicationRepository implements MedicationRepository {
   }
 
   @override
+  Future<List<Medication>> loadAll() {
+    return loadMedications();
+  }
+
+  @override
+  Future<void> saveAll(List<Medication> medications) async {
+    _medications
+      ..clear()
+      ..addAll(medications);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _medications.clear();
+  }
+
+  @override
   Future<Medication> addMedication({
     required String name,
     String dosageLabel = '',
