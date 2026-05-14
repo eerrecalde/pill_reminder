@@ -3,6 +3,12 @@ import '../domain/reminder_schedule.dart';
 abstract class ReminderScheduleRepository {
   Future<List<ReminderSchedule>> loadSchedules();
 
+  Future<List<ReminderSchedule>> loadAll();
+
+  Future<void> saveAll(List<ReminderSchedule> schedules);
+
+  Future<void> deleteAll();
+
   Future<ReminderSchedule?> loadScheduleForMedication(String medicationId);
 
   Future<ReminderSchedule> saveSchedule({

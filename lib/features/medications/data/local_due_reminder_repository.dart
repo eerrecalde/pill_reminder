@@ -26,6 +26,21 @@ class LocalDueReminderRepository implements DueReminderRepository {
   }
 
   @override
+  Future<List<DueReminder>> loadAll() {
+    return loadDueReminders();
+  }
+
+  @override
+  Future<void> saveAll(List<DueReminder> reminders) {
+    return _saveAll(reminders);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _saveAll(const []);
+  }
+
+  @override
   Future<List<DueReminder>> loadUnresolvedDueReminders() async {
     final reminders = await loadDueReminders();
     return reminders

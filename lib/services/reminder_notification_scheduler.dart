@@ -53,6 +53,8 @@ abstract class ReminderNotificationScheduler {
 
   Future<void> cancelForSchedule(ReminderSchedule schedule);
 
+  Future<void> cancelAllForSchedules(List<ReminderSchedule> schedules);
+
   Future<ReminderNotificationScheduleResult> refreshForMedication(
     ReminderSchedule schedule, {
     required String title,
@@ -183,6 +185,13 @@ class LocalReminderNotificationScheduler
     await initialize();
     for (final time in schedule.reminderTimes) {
       await _notificationsPlugin.cancel(id: _notificationId(schedule, time));
+    }
+  }
+
+  @override
+  Future<void> cancelAllForSchedules(List<ReminderSchedule> schedules) async {
+    for (final schedule in schedules) {
+      await cancelForSchedule(schedule);
     }
   }
 

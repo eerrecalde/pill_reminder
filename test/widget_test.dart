@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pill_reminder/features/setup/domain/setup_language.dart';
 import 'package:pill_reminder/features/setup/domain/setup_state.dart';
@@ -48,5 +49,35 @@ void main() {
 
     expect(find.text('Medication history'), findsOneWidget);
     expect(find.text('No history yet'), findsOneWidget);
+  });
+
+  testWidgets('main app opens settings from the app bar', (tester) async {
+    await tester.pumpWidget(
+      PillReminderApp(
+        setupPreferencesRepository: FakeSetupPreferencesRepository(
+          SetupState(
+            language: SetupLanguage.english,
+            currentStep: SetupStep.complete,
+            privacyAcknowledged: true,
+            notificationStatus: SetupNotificationPermissionStatus.granted,
+            isComplete: true,
+          ),
+        ),
+        notificationPermissionService: FakeNotificationPermissionService(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byTooltip('Setup preferences'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Language'), findsOneWidget);
+    await tester.scrollUntilVisible(
+      find.text('Privacy'),
+      300,
+      scrollable: find.byType(Scrollable),
+    );
+    expect(find.text('Privacy'), findsOneWidget);
   });
 }

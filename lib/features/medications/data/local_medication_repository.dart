@@ -24,6 +24,21 @@ class LocalMedicationRepository implements MedicationRepository {
   }
 
   @override
+  Future<List<Medication>> loadAll() {
+    return loadMedications();
+  }
+
+  @override
+  Future<void> saveAll(List<Medication> medications) {
+    return _saveAll(medications);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _saveAll(const []);
+  }
+
+  @override
   Future<Medication> addMedication({
     required String name,
     String dosageLabel = '',

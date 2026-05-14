@@ -16,6 +16,23 @@ class FakeReminderScheduleRepository implements ReminderScheduleRepository {
   }
 
   @override
+  Future<List<ReminderSchedule>> loadAll() {
+    return loadSchedules();
+  }
+
+  @override
+  Future<void> saveAll(List<ReminderSchedule> schedules) async {
+    _schedules
+      ..clear()
+      ..addAll(schedules);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _schedules.clear();
+  }
+
+  @override
   Future<ReminderSchedule?> loadScheduleForMedication(
     String medicationId,
   ) async {

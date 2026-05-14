@@ -3,6 +3,12 @@ import '../domain/medication.dart';
 abstract class MedicationRepository {
   Future<List<Medication>> loadMedications();
 
+  Future<List<Medication>> loadAll();
+
+  Future<void> saveAll(List<Medication> medications);
+
+  Future<void> deleteAll();
+
   Future<Medication> addMedication({
     required String name,
     String dosageLabel = '',

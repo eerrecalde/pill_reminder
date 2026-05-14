@@ -1068,6 +1068,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remind again later after'**
   String get reminderHandlingIntervalLabel;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @settingsLanguageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguageTitle;
+
+  /// No description provided for @settingsLanguageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the language for settings, setup, and reminder guidance.'**
+  String get settingsLanguageDescription;
+
+  /// No description provided for @settingsLanguageSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred language'**
+  String get settingsLanguageSemantics;
+
+  /// No description provided for @settingsLanguageSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Language updated.'**
+  String get settingsLanguageSaved;
+
+  /// No description provided for @settingsAccessibilityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessibility'**
+  String get settingsAccessibilityTitle;
+
+  /// No description provided for @settingsAccessibilityDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The app follows your device settings for text size, screen reader, focus, and contrast.'**
+  String get settingsAccessibilityDescription;
+
+  /// No description provided for @settingsAccessibilityDeviceSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your device accessibility settings to adjust how the app looks and speaks. Content will scroll and reflow instead of hiding controls.'**
+  String get settingsAccessibilityDeviceSupport;
+
+  /// No description provided for @settingsNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts'**
+  String get settingsNotificationsTitle;
+
+  /// No description provided for @settingsNotificationsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Check whether this device can show reminder notifications.'**
+  String get settingsNotificationsDescription;
+
+  /// No description provided for @settingsNotificationAllowed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts are on.'**
+  String get settingsNotificationAllowed;
+
+  /// No description provided for @settingsNotificationDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts may not appear until notifications are allowed.'**
+  String get settingsNotificationDenied;
+
+  /// No description provided for @settingsNotificationBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder alerts are blocked or restricted. You can adjust this in device settings if you choose.'**
+  String get settingsNotificationBlocked;
+
+  /// No description provided for @settingsNotificationUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The app cannot confirm reminder alerts on this device right now. Try again later.'**
+  String get settingsNotificationUnavailable;
+
+  /// No description provided for @settingsNotificationRefresh.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh status'**
+  String get settingsNotificationRefresh;
+
+  /// No description provided for @settingsNotificationOpenDeviceSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open device settings'**
+  String get settingsNotificationOpenDeviceSettings;
+
+  /// No description provided for @settingsPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy'**
+  String get settingsPrivacyTitle;
+
+  /// No description provided for @settingsPrivacyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication and reminder information stays local to this device.'**
+  String get settingsPrivacyDescription;
+
+  /// No description provided for @settingsPrivacyLocalOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication names, reminder schedules, due reminders, handling state, and history are saved only on this device.'**
+  String get settingsPrivacyLocalOnly;
+
+  /// No description provided for @settingsPrivacyNoAccounts.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no accounts, ads, tracking, backup, sync, sharing, analytics, donation prompts, or remote services in this settings feature.'**
+  String get settingsPrivacyNoAccounts;
+
+  /// No description provided for @settingsLocalDataTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Local reminder data'**
+  String get settingsLocalDataTitle;
+
+  /// No description provided for @settingsLocalDataDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Review and control medication and reminder data saved on this device.'**
+  String get settingsLocalDataDescription;
+
+  /// No description provided for @settingsLocalDataFound.
+  ///
+  /// In en, this message translates to:
+  /// **'There is local medication or reminder data on this device.'**
+  String get settingsLocalDataFound;
+
+  /// No description provided for @settingsNoLocalData.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no local medication or reminder data to delete right now.'**
+  String get settingsNoLocalData;
+
+  /// No description provided for @settingsDeleteLocalDataAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete local reminder data'**
+  String get settingsDeleteLocalDataAction;
+
+  /// No description provided for @settingsDeleteConfirmationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete local reminder data?'**
+  String get settingsDeleteConfirmationTitle;
+
+  /// No description provided for @settingsDeleteConfirmationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This removes medication records, reminder schedules, due reminders, reminder handling state, and medication history from this device.'**
+  String get settingsDeleteConfirmationBody;
+
+  /// No description provided for @settingsDeleteConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete data'**
+  String get settingsDeleteConfirmAction;
+
+  /// No description provided for @settingsDataDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Local reminder data deleted.'**
+  String get settingsDataDeleted;
+
+  /// No description provided for @settingsUndoDeleteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore'**
+  String get settingsUndoDeleteAction;
+
+  /// No description provided for @settingsRecoveryAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'You can restore the deleted data for 30 seconds.'**
+  String get settingsRecoveryAvailable;
+
+  /// No description provided for @settingsRecoveryExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'The 30-second restore window has ended.'**
+  String get settingsRecoveryExpired;
+
+  /// No description provided for @settingsDataRestored.
+  ///
+  /// In en, this message translates to:
+  /// **'Local reminder data restored.'**
+  String get settingsDataRestored;
+
+  /// No description provided for @settingsDeleteFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Local reminder data was not deleted. Your data is still available.'**
+  String get settingsDeleteFailed;
+
+  /// No description provided for @settingsRestoreFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Local reminder data could not be restored.'**
+  String get settingsRestoreFailed;
 }
 
 class _AppLocalizationsDelegate

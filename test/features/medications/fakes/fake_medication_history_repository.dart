@@ -10,6 +10,23 @@ class FakeMedicationHistoryRepository implements MedicationHistoryRepository {
   List<MedicationHistoryEntry> get entries => List.unmodifiable(_entries);
 
   @override
+  Future<List<MedicationHistoryEntry>> loadAll() async {
+    return List.unmodifiable(_entries);
+  }
+
+  @override
+  Future<void> saveAll(List<MedicationHistoryEntry> entries) async {
+    _entries
+      ..clear()
+      ..addAll(entries);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _entries.clear();
+  }
+
+  @override
   Future<List<MedicationHistoryEntry>> loadEntries({
     required DateTime since,
     required DateTime until,

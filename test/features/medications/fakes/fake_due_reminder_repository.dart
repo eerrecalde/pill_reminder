@@ -51,6 +51,23 @@ class FakeDueReminderRepository implements DueReminderRepository {
   }
 
   @override
+  Future<List<DueReminder>> loadAll() {
+    return loadDueReminders();
+  }
+
+  @override
+  Future<void> saveAll(List<DueReminder> reminders) async {
+    _reminders
+      ..clear()
+      ..addAll(reminders);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    _reminders.clear();
+  }
+
+  @override
   Future<List<DueReminder>> loadUnresolvedDueReminders() async {
     return _reminders
         .where((reminder) => !reminder.state.isFinal)

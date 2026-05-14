@@ -24,6 +24,21 @@ class LocalReminderScheduleRepository implements ReminderScheduleRepository {
   }
 
   @override
+  Future<List<ReminderSchedule>> loadAll() {
+    return loadSchedules();
+  }
+
+  @override
+  Future<void> saveAll(List<ReminderSchedule> schedules) {
+    return _saveAll(schedules);
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _saveAll(const []);
+  }
+
+  @override
   Future<ReminderSchedule?> loadScheduleForMedication(
     String medicationId,
   ) async {

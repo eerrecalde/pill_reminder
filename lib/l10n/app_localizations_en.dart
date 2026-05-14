@@ -575,4 +575,127 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reminderHandlingIntervalLabel => 'Remind again later after';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsLanguageTitle => 'Language';
+
+  @override
+  String get settingsLanguageDescription =>
+      'Choose the language for settings, setup, and reminder guidance.';
+
+  @override
+  String get settingsLanguageSemantics => 'Preferred language';
+
+  @override
+  String get settingsLanguageSaved => 'Language updated.';
+
+  @override
+  String get settingsAccessibilityTitle => 'Accessibility';
+
+  @override
+  String get settingsAccessibilityDescription =>
+      'The app follows your device settings for text size, screen reader, focus, and contrast.';
+
+  @override
+  String get settingsAccessibilityDeviceSupport =>
+      'Use your device accessibility settings to adjust how the app looks and speaks. Content will scroll and reflow instead of hiding controls.';
+
+  @override
+  String get settingsNotificationsTitle => 'Reminder alerts';
+
+  @override
+  String get settingsNotificationsDescription =>
+      'Check whether this device can show reminder notifications.';
+
+  @override
+  String get settingsNotificationAllowed => 'Reminder alerts are on.';
+
+  @override
+  String get settingsNotificationDenied =>
+      'Reminder alerts may not appear until notifications are allowed.';
+
+  @override
+  String get settingsNotificationBlocked =>
+      'Reminder alerts are blocked or restricted. You can adjust this in device settings if you choose.';
+
+  @override
+  String get settingsNotificationUnavailable =>
+      'The app cannot confirm reminder alerts on this device right now. Try again later.';
+
+  @override
+  String get settingsNotificationRefresh => 'Refresh status';
+
+  @override
+  String get settingsNotificationOpenDeviceSettings => 'Open device settings';
+
+  @override
+  String get settingsPrivacyTitle => 'Privacy';
+
+  @override
+  String get settingsPrivacyDescription =>
+      'Medication and reminder information stays local to this device.';
+
+  @override
+  String get settingsPrivacyLocalOnly =>
+      'Medication names, reminder schedules, due reminders, handling state, and history are saved only on this device.';
+
+  @override
+  String get settingsPrivacyNoAccounts =>
+      'There are no accounts, ads, tracking, backup, sync, sharing, analytics, donation prompts, or remote services in this settings feature.';
+
+  @override
+  String get settingsLocalDataTitle => 'Local reminder data';
+
+  @override
+  String get settingsLocalDataDescription =>
+      'Review and control medication and reminder data saved on this device.';
+
+  @override
+  String get settingsLocalDataFound =>
+      'There is local medication or reminder data on this device.';
+
+  @override
+  String get settingsNoLocalData =>
+      'There is no local medication or reminder data to delete right now.';
+
+  @override
+  String get settingsDeleteLocalDataAction => 'Delete local reminder data';
+
+  @override
+  String get settingsDeleteConfirmationTitle => 'Delete local reminder data?';
+
+  @override
+  String get settingsDeleteConfirmationBody =>
+      'This removes medication records, reminder schedules, due reminders, reminder handling state, and medication history from this device.';
+
+  @override
+  String get settingsDeleteConfirmAction => 'Delete data';
+
+  @override
+  String get settingsDataDeleted => 'Local reminder data deleted.';
+
+  @override
+  String get settingsUndoDeleteAction => 'Restore';
+
+  @override
+  String get settingsRecoveryAvailable =>
+      'You can restore the deleted data for 30 seconds.';
+
+  @override
+  String get settingsRecoveryExpired =>
+      'The 30-second restore window has ended.';
+
+  @override
+  String get settingsDataRestored => 'Local reminder data restored.';
+
+  @override
+  String get settingsDeleteFailed =>
+      'Local reminder data was not deleted. Your data is still available.';
+
+  @override
+  String get settingsRestoreFailed =>
+      'Local reminder data could not be restored.';
 }
