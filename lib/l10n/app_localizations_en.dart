@@ -738,6 +738,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get notificationRingtoneSoftPulse => 'Soft pulse';
 
   @override
+  String get notificationRingtonePillsInBox => 'Pills in a box';
+
+  @override
   String get notificationRingtoneCurrent => 'Current';
 
   @override

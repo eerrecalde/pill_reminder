@@ -1345,6 +1345,12 @@ abstract class AppLocalizations {
   /// **'Soft pulse'**
   String get notificationRingtoneSoftPulse;
 
+  /// No description provided for @notificationRingtonePillsInBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Pills in a box'**
+  String get notificationRingtonePillsInBox;
+
   /// No description provided for @notificationRingtoneCurrent.
   ///
   /// In en, this message translates to:

@@ -747,6 +747,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get notificationRingtoneSoftPulse => 'Pulso suave';
 
   @override
+  String get notificationRingtonePillsInBox => 'Pastillas en una caja';
+
+  @override
   String get notificationRingtoneCurrent => 'Actual';
 
   @override
@@ -1527,6 +1530,9 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
 
   @override
   String get notificationRingtoneSoftPulse => 'Pulso suave';
+
+  @override
+  String get notificationRingtonePillsInBox => 'Pastillas en una caja';
 
   @override
   String get notificationRingtoneCurrent => 'Actual';

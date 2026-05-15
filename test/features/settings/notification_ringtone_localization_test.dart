@@ -9,6 +9,7 @@ void main() {
 
     expect(en.notificationRingtonePickerTitle, isNotEmpty);
     expect(en.notificationRingtoneGentleChime, isNotEmpty);
+    expect(en.notificationRingtonePillsInBox, 'Pills in a box');
     expect(
       en.notificationRingtonePreviewNamed('Gentle chime'),
       contains('Gentle'),
@@ -20,6 +21,7 @@ void main() {
 
     expect(es.notificationRingtonePickerTitle, isNotEmpty);
     expect(es.notificationRingtoneGentleChime, isNotEmpty);
+    expect(es.notificationRingtonePillsInBox, 'Pastillas en una caja');
     expect(
       es.notificationRingtonePreviewNamed('Campana suave'),
       contains('Campana'),

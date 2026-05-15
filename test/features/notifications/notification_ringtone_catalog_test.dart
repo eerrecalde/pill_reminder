@@ -7,7 +7,10 @@ void main() {
     expect(defaultNotificationRingtone().id, defaultRingtoneId);
 
     final ids = bundledNotificationRingtones.map((option) => option.id);
-    expect(ids, containsAll(['default', 'gentle_chime', 'bright_bell']));
+    expect(
+      ids,
+      containsAll(['default', 'gentle_chime', 'bright_bell', 'pills_in_box']),
+    );
     expect(ids.every((id) => RegExp(r'^[a-z0-9_]+$').hasMatch(id)), isTrue);
 
     for (final option in bundledNotificationRingtones.where(
