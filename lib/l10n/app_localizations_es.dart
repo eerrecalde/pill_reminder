@@ -707,6 +707,83 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get settingsRestoreFailed =>
       'No se pudieron restaurar los datos locales de recordatorios.';
+
+  @override
+  String get settingsNotificationSoundTitle => 'Sonido de notificación';
+
+  @override
+  String get settingsNotificationSoundDescription =>
+      'Elige el sonido para los recordatorios de medicamentos.';
+
+  @override
+  String settingsNotificationSoundCurrent(Object sound) {
+    return 'Sonido actual: $sound';
+  }
+
+  @override
+  String get settingsNotificationSoundDeviceLimits =>
+      'El silencio del dispositivo, enfoque, no molestar, permisos de notificación y configuración de canales pueden impedir que suene el sonido elegido.';
+
+  @override
+  String get settingsNotificationSoundUnavailable =>
+      'El sonido seleccionado antes ya no está disponible. Los recordatorios usarán el sonido predeterminado hasta que elijas otro.';
+
+  @override
+  String get settingsNotificationSoundChoose => 'Elegir sonido';
+
+  @override
+  String get notificationRingtonePickerTitle => 'Sonido de notificación';
+
+  @override
+  String get notificationRingtoneDefault => 'Sonido predeterminado';
+
+  @override
+  String get notificationRingtoneGentleChime => 'Campana suave';
+
+  @override
+  String get notificationRingtoneBrightBell => 'Campana clara';
+
+  @override
+  String get notificationRingtoneSoftPulse => 'Pulso suave';
+
+  @override
+  String get notificationRingtoneCurrent => 'Actual';
+
+  @override
+  String get notificationRingtoneSelected => 'Seleccionado';
+
+  @override
+  String get notificationRingtoneUnavailable => 'No disponible';
+
+  @override
+  String get notificationRingtonePreview => 'Escuchar';
+
+  @override
+  String notificationRingtonePreviewNamed(Object sound) {
+    return 'Escuchar $sound';
+  }
+
+  @override
+  String get notificationRingtoneStopPreview => 'Detener muestra';
+
+  @override
+  String get notificationRingtoneSave => 'Guardar sonido';
+
+  @override
+  String get notificationRingtoneSaved => 'Sonido de notificación guardado.';
+
+  @override
+  String notificationRingtoneRowSemantics(Object sound, Object status) {
+    return '$sound. $status';
+  }
+
+  @override
+  String get notificationRingtoneUnavailableWarning =>
+      'Tu sonido anterior no está disponible. Elige otro sonido para quitar este aviso.';
+
+  @override
+  String get notificationRingtoneDeviceLimits =>
+      'La configuración del teléfono puede silenciar los recordatorios aunque guardes este sonido.';
 }
 
 /// The translations for Spanish Castilian, as used in Latin America and the Caribbean (`es_419`).
@@ -1412,4 +1489,81 @@ class AppLocalizationsEs419 extends AppLocalizationsEs {
   @override
   String get settingsRestoreFailed =>
       'No se pudieron restaurar los datos locales de recordatorios.';
+
+  @override
+  String get settingsNotificationSoundTitle => 'Sonido de notificación';
+
+  @override
+  String get settingsNotificationSoundDescription =>
+      'Elige el sonido para los recordatorios de medicamentos.';
+
+  @override
+  String settingsNotificationSoundCurrent(Object sound) {
+    return 'Sonido actual: $sound';
+  }
+
+  @override
+  String get settingsNotificationSoundDeviceLimits =>
+      'El silencio del dispositivo, enfoque, no molestar, permisos de notificación y configuración de canales pueden impedir que suene el sonido elegido.';
+
+  @override
+  String get settingsNotificationSoundUnavailable =>
+      'El sonido seleccionado antes ya no está disponible. Los recordatorios usarán el sonido predeterminado hasta que elijas otro.';
+
+  @override
+  String get settingsNotificationSoundChoose => 'Elegir sonido';
+
+  @override
+  String get notificationRingtonePickerTitle => 'Sonido de notificación';
+
+  @override
+  String get notificationRingtoneDefault => 'Sonido predeterminado';
+
+  @override
+  String get notificationRingtoneGentleChime => 'Campana suave';
+
+  @override
+  String get notificationRingtoneBrightBell => 'Campana clara';
+
+  @override
+  String get notificationRingtoneSoftPulse => 'Pulso suave';
+
+  @override
+  String get notificationRingtoneCurrent => 'Actual';
+
+  @override
+  String get notificationRingtoneSelected => 'Seleccionado';
+
+  @override
+  String get notificationRingtoneUnavailable => 'No disponible';
+
+  @override
+  String get notificationRingtonePreview => 'Escuchar';
+
+  @override
+  String notificationRingtonePreviewNamed(Object sound) {
+    return 'Escuchar $sound';
+  }
+
+  @override
+  String get notificationRingtoneStopPreview => 'Detener muestra';
+
+  @override
+  String get notificationRingtoneSave => 'Guardar sonido';
+
+  @override
+  String get notificationRingtoneSaved => 'Sonido de notificación guardado.';
+
+  @override
+  String notificationRingtoneRowSemantics(Object sound, Object status) {
+    return '$sound. $status';
+  }
+
+  @override
+  String get notificationRingtoneUnavailableWarning =>
+      'Tu sonido anterior no está disponible. Elige otro sonido para quitar este aviso.';
+
+  @override
+  String get notificationRingtoneDeviceLimits =>
+      'La configuración del teléfono puede silenciar los recordatorios aunque guardes este sonido.';
 }

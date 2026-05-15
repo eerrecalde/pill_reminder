@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../../services/notification_permission_service.dart';
+import '../../notifications/data/local_notification_ringtone_repository.dart';
+import '../../notifications/data/notification_ringtone_repository.dart';
+import '../../notifications/domain/notification_ringtone.dart';
+import '../../notifications/services/ringtone_preview_player.dart';
 import '../../setup/data/setup_preferences_repository.dart';
 import '../../setup/domain/notification_permission_status.dart';
 import '../../setup/domain/setup_language.dart';
@@ -11,6 +15,7 @@ import '../../setup/domain/setup_state.dart';
 import '../domain/deletion_recovery_window.dart';
 import '../domain/reminder_data_control_service.dart';
 import 'data_deletion_confirmation_dialog.dart';
+import 'notification_ringtone_picker_screen.dart';
 import 'settings_section.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -21,6 +26,8 @@ class SettingsScreen extends StatefulWidget {
     required this.initialState,
     required this.onLocaleChanged,
     required this.onStateChanged,
+    this.ringtoneRepository = const DefaultNotificationRingtoneRepository(),
+    this.ringtonePreviewPlayer,
     super.key,
   });
 
@@ -30,6 +37,8 @@ class SettingsScreen extends StatefulWidget {
   final SetupState initialState;
   final ValueChanged<Locale> onLocaleChanged;
   final ValueChanged<SetupState> onStateChanged;
+  final NotificationRingtoneRepository ringtoneRepository;
+  final RingtonePreviewPlayer? ringtonePreviewPlayer;
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -43,12 +52,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _busyWithLocalData = false;
   DeletionRecoveryWindow? _recoveryWindow;
   Timer? _recoveryTimer;
+  NotificationRingtonePreference? _ringtonePreference;
+  bool _loadingRingtonePreference = true;
 
   @override
   void initState() {
     super.initState();
     _refreshNotificationStatus();
     _refreshLocalDataState();
+    _loadRingtonePreference();
   }
 
   @override
@@ -88,6 +100,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _openNotificationSettings() async {
     await widget.notificationPermissionService.openNotificationSettings();
+  }
+
+  Future<void> _loadRingtonePreference() async {
+    final preference = await widget.ringtoneRepository.loadPreference();
+    if (!mounted) return;
+    setState(() {
+      _ringtonePreference = preference;
+      _loadingRingtonePreference = false;
+    });
+  }
+
+  Future<void> _openRingtonePicker() async {
+    final preference =
+        _ringtonePreference ?? await widget.ringtoneRepository.loadPreference();
+    if (!mounted) return;
+    final saved = await Navigator.of(context).push<bool>(
+      MaterialPageRoute(
+        builder: (_) => NotificationRingtonePickerScreen(
+          repository: widget.ringtoneRepository,
+          initialPreference: preference,
+          previewPlayer: widget.ringtonePreviewPlayer,
+        ),
+      ),
+    );
+    await _loadRingtonePreference();
+    if (!mounted || saved != true) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(AppLocalizations.of(context).notificationRingtoneSaved),
+      ),
+    );
   }
 
   Future<void> _refreshLocalDataState() async {
@@ -206,7 +249,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: l10n.settingsNotificationsTitle,
                   subtitle: l10n.settingsNotificationsDescription,
                   icon: Icons.notifications_none_outlined,
-                  children: [_buildNotificationStatus(l10n)],
+                  children: [
+                    _buildNotificationStatus(l10n),
+                    const SizedBox(height: 16),
+                    _buildNotificationSound(l10n),
+                  ],
                 ),
                 SettingsSection(
                   title: l10n.settingsPrivacyTitle,
@@ -297,6 +344,51 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 label: Text(l10n.settingsNotificationOpenDeviceSettings),
               ),
           ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNotificationSound(AppLocalizations l10n) {
+    if (_loadingRingtonePreference) {
+      return const LinearProgressIndicator(minHeight: 2);
+    }
+
+    final preference = _ringtonePreference;
+    final soundName = preference == null
+        ? localizedRingtoneName(l10n, widget.ringtoneRepository.defaultOption)
+        : localizedRingtoneName(l10n, preference.resolvedOption);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.settingsNotificationSoundTitle,
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+        const SizedBox(height: 4),
+        Text(l10n.settingsNotificationSoundDescription),
+        const SizedBox(height: 8),
+        Text(l10n.settingsNotificationSoundCurrent(soundName)),
+        const SizedBox(height: 8),
+        Text(l10n.settingsNotificationSoundDeviceLimits),
+        if (preference?.hasUnavailableSavedRingtone ?? false) ...[
+          const SizedBox(height: 12),
+          Semantics(
+            liveRegion: true,
+            child: Text(
+              l10n.settingsNotificationSoundUnavailable,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+          ),
+        ],
+        const SizedBox(height: 12),
+        OutlinedButton.icon(
+          onPressed: _openRingtonePicker,
+          icon: const Icon(Icons.music_note_outlined),
+          label: Text(l10n.settingsNotificationSoundChoose),
         ),
       ],
     );

@@ -48,12 +48,24 @@ Android:
 5. Change to a different ringtone, schedule a future reminder, and verify the later notification uses the new sound.
 6. Disable notification permission or enable focus/do-not-disturb and verify settings explains that device settings may prevent sound playback.
 7. Restart the device or app and verify the saved preference remains selected.
+8. Turn off network access and verify the saved ringtone preference remains selected and reminders still schedule without requiring internet.
+9. Confirm the ringtone picker opens in under 500ms with local options and that preview playback starts within 250ms after tapping a preview button on a typical test device.
+10. Confirm app startup does not perform network work and the feature does not add recurring background work beyond existing local notification scheduling.
 
 iOS:
 
 1. Repeat the selection, preview, save, and reminder-trigger checks on a physical or simulator target that supports notification sound verification.
 2. Confirm default fallback sound plays if a selected custom file is unavailable.
 3. Confirm the picker remains usable with large text and VoiceOver.
+4. Restart the device or app, keep the device offline, and verify the saved ringtone preference remains selected.
+5. Confirm the ringtone picker opens in under 500ms, preview playback starts within 250ms, and no startup network or recurring background work was added.
+
+## Platform Asset Checklist
+
+- Flutter preview files are bundled under `assets/audio/notifications/`.
+- Android notification sound files are copied under `android/app/src/main/res/raw/` with lowercase resource names.
+- iOS notification sound files are copied under `ios/Runner/` and included in the Runner target resources.
+- Custom ringtone ids remain stable after release unless a migration is added.
 
 ## Notes
 

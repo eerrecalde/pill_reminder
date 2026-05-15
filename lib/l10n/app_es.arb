@@ -288,5 +288,44 @@
   "settingsRecoveryExpired": "Terminó la ventana de 30 segundos para restaurar.",
   "settingsDataRestored": "Datos locales de recordatorios restaurados.",
   "settingsDeleteFailed": "Los datos locales de recordatorios no se borraron. Tus datos siguen disponibles.",
-  "settingsRestoreFailed": "No se pudieron restaurar los datos locales de recordatorios."
+  "settingsRestoreFailed": "No se pudieron restaurar los datos locales de recordatorios.",
+  "settingsNotificationSoundTitle": "Sonido de notificación",
+  "settingsNotificationSoundDescription": "Elige el sonido para los recordatorios de medicamentos.",
+  "settingsNotificationSoundCurrent": "Sonido actual: {sound}",
+  "@settingsNotificationSoundCurrent": {
+    "placeholders": {
+      "sound": {}
+    }
+  },
+  "settingsNotificationSoundDeviceLimits": "El silencio del dispositivo, enfoque, no molestar, permisos de notificación y configuración de canales pueden impedir que suene el sonido elegido.",
+  "settingsNotificationSoundUnavailable": "El sonido seleccionado antes ya no está disponible. Los recordatorios usarán el sonido predeterminado hasta que elijas otro.",
+  "settingsNotificationSoundChoose": "Elegir sonido",
+  "notificationRingtonePickerTitle": "Sonido de notificación",
+  "notificationRingtoneDefault": "Sonido predeterminado",
+  "notificationRingtoneGentleChime": "Campana suave",
+  "notificationRingtoneBrightBell": "Campana clara",
+  "notificationRingtoneSoftPulse": "Pulso suave",
+  "notificationRingtonePillsInBox": "Pastillas en una caja",
+  "notificationRingtoneCurrent": "Actual",
+  "notificationRingtoneSelected": "Seleccionado",
+  "notificationRingtoneUnavailable": "No disponible",
+  "notificationRingtonePreview": "Escuchar",
+  "notificationRingtonePreviewNamed": "Escuchar {sound}",
+  "@notificationRingtonePreviewNamed": {
+    "placeholders": {
+      "sound": {}
+    }
+  },
+  "notificationRingtoneStopPreview": "Detener muestra",
+  "notificationRingtoneSave": "Guardar sonido",
+  "notificationRingtoneSaved": "Sonido de notificación guardado.",
+  "notificationRingtoneRowSemantics": "{sound}. {status}",
+  "@notificationRingtoneRowSemantics": {
+    "placeholders": {
+      "sound": {},
+      "status": {}
+    }
+  },
+  "notificationRingtoneUnavailableWarning": "Tu sonido anterior no está disponible. Elige otro sonido para quitar este aviso.",
+  "notificationRingtoneDeviceLimits": "La configuración del teléfono puede silenciar los recordatorios aunque guardes este sonido."
 }

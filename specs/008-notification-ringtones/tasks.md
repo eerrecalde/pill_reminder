@@ -17,11 +17,11 @@
 
 **Purpose**: Add package, asset, and platform resource structure needed by all ringtone stories.
 
-- [ ] T001 Add the lightweight preview playback dependency and register `assets/audio/notifications/` in `pubspec.yaml`
-- [ ] T002 [P] Add finalized curated Flutter preview audio files in `assets/audio/notifications/`
-- [ ] T003 [P] Create Android raw resource sound files for the curated catalog in `android/app/src/main/res/raw/`
-- [ ] T004 [P] Add iOS bundled sound resources for the curated catalog under `ios/Runner/`
-- [ ] T005 Document platform asset naming and manual sound packaging checks in `specs/008-notification-ringtones/quickstart.md`
+- [X] T001 Add the lightweight preview playback dependency and register `assets/audio/notifications/` in `pubspec.yaml`
+- [X] T002 [P] Add finalized curated Flutter preview audio files in `assets/audio/notifications/`
+- [X] T003 [P] Create Android raw resource sound files for the curated catalog in `android/app/src/main/res/raw/`
+- [X] T004 [P] Add iOS bundled sound resources for the curated catalog under `ios/Runner/`
+- [X] T005 Document platform asset naming and manual sound packaging checks in `specs/008-notification-ringtones/quickstart.md`
 
 ---
 
@@ -31,17 +31,17 @@
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T006 [P] Create `RingtoneOption` and `NotificationRingtonePreference` domain types with validation helpers in `lib/features/notifications/domain/notification_ringtone.dart`
-- [ ] T007 [P] Create the bundled ringtone catalog with stable ids, display-name keys, preview assets, Android raw names, iOS filenames, and default option in `lib/features/notifications/domain/notification_ringtone_catalog.dart`
-- [ ] T008 [P] Add unit tests for catalog invariants, stable id format, default uniqueness, and platform asset metadata in `test/features/notifications/notification_ringtone_catalog_test.dart`
-- [ ] T009 Create the `NotificationRingtoneRepository` interface and shared preference key constants in `lib/features/notifications/data/notification_ringtone_repository.dart`
-- [ ] T010 Implement `LocalNotificationRingtoneRepository` with missing, unknown, unavailable, save, and clear behavior in `lib/features/notifications/data/local_notification_ringtone_repository.dart`
-- [ ] T011 [P] Add repository tests for default resolution, unknown-id fallback, unavailable warning state, and saving available options in `test/features/notifications/local_notification_ringtone_repository_test.dart`
-- [ ] T012 [P] Add fake ringtone repository support for widget and scheduler tests in `test/features/notifications/fakes/fake_notification_ringtone_repository.dart`
-- [ ] T013 [P] Add base ringtone localization keys for English in `lib/l10n/app_en.arb`
-- [ ] T014 [P] Add base ringtone localization keys for Spanish in `lib/l10n/app_es.arb`
-- [ ] T015 [P] Add base ringtone localization keys for Latin American Spanish in `lib/l10n/app_es_419.arb`
-- [ ] T016 Regenerate Flutter localization outputs after ARB changes in `lib/l10n/app_localizations.dart`
+- [X] T006 [P] Create `RingtoneOption` and `NotificationRingtonePreference` domain types with validation helpers in `lib/features/notifications/domain/notification_ringtone.dart`
+- [X] T007 [P] Create the bundled ringtone catalog with stable ids, display-name keys, preview assets, Android raw names, iOS filenames, and default option in `lib/features/notifications/domain/notification_ringtone_catalog.dart`
+- [X] T008 [P] Add unit tests for catalog invariants, stable id format, default uniqueness, and platform asset metadata in `test/features/notifications/notification_ringtone_catalog_test.dart`
+- [X] T009 Create the `NotificationRingtoneRepository` interface and shared preference key constants in `lib/features/notifications/data/notification_ringtone_repository.dart`
+- [X] T010 Implement `LocalNotificationRingtoneRepository` with missing, unknown, unavailable, save, and clear behavior in `lib/features/notifications/data/local_notification_ringtone_repository.dart`
+- [X] T011 [P] Add repository tests for default resolution, unknown-id fallback, unavailable warning state, and saving available options in `test/features/notifications/local_notification_ringtone_repository_test.dart`
+- [X] T012 [P] Add fake ringtone repository support for widget and scheduler tests in `test/features/notifications/fakes/fake_notification_ringtone_repository.dart`
+- [X] T013 [P] Add base ringtone localization keys for English in `lib/l10n/app_en.arb`
+- [X] T014 [P] Add base ringtone localization keys for Spanish in `lib/l10n/app_es.arb`
+- [X] T015 [P] Add base ringtone localization keys for Latin American Spanish in `lib/l10n/app_es_419.arb`
+- [X] T016 Regenerate Flutter localization outputs after ARB changes in `lib/l10n/app_localizations.dart`
 
 **Checkpoint**: Ringtone catalog, persistence, fakes, and localization scaffolding are ready.
 
@@ -55,23 +55,23 @@
 
 ### Tests for User Story 1
 
-- [ ] T017 [P] [US1] Add widget tests for opening the notification ringtone picker, selecting an option, saving it, and showing the saved choice in `test/features/settings/notification_ringtone_picker_screen_test.dart`
-- [ ] T018 [P] [US1] Add settings entry widget tests for current ringtone display and notification permission explanation in `test/features/settings/settings_screen_test.dart`
-- [ ] T019 [P] [US1] Add scheduler tests proving daily scheduled reminders, due-now reminders, remind-later reminders, and suppress-today reschedules use the selected ringtone details in `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T020 [P] [US1] Add localization coverage tests for ringtone picker and settings strings in `test/features/settings/notification_ringtone_localization_test.dart`
+- [X] T017 [P] [US1] Add widget tests for opening the notification ringtone picker, selecting an option, saving it, and showing the saved choice in `test/features/settings/notification_ringtone_picker_screen_test.dart`
+- [X] T018 [P] [US1] Add settings entry widget tests for current ringtone display and notification permission explanation in `test/features/settings/settings_screen_test.dart`
+- [X] T019 [P] [US1] Add scheduler tests proving daily scheduled reminders, due-now reminders, remind-later reminders, and suppress-today reschedules use the selected ringtone details in `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T020 [P] [US1] Add localization coverage tests for ringtone picker and settings strings in `test/features/settings/notification_ringtone_localization_test.dart`
 
 ### Implementation for User Story 1
 
-- [ ] T021 [P] [US1] Create `NotificationRingtonePickerScreen` with selectable bundled options, selected state, save, and cancel controls in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
-- [ ] T022 [US1] Integrate ringtone repository dependencies into `SettingsScreen` and add the notification sound row in `lib/features/settings/presentation/settings_screen.dart`
-- [ ] T023 [US1] Wire `NotificationRingtonePickerScreen` navigation from the settings notification section in `lib/features/settings/presentation/settings_screen.dart`
-- [ ] T024 [US1] Inject `LocalNotificationRingtoneRepository` into app construction and settings dependencies in `lib/main.dart`
-- [ ] T025 [US1] Extend `LocalReminderNotificationScheduler` to accept a ringtone repository and resolve the active ringtone before building notification details in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T026 [US1] Replace hard-coded notification detail constants with ringtone-aware builders for daily, due-now, suppress-today, and remind-later flows in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T027 [US1] Add Android per-ringtone channel ids and `RawResourceAndroidNotificationSound` mapping in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T028 [US1] Add iOS `DarwinNotificationDetails.sound` mapping and category preservation in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T029 [US1] Update scheduler fakes to preserve existing medication tests after constructor and interface changes in `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
-- [ ] T030 [US1] Add selected/current ringtone labels, save confirmation, and device-setting limitation copy to generated localization usage in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T021 [P] [US1] Create `NotificationRingtonePickerScreen` with selectable bundled options, selected state, save, and cancel controls in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T022 [US1] Integrate ringtone repository dependencies into `SettingsScreen` and add the notification sound row in `lib/features/settings/presentation/settings_screen.dart`
+- [X] T023 [US1] Wire `NotificationRingtonePickerScreen` navigation from the settings notification section in `lib/features/settings/presentation/settings_screen.dart`
+- [X] T024 [US1] Inject `LocalNotificationRingtoneRepository` into app construction and settings dependencies in `lib/main.dart`
+- [X] T025 [US1] Extend `LocalReminderNotificationScheduler` to accept a ringtone repository and resolve the active ringtone before building notification details in `lib/services/reminder_notification_scheduler.dart`
+- [X] T026 [US1] Replace hard-coded notification detail constants with ringtone-aware builders for daily, due-now, suppress-today, and remind-later flows in `lib/services/reminder_notification_scheduler.dart`
+- [X] T027 [US1] Add Android per-ringtone channel ids and `RawResourceAndroidNotificationSound` mapping in `lib/services/reminder_notification_scheduler.dart`
+- [X] T028 [US1] Add iOS `DarwinNotificationDetails.sound` mapping and category preservation in `lib/services/reminder_notification_scheduler.dart`
+- [X] T029 [US1] Update scheduler fakes to preserve existing medication tests after constructor and interface changes in `test/features/medications/fakes/fake_reminder_notification_scheduler.dart`
+- [X] T030 [US1] Add selected/current ringtone labels, save confirmation, and device-setting limitation copy to generated localization usage in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
 
 **Checkpoint**: User Story 1 is fully functional and independently testable as the MVP.
 
@@ -85,16 +85,16 @@
 
 ### Tests for User Story 2
 
-- [ ] T031 [P] [US2] Add preview service tests for play, stop, switching samples, and dispose behavior in `test/features/notifications/ringtone_preview_player_test.dart`
-- [ ] T032 [P] [US2] Add picker widget tests for preview buttons, unsaved preview behavior, and stop-on-dismiss behavior in `test/features/settings/notification_ringtone_picker_screen_test.dart`
+- [X] T031 [P] [US2] Add preview service tests for play, stop, switching samples, and dispose behavior in `test/features/notifications/ringtone_preview_player_test.dart`
+- [X] T032 [P] [US2] Add picker widget tests for preview buttons, unsaved preview behavior, and stop-on-dismiss behavior in `test/features/settings/notification_ringtone_picker_screen_test.dart`
 
 ### Implementation for User Story 2
 
-- [ ] T033 [P] [US2] Create `RingtonePreviewPlayer` abstraction and asset-player implementation in `lib/features/notifications/services/ringtone_preview_player.dart`
-- [ ] T034 [P] [US2] Create fake preview player for widget tests in `test/features/notifications/fakes/fake_ringtone_preview_player.dart`
-- [ ] T035 [US2] Inject `RingtonePreviewPlayer` into `NotificationRingtonePickerScreen` and add accessible preview controls in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
-- [ ] T036 [US2] Ensure preview playback stops when another option is previewed, when save/cancel is tapped, and when the picker is disposed in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
-- [ ] T037 [US2] Add preview action labels and preview status copy to all localization resources in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T033 [P] [US2] Create `RingtonePreviewPlayer` abstraction and asset-player implementation in `lib/features/notifications/services/ringtone_preview_player.dart`
+- [X] T034 [P] [US2] Create fake preview player for widget tests in `test/features/notifications/fakes/fake_ringtone_preview_player.dart`
+- [X] T035 [US2] Inject `RingtonePreviewPlayer` into `NotificationRingtonePickerScreen` and add accessible preview controls in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T036 [US2] Ensure preview playback stops when another option is previewed, when save/cancel is tapped, and when the picker is disposed in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T037 [US2] Add preview action labels and preview status copy to all localization resources in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: User Stories 1 and 2 both work independently.
 
@@ -108,17 +108,17 @@
 
 ### Tests for User Story 3
 
-- [ ] T038 [P] [US3] Add repository and resolver tests for unavailable saved ringtone warnings and warning clearing after save in `test/features/notifications/local_notification_ringtone_repository_test.dart`
-- [ ] T039 [P] [US3] Add scheduler fallback tests proving unavailable selected ringtones resolve to default sound details in `test/features/medications/reminder_notification_scheduler_test.dart`
-- [ ] T040 [P] [US3] Add settings and picker warning tests for unavailable saved ringtone copy, semantics, and choose-another prompt in `test/features/settings/notification_ringtone_picker_screen_test.dart`
+- [X] T038 [P] [US3] Add repository and resolver tests for unavailable saved ringtone warnings and warning clearing after save in `test/features/notifications/local_notification_ringtone_repository_test.dart`
+- [X] T039 [P] [US3] Add scheduler fallback tests proving unavailable selected ringtones resolve to default sound details in `test/features/medications/reminder_notification_scheduler_test.dart`
+- [X] T040 [P] [US3] Add settings and picker warning tests for unavailable saved ringtone copy, semantics, and choose-another prompt in `test/features/settings/notification_ringtone_picker_screen_test.dart`
 
 ### Implementation for User Story 3
 
-- [ ] T041 [US3] Surface unavailable saved ringtone state from `LocalNotificationRingtoneRepository` to settings in `lib/features/notifications/data/local_notification_ringtone_repository.dart`
-- [ ] T042 [US3] Render localized unavailable-ringtone warning and choose-another prompt in `lib/features/settings/presentation/settings_screen.dart`
-- [ ] T043 [US3] Render unavailable state with visible text and semantics in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
-- [ ] T044 [US3] Ensure scheduler fallback uses the default ringtone option when preference resolution reports an unavailable saved id in `lib/services/reminder_notification_scheduler.dart`
-- [ ] T045 [US3] Add unavailable warning copy to all localization resources in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
+- [X] T041 [US3] Surface unavailable saved ringtone state from `LocalNotificationRingtoneRepository` to settings in `lib/features/notifications/data/local_notification_ringtone_repository.dart`
+- [X] T042 [US3] Render localized unavailable-ringtone warning and choose-another prompt in `lib/features/settings/presentation/settings_screen.dart`
+- [X] T043 [US3] Render unavailable state with visible text and semantics in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T044 [US3] Ensure scheduler fallback uses the default ringtone option when preference resolution reports an unavailable saved id in `lib/services/reminder_notification_scheduler.dart`
+- [X] T045 [US3] Add unavailable warning copy to all localization resources in `lib/l10n/app_en.arb`, `lib/l10n/app_es.arb`, and `lib/l10n/app_es_419.arb`
 
 **Checkpoint**: All user stories are independently functional.
 
@@ -128,17 +128,17 @@
 
 **Purpose**: Final validation across accessibility, localization, privacy, performance, and platform notification behavior.
 
-- [ ] T046 [P] Add large-text, screen reader label, selected-state, touch-target, and non-color-only accessibility checks for the ringtone picker in `test/features/settings/notification_ringtone_picker_screen_test.dart`
-- [ ] T047 [P] Add privacy regression assertions that ringtone settings do not request file/media access, accounts, analytics, ads, backup, sync, or donation flows in `test/features/settings/settings_screen_test.dart`
-- [ ] T048 [P] Add manual Android notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
-- [ ] T049 [P] Add manual iOS notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
-- [ ] T050 [P] Verify ringtone performance goals for picker open time under 500ms, preview start under 250ms, no startup network work, and no recurring background work in `specs/008-notification-ringtones/quickstart.md`
-- [ ] T051 [P] Add restart and offline persistence manual verification for saved ringtone preference in `specs/008-notification-ringtones/quickstart.md`
-- [ ] T052 Run `flutter gen-l10n` and verify generated localization files in `lib/l10n/app_localizations.dart`
-- [ ] T053 Run `dart format` on changed Dart files under `lib/` and `test/`
-- [ ] T054 Run `flutter analyze` and resolve feature-related diagnostics in `lib/` and `test/`
-- [ ] T055 Run `flutter test` and resolve feature-related failures in `test/`
-- [ ] T056 Review settings UX against `docs/ux-design.md` and adjust ringtone picker spacing, copy, and control sizes in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [X] T046 [P] Add large-text, screen reader label, selected-state, touch-target, and non-color-only accessibility checks for the ringtone picker in `test/features/settings/notification_ringtone_picker_screen_test.dart`
+- [X] T047 [P] Add privacy regression assertions that ringtone settings do not request file/media access, accounts, analytics, ads, backup, sync, or donation flows in `test/features/settings/settings_screen_test.dart`
+- [X] T048 [P] Add manual Android notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
+- [X] T049 [P] Add manual iOS notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
+- [X] T050 [P] Verify ringtone performance goals for picker open time under 500ms, preview start under 250ms, no startup network work, and no recurring background work in `specs/008-notification-ringtones/quickstart.md`
+- [X] T051 [P] Add restart and offline persistence manual verification for saved ringtone preference in `specs/008-notification-ringtones/quickstart.md`
+- [X] T052 Run `flutter gen-l10n` and verify generated localization files in `lib/l10n/app_localizations.dart`
+- [X] T053 Run `dart format` on changed Dart files under `lib/` and `test/`
+- [X] T054 Run `flutter analyze` and resolve feature-related diagnostics in `lib/` and `test/`
+- [X] T055 Run `flutter test` and resolve feature-related failures in `test/`
+- [X] T056 Review settings UX against `docs/ux-design.md` and adjust ringtone picker spacing, copy, and control sizes in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
 
 ---
 
