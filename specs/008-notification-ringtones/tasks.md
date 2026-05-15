@@ -18,7 +18,7 @@
 **Purpose**: Add package, asset, and platform resource structure needed by all ringtone stories.
 
 - [ ] T001 Add the lightweight preview playback dependency and register `assets/audio/notifications/` in `pubspec.yaml`
-- [ ] T002 [P] Create the Flutter preview audio asset directory with placeholder curated sound files in `assets/audio/notifications/`
+- [ ] T002 [P] Add finalized curated Flutter preview audio files in `assets/audio/notifications/`
 - [ ] T003 [P] Create Android raw resource sound files for the curated catalog in `android/app/src/main/res/raw/`
 - [ ] T004 [P] Add iOS bundled sound resources for the curated catalog under `ios/Runner/`
 - [ ] T005 Document platform asset naming and manual sound packaging checks in `specs/008-notification-ringtones/quickstart.md`
@@ -132,11 +132,13 @@
 - [ ] T047 [P] Add privacy regression assertions that ringtone settings do not request file/media access, accounts, analytics, ads, backup, sync, or donation flows in `test/features/settings/settings_screen_test.dart`
 - [ ] T048 [P] Add manual Android notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
 - [ ] T049 [P] Add manual iOS notification sound verification notes and results checklist in `specs/008-notification-ringtones/quickstart.md`
-- [ ] T050 Run `flutter gen-l10n` and verify generated localization files in `lib/l10n/app_localizations.dart`
-- [ ] T051 Run `dart format` on changed Dart files under `lib/` and `test/`
-- [ ] T052 Run `flutter analyze` and resolve feature-related diagnostics in `lib/` and `test/`
-- [ ] T053 Run `flutter test` and resolve feature-related failures in `test/`
-- [ ] T054 Review settings UX against `docs/ux-design.md` and adjust ringtone picker spacing, copy, and control sizes in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
+- [ ] T050 [P] Verify ringtone performance goals for picker open time under 500ms, preview start under 250ms, no startup network work, and no recurring background work in `specs/008-notification-ringtones/quickstart.md`
+- [ ] T051 [P] Add restart and offline persistence manual verification for saved ringtone preference in `specs/008-notification-ringtones/quickstart.md`
+- [ ] T052 Run `flutter gen-l10n` and verify generated localization files in `lib/l10n/app_localizations.dart`
+- [ ] T053 Run `dart format` on changed Dart files under `lib/` and `test/`
+- [ ] T054 Run `flutter analyze` and resolve feature-related diagnostics in `lib/` and `test/`
+- [ ] T055 Run `flutter test` and resolve feature-related failures in `test/`
+- [ ] T056 Review settings UX against `docs/ux-design.md` and adjust ringtone picker spacing, copy, and control sizes in `lib/features/settings/presentation/notification_ringtone_picker_screen.dart`
 
 ---
 
@@ -236,4 +238,3 @@ Task: "T040 [US3] Add settings warning tests in test/features/settings/notificat
 2. One developer owns domain/repository/fakes under `lib/features/notifications/` and `test/features/notifications/`.
 3. One developer owns settings UI under `lib/features/settings/presentation/` and `test/features/settings/`.
 4. One developer owns scheduler integration under `lib/services/reminder_notification_scheduler.dart` and `test/features/medications/reminder_notification_scheduler_test.dart`.
-
