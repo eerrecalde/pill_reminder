@@ -8,6 +8,9 @@ import 'package:timezone/timezone.dart' as tz;
 
 import '../features/medications/domain/due_reminder.dart';
 import '../features/medications/domain/reminder_schedule.dart';
+import '../features/notifications/data/local_notification_ringtone_repository.dart';
+import '../features/notifications/data/notification_ringtone_repository.dart';
+import '../features/notifications/domain/notification_ringtone.dart';
 import '../features/setup/domain/notification_permission_status.dart';
 
 const reminderActionTakenId = 'taken';
@@ -90,10 +93,14 @@ class LocalReminderNotificationScheduler
     implements ReminderNotificationScheduler {
   LocalReminderNotificationScheduler({
     FlutterLocalNotificationsPlugin? notificationsPlugin,
+    NotificationRingtoneRepository? ringtoneRepository,
   }) : _notificationsPlugin =
-           notificationsPlugin ?? FlutterLocalNotificationsPlugin();
+           notificationsPlugin ?? FlutterLocalNotificationsPlugin(),
+       _ringtoneRepository =
+           ringtoneRepository ?? const DefaultNotificationRingtoneRepository();
 
   final FlutterLocalNotificationsPlugin _notificationsPlugin;
+  final NotificationRingtoneRepository _ringtoneRepository;
   bool _initialized = false;
 
   @override
@@ -154,23 +161,7 @@ class LocalReminderNotificationScheduler
         title: title,
         body: body,
         scheduledDate: _nextDailyReminder(time),
-        notificationDetails: const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'daily_medication_reminders',
-            'Daily medication reminders',
-            channelDescription: 'Daily medication reminder alerts',
-            importance: Importance.high,
-            priority: Priority.high,
-            actions: [
-              AndroidNotificationAction(reminderActionTakenId, 'Taken'),
-              AndroidNotificationAction(reminderActionSkippedId, 'Skip'),
-              AndroidNotificationAction(reminderActionLaterId, 'Remind later'),
-            ],
-          ),
-          iOS: DarwinNotificationDetails(
-            categoryIdentifier: reminderNotificationCategoryId,
-          ),
-        ),
+        notificationDetails: await _dailyNotificationDetails(),
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         matchDateTimeComponents: DateTimeComponents.time,
       );
@@ -246,15 +237,8 @@ class LocalReminderNotificationScheduler
       scheduledDate: _nextDailyReminder(
         reminderTime,
       ).add(const Duration(days: 1)),
-      notificationDetails: const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'daily_medication_reminders',
-          'Daily medication reminders',
-          channelDescription: 'Daily medication reminder alerts',
-          importance: Importance.high,
-          priority: Priority.high,
-        ),
-        iOS: DarwinNotificationDetails(),
+      notificationDetails: await _dailyNotificationDetails(
+        includeActions: false,
       ),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
@@ -274,23 +258,7 @@ class LocalReminderNotificationScheduler
       id: _dueNotificationId(reminder),
       title: title,
       body: body,
-      notificationDetails: const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'due_medication_reminders',
-          'Due medication reminders',
-          channelDescription: 'Medication reminders that are due now',
-          importance: Importance.high,
-          priority: Priority.high,
-          actions: [
-            AndroidNotificationAction(reminderActionTakenId, 'Taken'),
-            AndroidNotificationAction(reminderActionSkippedId, 'Skip'),
-            AndroidNotificationAction(reminderActionLaterId, 'Remind later'),
-          ],
-        ),
-        iOS: DarwinNotificationDetails(
-          categoryIdentifier: reminderNotificationCategoryId,
-        ),
-      ),
+      notificationDetails: await _dueNotificationDetails(),
       payload: reminder.id,
     );
   }
@@ -307,23 +275,7 @@ class LocalReminderNotificationScheduler
           ? 'Reminder from ${_formatHourMinute(reminder.scheduledAt)}'
           : '${reminder.dosageLabel} - ${_formatHourMinute(reminder.scheduledAt)}',
       scheduledDate: tz.TZDateTime.from(request.nextReminderAt, tz.local),
-      notificationDetails: const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'due_medication_reminders',
-          'Due medication reminders',
-          channelDescription: 'Medication reminders that are due now',
-          importance: Importance.high,
-          priority: Priority.high,
-          actions: [
-            AndroidNotificationAction(reminderActionTakenId, 'Taken'),
-            AndroidNotificationAction(reminderActionSkippedId, 'Skip'),
-            AndroidNotificationAction(reminderActionLaterId, 'Remind later'),
-          ],
-        ),
-        iOS: DarwinNotificationDetails(
-          categoryIdentifier: reminderNotificationCategoryId,
-        ),
-      ),
+      notificationDetails: await _dueNotificationDetails(),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       payload: reminder.id,
     );
@@ -376,6 +328,80 @@ class LocalReminderNotificationScheduler
     return '${time.hour}:$minute';
   }
 
+  @visibleForTesting
+  Future<NotificationDetails> dailyNotificationDetailsForTest({
+    bool includeActions = true,
+  }) {
+    return _dailyNotificationDetails(includeActions: includeActions);
+  }
+
+  @visibleForTesting
+  Future<NotificationDetails> dueNotificationDetailsForTest() {
+    return _dueNotificationDetails();
+  }
+
+  Future<NotificationDetails> _dailyNotificationDetails({
+    bool includeActions = true,
+  }) async {
+    final option = await _resolvedRingtoneOption();
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+        _channelId('daily_medication_reminders', option),
+        'Daily medication reminders',
+        channelDescription: 'Daily medication reminder alerts',
+        importance: Importance.high,
+        priority: Priority.high,
+        sound: _androidSound(option),
+        actions: includeActions ? _androidActions : null,
+      ),
+      iOS: DarwinNotificationDetails(
+        categoryIdentifier: includeActions
+            ? reminderNotificationCategoryId
+            : null,
+        sound: _iosSound(option),
+      ),
+    );
+  }
+
+  Future<NotificationDetails> _dueNotificationDetails() async {
+    final option = await _resolvedRingtoneOption();
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+        _channelId('due_medication_reminders', option),
+        'Due medication reminders',
+        channelDescription: 'Medication reminders that are due now',
+        importance: Importance.high,
+        priority: Priority.high,
+        sound: _androidSound(option),
+        actions: _androidActions,
+      ),
+      iOS: DarwinNotificationDetails(
+        categoryIdentifier: reminderNotificationCategoryId,
+        sound: _iosSound(option),
+      ),
+    );
+  }
+
+  Future<RingtoneOption> _resolvedRingtoneOption() async {
+    final preference = await _ringtoneRepository.loadPreference();
+    return preference.resolvedOption;
+  }
+
+  String _channelId(String baseId, RingtoneOption option) {
+    return option.isDefault ? baseId : '${baseId}_${option.id}';
+  }
+
+  AndroidNotificationSound? _androidSound(RingtoneOption option) {
+    final resourceName = option.androidRawResourceName;
+    if (option.isDefault || resourceName == null) return null;
+    return RawResourceAndroidNotificationSound(resourceName);
+  }
+
+  String? _iosSound(RingtoneOption option) {
+    if (option.isDefault) return null;
+    return option.iosSoundFileName;
+  }
+
   tz.TZDateTime _nextDailyReminder(ReminderTime time) {
     final now = tz.TZDateTime.now(tz.local);
     var scheduled = tz.TZDateTime(
@@ -392,3 +418,9 @@ class LocalReminderNotificationScheduler
     return scheduled;
   }
 }
+
+const _androidActions = [
+  AndroidNotificationAction(reminderActionTakenId, 'Taken'),
+  AndroidNotificationAction(reminderActionSkippedId, 'Skip'),
+  AndroidNotificationAction(reminderActionLaterId, 'Remind later'),
+];

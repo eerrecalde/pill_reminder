@@ -1,7 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:pill_reminder/features/notifications/domain/notification_ringtone.dart';
+import 'package:pill_reminder/features/notifications/domain/notification_ringtone_catalog.dart';
 import 'package:pill_reminder/features/setup/domain/notification_permission_status.dart';
 import 'package:pill_reminder/services/reminder_notification_scheduler.dart';
 
+import '../notifications/fakes/fake_notification_ringtone_repository.dart';
 import 'due_reminder_test_fixtures.dart';
 import 'fakes/fake_reminder_notification_scheduler.dart';
 import 'reminder_schedule_test_fixtures.dart';
@@ -72,6 +76,65 @@ void main() {
 
       expect(scheduler.shownDueReminders, [reminder]);
       expect(scheduler.laterReminders, hasLength(1));
+    },
+  );
+
+  test(
+    'builds selected ringtone details for recurring and due notifications',
+    () async {
+      final ringtoneRepository = FakeNotificationRingtoneRepository(
+        selectedRingtoneId: 'gentle_chime',
+      );
+      final scheduler = LocalReminderNotificationScheduler(
+        ringtoneRepository: ringtoneRepository,
+      );
+
+      final daily = await scheduler.dailyNotificationDetailsForTest();
+      final due = await scheduler.dueNotificationDetailsForTest();
+
+      expect(
+        daily.android!.channelId,
+        'daily_medication_reminders_gentle_chime',
+      );
+      expect(daily.iOS!.sound, 'gentle_chime.wav');
+      expect(
+        (daily.android!.sound as RawResourceAndroidNotificationSound).sound,
+        'gentle_chime',
+      );
+      expect(daily.android!.actions, isNotEmpty);
+
+      expect(due.android!.channelId, 'due_medication_reminders_gentle_chime');
+      expect(due.iOS!.categoryIdentifier, reminderNotificationCategoryId);
+    },
+  );
+
+  test(
+    'uses default sound details when saved ringtone is unavailable',
+    () async {
+      const unavailableOption = RingtoneOption(
+        id: 'old_chime',
+        displayNameKey: 'notificationRingtoneGentleChime',
+        previewAssetPath: 'assets/audio/notifications/gentle_chime.wav',
+        androidRawResourceName: 'gentle_chime',
+        iosSoundFileName: 'gentle_chime.wav',
+        isDefault: false,
+        isAvailable: false,
+      );
+      final scheduler = LocalReminderNotificationScheduler(
+        ringtoneRepository: FakeNotificationRingtoneRepository(
+          options: [...bundledNotificationRingtones, unavailableOption],
+          selectedRingtoneId: 'old_chime',
+        ),
+      );
+
+      final daily = await scheduler.dailyNotificationDetailsForTest(
+        includeActions: false,
+      );
+
+      expect(daily.android!.channelId, 'daily_medication_reminders');
+      expect(daily.android!.sound, isNull);
+      expect(daily.iOS!.sound, isNull);
+      expect(daily.android!.actions, isNull);
     },
   );
 }

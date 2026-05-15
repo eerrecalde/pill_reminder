@@ -288,5 +288,44 @@
   "settingsRecoveryExpired": "The 30-second restore window has ended.",
   "settingsDataRestored": "Local reminder data restored.",
   "settingsDeleteFailed": "Local reminder data was not deleted. Your data is still available.",
-  "settingsRestoreFailed": "Local reminder data could not be restored."
+  "settingsRestoreFailed": "Local reminder data could not be restored.",
+  "settingsNotificationSoundTitle": "Notification sound",
+  "settingsNotificationSoundDescription": "Choose the sound used for medication reminders.",
+  "settingsNotificationSoundCurrent": "Current sound: {sound}",
+  "@settingsNotificationSoundCurrent": {
+    "placeholders": {
+      "sound": {}
+    }
+  },
+  "settingsNotificationSoundDeviceLimits": "Device mute, focus, do-not-disturb, notification permission, and channel settings can prevent the chosen sound from playing.",
+  "settingsNotificationSoundUnavailable": "The previously selected sound is no longer available. Reminders will use the default sound until you choose another.",
+  "settingsNotificationSoundChoose": "Choose sound",
+  "notificationRingtonePickerTitle": "Notification sound",
+  "notificationRingtoneDefault": "Default reminder sound",
+  "notificationRingtoneGentleChime": "Gentle chime",
+  "notificationRingtoneBrightBell": "Bright bell",
+  "notificationRingtoneSoftPulse": "Soft pulse",
+  "notificationRingtonePillsInBox": "Pills in a box",
+  "notificationRingtoneCurrent": "Current",
+  "notificationRingtoneSelected": "Selected",
+  "notificationRingtoneUnavailable": "Unavailable",
+  "notificationRingtonePreview": "Preview",
+  "notificationRingtonePreviewNamed": "Preview {sound}",
+  "@notificationRingtonePreviewNamed": {
+    "placeholders": {
+      "sound": {}
+    }
+  },
+  "notificationRingtoneStopPreview": "Stop preview",
+  "notificationRingtoneSave": "Save sound",
+  "notificationRingtoneSaved": "Notification sound saved.",
+  "notificationRingtoneRowSemantics": "{sound}. {status}",
+  "@notificationRingtoneRowSemantics": {
+    "placeholders": {
+      "sound": {},
+      "status": {}
+    }
+  },
+  "notificationRingtoneUnavailableWarning": "Your previous sound is unavailable. Choose another sound to clear this warning.",
+  "notificationRingtoneDeviceLimits": "Your phone settings may still silence reminders even when this sound is saved."
 }

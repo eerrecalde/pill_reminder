@@ -698,4 +698,84 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get settingsRestoreFailed =>
       'Local reminder data could not be restored.';
+
+  @override
+  String get settingsNotificationSoundTitle => 'Notification sound';
+
+  @override
+  String get settingsNotificationSoundDescription =>
+      'Choose the sound used for medication reminders.';
+
+  @override
+  String settingsNotificationSoundCurrent(Object sound) {
+    return 'Current sound: $sound';
+  }
+
+  @override
+  String get settingsNotificationSoundDeviceLimits =>
+      'Device mute, focus, do-not-disturb, notification permission, and channel settings can prevent the chosen sound from playing.';
+
+  @override
+  String get settingsNotificationSoundUnavailable =>
+      'The previously selected sound is no longer available. Reminders will use the default sound until you choose another.';
+
+  @override
+  String get settingsNotificationSoundChoose => 'Choose sound';
+
+  @override
+  String get notificationRingtonePickerTitle => 'Notification sound';
+
+  @override
+  String get notificationRingtoneDefault => 'Default reminder sound';
+
+  @override
+  String get notificationRingtoneGentleChime => 'Gentle chime';
+
+  @override
+  String get notificationRingtoneBrightBell => 'Bright bell';
+
+  @override
+  String get notificationRingtoneSoftPulse => 'Soft pulse';
+
+  @override
+  String get notificationRingtonePillsInBox => 'Pills in a box';
+
+  @override
+  String get notificationRingtoneCurrent => 'Current';
+
+  @override
+  String get notificationRingtoneSelected => 'Selected';
+
+  @override
+  String get notificationRingtoneUnavailable => 'Unavailable';
+
+  @override
+  String get notificationRingtonePreview => 'Preview';
+
+  @override
+  String notificationRingtonePreviewNamed(Object sound) {
+    return 'Preview $sound';
+  }
+
+  @override
+  String get notificationRingtoneStopPreview => 'Stop preview';
+
+  @override
+  String get notificationRingtoneSave => 'Save sound';
+
+  @override
+  String get notificationRingtoneSaved => 'Notification sound saved.';
+
+  @override
+  String notificationRingtoneRowSemantics(Object sound, Object status) {
+    return '$sound. $status';
+  }
+
+  @override
+  String get notificationRingtoneUnavailableWarning =>
+      'Your previous sound is unavailable. Choose another sound to clear this warning.';
+
+  @override
+  String get notificationRingtoneDeviceLimits =>
+      'Your phone settings may still silence reminders even when this sound is saved.';
 }

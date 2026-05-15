@@ -23,6 +23,9 @@ import 'features/medications/presentation/due_reminder_screen.dart';
 import 'features/medications/presentation/medication_history_screen.dart';
 import 'features/medications/presentation/reminder_schedule_screen.dart';
 import 'features/medications/presentation/today_dashboard_screen.dart';
+import 'features/notifications/data/local_notification_ringtone_repository.dart';
+import 'features/notifications/data/notification_ringtone_repository.dart';
+import 'features/notifications/services/ringtone_preview_player.dart';
 import 'features/setup/data/local_setup_preferences_repository.dart';
 import 'features/setup/data/setup_preferences_repository.dart';
 import 'features/setup/domain/notification_permission_status.dart';
@@ -40,6 +43,7 @@ import 'theme/app_theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final preferences = await SharedPreferences.getInstance();
+  final ringtoneRepository = LocalNotificationRingtoneRepository(preferences);
   runApp(
     PillReminderApp(
       setupPreferencesRepository: LocalSetupPreferencesRepository(preferences),
@@ -52,7 +56,10 @@ Future<void> main() async {
       medicationHistoryRepository: LocalMedicationHistoryRepository(
         preferences,
       ),
-      reminderNotificationScheduler: LocalReminderNotificationScheduler(),
+      ringtoneRepository: ringtoneRepository,
+      reminderNotificationScheduler: LocalReminderNotificationScheduler(
+        ringtoneRepository: ringtoneRepository,
+      ),
       notificationPermissionService:
           PermissionHandlerNotificationPermissionService(),
     ),
@@ -68,6 +75,7 @@ class PillReminderApp extends StatefulWidget {
     this.dueReminderRepository,
     this.medicationHistoryRepository,
     this.reminderNotificationScheduler,
+    this.ringtoneRepository,
     this.medicationRepository,
     super.key,
   });
@@ -80,6 +88,7 @@ class PillReminderApp extends StatefulWidget {
   final DueReminderRepository? dueReminderRepository;
   final MedicationHistoryRepository? medicationHistoryRepository;
   final ReminderNotificationScheduler? reminderNotificationScheduler;
+  final NotificationRingtoneRepository? ringtoneRepository;
 
   @override
   State<PillReminderApp> createState() => _PillReminderAppState();
@@ -101,6 +110,8 @@ class _PillReminderAppState extends State<PillReminderApp> {
       _InMemoryDueReminderRepository();
   late final MedicationHistoryRepository _fallbackMedicationHistoryRepository =
       _InMemoryMedicationHistoryRepository();
+  late final NotificationRingtoneRepository _fallbackRingtoneRepository =
+      const DefaultNotificationRingtoneRepository();
 
   @override
   void initState() {
@@ -183,6 +194,8 @@ class _PillReminderAppState extends State<PillReminderApp> {
       medicationHistoryRepository:
           widget.medicationHistoryRepository ??
           _fallbackMedicationHistoryRepository,
+      ringtoneRepository:
+          widget.ringtoneRepository ?? _fallbackRingtoneRepository,
       onLocaleChanged: _setLocale,
       onSetupStateChanged: _setSetupState,
       onNotificationStatusChanged: _updateNotificationStatus,
@@ -201,6 +214,7 @@ class _MainAppHome extends StatefulWidget {
     required this.reminderNotificationScheduler,
     required this.dueReminderRepository,
     required this.medicationHistoryRepository,
+    required this.ringtoneRepository,
     required this.onLocaleChanged,
     required this.onSetupStateChanged,
     required this.onNotificationStatusChanged,
@@ -215,6 +229,7 @@ class _MainAppHome extends StatefulWidget {
   final ReminderNotificationScheduler reminderNotificationScheduler;
   final DueReminderRepository dueReminderRepository;
   final MedicationHistoryRepository medicationHistoryRepository;
+  final NotificationRingtoneRepository ringtoneRepository;
   final ValueChanged<Locale> onLocaleChanged;
   final ValueChanged<SetupState> onSetupStateChanged;
   final ValueChanged<SetupNotificationPermissionStatus>
@@ -386,6 +401,8 @@ class _MainAppHomeState extends State<_MainAppHome> {
                       notificationScheduler:
                           widget.reminderNotificationScheduler,
                     ),
+                    ringtoneRepository: widget.ringtoneRepository,
+                    ringtonePreviewPlayer: AssetRingtonePreviewPlayer(),
                     initialState: widget.setupState,
                     onLocaleChanged: widget.onLocaleChanged,
                     onStateChanged: widget.onSetupStateChanged,

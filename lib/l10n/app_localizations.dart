@@ -1278,6 +1278,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Local reminder data could not be restored.'**
   String get settingsRestoreFailed;
+
+  /// No description provided for @settingsNotificationSoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification sound'**
+  String get settingsNotificationSoundTitle;
+
+  /// No description provided for @settingsNotificationSoundDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the sound used for medication reminders.'**
+  String get settingsNotificationSoundDescription;
+
+  /// No description provided for @settingsNotificationSoundCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current sound: {sound}'**
+  String settingsNotificationSoundCurrent(Object sound);
+
+  /// No description provided for @settingsNotificationSoundDeviceLimits.
+  ///
+  /// In en, this message translates to:
+  /// **'Device mute, focus, do-not-disturb, notification permission, and channel settings can prevent the chosen sound from playing.'**
+  String get settingsNotificationSoundDeviceLimits;
+
+  /// No description provided for @settingsNotificationSoundUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The previously selected sound is no longer available. Reminders will use the default sound until you choose another.'**
+  String get settingsNotificationSoundUnavailable;
+
+  /// No description provided for @settingsNotificationSoundChoose.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose sound'**
+  String get settingsNotificationSoundChoose;
+
+  /// No description provided for @notificationRingtonePickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification sound'**
+  String get notificationRingtonePickerTitle;
+
+  /// No description provided for @notificationRingtoneDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default reminder sound'**
+  String get notificationRingtoneDefault;
+
+  /// No description provided for @notificationRingtoneGentleChime.
+  ///
+  /// In en, this message translates to:
+  /// **'Gentle chime'**
+  String get notificationRingtoneGentleChime;
+
+  /// No description provided for @notificationRingtoneBrightBell.
+  ///
+  /// In en, this message translates to:
+  /// **'Bright bell'**
+  String get notificationRingtoneBrightBell;
+
+  /// No description provided for @notificationRingtoneSoftPulse.
+  ///
+  /// In en, this message translates to:
+  /// **'Soft pulse'**
+  String get notificationRingtoneSoftPulse;
+
+  /// No description provided for @notificationRingtonePillsInBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Pills in a box'**
+  String get notificationRingtonePillsInBox;
+
+  /// No description provided for @notificationRingtoneCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Current'**
+  String get notificationRingtoneCurrent;
+
+  /// No description provided for @notificationRingtoneSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected'**
+  String get notificationRingtoneSelected;
+
+  /// No description provided for @notificationRingtoneUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get notificationRingtoneUnavailable;
+
+  /// No description provided for @notificationRingtonePreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get notificationRingtonePreview;
+
+  /// No description provided for @notificationRingtonePreviewNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview {sound}'**
+  String notificationRingtonePreviewNamed(Object sound);
+
+  /// No description provided for @notificationRingtoneStopPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop preview'**
+  String get notificationRingtoneStopPreview;
+
+  /// No description provided for @notificationRingtoneSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save sound'**
+  String get notificationRingtoneSave;
+
+  /// No description provided for @notificationRingtoneSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification sound saved.'**
+  String get notificationRingtoneSaved;
+
+  /// No description provided for @notificationRingtoneRowSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'{sound}. {status}'**
+  String notificationRingtoneRowSemantics(Object sound, Object status);
+
+  /// No description provided for @notificationRingtoneUnavailableWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Your previous sound is unavailable. Choose another sound to clear this warning.'**
+  String get notificationRingtoneUnavailableWarning;
+
+  /// No description provided for @notificationRingtoneDeviceLimits.
+  ///
+  /// In en, this message translates to:
+  /// **'Your phone settings may still silence reminders even when this sound is saved.'**
+  String get notificationRingtoneDeviceLimits;
 }
 
 class _AppLocalizationsDelegate
