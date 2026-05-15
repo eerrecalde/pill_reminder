@@ -5,6 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "I need to be able to set different ringtones for the notifications so when it triggers it sounds with the chosen ringtone"
 
+## Clarifications
+
+### Session 2026-05-15
+
+- Q: Which ringtone source should this feature support? → A: Curated app-bundled ringtone list only
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Choose a Reminder Ringtone (Priority: P1)
@@ -64,7 +70,7 @@ As a reminder user, I want the app to use a clear fallback if my chosen ringtone
 ### Functional Requirements
 
 - **FR-001**: System MUST allow users to open a notification sound setting from the settings or reminder-notification area.
-- **FR-002**: System MUST show a list of available reminder ringtone choices, including the current default reminder sound.
+- **FR-002**: System MUST show a curated list of app-bundled reminder ringtone choices, including the current default reminder sound, and MUST NOT require browsing device/system sounds or user audio files.
 - **FR-003**: Users MUST be able to preview a ringtone before saving it.
 - **FR-004**: Users MUST be able to save one ringtone as the active sound for medication reminder notifications.
 - **FR-005**: System MUST clearly show which ringtone is currently selected.
@@ -82,7 +88,7 @@ As a reminder user, I want the app to use a clear fallback if my chosen ringtone
 ### Key Entities *(include if feature involves data)*
 
 - **Notification Ringtone Preference**: The user's selected reminder notification sound, including its display name, selection status, and availability status.
-- **Ringtone Option**: A sound that the user can select or preview for medication reminders, including a user-visible name and whether it is currently usable.
+- **Ringtone Option**: An app-bundled sound that the user can select or preview for medication reminders, including a stable identifier, user-visible name, asset reference, and whether it is currently usable.
 - **Medication Reminder Notification**: A scheduled or triggered medication alert that should use the user's active ringtone preference when sound playback is allowed.
 
 ## Success Criteria *(mandatory)*
@@ -99,7 +105,7 @@ As a reminder user, I want the app to use a clear fallback if my chosen ringtone
 ## Assumptions
 
 - Ringtone selection applies to all medication reminder notifications rather than separate sounds per medication or per reminder time.
-- The initial ringtone list uses app-provided or device-supported notification sounds that can be presented safely without requiring user file management.
+- The ringtone list uses only app-provided bundled sounds that can be presented safely without requiring user file management or device/system sound browsing.
 - Custom user-uploaded audio files are out of scope for this feature unless added by a later specification.
 - Preview playback is short and user-controlled so it does not become disruptive.
 - The feature changes only notification sound preferences and does not change reminder scheduling, medication data, notification permission requests, or privacy posture.
